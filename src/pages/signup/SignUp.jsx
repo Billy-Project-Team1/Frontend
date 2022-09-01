@@ -5,10 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { BsCheckSquare, BsCheckSquareFill } from "react-icons/bs";
 import "./SignUp.scss";
 import { useDispatch } from "react-redux";
-import {
-  checkEmailDuplicate,
-  createMemberDB,
-} from "../../redux/modules/memberSlice";
+import { apis } from "../../shared/api";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -40,15 +37,20 @@ const SignUp = () => {
     if (!emailRegex.test(member.email)) {
       setEmailCheck(false);
     } else {
-      setEmailCheck(true);
+      setEmailCheck(true)
       // 이메일 중복 검사
-      dispatch(checkEmailDuplicate(member.email)).then((res) => {
-        if (res.data.success === true) {
-          setEmailDuplicate(true);
-        } else {
-          setEmailDuplicate(false);
+      apis.checkEmailDuplicate(member.email).then((res)=>{
+        if(res.data.success === true){
+          setEmailDuplicate(true)
         }
-      });
+        else{
+          setEmailDuplicate(false)
+        }
+      })
+      .catch((err)=>{
+        setEmailDuplicate(false)
+      })
+    
     }
   }, [member.email]);
 
@@ -102,21 +104,18 @@ const SignUp = () => {
       member.password !== member.password2
     ) {
       event.preventDefault();
-    } else if (!signUpAgree) {
+    } else if (signUpAgree) {
       event.preventDefault();
     } else {
-      try {
-        const response = dispatch(createMemberDB(member));
-        if (response.data.success === true) {
-          event.preventDefault();
-          setMember(initialState);
-          alert("회원가입을 축하드립니다.");
-          navigate("/login");
+      event.preventDefault();
+      apis.createMember(member).then((res)=>{
+        if(res.data.success === true){
+          navigate(`/login`)
         }
-      } catch (err) {
-        event.preventDefault();
-        console.log(err);
-      }
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
     }
   };
 

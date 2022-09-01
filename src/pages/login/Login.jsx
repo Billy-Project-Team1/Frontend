@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import kakaoLoginimg from "../../static/image/kakao_login_original.png";
+import { apis } from "../../shared/api";
 import "./Login.scss";
-import { loginMemberDB } from "../../redux/modules/memberSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -29,12 +29,15 @@ const Login = () => {
       alert("아이디와 비밀번호를 입력해주세요");
     } else {
       event.preventDefault();
-      dispatch(loginMemberDB({ email, password })).then((res) => {
-        console.log(res);
+      apis.loginMember({email,password}).then((res)=>{
+        if(res.data.success === true){
+          window.alert(`환영합니다.`)
+          navigate(`/`)
+        }
+      }).catch((err)=>{
+        window.alert(err.response.data.message)
       })
-      .catch((err)=>{
-        console.log(err)
-      });
+      
     }
   };
 
