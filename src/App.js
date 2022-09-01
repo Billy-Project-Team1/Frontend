@@ -1,9 +1,17 @@
 import React from "react";
-import logo from "./logo.svg";
+import { Route, Routes } from "react-router-dom";
 import "./App.scss";
+import Login from "./pages/login/Login";
+import SignUp from "./pages/signup/SignUp";
 
 function App() {
-  return <div>실전 프로젝트</div>;
+  return (
+    <Routes>
+      <Route path="/" element={<div>메인페이지</div>} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+    </Routes>
+  );
 }
 
 export default App;
