@@ -1,10 +1,9 @@
 import React from 'react';
-import './MainHeader.scss';
+import './ModifyPostingHeader.scss';
 import { useNavigate } from 'react-router-dom';
-import { HiSearch } from 'react-icons/hi';
-import { FaRegBell } from 'react-icons/fa';
+import { HiOutlineChevronLeft } from 'react-icons/hi';
 
-const MainHeader = (props) => {
+const ModifyPostingHeader = (props) => {
 	const navigate = useNavigate();
 
 	const move = () => {
@@ -19,22 +18,18 @@ const MainHeader = (props) => {
 	return (
 		<div className="header_wrap">
 			<div className="header_content">
-				<HiSearch
+				<HiOutlineChevronLeft
 					style={{ marginRight: '22px' }}
 					color="#656565"
 					size="24px"
 					onClick={() => navigate(-1)}
 				/>
-				<FaRegBell
-					style={{ marginRight: '22px' }}
-					color="#656565"
-					size="24px"
-				/>
-
+				<div className="header_title">글 수정하기</div>
+				<div className="header_done">완료</div>
 			</div>
 			<div className="header_line"></div>
 		</div>
 	);
 };
 
-export default MainHeader;
+export default ModifyPostingHeader;
