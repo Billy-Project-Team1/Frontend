@@ -3,8 +3,6 @@ import axios from 'axios';
 export const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
-const token = localStorage.getItem('token');
-api.defaults.headers.common['authorization'] = token ? `${token}` : null;
 
 export const apis = {
   // 회원 가입 API
@@ -24,6 +22,4 @@ export const apis = {
       email: payload.email,
       password: payload.password,
     }),
-
-  kakaoLogin: (payload) => api.get('/members/kakao'),
 };

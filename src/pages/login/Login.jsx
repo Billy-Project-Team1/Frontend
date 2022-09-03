@@ -36,9 +36,10 @@ const Login = () => {
         .then((res) => {
           if (res.data.success === true) {
             return (
-              console.log(res),
+              localStorage.setItem('useremail', res.data.result.email),
               localStorage.setItem('accessToken', res.headers.authorization),
-              cookies.set('refreshToken', res.headers[`refresh-token`])
+              cookies.set('refreshToken', res.headers[`refresh-token`]),
+              navigate(`/`)
             );
           }
         })
@@ -47,7 +48,7 @@ const Login = () => {
         });
     }
   };
-  console.log(KAKAO_AUTH_URL)
+
 
   return (
     <div className="LoginWrap">
