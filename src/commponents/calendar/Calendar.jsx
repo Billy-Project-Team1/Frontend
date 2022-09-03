@@ -6,9 +6,9 @@ import './Calendar.scss';
 import DateObject from 'react-date-object';
 
 const PostingCalendar = () => {
-  const date = new DateObject();
-  const [dates, setDates] = useState();
-  console.log(dates);
+  const newdate = new DateObject();
+  const [dates, setDates] = useState(new Date());
+  console.log(dates.toLocaleString());
 
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
   const months = [
