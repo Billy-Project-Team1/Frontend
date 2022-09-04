@@ -1,5 +1,5 @@
 import React from 'react';
-import './DetailHeader.scss';
+import './Headers.scss';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 

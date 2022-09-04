@@ -3,7 +3,7 @@ import './Headers.scss';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 
-const ModifyPostingHeader = (props) => {
+const AddPostingHeader = (props) => {
 	const navigate = useNavigate();
 
 	const move = () => {
@@ -24,7 +24,7 @@ const ModifyPostingHeader = (props) => {
 					size="24px"
 					onClick={() => navigate(-1)}
 				/>
-				<div className="header_title">글 수정하기</div>
+				<div className="header_title">거래장소 지정</div>
 				<div className="header_done">완료</div>
 			</div>
 			<div className="header_line"></div>
@@ -32,4 +32,4 @@ const ModifyPostingHeader = (props) => {
 	);
 };
 
-export default ModifyPostingHeader;
+export default AddPostingHeader;

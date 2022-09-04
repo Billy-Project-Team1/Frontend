@@ -1,5 +1,5 @@
 import React from 'react';
-import './MainHeader.scss';
+import './Headers.scss';
 import { useNavigate } from 'react-router-dom';
 import { HiSearch } from 'react-icons/hi';
 import { FaRegBell } from 'react-icons/fa';
@@ -18,7 +18,7 @@ const MainHeader = (props) => {
 
 	return (
 		<div className="header_wrap">
-			<div className="header_content">
+			<div className="main_header_content">
 				<HiSearch
 					style={{ marginRight: '22px' }}
 					color="#656565"
@@ -30,7 +30,6 @@ const MainHeader = (props) => {
 					color="#656565"
 					size="24px"
 				/>
-
 			</div>
 			<div className="header_line"></div>
 		</div>
