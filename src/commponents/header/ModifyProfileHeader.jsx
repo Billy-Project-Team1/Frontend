@@ -1,10 +1,9 @@
 import React from 'react';
 import './Headers.scss';
 import { useNavigate } from 'react-router-dom';
-import { HiSearch } from 'react-icons/hi';
-import { FaRegBell } from 'react-icons/fa';
+import { HiOutlineChevronLeft } from 'react-icons/hi';
 
-const MainHeader = (props) => {
+const ModifyProfileHeader = (props) => {
 	const navigate = useNavigate();
 
 	const move = () => {
@@ -18,22 +17,19 @@ const MainHeader = (props) => {
 
 	return (
 		<div className="header_wrap">
-			<div className="main_header_content">
-				<HiSearch
+			<div className="header_content">
+				<HiOutlineChevronLeft
 					style={{ marginRight: '22px' }}
 					color="#656565"
 					size="24px"
 					onClick={() => navigate(-1)}
 				/>
-				<FaRegBell
-					style={{ marginRight: '22px' }}
-					color="#656565"
-					size="24px"
-				/>
+				<div className="header_title">프로필 수정</div>
+				<div className="header_done">완료</div>
 			</div>
 			<div className="header_line"></div>
 		</div>
 	);
 };
 
-export default MainHeader;
+export default ModifyProfileHeader;
