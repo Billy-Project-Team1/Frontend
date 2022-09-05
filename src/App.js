@@ -8,6 +8,9 @@ import ModifyPosting from './pages/modifyPosting/ModifyPosting';
 import ModifyProfile from './pages/modifyProfile/ModifyProfile';
 import Posting from './pages/posting/Posting';
 import SignUp from "./pages/signup/SignUp";
+import Kakao from "./pages/socialLogin/KakaoLogin";
+import SearchPlace from "./commponents/maps/SearchPlace"
+import ModifyPosting from './pages/modifyPosting/ModifyPosting';
 
 
 function App() {
@@ -20,6 +23,7 @@ function App() {
 			<Route path="/modifyPosting" element={<ModifyPosting />} />
 			<Route path='/modifyProfile' element={<ModifyProfile />} />
 			<Route path="/detail" element={<Detail />} />
+      <Route path="/map/test" element={<SearchPlace/>}/>
 		</Routes>
 	);
 }

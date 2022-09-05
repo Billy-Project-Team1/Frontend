@@ -1,13 +1,14 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import ModifyPostingHeader from '../../commponents/header/ModifyPostingHeader';
+import Calendar from '../../commponents/calendar/Calendar';
+import MyProfileHeader from '../../commponents/myProfile/MyProfileHeader';
 
 const ModifyPosting = () => {
-	return (
-		<div>
-			<ModifyPostingHeader />
-		</div>
-	);
+  return (
+    <div>
+      <Calendar />
+      {/* <MyProfileHeader /> */}
+    </div>
+  );
 };
 
 export default ModifyPosting;
