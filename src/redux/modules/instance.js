@@ -24,7 +24,7 @@ instance.interceptors.response.use(async (error) => {
         const refreshToken = await cookies.get('refreshToken');
         const userEmail = await cookies.get('useremail');
         // token refresh 요청
-        const { data } = await api.post(
+        const { data } = await axios.post(
           '/members/reissue',
           { email: `${userEmail}` },
           {
