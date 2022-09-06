@@ -16,18 +16,20 @@ const ModifyProfileHeader = (props) => {
 	};
 
 	return (
-		<div className="header_wrap">
-			<div className="header_content">
-				<HiOutlineChevronLeft
-					style={{ marginRight: '22px' }}
-					color="#656565"
-					size="24px"
-					onClick={() => navigate(-1)}
-				/>
-				<div className="header_title">프로필 수정</div>
-				<div className="header_done">완료</div>
+		<div className="header_container">
+			<div className="header_wrap">
+				<div className="header_content">
+					<HiOutlineChevronLeft
+						style={{ marginRight: '22px' }}
+						color="#656565"
+						size="24px"
+						onClick={() => navigate(-1)}
+					/>
+					<div className="header_title">프로필 수정</div>
+					<div className="header_done">완료</div>
+				</div>
+				<div className="header_line"></div>
 			</div>
-			<div className="header_line"></div>
 		</div>
 	);
 };

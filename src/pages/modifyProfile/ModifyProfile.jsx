@@ -5,7 +5,7 @@ import ModifyProfileHeader from '../../commponents/header/ModifyProfileHeader';
 const ModifyProfile = () => {
 	return (
 		<div>
-			<ModifyProfileHeader>ddd</ModifyProfileHeader>
+			<ModifyProfileHeader></ModifyProfileHeader>
 		</div>
 	);
 };
