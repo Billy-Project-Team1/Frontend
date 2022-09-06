@@ -4,7 +4,6 @@ import MyProfileHeader from '../../commponents/myProfile/MyProfileHeader';
 const Mypage = () => {
   return (
     <div>
-      {' '}
       <MyProfileHeader />
     </div>
   );
