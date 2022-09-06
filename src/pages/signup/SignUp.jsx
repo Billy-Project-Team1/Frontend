@@ -38,6 +38,7 @@ const SignUp = () => {
       setEmailCheck(false);
     } else {
       setEmailCheck(true)
+    
       // 이메일 중복 검사
       apis.checkEmailDuplicate(member.email).then((res)=>{
         if(res.data.success === true){
@@ -134,9 +135,13 @@ const SignUp = () => {
             onChange={onSignUpHandler}
           />
           {member.nickname === "" ? (
-            ""
+             <div className="SignUpAlertText">
+             &nbsp;
+           </div>
           ) : nicknameCheck ? (
-            ""
+            <div className="SignUpAlertText">
+             &nbsp;
+           </div>
           ) : (
             <div className="SignUpAlertText">
               특수문자, 띄어쓰기는 불가하며 2-8자 이내로 입력해주세요.
@@ -153,10 +158,14 @@ const SignUp = () => {
             onChange={onSignUpHandler}
           />
           {member.email === "" ? (
-            ""
+            <div className="SignUpAlertText">
+            &nbsp;
+          </div>
           ) : emailCheck ? (
             emailDuplicate ? (
-              ""
+              <div className="SignUpAlertText">
+             &nbsp;
+           </div>
             ) : (
               <div className="SignUpAlertText">
                 이미 가입된 이메일 주소입니다.
@@ -179,9 +188,13 @@ const SignUp = () => {
             onChange={onSignUpHandler}
           />
           {member.password === "" ? (
-            ""
+            <div className="SignUpAlertText">
+            &nbsp;
+          </div>
           ) : passwordCheck ? (
-            ""
+            <div className="SignUpAlertText">
+             &nbsp;
+           </div>
           ) : (
             <div className="SignUpAlertText">
               영문, 숫자, 특수기호를 포함하여 14자 이내로 입력해주세요.
@@ -199,9 +212,13 @@ const SignUp = () => {
             onChange={onSignUpHandler}
           />
           {member.password2 === "" ? (
-            ""
+            <div className="SignUpAlertText">
+            &nbsp;
+          </div>
           ) : member.password === member.password2 ? (
-            ""
+            <div className="SignUpAlertText">
+             &nbsp;
+           </div>
           ) : (
             <div className="SignUpAlertText">비밀번호와 동일하지 않습니다.</div>
           )}

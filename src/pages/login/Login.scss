@@ -1,11 +1,11 @@
 .LoginWrap {
   margin: auto;
-  max-width: 400px;
+  max-width: 428px;
   //   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 20px;
+  gap: 2rem;
+  padding: 1rem;
   input:focus {
     outline: none;
   }
@@ -45,9 +45,14 @@
 
 .LoginPasswordBox {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   display: flex;
   flex-direction: row;
+}
+
+.LoginAlertText{
+  color: #EB0000;
+  font-size: 12px;
 }
 
 .LoginPasswordEye {
