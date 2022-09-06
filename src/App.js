@@ -1,8 +1,8 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import "./App.scss";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import './App.scss';
 import Detail from './pages/detail/Detail';
-import Login from "./pages/login/Login";
+import Login from './pages/login/Login';
 import Main from './pages/main/Main';
 import ModifyPosting from './pages/modifyPosting/ModifyPosting';
 import ModifyProfile from './pages/modifyProfile/ModifyProfile';
@@ -11,7 +11,6 @@ import SignUp from "./pages/signup/SignUp";
 import Kakao from "./pages/socialLogin/KakaoLogin";
 import SearchPlace from "./commponents/maps/SearchPlace"
 import Mypage from './pages/mypage/Mypage';
-
 
 function App() {
   return (

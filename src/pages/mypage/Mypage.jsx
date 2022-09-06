@@ -1,9 +1,12 @@
 import React from 'react';
-import MypageHeader from '../../commponents/header/MypageHeader';
-
+import MyProfileHeader from '../../commponents/myProfile/MyProfileHeader';
 
 const Mypage = () => {
-  return <div><MypageHeader /></div>;
+  return (
+    <div>
+      <MyProfileHeader />
+    </div>
+  );
 };
 
 export default Mypage;
