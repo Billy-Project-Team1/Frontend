@@ -1,0 +1,37 @@
+.MainListCardContainer{
+    display: flex;
+    flex-direction: row;
+    height: 10rem;
+    border: 1px solid;
+    gap: 1rem;
+
+}
+
+.MainListCardImg{
+    width: 8.25rem;
+    height: 8.25rem;
+    box-sizing: border-box;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+}
+
+.MainListCardRightBox{
+    display: flex;
+    flex-direction: column;
+}
+
+.MainListCardTitle{
+    border: solid 1px;
+    font-size: 0.875rem;
+    width: 7rem;
+    box-sizing: border-box;
+    margin-top: 0.625rem;
+    color: #212121;
+}
+
+.MainListCardPlace{
+    border: solid 1px;
+    font-size: 0.75rem;
+    color: #cccccc;
+    margin-bottom: 1.125rem;
+}

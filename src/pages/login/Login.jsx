@@ -13,6 +13,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [passwordView, setPasswordView] = useState('password');
+  const [doNotAccess, setDoNotAccess] = useState(true);
   const cookies = new Cookies();
 
   const onVisablePassword = () => {
@@ -36,7 +37,7 @@ const Login = () => {
         .then((res) => {
           if (res.data.success === true) {
             return (
-              localStorage.setItem('useremail', res.data.result.email),
+              localStorage.setItem('userId', res.data.result.userId),
               localStorage.setItem('accessToken', res.headers.authorization),
               cookies.set('refreshToken', res.headers[`refresh-token`]),
               navigate(`/`)
@@ -44,16 +45,15 @@ const Login = () => {
           }
         })
         .catch((err) => {
-          window.alert(err.response.data.message);
+          setDoNotAccess(false);
         });
     }
   };
 
-
   return (
     <div className="LoginWrap">
       <div className="LoginBackKey">
-        <IoArrowBack />
+        <IoArrowBack onClick={() => navigate(-1)} />
       </div>
       <div className="LoginTopName"></div>
       <div className="LoginEmailBox">
@@ -79,17 +79,24 @@ const Login = () => {
             ) : (
               <AiFillEye onClick={onVisablePassword} />
             )}
-          </div>
+          </div>          
         </div>
+        {doNotAccess ? (
+            <div className="LoginAlertText">
+              &nbsp;
+          </div>
+          ) : (
+            <div className="LoginAlertText">
+              아이디 혹은 비밀번호를 다시 확인하세요.
+            </div>
+          )}
         <button className="LoginButton" onClick={Loginform}>
           로그인
         </button>
         <a className="LoginKakao" href={KAKAO_AUTH_URL}>
-          <div className="LoginKakaoBox" >
+          <div className="LoginKakaoBox">
             <img src={kakaoLoginimg} className="KakaoLoginImg" />
-            <div className="LoginKakaoTitle">
-              카카오로 로그인하기
-            </div>
+            <div className="LoginKakaoTitle">카카오로 로그인하기</div>
           </div>
         </a>
         <div className="LoginFindBox">

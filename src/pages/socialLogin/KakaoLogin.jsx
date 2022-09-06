@@ -17,7 +17,7 @@ const Kakao = () => {
         .then((res) => {
           if (res.data.success === true) {
             return (
-              console.log(res),
+              localStorage.setItem('userId', res.data.result.userId),
               localStorage.setItem('accessToken', res.headers.authorization),
               cookies.set('refreshToken', res.headers[`refresh-token`]),
               navigate(`/`)

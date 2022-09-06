@@ -22,11 +22,11 @@ instance.interceptors.response.use(async (error) => {
       } else {
         const originalRequest = config;
         const refreshToken = await cookies.get('refreshToken');
-        const userEmail = await cookies.get('useremail');
+        const userEmail = await cookies.get('userId');
         // token refresh 요청
-        const { data } = await api.post(
-          '/members/reissue',
-          { email: `${userEmail}` },
+        const { data } = await axios.post(
+          '/auth/members/reissue',
+          { userId: `${userId}` },
           {
             headers: { 'Refresh-Token': `${refreshToken}` },
           }
