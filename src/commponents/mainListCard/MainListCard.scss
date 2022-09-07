@@ -1,37 +1,101 @@
-.MainListCardContainer{
-    display: flex;
-    flex-direction: row;
-    height: 10rem;
-    border: 1px solid;
-    gap: 1rem;
-
+.MainListWrap {
+  padding: 0 1rem;
+}
+.MainListCardContainer {
+    margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  height: 10rem;
+  border-bottom: 1px solid rgba(238, 238, 238, 1);
+}
+.MainListCardBox {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 8.25rem;
+  gap: 1rem;
+  width: 100%;
 }
 
-.MainListCardImg{
-    width: 8.25rem;
-    height: 8.25rem;
-    box-sizing: border-box;
-    object-fit: cover;
-    aspect-ratio: 1/1;
+.MainListCardImg {
+  max-width: 8.25rem;
+  max-height: 8.25rem;
+  box-sizing: border-box;
+  object-fit: cover;
+  border-radius: 7px;
+  aspect-ratio: 1/1;
 }
 
-.MainListCardRightBox{
-    display: flex;
-    flex-direction: column;
+.MainListCardRightBox {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
 }
 
-.MainListCardTitle{
-    border: solid 1px;
-    font-size: 0.875rem;
-    width: 7rem;
-    box-sizing: border-box;
-    margin-top: 0.625rem;
-    color: #212121;
+.MainListCardTitle {
+  overflow: hidden;
+  max-height: 2.625rem;
+  font-size: 0.9375rem;
+  box-sizing: border-box;
+  margin-top: 0.4375rem;
+  color: #212121;
 }
 
-.MainListCardPlace{
-    border: solid 1px;
-    font-size: 0.75rem;
-    color: #cccccc;
-    margin-bottom: 1.125rem;
+.MainListCardPlace {
+  font-size: 0.75rem;
+  color: #cccccc;
+  margin-bottom: 1rem;
+}
+
+.MainListCardBottomContainer {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.MainListCardBottomBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3124rem;
+}
+
+.MainListCardPriceBox {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  gap: 0.5625rem;
+}
+
+.MainListCardIconBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.MainListCardIcon {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: auto;
+}
+.MainListCardReview {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  right: 0px;
+  bottom: 0px;
+  font-size: 0.75rem;
+  color: #757575;
+//   letter-spacing: 0.01rem;
+}
+
+.MainListCardStarBox {
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.MainListCardStar {
+  margin: auto;
+  color: #fee500;
 }
