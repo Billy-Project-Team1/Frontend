@@ -17,7 +17,7 @@ const DetailHeader = (props) => {
 	};
 
 	return (
-		<div className="header_container">
+		<div className="header_detail_container">
 			<div className="header_wrap">
 				<div className="header_content">
 					<HiOutlineChevronLeft

@@ -22,7 +22,7 @@ instance.interceptors.response.use(async (error) => {
       } else {
         const originalRequest = config;
         const refreshToken = await cookies.get('refreshToken');
-        const userEmail = await cookies.get('userId');
+        const userId = await cookies.get('userId');
         // token refresh 요청
         const { data } = await axios.post(
           '/auth/members/reissue',

@@ -11,6 +11,8 @@
 
 .header_container {
 	padding: 0 1rem;
+	border-bottom: 2px solid rgba(238, 238, 238, 1);
+
 }
 
 .header_wrap {
@@ -20,7 +22,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-bottom: 2px solid rgba(238, 238, 238, 1);
 	position: sticky;
 }
 
@@ -67,4 +68,10 @@
 	margin: auto;
 	justify-content: center;
 	// align-items: center;
+}
+
+//detail header
+
+.header_detail_container {
+		padding: 0 1rem;
 }
