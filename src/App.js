@@ -12,6 +12,8 @@ import Kakao from './pages/socialLogin/KakaoLogin';
 import SearchPlace from './commponents/maps/SearchPlace';
 import MainListCard from './commponents/mainListCard/MainListCard';
 import Mypage from './pages/mypage/Mypage';
+import Search from './pages/search/Search';
+import Chat from './pages/chatting/Chat';
 
 function App() {
   return (
@@ -25,8 +27,10 @@ function App() {
       <Route path="/detail" element={<Detail />} />
       <Route path="/kakao" element={<Kakao />} />
       <Route path="/map/test" element={<SearchPlace />} />
-      <Route path="/main/test" element={<MainListCard/>} />
-      <Route path="/mypage" element={<Mypage />} />
+      <Route path="/main/test" element={<MainListCard />} />
+      <Route path="/mypage/:id" element={<Mypage />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/chat" element={<Chat />} />
     </Routes>
   );
 }

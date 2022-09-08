@@ -1,0 +1,30 @@
+.footer {
+  // padding: 0 1rem;
+  max-width: 428px;
+}
+.footer-container {
+  // height: auto;
+  // min-height: 100%;
+  // padding-bottom: 86px;
+  height: 5.375rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f7f7f7;
+  border-radius: 12px 12px 0px 0px;
+
+  .footer-wrap {
+    width: 100%;
+    // position: relative;
+    // transform: translateY(-100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    // border-top: 2px solid rgba(238, 238, 238, 1);
+  }
+}
+.footer-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
