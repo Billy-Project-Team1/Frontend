@@ -1,12 +1,7 @@
 import React from 'react';
-import Calendar from '../../commponents/calendar/Calendar';
 
 const ModifyPosting = () => {
-  return (
-    <div>
-      <Calendar />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default ModifyPosting;

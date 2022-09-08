@@ -7,14 +7,16 @@ import './AlertModal.scss';
 const DeleteIdModal = ({ setDeleteModalOpen }) => {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
+  const userId = localStorage.getItem('userId');
 
   const closeModal = () => {
     setDeleteModalOpen(false);
   };
   const Withdrawal = () => {
-    dispatch(withdrawal());
+    dispatch(withdrawal(userId));
     Navigate('/');
   };
+
   return (
     <div className="alertModal-container">
       <div className="alertModal-box">
