@@ -3,7 +3,7 @@ import './Headers.scss';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 
-const AddLocationHeader = ({ move }) => {
+const AddPostingHeader = ({ move }) => {
 	const navigate = useNavigate();
 
 	return (
@@ -16,13 +16,14 @@ const AddLocationHeader = ({ move }) => {
 						size="24px"
 						onClick={() => navigate(-1)}
 					/>
-					<div className="header_title">거래장소 지정</div>
-					<div className="header_done">완료</div>
+					<div className="header_title">&nbsp;</div>
+					<div className="header_done" onClick={move}>
+						&nbsp;
+					</div>
 				</div>
-				<div className="header_line"></div>
 			</div>
 		</div>
 	);
 };
 
-export default AddLocationHeader;
+export default AddPostingHeader;

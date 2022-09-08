@@ -7,15 +7,6 @@ import { OverflowMenu, OverflowMenuItem } from '@carbon/react';
 const DetailHeader = (props) => {
 	const navigate = useNavigate();
 
-	const move = () => {
-		navigate('/posting', {
-			state: {
-				title: '글 쓰기',
-				done: '완료',
-			},
-		});
-	};
-
 	return (
 		<div className="header_detail_container">
 			<div className="header_wrap">

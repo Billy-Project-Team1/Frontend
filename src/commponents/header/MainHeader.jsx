@@ -8,17 +8,8 @@ import './Headers.scss';
 import { HiSearch } from 'react-icons/hi';
 import { FaRegBell } from 'react-icons/fa';
 
-const MainHeader = (props) => {
+const MainHeader = ({ move }) => {
 	const navigate = useNavigate();
-
-	const move = () => {
-		navigate('/posting', {
-			state: {
-				title: '글 쓰기',
-				done: '완료',
-			},
-		});
-	};
 
 	return (
 		<div className="header_container">
