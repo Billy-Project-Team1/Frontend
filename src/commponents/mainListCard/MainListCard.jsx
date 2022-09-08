@@ -14,7 +14,10 @@ const MainListCard = () => {
           <div className="MainListCardRightContainer">
             <div className="MainListCardRightBox">
               <div className="MainListCardTitle">
-                <div>코스트코 책장</div>
+                <div>
+                  아무튼 내가 최고 최고심 마우스패드 저는 이이이이이만큼
+                  나왔으면 해요
+                </div>
               </div>
               <div className="MainListCardPlace">서울시 서초구 양재동</div>
               <div className="MainListCardBottomBox">
@@ -30,15 +33,17 @@ const MainListCard = () => {
                   </div>
                   100,000원
                 </div>
-                <div className="MainListCardReview">
+              
+              </div>
+              <div className="MainListCardReview">
                   <div className="MainListCardStarBox">
                     <FaStar className="MainListCardStar" />
                   </div>
+                  &nbsp;
                   <div>5.0</div>
-                  &nbsp; 
+                  &nbsp;
                   <div>(1)</div>
                 </div>
-              </div>
             </div>
           </div>
         </div>
