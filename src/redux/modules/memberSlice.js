@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import instance from './instance';
-import { deleteCookie } from './CustomCookie';
+import { deleteCookie } from './customCookie';
 
 const initialState = {
   member: [],
@@ -10,7 +10,7 @@ const initialState = {
 // 로그 아웃 post /auth/members/logout
 export const logOut = createAsyncThunk('logOut', async (data) => {
   try {
-    const response = await axios.post(
+    const response = await instance.post(
       '/auth/members/logout',
       {},
 
@@ -34,7 +34,7 @@ export const logOut = createAsyncThunk('logOut', async (data) => {
   }
 });
 
-// 회원 탈퇴 delete /auth/members/withdrawal/{memberId}
+// 회원 탈퇴 delete /auth/members/withdrawal/{userId}
 export const withdrawal = createAsyncThunk('withdrawal', async (data) => {
   try {
     const response = await instance.delete(`/auth/members/withdrawal/${data}`);
