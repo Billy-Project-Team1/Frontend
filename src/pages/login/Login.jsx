@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
-import { IoArrowBack } from 'react-icons/io5';
+import { HiOutlineChevronLeft } from 'react-icons/hi';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import kakaoLoginimg from '../../static/image/kakao_login_original.png';
 import { apis } from '../../shared/api';
 import { KAKAO_AUTH_URL } from '../../shared/socialAuth';
@@ -52,10 +53,6 @@ const Login = () => {
 
   return (
     <div className="LoginWrap">
-      <div className="LoginBackKey">
-        <IoArrowBack onClick={() => navigate(-1)} />
-      </div>
-      <div className="LoginTopName"></div>
       <div className="LoginEmailBox">
         <div>이메일</div>
         <input
@@ -67,43 +64,51 @@ const Login = () => {
       <div className="LoginPassword">
         <div>비밀번호</div>
         <div className="LoginPasswordBox">
-          <input
-            ref={pw_ref}
-            type={passwordView}
-            className="LoginPasswordInput"
-            placeholder="비밀번호를 입력해주세요"
-          />
+          {doNotAccess ? (
+            <input
+              ref={pw_ref}
+              type={passwordView}
+              className="LoginPasswordInput"
+              placeholder="비밀번호를 입력해주세요"
+            />
+          ) : (
+            <input
+              ref={pw_ref}
+              type={passwordView}
+              className="LoginPasswordInputAlert"
+              placeholder="비밀번호를 입력해주세요"
+            />
+          )}
+
           <div className="LoginPasswordEye">
             {passwordView === 'text' ? (
-              <AiFillEyeInvisible onClick={onDisVisablePassword} />
+              <FaEyeSlash onClick={onDisVisablePassword} />
             ) : (
-              <AiFillEye onClick={onVisablePassword} />
+              <FaEye onClick={onVisablePassword} />
             )}
-          </div>          
+          </div>
         </div>
         {doNotAccess ? (
-            <div className="LoginAlertText">
-              &nbsp;
+          <div className="LoginAlertText1">&nbsp;</div>
+        ) : (
+          <div className="LoginAlertText">
+            아이디 혹은 비밀번호를 다시 확인하세요.
           </div>
-          ) : (
-            <div className="LoginAlertText">
-              아이디 혹은 비밀번호를 다시 확인하세요.
-            </div>
-          )}
-        <button className="LoginButton" onClick={Loginform}>
-          로그인
-        </button>
-        <a className="LoginKakao" href={KAKAO_AUTH_URL}>
-          <div className="LoginKakaoBox">
-            <img src={kakaoLoginimg} className="KakaoLoginImg" />
-            <div className="LoginKakaoTitle">카카오로 로그인하기</div>
-          </div>
-        </a>
-        <div className="LoginFindBox">
-          <div className="LoginFind">빌리가 처음 이신가요?</div>
-          <div className="LoginFindNavi" onClick={() => navigate(`/signup`)}>
-            회원가입
-          </div>
+        )}
+      </div>
+      <button className="LoginButton" onClick={Loginform}>
+        로그인
+      </button>
+      <a className="LoginKakao" href={KAKAO_AUTH_URL}>
+        <div className="LoginKakaoBox">
+          <img src={kakaoLoginimg} className="KakaoLoginImg" />
+          <div className="LoginKakaoTitle">카카오로 로그인하기</div>
+        </div>
+      </a>
+      <div className="LoginFindBox">
+        <div className="LoginFind">빌리가 처음 이신가요?</div>
+        <div className="LoginFindNavi" onClick={() => navigate(`/signup`)}>
+          회원가입
         </div>
       </div>
     </div>
