@@ -10,6 +10,7 @@ import upload_image from '../../static/image/upload_image.svg';
 // import './ImageUploader.scss';
 
 const ImageUploader = (props) => {
+
 	const dispatch = useDispatch();
 	const inputRef = React.useRef();
 	const is_edit = props.is_edit;
