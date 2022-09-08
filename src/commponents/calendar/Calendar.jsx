@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import DatePicker from 'react-multi-date-picker';
+import DatePicker, { Calendar } from 'react-multi-date-picker';
 import 'react-multi-date-picker/styles/layouts/mobile.css';
 import { HiOutlineCalendar } from 'react-icons/hi';
 import './Calendar.scss';
@@ -60,7 +60,7 @@ const PostingCalendar = () => {
   return (
     <div>
       <HiOutlineCalendar size="50" />
-      <DatePicker
+      <Calendar
         multiple
         value={dates}
         onChange={setDates}

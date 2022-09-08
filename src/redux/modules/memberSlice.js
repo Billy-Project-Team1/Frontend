@@ -1,13 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import instance from './instance';
+import { deleteCookie } from './CustomCookie';
 
 const initialState = {
   member: [],
-};
-// 쿠키 삭제
-const deleteCookie = (name) => {
-  document.cookie = name + '=; expires = Thu, 01 Jan 1999 00:00:10 GMT;';
 };
 
 // 로그 아웃 post /auth/members/logout
@@ -16,14 +13,21 @@ export const logOut = createAsyncThunk('logOut', async (data) => {
     const response = await axios.post(
       '/auth/members/logout',
       {},
+
       {
-        headers: { Athorization: data.token, RefreshToken: data.refreshToken },
+        headers: {
+          Athorization: data.token,
+          RefreshToken: data.refreshToken,
+        },
       }
     );
+    // return console.log(response);
     if (response.status === 200) {
       localStorage.clear();
       deleteCookie('refreshToken');
       deleteCookie('accessToken');
+      deleteCookie('webid_ts');
+      deleteCookie('webid');
     }
   } catch (e) {
     console.log(e);
@@ -38,6 +42,8 @@ export const withdrawal = createAsyncThunk('withdrawal', async (data) => {
       localStorage.clear();
       deleteCookie('refreshToken');
       deleteCookie('accessToken');
+      deleteCookie('webid_ts');
+      deleteCookie('webid');
     }
   } catch (e) {
     console.log(e);

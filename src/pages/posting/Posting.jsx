@@ -16,6 +16,7 @@ import ImageUploader from '../../commponents/imageUploader/ImageUploader';
 import KakaoMap from '../../commponents/maps/KakaoMap';
 import SearchPlace from '../../commponents/maps/SearchPlace';
 import { Navigate, useNavigate } from 'react-router-dom';
+import Footer from '../../commponents/footer/Footer';
 
 const Posting = () => {
 	const navigate = useNavigate();
@@ -27,18 +28,17 @@ const Posting = () => {
 	const calendarClose = () => {
 		setCalendarOpen(!calendarOpen);
 	};
-
-	const newPosting = {
-		title: '맥북쓰고싶은분~',
-		content: '새 맥북이 생겨서 올려봅니다 깨끗하게 써주시',
-		price: 10000,
-		deposit: 100000,
-		location: '상봉동',
-		latitude: '33.45050036271282',
-		longitude: '126.57007065166688',
-		blockDateDtoList: '2022-09-22',
-		// files: form/data,
-	};
+  const newPosting = {
+    title: '맥북쓰고싶은분~',
+    content: '새 맥북이 생겨서 올려봅니다 깨끗하게 써주시',
+    price: 10000,
+    deposit: 100000,
+    location: '상봉동',
+    latitude: '33.45050036271282',
+    longitude: '126.57007065166688',
+    blockDateDtoList: '2022-09-22',
+    // files: form/data,
+  };
 
 	const move = () => {
 		navigate('/');
@@ -109,22 +109,23 @@ const Posting = () => {
 						</div>
 					</div>
 				</div>
-
-				<div className="posting_content">
-					<textarea
-						type="text"
-						placeholder="게시물 내용을 작성해주세요. (적절하지 못한 제품은 게시가 제한될 수
+        
+        <div className="posting_content">
+          <textarea
+            type="text"
+            placeholder="게시물 내용을 작성해주세요. (적절하지 못한 제품은 게시가 제한될 수
 				있어요.)"
-						value={content}
-						onChange={(e) => setContent(e.target.value)}
-					/>
-				</div>
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </div>
 
-				{/* <SearchPlace />
+        {/* <SearchPlace />
 			<KakaoMap /> */}
-			</div>
-		</div>
-	);
+      </div>
+      <Footer />
+    </div>
+  );
 };
 
 export default Posting;
