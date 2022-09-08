@@ -1,10 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import { HiOutlineHome } from 'react-icons/hi'; //비활성화 메인
-import { HiSearch } from 'react-icons/hi'; //비활성화 검색
-import { HiOutlinePlusCircle } from 'react-icons/hi'; //비활성화 글작성
-import { HiOutlineChat } from 'react-icons/hi'; //비활성화 채팅
-import { HiOutlineUser } from 'react-icons/hi'; //비활성화 마이페이지
+import {
+  HiOutlineHome,
+  HiSearch,
+  HiOutlinePlusCircle,
+  HiOutlineChat,
+  HiOutlineUser,
+} from 'react-icons/hi'; //비활성화 메인
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Footer.scss';
 import LoginModal from './LoginModal';

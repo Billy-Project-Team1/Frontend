@@ -8,10 +8,10 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(function (config) {
-  const token = localStorage.getItem("accessToken");
-  const refreshToken = cookies.get("refreshToken");
-  config.headers["Authorization"] = token ? `${token}` : null;
-  config.headers["RefreshToken"] = refreshToken ? `${refreshToken}` : null;
+  const token = localStorage.getItem('accessToken');
+  const refreshToken = cookies.get('refreshToken');
+  config.headers['Authorization'] = token ? `${token}` : null;
+  config.headers['RefreshToken'] = refreshToken ? `${refreshToken}` : null;
   return config;
 });
 
@@ -23,18 +23,20 @@ instance.interceptors.response.use(
   async function (error) {
     if (error.response.status === 401) {
       try {
-        const userId = localStorage.getItem("userId");
+        const userId = localStorage.getItem('userId');
         const originalRequest = error.config;
-        const data = await instance.post("/auth/members/reissue", { userId: userId });
+        const data = await instance.post('/auth/members/reissue', {
+          userId: userId,
+        });
         if (data) {
           const newToken = data.headers.authorization;
-          localStorage.removeItem("token");
-          localStorage.setItem("accessToken", newToken);
-          originalRequest.headers["Authorization"] = newToken;
+          localStorage.removeItem('token');
+          localStorage.setItem('accessToken', newToken);
+          originalRequest.headers['Authorization'] = newToken;
           return await instance.request(originalRequest);
         }
       } catch (error) {
-        localStorage.removeItem("accessToken");
+        localStorage.removeItem('accessToken');
         console.log(error);
       }
       return Promise.reject(error);

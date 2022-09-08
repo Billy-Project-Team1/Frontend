@@ -1,15 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import DatePicker, { Calendar } from 'react-multi-date-picker';
 import 'react-multi-date-picker/styles/layouts/mobile.css';
-import { HiOutlineCalendar } from 'react-icons/hi';
+import { HiOutlineCalendar, HiOutlineChevronLeft } from 'react-icons/hi';
 import './Calendar.scss';
 import DateObject from 'react-date-object';
 
 const PostingCalendar = () => {
   const newdate = new DateObject();
-  const [dates, setDates] = useState(new Date());
-  console.log(dates.toLocaleString());
-
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
   const months = [
     '1월',
@@ -25,6 +22,11 @@ const PostingCalendar = () => {
     '11월',
     '12월',
   ];
+  const [dates, setDates] = useState(new Date());
+  const [toggleOn, setToggleOn] = useState(false);
+
+  console.log(dates.toLocaleString());
+
   //   const [date, setDate] = useState();
   //   const naDate = useRef([]);
 
@@ -60,6 +62,9 @@ const PostingCalendar = () => {
   return (
     <div>
       <HiOutlineCalendar size="50" />
+      <div>
+        희망 대여 날짜 <HiOutlineChevronLeft />
+      </div>
       <Calendar
         multiple
         value={dates}
