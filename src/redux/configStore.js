@@ -1,5 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
+import member from './modules/memberSlice';
+import myprofile from './modules/profileSlice';
 
 export default configureStore({
-  reducer: {},
+  reducer: { member, myprofile },
 });

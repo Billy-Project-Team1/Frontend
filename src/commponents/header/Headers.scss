@@ -1,0 +1,77 @@
+.billy_logo {
+	background-image: url('../../static/image/Billy_Logo.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 120px;
+	height: 60px;
+	display: absolute;
+	margin-left: 16px;
+	margin-top: 30px;
+}
+
+.header_container {
+	padding: 0 1rem;
+	border-bottom: 2px solid rgba(238, 238, 238, 1);
+
+}
+
+.header_wrap {
+	width: 100%;
+	height: 55px;
+	margin-top: 53px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: sticky;
+}
+
+.header_content {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header_title {
+	font-family: 'Noto Sans';
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 27px;
+}
+
+.header_done {
+	color: rgba(0, 78, 234, 1);
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+//main header
+.main_header_content {
+	margin: 0 24px 0 16px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+//mypage header
+.mypage_header_content {
+	width: 100%;
+	display: flex;
+
+}
+
+.mypage_header_title {
+	font-family: 'Noto Sans';
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 27px;
+	text-align: center;
+	margin: auto;
+	justify-content: center;
+	// align-items: center;
+}
+
+//detail header
+
+.header_detail_container {
+		padding: 0 1rem;
+}
