@@ -3,17 +3,8 @@ import './Headers.scss';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 
-const AddPostingHeader = (props) => {
+const AddPostingHeader = ({move}) => {
 	const navigate = useNavigate();
-
-	const move = () => {
-		navigate('/posting', {
-			state: {
-				title: '글 쓰기',
-				done: '완료',
-			},
-		});
-	};
 
 	return (
 		<div className="header_container">
@@ -26,7 +17,7 @@ const AddPostingHeader = (props) => {
 						onClick={() => navigate(-1)}
 					/>
 					<div className="header_title">글 쓰기</div>
-					<div className="header_done">완료</div>
+					<div className="header_done" onClick={move}>완료</div>
 				</div>
 				<div className="header_line"></div>
 			</div>

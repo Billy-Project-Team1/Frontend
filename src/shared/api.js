@@ -23,3 +23,15 @@ export const apis = {
       password: payload.password,
     }),
 };
+
+export const imgAPI = {
+  fileUpload: function (data) {
+    return axios.post('/auth/posts',data);
+  },
+  // getFiles: function (data) {
+  //   return axios.get(`/api/image/${data.type}/${data.id}`);
+  // },
+  // sizeCheck: function (data) {
+  //   return axios.post(`/api/filesize`,data,uploadconfig);
+  // }
+}
