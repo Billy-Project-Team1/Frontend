@@ -25,6 +25,7 @@
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
     "skeleton": "^0.1.2",
+    "vercel": "^28.2.3",
     "web-vitals": "^2.1.4",
     "workbox-background-sync": "^6.4.2",
     "workbox-broadcast-update": "^6.4.2",
