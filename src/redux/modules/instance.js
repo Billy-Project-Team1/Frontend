@@ -6,45 +6,41 @@ const cookies = new Cookies();
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
-const token = localStorage.getItem('accessToken');
-instance.defaults.headers.common['authorization'] = token ? `${token}` : null;
 
-instance.interceptors.response.use(async (error) => {
-  const {
-    config,
-    response: { status },
-  } = error;
-  if (status === 401) {
-    // 권한없음 === Access 토큰 만료됐을 경우
-    if (localStorage.getItem('accessToken')) {
-      if (!cookies.get('refreshToken')) {
-        window.location.href = '/login';
-      } else {
-        const originalRequest = config;
-        const refreshToken = await cookies.get('refreshToken');
-        const userEmail = await cookies.get('userId');
-        // token refresh 요청
-        const { data } = await axios.post(
-          '/auth/members/reissue',
-          { userId: `${userId}` },
-          {
-            headers: { 'Refresh-Token': `${refreshToken}` },
-          }
-        );
-
-        // 새로운 토큰 저장
-        localStorage.setItem('accessToken', data.headers.authorization);
-        const newtoken = localStorage.getItem('accessToken');
-        instance.defaults.headers.common.Authorization = `${newtoken}`;
-        originalRequest.headers.Authorization = `${newtoken}`;
-        // 401로 요청 실패했던 요청을 새로운 accessToken으로 재요청
-        return axios(originalRequest);
-      }
-    } else {
-      window.location.replace = '/login';
-    }
-  }
-  return Promise.reject(error);
+instance.interceptors.request.use(function (config) {
+  const token = localStorage.getItem("accessToken");
+  const refreshToken = cookies.get("refreshToken");
+  config.headers["Authorization"] = token ? `${token}` : null;
+  config.headers["RefreshToken"] = refreshToken ? `${refreshToken}` : null;
+  return config;
 });
+
+instance.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+
+  async function (error) {
+    if (error.response.status === 401) {
+      try {
+        const userId = localStorage.getItem("userId");
+        const originalRequest = error.config;
+        const data = await instance.post("/auth/members/reissue", { userId: userId });
+        if (data) {
+          const newToken = data.headers.authorization;
+          localStorage.removeItem("token");
+          localStorage.setItem("accessToken", newToken);
+          originalRequest.headers["Authorization"] = newToken;
+          return await instance.request(originalRequest);
+        }
+      } catch (error) {
+        localStorage.removeItem("accessToken");
+        console.log(error);
+      }
+      return Promise.reject(error);
+    }
+    return Promise.reject(error);
+  }
+);
 
 export default instance;
