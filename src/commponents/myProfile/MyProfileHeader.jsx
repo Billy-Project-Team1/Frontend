@@ -25,8 +25,10 @@ const MyProfileHeader = () => {
     <div className="myProfileHeader-container">
       <div className="myProfileHeader-wrap">
         <div className="myProfileHeader-imgBox">
-          <img src={profile.profileUrl
-} className="myProfileHeader-img" />
+          <img
+            src={profile.profileUrl ? profile.profileUrl : profileimg}
+            className="myProfileHeader-img"
+          />
         </div>
         <div className="myProfileHeader-rightBox">
           <div className="myProfileHeader-nickname">{profile.nickname}</div>
