@@ -28,49 +28,50 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Footer from '../../commponents/footer/Footer';
 
 const Posting = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
-  const [calendarOpen, setCalendarOpen] = useState(false);
-  const calendarClose = () => {
-    setCalendarOpen(!calendarOpen);
-  };
+	const [calendarOpen, setCalendarOpen] = useState(false);
+	const calendarClose = () => {
+		setCalendarOpen(!calendarOpen);
+	};
 
-  /////////////////
+	/////////////////
 
-  const initialState = {
-    title: '',
-    content: '',
-    price: '',
-    deposit: '',
-    location: '',
-    latitude: '',
-    longitude: '',
-    blockDateDtoList: {},
-    // files: form/data,
-  };
-  const [data, setData] = useState(initialState);
+	const initialState = {
+		title: '',
+		content: '',
+		price: '',
+		deposit: '',
+		location: '',
+		latitude: '',
+		longitude: '',
+		blockDateDtoList: {},
+		// files: form/data,
+	};
+	const [data, setData] = useState(initialState);
 
-  const onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    //...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
-    setData({ ...data, [name]: value });
-  };
-  console.log(data);
+	const onChangeHandler = (e) => {
+		const { name, value } = e.target;
+		//...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
+		setData({ ...data, [name]: value });
+	};
+	console.log(data);
 
-  /////////////////
-  // Number(data.price)
-  // 	.toString()
-  // 	.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	/////////////////
 
-  const move = () => {
-    // navigate(`/detail/${}`);
-  };
+	// Number(data.price)
+	// 	.toString()
+	// 	.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-  return (
-    <div>
-      <AddPostingHeader move={move} />
-      {/* <AddLocationHeader></AddLocationHeader>
+	const move = () => {
+		// navigate(`/detail/${}`);
+	};
+
+	return (
+		<div>
+			<AddPostingHeader move={move} />
+			{/* <AddLocationHeader></AddLocationHeader>
 			<ModifyPostingHeader></ModifyPostingHeader>
 			<ModifyProfileHeader></ModifyProfileHeader>
 			<MypageHeader></MypageHeader>
