@@ -32,8 +32,6 @@ const Posting = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-
-
 	const [calendarOpen, setCalendarOpen] = useState(false);
 	const calendarClose = () => {
 		setCalendarOpen(!calendarOpen);
@@ -62,6 +60,7 @@ const Posting = () => {
 	console.log(data);
 
 	/////////////////
+
 	// Number(data.price)
 	// 	.toString()
 	// 	.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
