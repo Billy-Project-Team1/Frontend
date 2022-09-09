@@ -10,7 +10,6 @@ import upload_image from '../../static/image/upload_image.svg';
 // import './ImageUploader.scss';
 
 const ImageUploader = (props) => {
-
 	const dispatch = useDispatch();
 	const inputRef = React.useRef();
 	const is_edit = props.is_edit;
@@ -78,30 +77,14 @@ const ImageUploader = (props) => {
 		};
 	}, [imgUrl]);
 
-	// const edit = () => {
-	// 	const file = inputRef.current.files[0];
-	// 	if (file) {
-	// 		dispatch(imgActions.uploading());
-	// 		const formdata = new FormData();
-	// 		formdata.append('file', file);
-	// 		formdata.append('video', null);
-	// 		dispatch(imgActions.uploadToDB(formdata));
-	// 		if (count !== 0) {
-	// 			dispatch(imgActions.uploading());
-	// 		}
-	// 		return;
-	// 	}
-	// 	console.log('Not get');
-	// };
-
 	return (
 		<div style={{ padding: '8px 0', display: 'flex' }}>
-			<div className="ElLabel" htmlFor="imgup">
-				<div styleName="UpImg" src={upload_image} />
-				{/* <img src={picture}></img> */}
-			</div>
+			<img
+				src={upload_image}
+				style={{ width: '85px' }}
+				onClick={() => inputRef.current.click()}
+			/>
 
-			<img src={upload_image} style={{ width: '85px' }}></img>
 			<input
 				id="imgup"
 				ref={inputRef}
@@ -109,42 +92,25 @@ const ImageUploader = (props) => {
 				type="file"
 				accept="image/*"
 				multiple={!is_edit}
-				// style={{ display: 'none' }}
+				style={{ display: 'none' }}
 			/>
-			{imgUrl.map((item) => (
-				<img
-					src={item}
-					alt=""
-					style={{
-						width: '85px',
-						height: '85px',
-						marginRight: '10px',
-						display: 'flex',
-					}}
-				/>
-			))}
+			<div className="preview_img_container" style={{ overflow: 'hidden' }}>
+				{imgUrl.map((item) => (
+					<img
+						className="priview_img"
+						src={item}
+						alt=""
+						style={{
+							display: 'flex',
+							borderRadius: '3px',
+							width: '85px',
+							height: '85px',
+						}}
+					/>
+				))}
+			</div>
 
 			<button onClick={sendData}>전송</button>
-			{/* {preview && (
-               <div className="WhiteSpace">
-                  {preview.map((p, i) => {
-                     return (
-                        <div className="Frame" key={i}>
-                           <div className="Elpreview" src={p} />
-                           <div
-                              className="Elex"
-                              onClick={() => {
-                                 dispatch(imgActions.delImage(i));
-                              }}
-                           >
-                              <div className="SlashL" />
-                              <div className="SlashR" />
-                           </div>
-                        </div>
-                     );
-                  })}
-               </div>
-            )} */}
 		</div>
 	);
 };
