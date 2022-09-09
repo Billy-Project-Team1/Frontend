@@ -7,11 +7,15 @@ const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
+// const userId = localStorage.getItem('userId');
+// let frm = new FormData();
+// frm.append("userId", new Blob([JSON.stringify(userId)], { type: "application/json" }))
+
 instance.interceptors.request.use(function (config) {
   const token = localStorage.getItem('accessToken');
   const refreshToken = cookies.get('refreshToken');
   config.headers['Authorization'] = token ? `${token}` : null;
-  config.headers['RefreshToken'] = refreshToken ? `${refreshToken}` : null;
+  config.headers['Refresh-Token'] = refreshToken ? `${refreshToken}` : null;
   return config;
 });
 
@@ -21,17 +25,17 @@ instance.interceptors.response.use(
   },
 
   async function (error) {
-    console.log(error)
     if (error.response.status === 401) {
       try {
         const userId = localStorage.getItem('userId');
+        console.log(userId);
         const originalRequest = error.config;
+        localStorage.removeItem('accessToken');
         const data = await instance.post('/auth/members/reissue', {
           userId: userId,
         });
         if (data) {
           const newToken = data.headers.authorization;
-          localStorage.removeItem('token');
           localStorage.setItem('accessToken', newToken);
           originalRequest.headers['Authorization'] = newToken;
           return await instance.request(originalRequest);

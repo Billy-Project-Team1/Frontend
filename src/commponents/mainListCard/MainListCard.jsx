@@ -4,9 +4,11 @@ import dailycost from '../../static/image/dailycost.svg';
 import deposit from '../../static/image/deposit.svg';
 import carrotImg from '../../static/image/carrotImg.jpg';
 import { FaStar } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const MainListCard = ({ post }) => {
   const postPrice = post.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const navigate = useNavigate();
 
   const postDeposit = post.deposit
     .toString()
@@ -14,7 +16,7 @@ const MainListCard = ({ post }) => {
 
 
   return (
-    <div className="MainListWrap">
+    <div className="MainListWrap" onClick={()=>navigate(`/detail/${post.id}`)}>
       <div className="MainListCardContainer">
         <div className="MainListCardBox">
           <img className="MainListCardImg" src={post.imgUrl} />
