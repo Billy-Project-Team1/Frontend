@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getCookie } from '../../redux/modules/customCookie';
+import { getCookie } from '../../redux/modules/customCookies';
 import { logOut } from '../../redux/modules/memberSlice';
 import './AlertModal.scss';
 
