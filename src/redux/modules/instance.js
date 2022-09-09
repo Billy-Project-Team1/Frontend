@@ -25,7 +25,9 @@ instance.interceptors.response.use(
   },
 
   async function (error) {
+
     if (error.response.status === 401) {
+
       try {
         const userId = localStorage.getItem('userId');
         console.log(userId);
