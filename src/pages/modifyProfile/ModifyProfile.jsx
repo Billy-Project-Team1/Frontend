@@ -36,7 +36,7 @@ const ModifyProfile = () => {
     }
   };
 
-  const move = async (event) => {
+  const sumbitHandler = async (event) => {
     let frm = new FormData();
     let uploadImg = memberImg_ref.current;
 
@@ -67,12 +67,12 @@ const ModifyProfile = () => {
 
   return (
     <>
-      <ModifyProfileHeader move={move} />
+      <ModifyProfileHeader move={sumbitHandler} />
       <FaCamera className="camera" />
       <div className="modifiyProfile-wrap">
         <div className="modifyProfile-container">
           <div className="modifyProfile-imgBox">
-            <img src={profileimg} className="modifyProfile-img" />
+            <img src={image} className="modifyProfile-img" />
           </div>
           <div className="modifyProfile-rightBox">
             <input

@@ -3,7 +3,7 @@ import './Headers.scss';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 
-const ModifyProfileHeader = ({ move }) => {
+const ModifyProfileHeader = ({ sumbitHandler }) => {
   const navigate = useNavigate();
 
   return (
@@ -17,7 +17,7 @@ const ModifyProfileHeader = ({ move }) => {
             onClick={() => navigate(-1)}
           />
           <div className="header_title">프로필 수정</div>
-          <div className="header_done" onClick={move}>
+          <div className="header_done" onClick={sumbitHandler}>
             완료
           </div>
         </div>
