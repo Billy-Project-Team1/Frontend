@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PostingMap.scss';
 import { HiSearch } from 'react-icons/hi';
 const { kakao } = window;
@@ -13,16 +12,18 @@ const PostingMap = () => {
   useEffect(() => {
     const container = document.getElementById('map');
     const options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
+      center: new kakao.maps.LatLng(37.49802246378239, 127.02758183100684),
       level: 3,
     };
+    // 지도를 생성합니다.
     const map = new kakao.maps.Map(container, options);
-    const markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
-    const marker = new kakao.maps.Maker({
-      position: markerPosition,
+    const markerPosition = new kakao.maps.LatLng(37.49802246378239, 127.02758183100684);
+    const marker = new kakao.maps.Marker({
+      map: map,
     });
-    marker.setMap(map);
-  }, []);
+    map.setCenter(markerPosition);
+
+  }, [mapData]);
   return (
     <div className="PostingMapWrap">
       <div className="PostingMapTitle">
