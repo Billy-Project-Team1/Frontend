@@ -1,12 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import DatePicker, { Calendar } from 'react-multi-date-picker';
+import React, { useEffect, useState, useRef } from 'react';
+import { Calendar } from 'react-multi-date-picker';
 import 'react-multi-date-picker/styles/layouts/mobile.css';
-import { HiOutlineCalendar, HiOutlineChevronLeft } from 'react-icons/hi';
+import { HiOutlineCalendar, HiOutlineChevronDown } from 'react-icons/hi';
 import './Calendar.scss';
 import DateObject from 'react-date-object';
 
 const PostingCalendar = () => {
   const newdate = new DateObject();
+  const noDates = useRef();
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
   const months = [
     '1월',
@@ -22,62 +23,70 @@ const PostingCalendar = () => {
     '11월',
     '12월',
   ];
-  const [dates, setDates] = useState(new Date());
+  const [date, setDate] = useState(new Date());
+  const [dates, setDates] = useState();
   const [toggleOn, setToggleOn] = useState(false);
 
-  console.log(dates.toLocaleString());
+  const toggleMode = () => {
+    setToggleOn((toggleOn) => !toggleOn);
+  };
+  const setDateFormat = () => {
+    if (date.length > 0) {
+      noDates.current = null;
+      const getDates = date.map((v, i) => {
+        return v.format(v._format);
+      });
+      setDates(getDates);
+      // if (date.length<3){
+      //   noDates.current[];
+      //   for (let i=0; i< date.length; i ++){
 
-  //   const [date, setDate] = useState();
-  //   const naDate = useRef([]);
-
-  //   useEffect(() => {
-  //     if (dates?.length < 3) {
-  //       naDate.current = [];
-  //       for (let i = 0; i < dates.length; i++) {
-  //         const naDateList = `${
-  //           dates[i].month.number < 10
-  //             ? '0' + dates[i].month.number
-  //             : dates[i].month.number
-  //         }.${
-  //           dates[i].day.number < 10
-  //             ? '0' + dates[i].day.number
-  //             : dates[i].day.number
-  //         }(${weekDays[dates[i].weekDays.index]})`;
-  //         naDate.current.push(naDateList);
-  //       }
-  //     } else {
-  //       const naDateList = `${
-  //         dates[0].month.number < 10
-  //           ? '0' + dates[0].month.number
-  //           : dates[0].month.number
-  //       }.${
-  //         dates[0].day.number < 10
-  //           ? '0' + dates[0].day.number
-  //           : dates[0].day.number
-  //       }(${weekDays[dates[0].weekDays.index]})`;
-  //       naDate.current = [`${naDateList} 외 ${dates.length - 1}개`];
-  //     }
-  //   }, [dates]);
+      //   }
+      // }
+      const dateItem = `${
+        date[0].month.number < 10
+          ? '0' + date[0].month.number
+          : date[0].month.number
+      }.${date[0].day < 10 ? '0' + date[0].day : date[0].day}(${
+        weekDays[date[0].weekDay.index]
+      })`;
+      noDates.current = dateItem;
+      if (date.length > 2) {
+        noDates.current = `${dateItem}외 ${date.length - 1}일`;
+      }
+    } else {
+      noDates.current = [];
+    }
+  };
+  console.log(date.toLocaleString());
 
   return (
     <div>
       <HiOutlineCalendar size="50" />
-      <div>
-        희망 대여 날짜 <HiOutlineChevronLeft />
-      </div>
-      <Calendar
-        multiple
-        value={dates}
-        onChange={setDates}
-        weekDays={weekDays}
-        months={months}
-        format="YYYY/MM/DD"
-        maxDate={new Date().setDate(90)}
-        inputClass="custom-input"
-        className="rmdp-mobile"
-        placeholder="대여 불가능한 날짜를 선택해주세요"
-        mobileLabels={{ OK: '확인', CANCEL: '취소' }}
+      <input
+        readOnly
+        placeholder="대여 불가능한 날짜를 체크해주세요"
+        onClick={() => {
+          toggleMode();
+          setDateFormat();
+        }}
+        value={noDates.current?.length > 0 ? noDates.current : ''}
       />
+      <HiOutlineChevronDown />
+      {toggleOn === true ? (
+        <Calendar
+          multiple
+          value={date}
+          onChange={setDate}
+          weekDays={weekDays}
+          months={months}
+          format="YYYY/MM/DD"
+          maxDate={new Date().setDate(90)}
+          className="rmdp-mobile"
+        />
+      ) : (
+        ''
+      )}
     </div>
   );
 };
