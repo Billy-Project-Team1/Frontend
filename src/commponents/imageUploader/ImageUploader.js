@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { uploadToDB } from '../../redux/modules/image';
 import upload_image from '../../static/image/upload_image.svg';
 
-// import './ImageUploader.scss';
+import './ImageUploader.scss';
 
 const ImageUploader = (props) => {
 	const dispatch = useDispatch();
@@ -31,11 +31,9 @@ const ImageUploader = (props) => {
 		setImg(imagesMax10);
 
 		// 이미지 미리보기로 보여줄려면 url이 필요함
-		const imgUrlList = [];
 		for (let i = 0; i < imagesMax10.length; i++) {
-			imgUrlList.push(URL.createObjectURL(imagesMax10[i]));
+			imgUrl.push(URL.createObjectURL(imagesMax10[i]));
 		}
-		setImgUrl(imgUrlList);
 	};
 
 	const sendData = () => {
@@ -94,10 +92,10 @@ const ImageUploader = (props) => {
 				multiple={!is_edit}
 				style={{ display: 'none' }}
 			/>
-			<div className="preview_img_container" style={{ overflow: 'hidden' }}>
+			<div className="preview_img_container">
 				{imgUrl.map((item) => (
 					<img
-						className="priview_img"
+						className="preview_img"
 						src={item}
 						alt=""
 						style={{
@@ -105,12 +103,12 @@ const ImageUploader = (props) => {
 							borderRadius: '3px',
 							width: '85px',
 							height: '85px',
+							aspectRatio: '1/1',
+							objectFit: 'cover'
 						}}
 					/>
 				))}
 			</div>
-
-			<button onClick={sendData}>전송</button>
 		</div>
 	);
 };
