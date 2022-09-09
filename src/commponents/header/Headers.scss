@@ -14,6 +14,7 @@
   top: 0;
   z-index: 2;
   background-color: #ffffff;
+
 }
 .header_top {
   width: 100%;
@@ -31,6 +32,13 @@
   justify-content: flex-end;
   align-items: center;
   background-color: #ffffff;
+}
+
+.header_content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
 }
 
 .header_title {

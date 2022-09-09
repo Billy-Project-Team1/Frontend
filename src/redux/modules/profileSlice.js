@@ -7,7 +7,7 @@ export const getProfileThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.get(`/auth/members/profile/${payload}`);
-      // return console.log(response);
+      // return console.log(response.data.result);
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       } else {
