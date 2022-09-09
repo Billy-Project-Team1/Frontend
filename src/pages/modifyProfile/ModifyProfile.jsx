@@ -20,20 +20,13 @@ const ModifyProfile = () => {
   };
   const [reviseProfile, setReviseProfile] = useState(initialState);
   const [files, setFile] = useState('');
-  const [image, setImage] = useState(
-    member.profileUrl ? member.profileUrl : <img src={profileimg} />
-  );
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setReviseProfile({ ...reviseProfile, [name]: value });
   };
   const onLoadFile = (e) => {
-    if (e.target.files[0]) {
-      setFile(URL.createObjectURL(e.target.files)[0]);
-    } else {
-      setImage();
-    }
+    setFile(URL.createObjectURL(e.target.files[0]));
   };
 
   const sumbitHandler = async (event) => {
@@ -45,13 +38,9 @@ const ModifyProfile = () => {
       new Blob([JSON.stringify(reviseProfile)], { type: 'application/json' })
     );
     frm.append('img', uploadImg.files[0]);
-    try {
-      const response = await dispatch();
-      if (response) {
-        setReviseProfile(initialState);
-        navigate(`/mypage/${is_login}`);
-      }
-    } catch (error) {}
+    await dispatch();
+    // setReviseProfile(initialState);
+    navigate(`/mypage/${is_login}`);
   };
 
   //모달창 노출 여부 state
@@ -68,11 +57,34 @@ const ModifyProfile = () => {
   return (
     <>
       <ModifyProfileHeader move={sumbitHandler} />
-      <FaCamera className="camera" />
+      <div className="modifiyProfile-iconWrap">
+        <div className="modifiyProfile-icon">
+          <label className="Img_label" htmlFor="img_upFile">
+            <FaCamera className="modifiyProfile-camera" />
+          </label>
+        </div>
+      </div>
       <div className="modifiyProfile-wrap">
         <div className="modifyProfile-container">
           <div className="modifyProfile-imgBox">
-            <img src={image} className="modifyProfile-img" />
+            <input
+              ref={memberImg_ref}
+              type="file"
+              accept="image/*"
+              id="img_upFile"
+              onChange={onLoadFile}
+              style={{ display: 'none' }}
+            />
+            {/* <img
+              src={files}
+              alt=""
+              // style={{ width: "50px", height: "50px" }}
+            /> */}
+
+            <img
+              src={member.profileUrl ? member.profileUrl : profileimg}
+              className="modifyProfile-img"
+            />
           </div>
           <div className="modifyProfile-rightBox">
             <input

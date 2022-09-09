@@ -7,10 +7,8 @@ import {
   HiOutlineChevronUp,
 } from 'react-icons/hi';
 import './Calendar.scss';
-import DateObject from 'react-date-object';
 
 const PostingCalendar = () => {
-  const newdate = new DateObject();
   const noDates = useRef();
   const noDates2 = useRef();
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
@@ -35,6 +33,11 @@ const PostingCalendar = () => {
 
   const toggleMode = () => {
     setToggleOn((toggleOn) => !toggleOn);
+  };
+  const deleteDates = () => {
+    setDate([]);
+    setDates();
+    noDates.current = [];
   };
   const setDateFormat = () => {
     if (date?.length > 0) {
@@ -83,18 +86,34 @@ const PostingCalendar = () => {
   }, [date]);
 
   return (
-    <div>
-      <HiOutlineCalendar size="50" />
+    <div className="calendar-wrap">
+      <HiOutlineCalendar
+        style={{ marginRight: '14px' }}
+        color="#757575"
+        size="24px"
+      />
+
       <input
         readOnly
         placeholder="대여 불가능한 날짜를 체크해주세요"
+        className="calendar-input"
         onClick={() => {
           toggleMode();
         }}
         value={noDates.current?.length > 0 ? noDates.current : ''}
       />
+      {/* {noDates.current?.length > 0 && (
+        <button type="button" onClick={() => deleteDates()}>
+          삭제
+        </button>
+      )} */}
       {toggleOn === true ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
-      {/* <HiOutlineChevronDown /> */}
+      {noDates.current?.length > 0 && (
+        <button className="calendar-deleteButton" onClick={() => deleteDates()}>
+          삭제
+        </button>
+      )}
+
       {toggleOn === true ? (
         <Calendar
           multiple
