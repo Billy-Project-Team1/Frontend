@@ -17,7 +17,7 @@ const MyProfileHeader = () => {
   }, [dispatch]);
 
   const profile = useSelector((state) => state.myprofile.myProfile);
-  // console.log(profile);
+  console.log(profile);
   // profileUrl
   // {profile.profileUrl}
 
@@ -25,7 +25,8 @@ const MyProfileHeader = () => {
     <div className="myProfileHeader-container">
       <div className="myProfileHeader-wrap">
         <div className="myProfileHeader-imgBox">
-          <img src={profileimg} className="myProfileHeader-img" />
+          <img src={profile.profileUrl
+} className="myProfileHeader-img" />
         </div>
         <div className="myProfileHeader-rightBox">
           <div className="myProfileHeader-nickname">{profile.nickname}</div>
