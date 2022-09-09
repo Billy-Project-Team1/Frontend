@@ -9,7 +9,7 @@ const LogoutModal = ({ setModalOpen }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const refreshToken = getCookie('refreshToken');
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('accessToken');
 
   const closeModal = () => {
     setModalOpen(false);

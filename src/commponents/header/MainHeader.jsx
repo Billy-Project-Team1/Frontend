@@ -13,6 +13,7 @@ const MainHeader = ({ move }) => {
 
 	return (
 		<div className="header_container">
+			<div className="header_top"/>
 			<div className="header_wrap">
 				<div className="billy_logo" />
 				<div className="main_header_content">
