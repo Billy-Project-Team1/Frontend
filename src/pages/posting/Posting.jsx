@@ -7,12 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Posting.scss';
 
 //icons
-import { Calendar } from 'react-multi-date-picker';
-import { HiOutlineCalendar } from 'react-icons/hi';
 import { FaCamera } from 'react-icons/fa';
 
 // Component import
 import AddPostingHeader from '../../commponents/header/AddPostingHeader';
+import Calendar from '../../commponents/calendar/Calendar';
 // import AddLocationHeader from '../../commponents/header/AddLocationHeader';
 // import DetailHeader from '../../commponents/header/DetailHeader';
 // import MainHeader from '../../commponents/header/MainHeader';
@@ -30,49 +29,50 @@ import Footer from '../../commponents/footer/Footer';
 import PostingMap from '../../commponents/maps/PostingMap';
 
 const Posting = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
-  const [calendarOpen, setCalendarOpen] = useState(false);
-  const calendarClose = () => {
-    setCalendarOpen(!calendarOpen);
-  };
+	const [calendarOpen, setCalendarOpen] = useState(false);
+	const calendarClose = () => {
+		setCalendarOpen(!calendarOpen);
+	};
 
-  /////////////////
+	/////////////////
 
-  const initialState = {
-    title: '',
-    content: '',
-    price: '',
-    deposit: '',
-    location: '',
-    latitude: '',
-    longitude: '',
-    blockDateDtoList: {},
-    // files: form/data,
-  };
-  const [data, setData] = useState(initialState);
+	const initialState = {
+		title: '',
+		content: '',
+		price: '',
+		deposit: '',
+		location: '',
+		latitude: '',
+		longitude: '',
+		blockDateDtoList: {},
+		// files: form/data,
+	};
+	const [data, setData] = useState(initialState);
 
-  const onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    //...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
-    setData({ ...data, [name]: value });
-  };
-  console.log(data);
+	const onChangeHandler = (e) => {
+		const { name, value } = e.target;
+		//...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
+		setData({ ...data, [name]: value });
+	};
+	console.log(data);
 
-  /////////////////
-  // Number(data.price)
-  // 	.toString()
-  // 	.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	/////////////////
 
-  const move = () => {
-    // navigate(`/detail/${}`);
-  };
+	// Number(data.price)
+	// 	.toString()
+	// 	.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-  return (
-    <div>
-      <AddPostingHeader move={move} />
-      {/* <AddLocationHeader></AddLocationHeader>
+	const move = () => {
+		// navigate(`/detail/${}`);
+	};
+
+	return (
+		<div>
+			<AddPostingHeader move={move} />
+			{/* <AddLocationHeader></AddLocationHeader>
 			<ModifyPostingHeader></ModifyPostingHeader>
 			<ModifyProfileHeader></ModifyProfileHeader>
 			<MypageHeader></MypageHeader>
@@ -123,23 +123,7 @@ const Posting = () => {
 
         <div className="posting_calendar_wrap">
           <div className="posting_calendar_icon">
-            <HiOutlineCalendar
-              style={{ marginRight: '14px' }}
-              color="#757575"
-              size="24px"
-              onClick={calendarClose}
-            />
-            {calendarOpen && (
-              <Calendar calendarClose={calendarClose}></Calendar>
-            )}
-            <div className="posting_calendar">
-              <Calendar
-                style={{ marginRight: '14px' }}
-                color="#212121"
-                size="24px"
-                display="none"
-              />
-            </div>
+            <Calendar />
           </div>
         </div>
 
