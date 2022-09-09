@@ -1,5 +1,7 @@
 // React import
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { addPosting } from '../../redux/modules/posting';
 
 // Style
 import './Posting.scss';
@@ -29,6 +31,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Footer from '../../commponents/footer/Footer';
 
 const Posting = () => {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [title, setTitle] = useState();
 	const [price, setPrice] = useState();
@@ -36,18 +39,6 @@ const Posting = () => {
 	Number(price)
 		.toString()
 		.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	// const handleOncahge = ChangeEventHandler<HTMLInputElement> = e => {
-	//   const value = e.target.value;		  // 입력값을 value 라고 선언
-	//   const numCheck = /^[0-9,]/.test(value); // 입력값이 숫자와 콤마(,)인지 확인 (불린값이 나옴)
-
-	//   if (!numCheck && value) return; // 숫자가 아닌 문자로 이루어져 있으면 pass! (입력이 x)
-
-	//   if (numCheck) { 				// 숫자이면
-	//     const numValue = value.replaceAll(',', ''); // 잠시 콤마를 때주고
-	//     value = numValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 받은 값에 3자리수마다 콤마를 추가
-	//   }
-	//   setPrice(value); // 바깥에서 사용할 수 있도록 state 값에 세팅해주자
-	// }
 
 	const [deposit, setDeposit] = useState();
 	const [content, setContent] = useState();
@@ -55,6 +46,7 @@ const Posting = () => {
 	const calendarClose = () => {
 		setCalendarOpen(!calendarOpen);
 	};
+
 	const newPosting = {
 		title: '맥북쓰고싶은분~',
 		content: '새 맥북이 생겨서 올려봅니다 깨끗하게 써주시',
