@@ -26,6 +26,7 @@ import KakaoMap from '../../commponents/maps/KakaoMap';
 import SearchPlace from '../../commponents/maps/SearchPlace';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Footer from '../../commponents/footer/Footer';
+import PostingMap from '../../commponents/maps/PostingMap';
 
 const Posting = () => {
 	const dispatch = useDispatch();
@@ -136,9 +137,7 @@ const Posting = () => {
             onChange={onChangeHandler}
           />
         </div>
-
-        {/* <SearchPlace />
-			<KakaoMap /> */}
+        <PostingMap />
       </div>
       <Footer />
     </div>

@@ -10,7 +10,9 @@ import { useInView } from 'react-intersection-observer';
 const Main = () => {
   const dispatch = useDispatch();
   const [ref, inView] = useInView();
-  const SIZE = 4;
+  const SIZE = 5;
+
+  console.log(inView);
 
   useEffect(() => {
     if (postList.length === 0) {
@@ -24,6 +26,7 @@ const Main = () => {
       );
     }
   }, []);
+  const postList = useSelector((state) => state.posts.postsList);
 
   useEffect(() => {
     if (postList.length !== 0 && inView) {
@@ -38,7 +41,8 @@ const Main = () => {
     }
   }, [inView]);
 
-  const postList = useSelector((state) => state.posts.postsList);
+
+  console.log(postList)
 
   return (
     <div>
@@ -47,8 +51,8 @@ const Main = () => {
         {postList.map((post) => {
           return <MainListCard post={post} key={post.id} />;
         })}
+        <div ref={ref}></div>
       </div>
-      <div ref={ref}></div>
       <Footer />
     </div>
   );
