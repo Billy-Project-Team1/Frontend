@@ -21,8 +21,6 @@ import AddPostingHeader from '../../commponents/header/AddPostingHeader';
 // import LoginHeader from '../../commponents/header/LoginHeader';
 // import MypageHeader from '../../commponents/header/MypageHeader';
 
-
-
 import ImageUploader from '../../commponents/imageUploader/ImageUploader';
 
 import KakaoMap from '../../commponents/maps/KakaoMap';
@@ -33,34 +31,43 @@ import Footer from '../../commponents/footer/Footer';
 const Posting = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const [title, setTitle] = useState();
-	const [price, setPrice] = useState();
 
-	Number(price)
-		.toString()
-		.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-	const [deposit, setDeposit] = useState();
-	const [content, setContent] = useState();
+
 	const [calendarOpen, setCalendarOpen] = useState(false);
 	const calendarClose = () => {
 		setCalendarOpen(!calendarOpen);
 	};
 
-	const newPosting = {
-		title: '맥북쓰고싶은분~',
-		content: '새 맥북이 생겨서 올려봅니다 깨끗하게 써주시',
-		price: 10000,
-		deposit: 100000,
-		location: '상봉동',
-		latitude: '33.45050036271282',
-		longitude: '126.57007065166688',
-		blockDateDtoList: '2022-09-22',
+	/////////////////
+
+	const initialState = {
+		title: '',
+		content: '',
+		price: '',
+		deposit: '',
+		location: '',
+		latitude: '',
+		longitude: '',
+		blockDateDtoList: {},
 		// files: form/data,
 	};
+	const [data, setData] = useState(initialState);
+
+	const onChangeHandler = (e) => {
+		const { name, value } = e.target;
+		//...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
+		setData({ ...data, [name]: value });
+	};
+	console.log(data);
+
+	/////////////////
+	// Number(data.price)
+	// 	.toString()
+	// 	.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
 	const move = () => {
-		navigate('/');
+		// navigate(`/detail/${}`);
 	};
 
 	return (
@@ -82,8 +89,10 @@ const Posting = () => {
 					<input
 						type="text"
 						placeholder="제품명"
-						value={title}
-						onChange={(e) => setTitle(e.target.value)}
+						//input에 네임, 밸류 설정하기.
+						name="title"
+						value={data.title}
+						onChange={onChangeHandler}
 					/>
 				</div>
 				<div className="posting_rental">
@@ -93,8 +102,9 @@ const Posting = () => {
 							className="posting_price_input"
 							type="number"
 							placeholder="원"
-							value={price}
-							onChange={(e) => setPrice(e.target.value)}
+							name="price"
+							value={data.price}
+							onChange={onChangeHandler}
 						/>
 					</div>
 
@@ -104,8 +114,9 @@ const Posting = () => {
 							className="posting_deposit_input"
 							type="number"
 							placeholder="원"
-							value={deposit}
-							onChange={(e) => setDeposit(e.target.value)}
+							name="deposit"
+							value={data.deposit}
+							onChange={onChangeHandler}
 							// onChange={e => form({setDeposit: e.target.value.replace(/[^0-9]/g, "")})} />
 						/>
 					</div>
@@ -138,8 +149,9 @@ const Posting = () => {
 						type="text"
 						placeholder="게시물 내용을 작성해주세요. (적절하지 못한 제품은 게시가 제한될 수
 				있어요.)"
-						value={content}
-						onChange={(e) => setContent(e.target.value)}
+						name="content"
+						value={data.content}
+						onChange={onChangeHandler}
 					/>
 				</div>
 

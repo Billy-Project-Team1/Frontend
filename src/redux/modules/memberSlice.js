@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import instance from './instance';
-import { deleteCookie } from './customCookie';
+import { deleteCookie } from './customCookies';
 
 const initialState = {
   member: [],
