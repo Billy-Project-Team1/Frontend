@@ -3,18 +3,15 @@
   padding: 0 1rem;
 }
 .modifyProfile-container {
-  // border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  // height: 100px;
   margin-top: 10px;
 }
 
 .modifyProfile-img {
-  // border: 1px solid green;
   height: 100px;
   width: 100%;
   border-radius: 50%;
@@ -27,6 +24,8 @@
   p {
     font-family: 'Noto Sans';
     font-size: 0.75em;
+    color: #cccccc;
+    font-weight: 400;
   }
 }
 .modifyProfile-input {
@@ -42,13 +41,11 @@
   outline: none;
 }
 .modifyProfile-setbtns {
-  // border: 1px solid blue;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100px;
-  gap: 10px;
+  gap: 24px;
   margin-top: 50px;
 }
 .modifyProfile-btn {
@@ -59,6 +56,18 @@
   background-color: #ededed;
   border: none;
   border-radius: 12px;
+  color: #212121;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.modifiyProfile-container {
+  position: relative;
+}
+.modifiyProfile-iconWrap {
+  position: absolute;
+  display: flex;
+  top: 60px;
+  left: 210px;
 }
 .modifiyProfile-icon {
   width: 40px;
@@ -71,8 +80,3 @@
   height: 24px;
   margin: 8px 8px 8px 8px;
 }
-// .modifiyProfile-iconWrap {
-//   position: absolute;
-//   top: 12%;
-//   left: 33%;
-// }

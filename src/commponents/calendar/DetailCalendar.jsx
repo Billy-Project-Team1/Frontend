@@ -92,6 +92,7 @@ const PostingCalendar = () => {
         color="#757575"
         size="24px"
       />
+
       <input
         readOnly
         placeholder="대여 불가능한 날짜를 체크해주세요"
@@ -107,9 +108,10 @@ const PostingCalendar = () => {
           삭제
         </button>
       )}
+
       {toggleOn === true ? (
         <Calendar
-          multiple
+          range
           value={date}
           onChange={setDate}
           weekDays={weekDays}
