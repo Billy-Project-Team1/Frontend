@@ -8,5 +8,27 @@
 	margin-right: 10px;
 	display: flex;
 	flex-direction: row;
+	
 	// float: left;
+}
+.preview_container {
+	position: relative;
+}
+
+.preview_img {
+	margin-left: 10px;
+	display: flex;
+	border-radius: 3px;
+	width:85px;
+	height: 85px;
+	aspect-ratio: 1/1;
+	object-fit: cover,
+}
+
+.preview_del {
+	position: absolute;
+	top: -12%;
+	// bottom: 10;
+	right: -10%;
+	color: #cccccc;
 }

@@ -1,4 +1,3 @@
-import { slice } from 'lodash';
 import React from 'react';
 import { useState } from 'react';
 
@@ -6,6 +5,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadToDB } from '../../redux/modules/image';
 import upload_image from '../../static/image/upload_image.svg';
+import { FaMinusCircle } from 'react-icons/fa';
 
 import './ImageUploader.scss';
 
@@ -92,22 +92,15 @@ const ImageUploader = (props) => {
 				multiple={!is_edit}
 				style={{ display: 'none' }}
 			/>
+
 			<div className="preview_img_container">
 				{imgUrl.map((item) => (
-					<img
-						className="preview_img"
-						src={item}
-						alt=""
-						style={{
-							display: 'flex',
-							borderRadius: '3px',
-							width: '85px',
-							height: '85px',
-							aspectRatio: '1/1',
-							objectFit: 'cover'
-						}}
-					/>
+					<div className="preview_container">
+						<img className="preview_img" src={item} alt="" />
+						<FaMinusCircle className="preview_del" />
+					</div>
 				))}
+				<div></div>
 			</div>
 		</div>
 	);

@@ -2,32 +2,27 @@ import React from 'react';
 import './Headers.scss';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
-import { OverflowMenu, OverflowMenuItem } from '@carbon/react';
 
-const DetailHeader = (props) => {
+const AddPostingHeader = ({ move }) => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="header_detail_container">
-			<div className="header_wrap">
-				<div className="header_content">
+		<div className="detail_header_container">
+			<div className="detail_header_wrap">
+				<div className="mypage_header_content">
 					<HiOutlineChevronLeft
 						style={{ marginRight: '22px' }}
 						color="#656565"
 						size="24px"
 						onClick={() => navigate(-1)}
 					/>
-					<OverflowMenu ariaLabel="overflow-menu" size="md">
-						<OverflowMenuItem itemText="Stop app" />
-						<OverflowMenuItem itemText="Restart app" />
-						<OverflowMenuItem itemText="Rename app" />
-						<OverflowMenuItem itemText="Edit routes and access" requireTitle />
-						<OverflowMenuItem hasDivider isDelete itemText="Delete app" />
-					</OverflowMenu>
+					<div className="mypage_header_title">&nbsp;</div>
+					<div className="detail_dot_icon"></div>
 				</div>
+				<div className="header_line"></div>
 			</div>
 		</div>
 	);
 };
 
-export default DetailHeader;
+export default AddPostingHeader;
