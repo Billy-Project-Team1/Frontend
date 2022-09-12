@@ -27,6 +27,7 @@ import SearchPlace from '../../commponents/maps/SearchPlace';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Footer from '../../commponents/footer/Footer';
 import PostingMap from '../../commponents/maps/PostingMap';
+import { addPost } from '../../redux/modules/postSlice';
 
 const Posting = () => {
   const dispatch = useDispatch();
@@ -65,6 +66,7 @@ const Posting = () => {
   /////////////////
 
   const move = () => {
+		dispatch(addPost());
     // navigate(`/detail/${}`);
   };
 

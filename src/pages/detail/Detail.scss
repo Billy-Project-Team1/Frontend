@@ -1,4 +1,5 @@
-.detail_container {
+.detail_wrap {
+	padding: 0 1rem;
 }
 .DetailHeader {
 	position: relative;
@@ -6,21 +7,20 @@
 	height: 32px;
 	left: 342px;
 	top: 64px;
-  display: flex;
+	display: flex;
 }
 .detail_image_box {
 	position: relative;
 	width: 100%;
 	height: 390px;
 	top: 0px;
-  display: flex;
+	display: flex;
 	background: #cccccc;
 }
 .detail_user_profile {
-  	border-bottom: 2px solid rgba(238, 238, 238, 1);
+	border-bottom: 2px solid rgba(238, 238, 238, 1);
 }
 
 .detail_title {
-    	border-bottom: 2px solid rgba(238, 238, 238, 1);
+	border-bottom: 2px solid rgba(238, 238, 238, 1);
 }
-
