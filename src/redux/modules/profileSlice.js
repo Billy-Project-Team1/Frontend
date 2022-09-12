@@ -7,7 +7,7 @@ export const getProfileThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.get(`/auth/members/profile/${payload}`);
-      // return console.log(response.data.result);
+      // return console.log(response);
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       } else {
@@ -15,6 +15,25 @@ export const getProfileThunk = createAsyncThunk(
       }
     } catch (e) {
       // console.log(e);
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+//프로필 수정 patch /auth/members/profile/{userId}  "image”: form/data
+export const editProfileThunk = createAsyncThunk(
+  'editProfileThunk',
+  async (payload, thunkAPI) => {
+    try {
+      const response = await instance.patch(
+        `/auth/members/profile/${payload}`,
+        payload.formData,
+        {
+          'Content-Type': 'multipart/form-data',
+        }
+      );
+      return console.log(response);
+      // return thunkAPI.fulfillWithValue(response.data.result);
+    } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
   }
@@ -35,7 +54,22 @@ export const myProfileSlice = createSlice({
     [getProfileThunk.rejected]: (state, action) => {
       state.error = action.payload;
     },
-    [getProfileThunk.pending]: () => {},
+    [editProfileThunk.fulfilled]: (state, action) => {
+      state.myProfile = state.myProfile.map((item, index) => {
+        if (item.userId === action.payload.userId) {
+          return {
+            ...item,
+            nickname: action.payload.nickname,
+            profileImgUrl: action.payload.profileImgUrl,
+          };
+        } else {
+          return { ...item };
+        }
+      });
+    },
+    [editProfileThunk.rejected]: (state, action) => {
+      console.log(action);
+    },
   },
 });
 

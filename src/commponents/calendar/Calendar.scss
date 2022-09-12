@@ -5,9 +5,12 @@
 .rmdp-calendar {
   width: 100%;
   height: 100%;
+  font-family: 'Noto Sans';
 }
 .rmdp-day-picker {
   display: block !important;
+  width: 100%;
+  height: 100%;
 }
 .calendar-deleteButton {
   margin-left: 30px;
@@ -21,21 +24,49 @@
 .calendar-input:focus {
   outline: none;
 }
-
 .rmdp-arrow {
   color: #212121;
 }
-.rmdp-arrow-container rmdp-left disabled {
+.rmdp-arrow-container.disabled {
   color: #cccccc;
 }
-// .rmdp-day {
-//   color: #757575;
-// }
+.rmdp-header-values {
+  color: #212121;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.rmdp-day {
+  color: #212121;
+  font-size: 0.75rem;
+}
+.rmdp-week-day {
+  color: #757575;
+  font-size: 0.75rem;
+}
+.rmdp-day.rmdp-today span {
+  border: 1px solid #004eea;
+  background-color: transparent;
+  color: #212121;
+  font-size: 0.75rem;
+}
+.rmdp-day.rmdp-selected span:not(.highlight) {
+  background-color: #004eea;
+  color: #ededed;
+  font-size: 0.75rem;
+}
+.rmdp-arrow-container:hover .rmdp-arrow {
+  border-color: #212121;
+}
+.rmdp-arrow-container:hover {
+  background-color: transparent;
+  box-shadow: none;
+}
+.rmdp-week {
+  padding-bottom: 10px;
+}
 // .rmdp-day,
 // .rmdp-week-day {
 //   display: flex;
-//   width: 14.285714%;
-//   height: 0;
 //   padding-top: 7.142857%;
 //   padding-bottom: 7.142857%;
 //   align-items: center;

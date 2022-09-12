@@ -16,7 +16,7 @@ const ModifyProfileHeader = ({ sumbitHandler }) => {
             size="24px"
             onClick={() => navigate(-1)}
           />
-          <div className="header_title">프로필 수정</div>
+          <div className="header_title">프로필 편집</div>
           <div className="header_done" onClick={sumbitHandler}>
             완료
           </div>

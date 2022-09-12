@@ -32,7 +32,7 @@ const MyProfileHeader = () => {
         </div>
         <div className="myProfileHeader-rightBox">
           <div className="myProfileHeader-nickname">{profile.nickname}</div>
-          <p>{profile.email}</p>
+          <p>{profile.email} </p>
           {userId === profile.userId ? (
             <Icon
               icon="ic:baseline-settings"

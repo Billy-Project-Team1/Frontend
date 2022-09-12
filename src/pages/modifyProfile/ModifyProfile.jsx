@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ModifyProfileHeader from '../../commponents/header/ModifyProfileHeader';
 import profileimg from '../../static/image/profileimg.png';
 import DeleteIdModal from './DeleteIdModal';
 import LogoutModal from './LogoutModal';
 import './ModifyProfile.scss';
 import { FaCamera } from 'react-icons/fa';
+import { editProfileThunk } from '../../redux/modules/profileSlice';
+import { useEffect } from 'react';
 
 const ModifyProfile = () => {
   const navigate = useNavigate();
@@ -20,27 +22,75 @@ const ModifyProfile = () => {
   };
   const [reviseProfile, setReviseProfile] = useState(initialState);
   const [files, setFile] = useState('');
+  const [image, setImage] = useState(
+    member.profileUrl ? member.profileUrl : profileimg
+  );
+  const [nickCheck, setNickCheck] = useState(false);
+  const [btnState, setBtnState] = useState(false);
+
+  // useEffect(() => {
+  //   if (
+  //     reviseProfile.nickname.length < 2 ||
+  //     reviseProfile.nickname.length > 8
+  //   ) {
+  //     setNickCheck(false);
+  //   } else if (reviseProfile.nickname.search(/\s/) != -1) {
+  //     setNickCheck(false);
+  //   } else if (
+  //     reviseProfile.nickname.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi) != -1
+  //   ) {
+  //     setNickCheck(false);
+  //   } else if (reviseProfile.nickname === null) {
+  //     setNickCheck(false);
+  //   } else {
+  //     setNickCheck(true);
+  //   }
+  // }, [reviseProfile.nickname]);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setReviseProfile({ ...reviseProfile, [name]: value });
+    if (reviseProfile.nickname.length > 2) {
+      setBtnState(true);
+    } else {
+      setBtnState(false);
+    }
   };
+  //프로필 사진 변경 함수
   const onLoadFile = (e) => {
-    setFile(URL.createObjectURL(e.target.files[0]));
+    if (e.target.files[0]) {
+      setFile(URL.createObjectURL(e.target.files[0]));
+    } else {
+      // 업로드 취소시 기본 이미지
+      setImage(profileimg);
+    }
+    // 화면에 프로필 사진 표시
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setImage(reader.result);
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
   };
 
   const sumbitHandler = async (event) => {
-    let frm = new FormData();
+    // if (nickCheck == false) {
+    //   event.preventDefault();
+    // } else {
+    //   event.preventDefault();
+    let formData = new FormData();
     let uploadImg = memberImg_ref.current;
 
-    frm.appen(
+    formData.appen(
       'data',
       new Blob([JSON.stringify(reviseProfile)], { type: 'application/json' })
     );
-    frm.append('img', uploadImg.files[0]);
-    await dispatch();
+    formData.append('img', uploadImg.files[0]);
+    await dispatch(editProfileThunk(formData));
     // setReviseProfile(initialState);
     navigate(`/mypage/${is_login}`);
+    // }
   };
 
   //모달창 노출 여부 state
@@ -56,12 +106,17 @@ const ModifyProfile = () => {
 
   return (
     <>
-      <ModifyProfileHeader move={sumbitHandler} />
-      <div className="modifiyProfile-iconWrap">
-        <div className="modifiyProfile-icon">
-          <label className="Img_label" htmlFor="img_upFile">
-            <FaCamera className="modifiyProfile-camera" />
-          </label>
+      <ModifyProfileHeader
+        move={sumbitHandler}
+        disabled={btnState ? false : true}
+      />
+      <div className="modifiyProfile-container">
+        <div className="modifiyProfile-iconWrap">
+          <div className="modifiyProfile-icon">
+            <label className="Img_label" htmlFor="img_upFile">
+              <FaCamera color="#CCCCCC" className="modifiyProfile-camera" />
+            </label>
+          </div>
         </div>
       </div>
       <div className="modifiyProfile-wrap">
@@ -75,16 +130,7 @@ const ModifyProfile = () => {
               onChange={onLoadFile}
               style={{ display: 'none' }}
             />
-            {/* <img
-              src={files}
-              alt=""
-              // style={{ width: "50px", height: "50px" }}
-            /> */}
-
-            <img
-              src={member.profileUrl ? member.profileUrl : profileimg}
-              className="modifyProfile-img"
-            />
+            <img src={image} alt="" className="modifyProfile-img" />
           </div>
           <div className="modifyProfile-rightBox">
             <input
