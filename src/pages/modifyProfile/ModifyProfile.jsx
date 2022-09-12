@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ModifyProfileHeader from '../../commponents/header/ModifyProfileHeader';
 import profileimg from '../../static/image/profileimg.png';
 import DeleteIdModal from './DeleteIdModal';
@@ -8,17 +8,20 @@ import LogoutModal from './LogoutModal';
 import './ModifyProfile.scss';
 import { FaCamera } from 'react-icons/fa';
 import { editProfileThunk } from '../../redux/modules/profileSlice';
-import { useEffect } from 'react';
 
 const ModifyProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { id } = useParams();
+
   const memberImg_ref = useRef(null);
   const is_login = localStorage.getItem('userId');
 
   const member = useSelector((state) => state.myprofile.myProfile);
+  console.log(member);
   const initialState = {
-    nickname: member.nickname,
+    nickname: `${member.nickname}`,
+    profileUrl: member.profileUrl,
   };
   const [reviseProfile, setReviseProfile] = useState(initialState);
   const [files, setFile] = useState('');
@@ -28,24 +31,24 @@ const ModifyProfile = () => {
   const [nickCheck, setNickCheck] = useState(false);
   const [btnState, setBtnState] = useState(false);
 
-  // useEffect(() => {
-  //   if (
-  //     reviseProfile.nickname.length < 2 ||
-  //     reviseProfile.nickname.length > 8
-  //   ) {
-  //     setNickCheck(false);
-  //   } else if (reviseProfile.nickname.search(/\s/) != -1) {
-  //     setNickCheck(false);
-  //   } else if (
-  //     reviseProfile.nickname.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi) != -1
-  //   ) {
-  //     setNickCheck(false);
-  //   } else if (reviseProfile.nickname === null) {
-  //     setNickCheck(false);
-  //   } else {
-  //     setNickCheck(true);
-  //   }
-  // }, [reviseProfile.nickname]);
+  useEffect(() => {
+    if (
+      reviseProfile.nickname.length < 2 ||
+      reviseProfile.nickname.length > 8
+    ) {
+      setNickCheck(false);
+    } else if (reviseProfile.nickname.search(/\s/) != -1) {
+      setNickCheck(false);
+    } else if (
+      reviseProfile.nickname.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi) != -1
+    ) {
+      setNickCheck(false);
+    } else if (reviseProfile.nickname === null) {
+      setNickCheck(false);
+    } else {
+      setNickCheck(true);
+    }
+  }, [reviseProfile.nickname]);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -56,6 +59,7 @@ const ModifyProfile = () => {
       setBtnState(false);
     }
   };
+  console.log(reviseProfile);
   //프로필 사진 변경 함수
   const onLoadFile = (e) => {
     if (e.target.files[0]) {
@@ -75,22 +79,22 @@ const ModifyProfile = () => {
   };
 
   const sumbitHandler = async (event) => {
-    // if (nickCheck == false) {
-    //   event.preventDefault();
-    // } else {
-    //   event.preventDefault();
-    let formData = new FormData();
-    let uploadImg = memberImg_ref.current;
+    if (nickCheck == false) {
+      event.preventDefault();
+    } else {
+      event.preventDefault();
+      let formData = new FormData();
+      let uploadImg = memberImg_ref.current;
 
-    formData.appen(
-      'data',
-      new Blob([JSON.stringify(reviseProfile)], { type: 'application/json' })
-    );
-    formData.append('img', uploadImg.files[0]);
-    await dispatch(editProfileThunk(formData));
-    // setReviseProfile(initialState);
-    navigate(`/mypage/${is_login}`);
-    // }
+      formData.append(
+        'data',
+        new Blob([JSON.stringify(reviseProfile)], { type: 'application/json' })
+      );
+      formData.append('image', uploadImg.files[0]);
+      await dispatch(editProfileThunk({ formData, is_login }));
+      setReviseProfile(initialState);
+      navigate(`/mypage/${is_login}`);
+    }
   };
 
   //모달창 노출 여부 state
@@ -107,18 +111,9 @@ const ModifyProfile = () => {
   return (
     <>
       <ModifyProfileHeader
-        move={sumbitHandler}
+        sumbitHandler={sumbitHandler}
         disabled={btnState ? false : true}
       />
-      <div className="modifiyProfile-container">
-        <div className="modifiyProfile-iconWrap">
-          <div className="modifiyProfile-icon">
-            <label className="Img_label" htmlFor="img_upFile">
-              <FaCamera color="#CCCCCC" className="modifiyProfile-camera" />
-            </label>
-          </div>
-        </div>
-      </div>
       <div className="modifiyProfile-wrap">
         <div className="modifyProfile-container">
           <div className="modifyProfile-imgBox">
@@ -131,6 +126,13 @@ const ModifyProfile = () => {
               style={{ display: 'none' }}
             />
             <img src={image} alt="" className="modifyProfile-img" />
+            <div className="modifiyProfile-iconWrap">
+              <div className="modifiyProfile-icon">
+                <label className="Img_label" htmlFor="img_upFile">
+                  <FaCamera color="#CCCCCC" className="modifiyProfile-camera" />
+                </label>
+              </div>
+            </div>
           </div>
           <div className="modifyProfile-rightBox">
             <input

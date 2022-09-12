@@ -1,6 +1,5 @@
 .rmdp-top-class {
   width: 358px;
-  height: 340px;
 }
 .rmdp-calendar {
   width: 100%;
@@ -20,6 +19,7 @@
   height: 22px;
   font-size: 1rem;
   border: none;
+  cursor: pointer;
 }
 .calendar-input:focus {
   outline: none;
@@ -64,11 +64,14 @@
 .rmdp-week {
   padding-bottom: 10px;
 }
-// .rmdp-day,
-// .rmdp-week-day {
-//   display: flex;
-//   padding-top: 7.142857%;
-//   padding-bottom: 7.142857%;
-//   align-items: center;
-//   justify-content: center;
-// }
+.calendar-box {
+  display: flex;
+  flex-direction: row;
+}
+.calendar-toggleIcon {
+  display: flex;
+  flex-direction: column;
+}
+.rmdp-wrapper.rmdp-shadow {
+  box-shadow: none;
+}

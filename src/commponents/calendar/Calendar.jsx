@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Calendar } from 'react-multi-date-picker';
-import 'react-multi-date-picker/styles/layouts/mobile.css';
 import {
   HiOutlineCalendar,
   HiOutlineChevronDown,
@@ -8,7 +7,7 @@ import {
 } from 'react-icons/hi';
 import './Calendar.scss';
 
-const PostingCalendar = () => {
+const PostingCalendar = ({ setData, data }) => {
   const noDates = useRef();
   const noDates2 = useRef();
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
@@ -80,33 +79,49 @@ const PostingCalendar = () => {
       noDates.current = [];
     }
   };
+  const blockDate = date.toLocaleString();
 
   useEffect(() => {
     setDateFormat();
+    setData({
+      ...data,
+      blockDateDtoList: [blockDate],
+    });
   }, [date]);
 
   return (
     <div className="calendar-wrap">
-      <HiOutlineCalendar
-        style={{ marginRight: '14px' }}
-        color="#757575"
-        size="24px"
-      />
-      <input
-        readOnly
-        placeholder="대여 불가능한 날짜를 체크해주세요"
-        className="calendar-input"
-        onClick={() => {
-          toggleMode();
-        }}
-        value={noDates.current?.length > 0 ? noDates.current : ''}
-      />
-      {toggleOn === true ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
-      {noDates.current?.length > 0 && (
-        <button className="calendar-deleteButton" onClick={() => deleteDates()}>
-          삭제
-        </button>
-      )}
+      <div className="calendar-box">
+        <HiOutlineCalendar
+          style={{ marginRight: '14px' }}
+          color="#757575"
+          size="24px"
+        />
+        <input
+          readOnly
+          placeholder="대여 불가능한 날짜를 체크해주세요"
+          className="calendar-input"
+          onClick={() => {
+            toggleMode();
+          }}
+          value={noDates.current?.length > 0 ? noDates.current : ''}
+        />
+        <div className="calendar-toggleIcon">
+          {toggleOn === true ? (
+            <HiOutlineChevronUp style={{ margin: 'auto' }} />
+          ) : (
+            <HiOutlineChevronDown style={{ margin: 'auto' }} />
+          )}
+        </div>
+        {noDates.current?.length > 0 && (
+          <button
+            className="calendar-deleteButton"
+            onClick={() => deleteDates()}
+          >
+            삭제
+          </button>
+        )}
+      </div>
       {toggleOn === true ? (
         <Calendar
           multiple
@@ -117,7 +132,6 @@ const PostingCalendar = () => {
           format="YYYY/MM/DD"
           minDate={new Date()}
           maxDate={new Date().setDate(90)}
-          className="rmdp-mobile"
         />
       ) : (
         ''

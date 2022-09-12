@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { withdrawal } from '../../redux/modules/memberSlice';
-import './AlertModal.scss';
+import './DeleteIdModal.scss';
 
 const DeleteIdModal = ({ setDeleteModalOpen }) => {
   const dispatch = useDispatch();
@@ -18,12 +18,19 @@ const DeleteIdModal = ({ setDeleteModalOpen }) => {
   };
 
   return (
-    <div className="alertModal-container">
-      <div className="alertModal-box">
-        <p>정말로 탈퇴 하시겠습니까?</p>
-        <div className="alertModal-btns">
+    <div className="deleteIdModal-container">
+      <div className="deleteIdModal-box">
+        <p>탈퇴시 사용자님의 정보가 모두 삭제됩니다.</p>
+        <p>탈퇴하시겠습니까?</p>
+        <div className="deleteIdModal-btns">
+          <button
+            style={{ backgroundColor: '#EB0000', color: '#F7F7F7' }}
+            onClick={Withdrawal}
+          >
+            탈퇴하기
+          </button>
+
           <button onClick={closeModal}>취소</button>
-          <button onClick={Withdrawal}>확인</button>
         </div>
       </div>
     </div>

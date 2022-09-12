@@ -81,64 +81,64 @@ const Posting = () => {
 			<DetailHeader></DetailHeader>
 			<MainHeader></MainHeader> */}
 
-			<div className="posting_container">
-				<div className="posting_image">
-					<ImageUploader />
-				</div>
-				<div className="posting_title">
-					<input
-						type="text"
-						placeholder="제품명"
-						//input에 네임, 밸류 설정하기.
-						name="title"
-						value={data.title}
-						onChange={onChangeHandler}
-					/>
-				</div>
-				<div className="posting_rental">
-					<div className="posting_price">
-						<label className="posting_price_label">일 대여금</label>
-						<input
-							className="posting_price_input"
-							type="number"
-							placeholder="￦"
-							name="price"
-							value={data.price}
-							onChange={onChangeHandler}
-						/>
-					</div>
+      <div className="posting_container">
+        <div className="posting_image">
+          <ImageUploader />
+        </div>
+        <div className="posting_title">
+          <input
+            type="text"
+            placeholder="제품명"
+            //input에 네임, 밸류 설정하기.
+            name="title"
+            value={data.title}
+            onChange={onChangeHandler}
+          />
+        </div>
+        <div className="posting_rental">
+          <div className="posting_price">
+            <label className="posting_price_label">일 대여금</label>
+            <input
+              className="posting_price_input"
+              type="number"
+              placeholder="￦"
+              name="price"
+              value={data.price}
+              onChange={onChangeHandler}
+            />
+          </div>
 
-					<div className="posting_deposit">
-						<label className="posting_deposit_label">보증금</label>
-						<input
-							className="posting_deposit_input"
-							type="number"
-							placeholder="￦"
-							name="deposit"
-							value={data.deposit}
-							onChange={onChangeHandler}
-							// onChange={e => form({setDeposit: e.target.value.replace(/[^0-9]/g, "")})} />
-						/>
-					</div>
-				</div>
+          <div className="posting_deposit">
+            <label className="posting_deposit_label">보증금</label>
+            <input
+              className="posting_deposit_input"
+              type="number"
+              placeholder="￦"
+              name="deposit"
+              value={data.deposit}
+              onChange={onChangeHandler}
+              // onChange={e => form({setDeposit: e.target.value.replace(/[^0-9]/g, "")})} />
+            />
+          </div>
+        </div>
 
-				<div className="posting_calendar_wrap">
-					<div className="posting_calendar_icon">
-						<Calendar />
-					</div>
-				</div>
+        <div className="posting_calendar_wrap">
+          <div className="posting_calendar_icon">
+            <Calendar setData={setData} data={data} />
+          </div>
+        </div>
 
-				<div className="posting_content">
-					<textarea
-						type="text"
-						placeholder="게시물 내용을 작성해주세요. (적절하지 못한 제품은 게시가 제한될 수
+        <div className="posting_content">
+          <textarea
+            type="text"
+            placeholder="게시물 내용을 작성해주세요. (적절하지 못한 제품은 게시가 제한될 수
 				있어요.)"
-						name="content"
-						value={data.content}
-						onChange={onChangeHandler}
-					/>
-				</div>
-				 <PostingMap setSearchMapModal={setSearchMapModal} data={data} />
+            name="content"
+            value={data.content}
+            onChange={onChangeHandler}
+          />
+        </div>
+        <PostingMap setSearchMapModal={setSearchMapModal} data={data} />
         {searchMapModal && (
           <SearchPlace
             setSearchMapModal={setSearchMapModal}
@@ -148,8 +148,8 @@ const Posting = () => {
         )}
       </div>
       <Footer />
-		</div>
-	);
+    </div>
+  );
 };
 
 export default Posting;

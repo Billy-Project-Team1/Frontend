@@ -17,7 +17,11 @@ const ModifyProfileHeader = ({ sumbitHandler }) => {
             onClick={() => navigate(-1)}
           />
           <div className="header_title">프로필 편집</div>
-          <div className="header_done" onClick={sumbitHandler}>
+          <div
+            className="header_done"
+            onClick={sumbitHandler}
+            style={{ cursor: 'pointer' }}
+          >
             완료
           </div>
         </div>

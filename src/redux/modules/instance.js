@@ -10,7 +10,6 @@ const instance = axios.create({
 // const userId = localStorage.getItem('userId');
 // let frm = new FormData();
 // frm.append("userId", new Blob([JSON.stringify(userId)], { type: "application/json" }))
-// REACT_APP_API_URL = 'https://jiwoo184.shop'
 
 instance.interceptors.request.use(function (config) {
   const token = localStorage.getItem('accessToken');
