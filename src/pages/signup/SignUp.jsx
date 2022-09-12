@@ -6,6 +6,7 @@ import { BsCheckSquare, BsCheckSquareFill } from 'react-icons/bs';
 import './SignUp.scss';
 import { useDispatch } from 'react-redux';
 import { apis } from '../../shared/api';
+import SingnUpHeader from '../../commponents/header/LoginHeader'
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -123,6 +124,8 @@ const SignUp = () => {
   };
 
   return (
+    <>
+    <SingnUpHeader />
     <div className="SignUpWrap">
       <form onSubmit={onSubmitHandler}>
         <div className="SignUpTopName">회원가입</div>
@@ -324,6 +327,7 @@ const SignUp = () => {
         <button className="SignUpButton">완료</button>
       </form>
     </div>
+    </>
   );
 };
 

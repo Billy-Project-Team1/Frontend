@@ -1,0 +1,89 @@
+.MyProfileMiddleWrap {
+  padding: 0 1rem;
+  margin-top: 2.1875rem;
+}
+
+.MyProfileMiddleContainer {
+  height: 5.5rem;
+  border-bottom: 1px solid rgba($color: #a8a8a8, $alpha: 0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.MyProfileMiddleBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 2.75rem;
+  gap: 0.5rem;
+}
+
+.MyPorfileMiddleIconContainer {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #f7f7f7;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+}
+
+.MyProfileMiddleIconBox {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.MyProfileMiddleText {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 0.6875rem;
+  white-space: nowrap;
+  overflow: visible;
+  color: #cccccc;
+}
+
+.MyProfileMiddleTextCheck {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 0.6875rem;
+  white-space: nowrap;
+  overflow: visible;
+  color: #004eea;
+}
+
+.MyProfileMiddleIcon {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  color: #cccccc;
+}
+.MyProfileMiddleIconCheck {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  color: #004eea;
+}
+
+.MyProfileMiddleIconTrans {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  color: #cccccc;
+  transform: rotate(180deg);
+}
+
+.MyProfileMiddleIconTransCheck {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  color: #004eea;
+  transform: rotate(180deg);
+}
