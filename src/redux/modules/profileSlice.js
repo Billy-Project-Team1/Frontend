@@ -25,14 +25,14 @@ export const editProfileThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.patch(
-        `/auth/members/profile/${payload}`,
+        `/auth/members/profile/${payload.is_login}`,
         payload.formData,
         {
           'Content-Type': 'multipart/form-data',
         }
       );
-      return console.log(response);
-      // return thunkAPI.fulfillWithValue(response.data.result);
+      // return console.log('djfdkjfkd', response);
+      return thunkAPI.fulfillWithValue(response.data.result);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
@@ -54,18 +54,21 @@ export const myProfileSlice = createSlice({
     [getProfileThunk.rejected]: (state, action) => {
       state.error = action.payload;
     },
+    // [editProfileThunk.fulfilled]: (state, action) => {
+    //   state.myProfile = state.myProfile.map((item, index) => {
+    //     if (item.userId === action.payload.userId) {
+    //       return {
+    //         ...item,
+    //         nickname: action.payload.nickname,
+    //         profileUrl: action.payload.profileUrl,
+    //       };
+    //     } else {
+    //       return { ...item };
+    //     }
+    //   });
+    // },
     [editProfileThunk.fulfilled]: (state, action) => {
-      state.myProfile = state.myProfile.map((item, index) => {
-        if (item.userId === action.payload.userId) {
-          return {
-            ...item,
-            nickname: action.payload.nickname,
-            profileImgUrl: action.payload.profileImgUrl,
-          };
-        } else {
-          return { ...item };
-        }
-      });
+      state.myProfile = action.payload;
     },
     [editProfileThunk.rejected]: (state, action) => {
       console.log(action);

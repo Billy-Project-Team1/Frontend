@@ -3,30 +3,53 @@
   // max-width: 428px;
 }
 .myProfileHeader-wrap {
-  width: 100%;
+  // border: 1px solid blue;
+  width: 230px;
+  height: 60px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 34px 136px 0px 8px;
+  position: relative;
 }
 .myProfileHeader-imgBox {
   // width: 50%;
-  border: 1px red solid;
+  // border: 1px blue solid;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-left: -34px;
 }
 .myProfileHeader-img {
-  height: 100px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
 }
 .myProfileHeader-rightBox {
-  border: 1px solid red;
-  width: 50%;
-  margin-left: 20px;
-  padding-top: 10px;
+  // border: 1px solid red;
+  // width: 60%;
+  margin-left: 14px;
+  margin-top: 5px;
+  // position: relative;
+
+  p {
+    font-size: 0.75rem;
+    color: #cccccc;
+    font-family: 'Noto Sans';
+    font-weight: 400;
+  }
 }
 .myProfileHeader-nickname {
   font-size: 1.5rem;
+  color: #212121;
+  font-family: 'Noto Sans';
 }
-// .myProfileHeader-button {
-//   width: 150px;
-//   height: 30px;
-// }
+.myProfileHeader-settingBtn {
+  color: #cccccc;
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  top: 19px;
+  right: 25px;
+}

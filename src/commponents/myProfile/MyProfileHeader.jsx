@@ -18,32 +18,42 @@ const MyProfileHeader = () => {
 
   const profile = useSelector((state) => state.myprofile.myProfile);
   console.log(profile);
-  // profileUrl
-  // {profile.profileUrl}
-
   return (
-    <div className="myProfileHeader-container">
-      <div className="myProfileHeader-wrap">
-        <div className="myProfileHeader-imgBox">
-          <img
-            src={profile.profileUrl ? profile.profileUrl : profileimg}
-            className="myProfileHeader-img"
-          />
-        </div>
-        <div className="myProfileHeader-rightBox">
-          <div className="myProfileHeader-nickname">{profile.nickname}</div>
-          <p>{profile.email} </p>
+    <>
+      <div className="myProfileHeader-container">
+        <div className="myProfileHeader-wrap">
           {userId === profile.userId ? (
             <Icon
               icon="ic:baseline-settings"
               onClick={() => navigate('/modifyprofile')}
+              className="myProfileHeader-settingBtn"
             />
           ) : (
             ''
           )}
+
+          <div className="myProfileHeader-imgBox">
+            <img
+              src={profile.profileUrl ? profile.profileUrl : profileimg}
+              className="myProfileHeader-img"
+            />
+          </div>
+          <div className="myProfileHeader-rightBox">
+            <div className="myProfileHeader-nickname">{profile.nickname}</div>
+            <p>{profile.email} </p>
+            {/* {userId === profile.userId ? (
+              <Icon
+                icon="ic:baseline-settings"
+                onClick={() => navigate('/modifyprofile')}
+                className="myProfileHeader-settingBtn"
+              />
+            ) : (
+              ''
+            )} */}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

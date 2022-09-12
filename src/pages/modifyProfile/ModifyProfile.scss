@@ -10,7 +10,9 @@
   width: 100%;
   margin-top: 10px;
 }
-
+.modifyProfile-imgBox {
+  position: relative;
+}
 .modifyProfile-img {
   height: 100px;
   width: 100%;
@@ -60,14 +62,11 @@
   font-size: 1rem;
   font-weight: 500;
 }
-.modifiyProfile-container {
-  position: relative;
-}
 .modifiyProfile-iconWrap {
   position: absolute;
   display: flex;
-  top: 60px;
-  left: 210px;
+  bottom: 0;
+  right: 0;
 }
 .modifiyProfile-icon {
   width: 40px;
@@ -79,4 +78,5 @@
   width: 24px;
   height: 24px;
   margin: 8px 8px 8px 8px;
+  cursor: pointer;
 }

@@ -24,7 +24,7 @@ function App() {
       <Route path="/posting" element={<Posting />} />
       <Route path="/modifyPosting" element={<ModifyPosting />} />
       <Route path="/modifyProfile" element={<ModifyProfile />} />
-      <Route path="/detail" element={<Detail />} />
+      <Route path="/detail/:postid" element={<Detail />} />
       <Route path="/kakao" element={<Kakao />} />
       <Route path="/map/test" element={<SearchPlace />} />
       <Route path="/main/test" element={<MainListCard />} />
