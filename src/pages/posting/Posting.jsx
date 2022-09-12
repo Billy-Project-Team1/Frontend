@@ -29,50 +29,49 @@ import Footer from '../../commponents/footer/Footer';
 import PostingMap from '../../commponents/maps/PostingMap';
 
 const Posting = () => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [searchMapModal, setSearchMapModal] = useState(false);
+  console.log(searchMapModal);
 
-	const [calendarOpen, setCalendarOpen] = useState(false);
-	const calendarClose = () => {
-		setCalendarOpen(!calendarOpen);
-	};
+  const [calendarOpen, setCalendarOpen] = useState(false);
+  const calendarClose = () => {
+    setCalendarOpen(!calendarOpen);
+  };
 
-	/////////////////
+  /////////////////
 
-	const initialState = {
-		title: '',
-		content: '',
-		price: '',
-		deposit: '',
-		location: '',
-		latitude: '',
-		longitude: '',
-		blockDateDtoList: {},
-		// files: form/data,
-	};
-	const [data, setData] = useState(initialState);
+  const initialState = {
+    title: '',
+    content: '',
+    price: '',
+    deposit: '',
+    location: '',
+    detailLocation: '',
+    latitude: '',
+    longitude: '',
+    blockDateDtoList: {},
+    // files: form/data,
+  };
+  const [data, setData] = useState(initialState);
 
-	const onChangeHandler = (e) => {
-		const { name, value } = e.target;
-		//...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
-		setData({ ...data, [name]: value });
-	};
-	console.log(data);
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    //...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
+    setData({ ...data, [name]: value });
+  };
+  console.log(data);
 
-	/////////////////
+  /////////////////
 
-	// Number(data.price)
-	// 	.toString()
-	// 	.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const move = () => {
+    // navigate(`/detail/${}`);
+  };
 
-	const move = () => {
-		// navigate(`/detail/${}`);
-	};
-
-	return (
-		<div>
-			<AddPostingHeader move={move} />
-			{/* <AddLocationHeader></AddLocationHeader>
+  return (
+    <div>
+      <AddPostingHeader move={move} />
+      {/* <AddLocationHeader></AddLocationHeader>
 			<ModifyPostingHeader></ModifyPostingHeader>
 			<ModifyProfileHeader></ModifyProfileHeader>
 			<MypageHeader></MypageHeader>
@@ -130,14 +129,20 @@ const Posting = () => {
         <div className="posting_content">
           <textarea
             type="text"
-            placeholder="게시물 내용을 작성해주세요. (적절하지 못한 제품은 게시가 제한될 수
-				있어요.)"
+            placeholder="게시물 내용을 작성해주세요. (적절하지 못한 제품은 게시가 제한될 수 있어요.)"
             name="content"
             value={data.content}
             onChange={onChangeHandler}
           />
         </div>
-        <PostingMap />
+        <PostingMap setSearchMapModal={setSearchMapModal} data={data} />
+        {searchMapModal && (
+          <SearchPlace
+            setSearchMapModal={setSearchMapModal}
+            setData={setData}
+            data={data}
+          />
+        )}
       </div>
       <Footer />
     </div>

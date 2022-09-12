@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import KakaoMap from './KakaoMap';
 
-const SearchPlace = () => {
+const SearchPlace = ({ setSearchMapModal, setData, data }) => {
+  const outSection = useRef();
   const [inputText, setInputText] = useState('');
   const [place, setPlace] = useState('');
   const [placeName, setPlaceName] = useState('');
+  const [placeAdress, setPlaceAdress] = useState('');
   const [coordNumber, setCoordNumber] = useState({
     latitude: '',
     longitude: '',
@@ -12,37 +14,64 @@ const SearchPlace = () => {
   const onChange = (e) => {
     setInputText(e.target.value);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setPlace(inputText);
     setInputText('');
   };
-  if (placeName !== '') {
-    console.log(placeName);
-    console.log(coordNumber);
-  }
+
+  const onSubmitSearchMap = () => {
+    if (coordNumber.latitude === '') {
+      alert('장소를 입력하세요!!');
+    } else {
+      setData({
+        ...data,
+        location: placeName,
+        detailLocation: placeAdress,
+        latitude: coordNumber.latitude,
+        longitude: coordNumber.longitude,
+      });
+      setSearchMapModal(false);
+    }
+  };
 
   return (
     <div
-      className="KakaoMapwrap
-    "
+      className="kakaoMapModal"
+      ref={outSection}
+      onClick={(e) => {
+        if (outSection.current === e.target) {
+          setSearchMapModal(false);
+        }
+      }}
     >
-      <KakaoMap
-        searchPlace={place}
-        setPlaceName={setPlaceName}
-        setCoordNumber={setCoordNumber}
-        coordNumber={coordNumber}
-        placeName={placeName}
-      />
-      <form className="inputForm" onSubmit={handleSubmit}>
-        <input
-          placeholder="ex.강남역 10번 출구..."
-          onChange={onChange}
-          value={inputText}
+      <div
+        className="KakaoMapwrap
+    "
+      >
+        <KakaoMap
+          searchPlace={place}
+          setPlaceName={setPlaceName}
+          setCoordNumber={setCoordNumber}
+          coordNumber={coordNumber}
+          placeName={placeName}
+          setPlaceAdress={setPlaceAdress}
         />
-        <button type="submit">검색</button>
-      </form>
+        <form className="KakaoMapinputForm" onSubmit={handleSubmit}>
+          <input
+            className="KakaoMapInputPlace"
+            placeholder="ex.강남역 10번 출구..."
+            onChange={onChange}
+            value={inputText}
+          />
+          <button type="submit" className="KakaoMapButtonPlace">
+            검색
+          </button>
+        </form>
+        <button className="KakaoMapSubmitButton" onClick={onSubmitSearchMap}>
+          완료
+        </button>
+      </div>
     </div>
   );
 };

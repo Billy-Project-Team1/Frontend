@@ -1,10 +1,48 @@
+.kakaoMapModal {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .KakaoMapwrap {
+  margin: auto;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .KakaoMapImg {
   margin: auto;
   border-radius: 12px;
   width: 100%;
-  aspect-ratio: 1.7/1;
+  aspect-ratio: 1/1;
+}
+
+.KakaoMapinputForm {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.KakaoMapInputPlace {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid white;
+  background: none;
+}
+
+.KakaoMapButtonPlace {
+  width: 30%;
+  border: none;
+  background: none;
+  color: white;
+}
+
+.KakaoMapSubmitButton{
+  margin-top: 40px;
 }

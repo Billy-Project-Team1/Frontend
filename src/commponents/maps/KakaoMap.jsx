@@ -8,9 +8,10 @@ const KakaoMap = ({
   setCoordNumber,
   coordNumber,
   placeName,
+  setPlaceAdress,
 }) => {
   useEffect(() => {
-    const container = document.getElementById('map');
+    const container = document.getElementById('Mymap');
     const options = {
       center: new kakao.maps.LatLng(37.50232593365278, 127.04444559870342),
       level: 3,
@@ -31,14 +32,26 @@ const KakaoMap = ({
       marker.setMap(null);
       searchDetailAddrFromCoords(mouseEvent.latLng, function (result, status) {
         if (status === kakao.maps.services.Status.OK) {
+          const adresscoder = new kakao.maps.services.Geocoder();
+
+          marker.setMap(map);
+          marker.setPosition(mouseEvent.latLng);
           setPlaceName(`${result[0].address_name}`);
           setCoordNumber({
             latitude: mouseEvent.latLng.Ma,
             longitude: mouseEvent.latLng.La,
           });
 
-          marker.setMap(map);
-          marker.setPosition(mouseEvent.latLng);
+          adresscoder.coord2Address(
+            mouseEvent.latLng.La,
+            mouseEvent.latLng.Ma,
+            callAddressFinal
+          );
+          function callAddressFinal(result, status) {
+            if (status === kakao.maps.services.Status.OK) {
+              setPlaceAdress(`${result[0].address.address_name}`);
+            }
+          }
         }
       });
     });
@@ -54,6 +67,7 @@ const KakaoMap = ({
       if (status === kakao.maps.services.Status.OK) {
         console.log(result);
         let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+        console.log(coords);
         const adresscoder = new kakao.maps.services.Geocoder();
         // 결과값으로 받은 위치를 마커로 표시합니다
         marker.setMap(map);
@@ -64,11 +78,21 @@ const KakaoMap = ({
           coords.getLat(),
           callAddressName
         );
-
         function callAddressName(result, status) {
           if (status === kakao.maps.services.Status.OK) {
             setPlaceName(`${result[0].address_name}`);
             setCoordNumber({ latitude: coords.Ma, longitude: coords.La });
+
+            adresscoder.coord2Address(
+              coords.getLng(),
+              coords.getLat(),
+              callAddressFinal
+            );
+            function callAddressFinal(result, status) {
+              if (status === kakao.maps.services.Status.OK) {
+                setPlaceAdress(`${result[0].address.address_name}`);
+              }
+            }
           }
         }
       }
@@ -93,8 +117,20 @@ const KakaoMap = ({
 
             function callAddressName(result, status) {
               if (status === kakao.maps.services.Status.OK) {
+                console.log(result);
                 setPlaceName(`${result[0].address_name}`);
                 setCoordNumber({ latitude: coords.Ma, longitude: coords.La });
+
+                adresscoder.coord2Address(
+                  coords.getLng(),
+                  coords.getLat(),
+                  callAddressFinal
+                );
+                function callAddressFinal(result, status) {
+                  if (status === kakao.maps.services.Status.OK) {
+                    setPlaceAdress(`${result[0].address.address_name}`);
+                  }
+                }
               }
             }
           }
@@ -103,7 +139,7 @@ const KakaoMap = ({
     }
   }, [searchPlace]);
 
-  return <div id="map" className="KakaoMapImg"></div>;
+  return <div id="Mymap" className="KakaoMapImg"></div>;
 };
 
 export default KakaoMap;
