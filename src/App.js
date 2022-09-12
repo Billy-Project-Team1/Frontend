@@ -17,22 +17,22 @@ import Chat from './pages/chatting/Chat';
 
 function App() {
   return (
-		<Routes>
-			<Route path="/" element={<Main />} />
-			<Route path="/login" element={<Login />} />
-			<Route path="/signup" element={<SignUp />} />
-			<Route path="/posting" element={<Posting />} />
-			<Route path="/modifyPosting" element={<ModifyPosting />} />
-			<Route path="/modifyProfile" element={<ModifyProfile />} />
-			<Route path="/detail/:postid" element={<Detail />} />{' '}
-			<Route path="/kakao" element={<Kakao />} />
-			<Route path="/map/test" element={<SearchPlace />} />
-			<Route path="/main/test" element={<MainListCard />} />
-			<Route path="/mypage/:id" element={<Mypage />} />
-			<Route path="/search" element={<Search />} />
-			<Route path="/chat" element={<Chat />} />
-		</Routes>
-	);
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/posting" element={<Posting />} />
+      <Route path="/modifyPosting" element={<ModifyPosting />} />
+      <Route path="/modifyProfile" element={<ModifyProfile />} />
+      <Route path="/detail/:postid" element={<Detail />} />
+      <Route path="/kakao" element={<Kakao />} />
+      <Route path="/map/test" element={<SearchPlace />} />
+      <Route path="/main/test" element={<MainListCard />} />
+      <Route path="/mypage/:id" element={<Mypage />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/chat" element={<Chat />} />
+    </Routes>
+  );
 }
 
 export default App;

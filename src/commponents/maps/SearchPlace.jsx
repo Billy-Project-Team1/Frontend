@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react';
 import KakaoMap from './KakaoMap';
+import { HiSearch } from 'react-icons/hi';
+import { BsXCircle } from 'react-icons/bs';
 
 const SearchPlace = ({ setSearchMapModal, setData, data }) => {
   const outSection = useRef();
@@ -35,6 +37,10 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
     }
   };
 
+  const onResetButton = () => {
+    setInputText('');
+  };
+
   return (
     <div
       className="kakaoMapModal"
@@ -49,6 +55,27 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
         className="KakaoMapwrap
     "
       >
+        <form className="KakaoMapinputForm" onSubmit={handleSubmit}>
+          <div className="KakaoMapinputIconBox">
+            <HiSearch className="KakaoMapinputIcon" />
+          </div>
+          <input
+            className="KakaoMapInputPlace"
+            placeholder="ex.강남역 10번 출구..."
+            onChange={onChange}
+            value={inputText}
+          />
+          {inputText === '' ? (
+            ''
+          ) : (
+            <BsXCircle
+              className="KakaoMapInputPlaceXbutton"
+              onClick={() => {
+                onResetButton();
+              }}
+            />
+          )}
+        </form>
         <KakaoMap
           searchPlace={place}
           setPlaceName={setPlaceName}
@@ -57,17 +84,7 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
           placeName={placeName}
           setPlaceAdress={setPlaceAdress}
         />
-        <form className="KakaoMapinputForm" onSubmit={handleSubmit}>
-          <input
-            className="KakaoMapInputPlace"
-            placeholder="ex.강남역 10번 출구..."
-            onChange={onChange}
-            value={inputText}
-          />
-          <button type="submit" className="KakaoMapButtonPlace">
-            검색
-          </button>
-        </form>
+
         <button className="KakaoMapSubmitButton" onClick={onSubmitSearchMap}>
           완료
         </button>

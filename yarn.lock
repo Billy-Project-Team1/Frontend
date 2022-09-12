@@ -1369,10 +1369,17 @@
   resolved "https://registry.yarnpkg.com/@ibm/plex/-/plex-6.0.0-next.6.tgz#5b4ab81a84ddb06651fdf684521927cdce135b79"
   integrity sha512-B3uGruTn2rS5gweynLmfSe7yCawSRsJguJJQHVQiqf4rh2RNgJFu8YLE2Zd/JHV0ZXoVMOslcXP2k3hMkxKEyA==
 
-"@iconify/react@^3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-3.2.2.tgz#ab5241dc01562076bae3b0c22238aff7e5f029cc"
-  integrity sha512-z3+Jno3VcJzgNHsN5mEvYMsgCkOZkydqdIwOxjXh45+i2Vs9RGH68Y52vt39izwFSfuYUXhaW+1u7m7+IhCn/g==
+"@iconify/react@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-4.0.0.tgz#0e2238fec072bfca0f2b9b6ff9e60c721c4abf32"
+  integrity sha512-YE+z5PCegYyuJtLR6KBbJNlssmuVgRyFyRxcgxSPVkN3Gsm7npSzrUh+gWlBxrNb5g4Q6Nnb1gczPBNcwtUpng==
+  dependencies:
+    "@iconify/types" "^2.0.0"
+
+"@iconify/types@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
+  integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
@@ -1674,6 +1681,16 @@
     rimraf "^3.0.2"
     semver "^7.3.5"
     tar "^6.1.11"
+
+"@mdi/font@^7.0.96":
+  version "7.0.96"
+  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-7.0.96.tgz#9853c222623072f5575b4039c8c195ea929b61fc"
+  integrity sha512-rzlxTfR64hqY8yiBzDjmANfcd8rv+T5C0Yedv/TWk2QyAQYdc66e0kaN1ipmnYU3RukHRTRcBARHzzm+tIhL7w==
+
+"@mdi/js@^7.0.96":
+  version "7.0.96"
+  resolved "https://registry.yarnpkg.com/@mdi/js/-/js-7.0.96.tgz#8e7a54d5cb38831e3150632cc19e380f54d9edd6"
+  integrity sha512-lNqhkV3cpPfYb/Avh+vXLFukUTbHbyHoFo4Jdc7Oc9UvURGVhamFIpgOVvEf2bNA78zvjXTZeVWExUTR+DLBfQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

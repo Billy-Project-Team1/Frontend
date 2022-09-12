@@ -1,5 +1,4 @@
 import React from 'react';
-
 import DetailHeader from '../../commponents/header/DetailHeader';
 import MyProfilHeader from '../../commponents/myProfile/MyProfileHeader';
 

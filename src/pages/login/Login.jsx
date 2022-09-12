@@ -8,6 +8,7 @@ import kakaoLoginimg from '../../static/image/kakao_login_original.png';
 import { apis } from '../../shared/api';
 import { KAKAO_AUTH_URL } from '../../shared/socialAuth';
 import { Cookies } from 'react-cookie';
+import LginHeader from '../../commponents/header/LoginHeader';
 import './Login.scss';
 
 const Login = () => {
@@ -52,66 +53,69 @@ const Login = () => {
   };
 
   return (
-    <div className="LoginWrap">
-      <div className="LoginEmailBox">
-        <div>이메일</div>
-        <input
-          ref={email_ref}
-          className="LoginEmailInput"
-          placeholder="이메일을 입력해주세요"
-        />
-      </div>
-      <div className="LoginPassword">
-        <div>비밀번호</div>
-        <div className="LoginPasswordBox">
-          {doNotAccess ? (
-            <input
-              ref={pw_ref}
-              type={passwordView}
-              className="LoginPasswordInput"
-              placeholder="비밀번호를 입력해주세요"
-            />
-          ) : (
-            <input
-              ref={pw_ref}
-              type={passwordView}
-              className="LoginPasswordInputAlert"
-              placeholder="비밀번호를 입력해주세요"
-            />
-          )}
-
-          <div className="LoginPasswordEye">
-            {passwordView === 'text' ? (
-              <FaEyeSlash onClick={onDisVisablePassword} />
+    <>
+      <LginHeader />
+      <div className="LoginWrap">
+        <div className="LoginEmailBox">
+          <div>이메일</div>
+          <input
+            ref={email_ref}
+            className="LoginEmailInput"
+            placeholder="이메일을 입력해주세요"
+          />
+        </div>
+        <div className="LoginPassword">
+          <div>비밀번호</div>
+          <div className="LoginPasswordBox">
+            {doNotAccess ? (
+              <input
+                ref={pw_ref}
+                type={passwordView}
+                className="LoginPasswordInput"
+                placeholder="비밀번호를 입력해주세요"
+              />
             ) : (
-              <FaEye onClick={onVisablePassword} />
+              <input
+                ref={pw_ref}
+                type={passwordView}
+                className="LoginPasswordInputAlert"
+                placeholder="비밀번호를 입력해주세요"
+              />
             )}
+
+            <div className="LoginPasswordEye">
+              {passwordView === 'text' ? (
+                <FaEyeSlash onClick={onDisVisablePassword} />
+              ) : (
+                <FaEye onClick={onVisablePassword} />
+              )}
+            </div>
+          </div>
+          {doNotAccess ? (
+            <div className="LoginAlertText1">&nbsp;</div>
+          ) : (
+            <div className="LoginAlertText">
+              아이디 혹은 비밀번호를 다시 확인하세요.
+            </div>
+          )}
+        </div>
+        <button className="LoginButton" onClick={Loginform}>
+          로그인
+        </button>
+        <a className="LoginKakao" href={KAKAO_AUTH_URL}>
+          <div className="LoginKakaoBox">
+            <img src={kakaoLoginimg} className="KakaoLoginImg" />
+            <div className="LoginKakaoTitle">카카오로 로그인하기</div>
+          </div>
+        </a>
+        <div className="LoginFindBox">
+          <div className="LoginFind">빌리가 처음 이신가요?</div>
+          <div className="LoginFindNavi" onClick={() => navigate(`/signup`)}>
+            회원가입
           </div>
         </div>
-        {doNotAccess ? (
-          <div className="LoginAlertText1">&nbsp;</div>
-        ) : (
-          <div className="LoginAlertText">
-            아이디 혹은 비밀번호를 다시 확인하세요.
-          </div>
-        )}
       </div>
-      <button className="LoginButton" onClick={Loginform}>
-        로그인
-      </button>
-      <a className="LoginKakao" href={KAKAO_AUTH_URL}>
-        <div className="LoginKakaoBox">
-          <img src={kakaoLoginimg} className="KakaoLoginImg" />
-          <div className="LoginKakaoTitle">카카오로 로그인하기</div>
-        </div>
-      </a>
-      <div className="LoginFindBox">
-        <div className="LoginFind">빌리가 처음 이신가요?</div>
-        <div className="LoginFindNavi" onClick={() => navigate(`/signup`)}>
-          회원가입
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
