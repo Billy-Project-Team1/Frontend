@@ -25,7 +25,11 @@ export const getsearchPostsList = createAsyncThunk(
 export const SearchPostsListSlice = createSlice({
   name: 'searchpostsList',
   initialState,
-  reducers: {},
+  reducers: {
+    onRemoveHandler: (state, action) => {
+      state.postsList = initialState.postsList;
+    },
+  },
   extraReducers: {
     [getsearchPostsList.fulfilled]: (state, action) => {
       state.postsList = action.payload;
@@ -33,4 +37,5 @@ export const SearchPostsListSlice = createSlice({
   },
 });
 
+export const {onRemoveHandler} = SearchPostsListSlice.actions;
 export default SearchPostsListSlice.reducer;

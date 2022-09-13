@@ -5,8 +5,12 @@ import './Search.scss';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsXCircle } from 'react-icons/bs';
-import { getsearchPostsList } from '../../redux/modules/SearchSlice';
+import {
+  getsearchPostsList,
+  onRemoveHandler,
+} from '../../redux/modules/SearchSlice';
 import MainListCard from '../../commponents/mainListCard/MainListCard';
+import { useEffect } from 'react';
 
 const Search = () => {
   const navigate = useNavigate();
@@ -22,10 +26,12 @@ const Search = () => {
     e.preventDefault();
     dispatch(getsearchPostsList({ inputText }));
   };
+  useEffect(() => {
+    dispatch(onRemoveHandler());
+  }, []);
 
   const searchPostList = useSelector((state) => state.searchPost.postsList);
 
-  console.log(searchPostList);
   return (
     <>
       <div className="SearchWrap">
