@@ -3,7 +3,7 @@ import { Calendar } from 'react-multi-date-picker';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import './Calendar.scss';
 
-const DetailCalendar = () => {
+const DetailCalendar = ({ data, detailPost }) => {
   const noDates = useRef();
   const noDates2 = useRef();
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
@@ -21,10 +21,13 @@ const DetailCalendar = () => {
     '11월',
     '12월',
   ];
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [date, setDate] = useState([]);
   const [dates, setDates] = useState();
+  const [unavailable, setUnavailable] = useState([]);
   const [toggleOn, setToggleOn] = useState(false);
   // console.log(date.toLocaleString());
+  // data={detailPost.blockDate?.blockDateList[0]}
 
   const toggleMode = () => {
     setToggleOn((toggleOn) => !toggleOn);
@@ -34,6 +37,32 @@ const DetailCalendar = () => {
     setDates();
     noDates.current = [];
   };
+  console.log(data);
+
+  const disableDate = () => {
+    const datesArray = [];
+    data.map((v) => {
+      if (new Date(v).getMonth() + 1 === month) {
+        datesArray.push(new Date(v).getDate());
+      }
+    });
+    setUnavailable(datesArray);
+  };
+  console.log(unavailable);
+
+  // useEffect(() => {
+  //   if (detailPost) {
+  //     setUnavailable(data);
+  //   }
+  // }, []);
+  // console.log(unavailable);
+
+  useEffect(() => {
+    if (detailPost) {
+      disableDate(data);
+    }
+  }, []);
+
   const setDateFormat = () => {
     if (date?.length > 0) {
       noDates.current = null;

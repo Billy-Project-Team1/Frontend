@@ -38,22 +38,25 @@
 }
 .rmdp-day {
   color: #212121;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 .rmdp-week-day {
   color: #757575;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 .rmdp-day.rmdp-today span {
   border: 1px solid #004eea;
   background-color: transparent;
   color: #212121;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 .rmdp-day.rmdp-selected span:not(.highlight) {
   background-color: #004eea;
   color: #ededed;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
+  padding-bottom: 1px;
+  width: 30px;
+  height: 30px;
 }
 .rmdp-arrow-container:hover .rmdp-arrow {
   border-color: #212121;
