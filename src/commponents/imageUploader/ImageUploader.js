@@ -76,7 +76,7 @@ const ImageUploader = (props) => {
 	}, [imgUrl]);
 
 	return (
-		<div style={{ padding: '8px 0', display: 'flex' }}>
+		<div style={{ padding: '25px 0', display: 'flex' }}>
 			<img
 				src={upload_image}
 				style={{ width: '85px' }}

@@ -22,16 +22,6 @@ const MyProfileHeader = () => {
     <>
       <div className="myProfileHeader-container">
         <div className="myProfileHeader-wrap">
-          {userId === profile.userId ? (
-            <Icon
-              icon="ic:baseline-settings"
-              onClick={() => navigate('/modifyprofile')}
-              className="myProfileHeader-settingBtn"
-            />
-          ) : (
-            ''
-          )}
-
           <div className="myProfileHeader-imgBox">
             <img
               src={profile.profileUrl ? profile.profileUrl : profileimg}
@@ -39,17 +29,22 @@ const MyProfileHeader = () => {
             />
           </div>
           <div className="myProfileHeader-rightBox">
-            <div className="myProfileHeader-nickname">{profile.nickname}</div>
+            <div className="myProfileHeader-rightTopBox">
+              <div className="myProfileHeader-nickname">{profile.nickname}</div>
+              {userId === profile.userId ? (
+                <div className="myProfileHeader-icon">
+                  <Icon
+                    icon="ic:baseline-settings"
+                    onClick={() => navigate('/modifyprofile')}
+                    className="myProfileHeader-settingBtn"
+                  />
+                </div>
+              ) : (
+                ''
+              )}
+            </div>
+
             <p>{profile.email} </p>
-            {/* {userId === profile.userId ? (
-              <Icon
-                icon="ic:baseline-settings"
-                onClick={() => navigate('/modifyprofile')}
-                className="myProfileHeader-settingBtn"
-              />
-            ) : (
-              ''
-            )} */}
           </div>
         </div>
       </div>

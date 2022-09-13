@@ -53,11 +53,11 @@ const ModifyProfile = () => {
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setReviseProfile({ ...reviseProfile, [name]: value });
-    if (reviseProfile.nickname.length > 2) {
-      setBtnState(true);
-    } else {
-      setBtnState(false);
-    }
+    // if (reviseProfile.nickname.length > 2) {
+    //   setBtnState(true);
+    // } else {
+    //   setBtnState(false);
+    // }
   };
   console.log(reviseProfile);
   //프로필 사진 변경 함수
@@ -112,7 +112,7 @@ const ModifyProfile = () => {
     <>
       <ModifyProfileHeader
         sumbitHandler={sumbitHandler}
-        disabled={btnState ? false : true}
+        // disabled={btnState ? false : true}
       />
       <div className="modifiyProfile-wrap">
         <div className="modifyProfile-container">

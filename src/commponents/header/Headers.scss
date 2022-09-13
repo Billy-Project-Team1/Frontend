@@ -100,11 +100,7 @@
 	top: 0;
 	left: 0;
 	z-index: 2;
-}
-
-.header_detail_container {
-	padding: 0 1rem;
-	position: sticky;
+	width: 100%;
 }
 
 .detail_header_wrap {
@@ -113,9 +109,19 @@
 	display: flex;
 	position: sticky;
 	z-index: 2;
-	justify-content: flex-end;
 	align-items: center;
 }
+
+.mypage_header_content{
+	width: 100%;
+	justify-content: space-between;
+}
+
+.header_detail_container {
+	padding: 0 1rem;
+	position: sticky;
+}
+
 
 .detail_dot_icon {
 	background-image: url('../../static/image/detail_dot_icon.svg');

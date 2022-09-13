@@ -8,13 +8,13 @@ const initialState = {
 
 //try는 계속 시도해보고 안되면 catch로 넘어감
 export const getPost = createAsyncThunk(
-  'getPost',
-  async (payload, thunkAPI) => {
-    try {
-      // console.log(payload) => id뜸
-      // a:API url , b: API request 근데 이건 get이니까 없음 ㅋㅋ (가끔 있음), c: 파일의 타입 바꿔줄때 씀(이미지)
-      const response = await instance.get(`/posts/details/${payload}`);
-      // console.log(response)
+	'getPost',
+	async (payload, thunkAPI) => {
+		try {
+			// console.log(payload) => id뜸
+			// a:API url , b: API request 근데 이건 get이니까 없음 ㅋㅋ (가끔 있음), c: 파일의 타입 바꿔줄때 씀(이미지)
+			const response = await instance.get(`/posts/details/${payload}`);
+			// console.log(response)
 
       //Rerult를 slice에 다 넣어줘야함. 그래야 이제 빼써 쓸 수 있음.
       if (response.data.success === true) {
