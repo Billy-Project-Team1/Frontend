@@ -52,21 +52,8 @@ export const myProfileSlice = createSlice({
       state.myProfile = action.payload;
     },
     [getProfileThunk.rejected]: (state, action) => {
-      state.error = action.payload;
+      console.log(action);
     },
-    // [editProfileThunk.fulfilled]: (state, action) => {
-    //   state.myProfile = state.myProfile.map((item, index) => {
-    //     if (item.userId === action.payload.userId) {
-    //       return {
-    //         ...item,
-    //         nickname: action.payload.nickname,
-    //         profileUrl: action.payload.profileUrl,
-    //       };
-    //     } else {
-    //       return { ...item };
-    //     }
-    //   });
-    // },
     [editProfileThunk.fulfilled]: (state, action) => {
       state.myProfile = action.payload;
     },

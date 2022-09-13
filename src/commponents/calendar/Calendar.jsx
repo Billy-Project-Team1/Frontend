@@ -79,13 +79,16 @@ const PostingCalendar = ({ setData, data }) => {
       noDates.current = [];
     }
   };
-  const blockDate = date.toLocaleString();
+  const blockDate = date.map((v) => {
+    v = v.toLocaleString();
+    return v;
+  });
 
   useEffect(() => {
     setDateFormat();
     setData({
       ...data,
-      blockDateDtoList: [blockDate],
+      blockDateDtoList: blockDate,
     });
   }, [date]);
 
