@@ -16,11 +16,78 @@
 	top: 0px;
 	display: flex;
 	background: #cccccc;
+
+	img {
+		width: 100%;
+		aspect-ratio: 1/1;
+		object-fit: cover;
+	}
 }
 .detail_user_profile {
-	border-bottom: 2px solid rgba(238, 238, 238, 1);
+	padding: 1rem 0;
+	border-bottom: 1px solid rgba(238, 238, 238, 1);
+
+	.detail_profile_img {
+		margin: 3px 10px 0 0;
+		float: left;
+		img {
+			width: 40px;
+			height: 40px;
+			width: 40px;
+			height: 40px;
+			border-radius: 50px;
+			float: left;
+		}
+	}
+
+	.detail_nickname {
+		font-size: 1rem;
+	}
+	.detail_location {
+		color: #cccccc;
+		font-size: 12px;
+	}
+	.detail_time {
+		color: #cccccc;
+		font-size: 12px;
+	}
 }
 
 .detail_title {
-	border-bottom: 2px solid rgba(238, 238, 238, 1);
+	color: #212121;
+	font-weight: 500;
+	font-size: 15px;
+	padding: 1rem 0 5px 0;
+}
+
+.detail_content {
+	color: #212121;
+	font-weight: 400;
+	font-size: 14px;
+	padding-top: 1rem;
+}
+
+.detail_rental {
+	color: #212121;
+	font-weight: 600;
+	font-size: 1rem;
+	.detail_price {
+		padding-right: 7px;
+	}
+	.detail_rental_line {
+		font-size: 1rem;
+		padding-right: 7px;
+	}
+	.detail_deposit {
+	}
+}
+
+.detail_bottom_contents {
+	color: #757575;
+	font-size: 12px;
+	padding-top: 1rem;
+}
+
+.detail_contents_line {
+	font-size: 8px;
 }

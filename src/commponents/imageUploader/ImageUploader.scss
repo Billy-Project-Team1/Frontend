@@ -5,7 +5,6 @@
 .preview_img_container {
 	// overflow: hidden;
 	width: 100%;
-	margin-right: 10px;
 	display: flex;
 	flex-direction: row;
 	
@@ -19,16 +18,16 @@
 	margin-left: 10px;
 	display: flex;
 	border-radius: 3px;
-	width:85px;
-	height: 85px;
+	width:84px;
+	height:84px;
 	aspect-ratio: 1/1;
 	object-fit: cover,
 }
 
 .preview_del {
 	position: absolute;
-	top: -12%;
-	// bottom: 10;
-	right: -10%;
+	top: -14%;
+	right: -8%;
 	color: #cccccc;
+	font-size: 20px;
 }
