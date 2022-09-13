@@ -3,7 +3,6 @@
   // max-width: 428px;
 }
 .myProfileHeader-wrap {
-  // border: 1px solid blue;
   width: 230px;
   height: 60px;
   display: flex;
@@ -14,8 +13,6 @@
   position: relative;
 }
 .myProfileHeader-imgBox {
-  // width: 50%;
-  // border: 1px blue solid;
   height: 60px;
   width: 60px;
   border-radius: 50%;
@@ -27,11 +24,8 @@
   border-radius: 50%;
 }
 .myProfileHeader-rightBox {
-  // border: 1px solid red;
-  // width: 60%;
   margin-left: 14px;
   margin-top: 5px;
-  // position: relative;
 
   p {
     font-size: 0.75rem;
@@ -48,8 +42,13 @@
 .myProfileHeader-settingBtn {
   color: #cccccc;
   cursor: pointer;
-  position: absolute;
+  margin: auto;
+}
+.myProfileHeader-rightTopBox {
   display: flex;
-  top: 19px;
-  right: 25px;
+  flex-direction: row;
+}
+.myProfileHeader-icon {
+  display: flex;
+  flex-direction: column;
 }

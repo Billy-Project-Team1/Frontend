@@ -1,14 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Calendar } from 'react-multi-date-picker';
-import 'react-multi-date-picker/styles/layouts/mobile.css';
-import {
-  HiOutlineCalendar,
-  HiOutlineChevronDown,
-  HiOutlineChevronUp,
-} from 'react-icons/hi';
+import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import './Calendar.scss';
 
-const PostingCalendar = () => {
+const DetailCalendar = () => {
   const noDates = useRef();
   const noDates2 = useRef();
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
@@ -81,46 +76,60 @@ const PostingCalendar = () => {
     }
   };
 
+  const blockDate = date.toLocaleString();
+
   useEffect(() => {
     setDateFormat();
+    // setData({
+    //   ...data,
+    //   blockDateDtoList: [blockDate],
+    // });
   }, [date]);
 
   return (
     <div className="calendar-wrap">
-      <HiOutlineCalendar
-        style={{ marginRight: '14px' }}
-        color="#757575"
-        size="24px"
-      />
-
-      <input
-        readOnly
-        placeholder="대여 불가능한 날짜를 체크해주세요"
-        className="calendar-input"
-        onClick={() => {
-          toggleMode();
-        }}
-        value={noDates.current?.length > 0 ? noDates.current : ''}
-      />
-      {toggleOn === true ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
-      {noDates.current?.length > 0 && (
-        <button className="calendar-deleteButton" onClick={() => deleteDates()}>
-          삭제
-        </button>
-      )}
-
-      {toggleOn === true ? (
-        <Calendar
-          range
-          value={date}
-          onChange={setDate}
-          weekDays={weekDays}
-          months={months}
-          format="YYYY/MM/DD"
-          minDate={new Date()}
-          maxDate={new Date().setDate(90)}
-          className="rmdp-mobile"
+      <div className="calendar-box">
+        희망 대여 날짜
+        <input
+          readOnly
+          className="calendar-input"
+          onClick={() => {
+            toggleMode();
+          }}
+          style={{ marginLeft: '10px' }}
+          value={noDates.current?.length > 0 ? noDates.current : ''}
         />
+        <div className="calendar-toggleIcon">
+          {toggleOn === true ? (
+            <HiOutlineChevronUp style={{ margin: 'auto' }} />
+          ) : (
+            <HiOutlineChevronDown style={{ margin: 'auto' }} />
+          )}
+        </div>
+      </div>
+      {toggleOn === true ? (
+        <div>
+          <Calendar
+            range
+            value={date}
+            onChange={setDate}
+            weekDays={weekDays}
+            months={months}
+            format="YYYY/MM/DD"
+            minDate={new Date()}
+            maxDate={new Date().setDate(90)}
+          />
+          <div className="calendar-btns">
+            <p onClick={() => deleteDates()}>전체 삭제</p>
+            <button
+              onClick={() => {
+                toggleMode(false);
+              }}
+            >
+              저장
+            </button>
+          </div>
+        </div>
       ) : (
         ''
       )}
@@ -128,4 +137,4 @@ const PostingCalendar = () => {
   );
 };
 
-export default PostingCalendar;
+export default DetailCalendar;
