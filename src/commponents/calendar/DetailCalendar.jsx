@@ -48,9 +48,10 @@ const DetailCalendar = ({ data, detailPost }) => {
   //   });
   //   setUnavailable(datesArray);
   // };
-  // console.log(unavailable);
+  // dd console.log(unavailable);
 
-  // useEffect(() => {
+
+  // 00 useEffect(() => {
   //   if (detailPost) {
   //     setUnavailable(data);
   //   }
@@ -62,6 +63,22 @@ const DetailCalendar = ({ data, detailPost }) => {
   //     disableDate(data);
   //   }
   // }, []);
+
+  // useEffect(() => {
+  //   let elements = null;
+  //   if (toggleOn === true) {
+  //     elements = document.querySelectorAll('.calendar-toggleOn.rmdp-day .sd');
+  //   } else {
+  //     elements = document.querySelectorAll('.calendar-toggleOn.rmdp-day .sd');
+  //   }
+  //   for (let i = 0; i < elements.length; i++) {
+  //     for (let j = 0; j < unavailable.length; j++) {
+  //       if (elements[i].innerText / 1 === unavailable[j]) {
+  //         elements[i].parentNode.classList.add('rmdp-disabled');
+  //       }
+  //     }
+  //   }
+  // });
 
   const setDateFormat = () => {
     if (date?.length > 0) {
@@ -140,13 +157,15 @@ const DetailCalendar = ({ data, detailPost }) => {
         <div>
           <Calendar
             range
-            value={date}
+            value={date && date}
             onChange={setDate}
             weekDays={weekDays}
             months={months}
             format="YYYY/MM/DD"
             minDate={new Date()}
             maxDate={new Date().setDate(90)}
+            onMonthChange={(date) => setMonth(new Date(date).getMonth() + 1)}
+            className="calendar-toggleOn"
           />
           <div className="calendar-btns">
             <p onClick={() => deleteDates()}>전체 삭제</p>
