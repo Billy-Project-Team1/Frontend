@@ -38,47 +38,43 @@ const DetailCalendar = ({ data, detailPost }) => {
     noDates.current = [];
   };
   console.log(data);
+  // .getMonth() + 1 === month
+  const disableDate = () => {
+    const datesArray = [];
+    data.map((v) => {
+      if (new Date(v)) {
+        datesArray.push(new Date(v).getDate());
+      }
+    });
+    setUnavailable(datesArray);
+  };
+  console.log(unavailable);
 
-  // const disableDate = () => {
-  //   const datesArray = [];
-  //   data.map((v) => {
-  //     if (new Date(v).getMonth() + 1 === month) {
-  //       datesArray.push(new Date(v).getDate());
-  //     }
-  //   });
-  //   setUnavailable(datesArray);
-  // };
-  // dd console.log(unavailable);
+  useEffect(() => {
+    const elements = document.querySelectorAll(
+      '.calendar-toggleOn.rmdp-day .sd'
+    );
+    for (let i = 0; i < elements.length; i++) {
+      for (let j = 0; j < unavailable.length; j++) {
+        if (elements[i].innerText / 1 === unavailable[j]) {
+          elements[i].parentNode.classList.add('.rmdp-day. rmdp-disabled');
+        }
+      }
+    }
+  }, [unavailable]);
 
-
-  // 00 useEffect(() => {
+  // useEffect(() => {
   //   if (detailPost) {
   //     setUnavailable(data);
   //   }
   // }, []);
   // console.log(unavailable);
 
-  // useEffect(() => {
-  //   if (detailPost) {
-  //     disableDate(data);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   let elements = null;
-  //   if (toggleOn === true) {
-  //     elements = document.querySelectorAll('.calendar-toggleOn.rmdp-day .sd');
-  //   } else {
-  //     elements = document.querySelectorAll('.calendar-toggleOn.rmdp-day .sd');
-  //   }
-  //   for (let i = 0; i < elements.length; i++) {
-  //     for (let j = 0; j < unavailable.length; j++) {
-  //       if (elements[i].innerText / 1 === unavailable[j]) {
-  //         elements[i].parentNode.classList.add('rmdp-disabled');
-  //       }
-  //     }
-  //   }
-  // });
+  useEffect(() => {
+    if (detailPost) {
+      disableDate(data);
+    }
+  }, []);
 
   const setDateFormat = () => {
     if (date?.length > 0) {
@@ -156,8 +152,9 @@ const DetailCalendar = ({ data, detailPost }) => {
       {toggleOn === true ? (
         <div>
           <Calendar
+            // multiple
             range
-            value={date && date}
+            value={date & data}
             onChange={setDate}
             weekDays={weekDays}
             months={months}
