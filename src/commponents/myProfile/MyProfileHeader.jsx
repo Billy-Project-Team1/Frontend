@@ -14,7 +14,7 @@ const MyProfileHeader = () => {
 
   useEffect(() => {
     dispatch(getProfileThunk(id));
-  }, [dispatch]);
+  }, []);
 
   const profile = useSelector((state) => state.myprofile.myProfile);
   console.log(profile);

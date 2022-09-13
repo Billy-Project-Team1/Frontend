@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react';
 import { useState } from 'react';
 
 const MyProfileMiddle = () => {
-  const [myPageState, setMyPageState] = useState('');
+  const [myPageState, setMyPageState] = useState('1');
 
   return (
     <div className="MyProfileMiddleWrap">

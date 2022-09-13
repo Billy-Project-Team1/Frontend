@@ -44,7 +44,7 @@ const Detail = () => {
 			<DetailHeader mine={detailPost.mine} />
 			<div className="detail_image_box">
 				{/* width 100 1/1  + 라이브러리 */}
-				<img src={detailPost.postImgUrl.postImgUrlList[0]} />
+				<img src={detailPost.postImgUrl?.postImgUrlList[0]} />
 			</div>
 			<div className="detail_wrap">
 				<div className="detail_user_profile">

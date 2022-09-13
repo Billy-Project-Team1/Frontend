@@ -12,8 +12,6 @@ const Main = () => {
   const [ref, inView] = useInView();
   const SIZE = 5;
 
-  console.log(inView);
-
   useEffect(() => {
     if (postList.length === 0) {
       dispatch(
@@ -40,9 +38,6 @@ const Main = () => {
       );
     }
   }, [inView]);
-
-
-  console.log(postList)
 
   return (
     <div>
