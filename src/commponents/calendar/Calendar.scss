@@ -20,6 +20,7 @@
   font-size: 1rem;
   border: none;
   cursor: pointer;
+  display: flex;
 }
 .calendar-input:focus {
   outline: none;
@@ -74,4 +75,32 @@
 }
 .rmdp-wrapper.rmdp-shadow {
   box-shadow: none;
+  // box-shadow: 0 0 5px #8798ad;
+}
+.calendar-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  button {
+    background-color: #004eea;
+    border-radius: 12px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    font-family: 'Noto Sans';
+    font-weight: 600;
+    font-size: 1rem;
+    color: #f7f7f7;
+    margin-top: 2px;
+  }
+  p {
+    color: #212121;
+    font-family: 'Noto Sans';
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: underline;
+    text-underline-position: under;
+    margin-left: 8px;
+    margin-top: 9px;
+  }
 }

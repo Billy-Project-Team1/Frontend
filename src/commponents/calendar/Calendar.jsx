@@ -113,26 +113,30 @@ const PostingCalendar = ({ setData, data }) => {
             <HiOutlineChevronDown style={{ margin: 'auto' }} />
           )}
         </div>
-        {noDates.current?.length > 0 && (
-          <button
-            className="calendar-deleteButton"
-            onClick={() => deleteDates()}
-          >
-            삭제
-          </button>
-        )}
       </div>
       {toggleOn === true ? (
-        <Calendar
-          multiple
-          value={date}
-          onChange={setDate}
-          weekDays={weekDays}
-          months={months}
-          format="YYYY/MM/DD"
-          minDate={new Date()}
-          maxDate={new Date().setDate(90)}
-        />
+        <div>
+          <Calendar
+            multiple
+            value={date}
+            onChange={setDate}
+            weekDays={weekDays}
+            months={months}
+            format="YYYY/MM/DD"
+            minDate={new Date()}
+            maxDate={new Date().setDate(90)}
+          />
+          <div className="calendar-btns">
+            <p onClick={() => deleteDates()}>전체 삭제</p>
+            <button
+              onClick={() => {
+                toggleMode(false);
+              }}
+            >
+              저장
+            </button>
+          </div>
+        </div>
       ) : (
         ''
       )}
