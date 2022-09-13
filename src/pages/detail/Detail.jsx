@@ -1,8 +1,6 @@
 import React from 'react';
 import DetailHeader from '../../commponents/header/DetailHeader';
-import MyProfilHeader from '../../commponents/myProfile/MyProfileHeader';
-
-import { useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './Detail.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -38,24 +36,45 @@ const Detail = () => {
 	//로그인 정보를 가져옴. 게시글 삭제 버튼을 위함 ㅋㅋ~
 	const myUserId = localStorage.getItem('userId');
 
+	//시간 바꾸기
+	const detailDate = (a) => {
+		const milliSeconds = new Date() - a;
+		const seconds = milliSeconds / 1000;
+		if (seconds < 60) return `방금 전`;
+		const minutes = seconds / 60;
+		if (minutes < 60) return `${Math.floor(minutes)}분 전`;
+		const hours = minutes / 60;
+		if (hours < 24) return `${Math.floor(hours)}시간 전`;
+		const days = hours / 24;
+		if (days < 7) return `${Math.floor(days)}일 전`;
+		const weeks = days / 7;
+		if (weeks < 5) return `${Math.floor(weeks)}주 전`;
+		const months = days / 30;
+		if (months < 12) return `${Math.floor(months)}개월 전`;
+		const years = days / 365;
+		return `${Math.floor(years)}년 전`;
+	};
+
+	const nowDate = detailDate(new Date(detailPost.createdAt));
+
 	return (
 		<div className="detail_container">
 			{/* 2. props 내려줌 그럼 받는측은 ㅇㄷ? header 가보기~*/}
 			<DetailHeader mine={detailPost.mine} />
 			<div className="detail_image_box">
 				{/* width 100 1/1  + 라이브러리 */}
-				<img src={detailPost.postImgUrl.postImgUrlList[0]} />
+				<img src={detailPost.postImgUrl?.postImgUrlList[0]} />
 			</div>
 			<div className="detail_wrap">
 				<div className="detail_user_profile">
-
 					<div className="detail_profile_img">
 						<img src={detailPost.profileUrl} />
 					</div>
 					<div className="detail_profile_wrap">
 						<div className="detail_nickname">{detailPost.nickname}</div>
-						<span className="detail_location">{detailPost.location}</span>
-						<span className="detail_time">{detailPost.updatedAt}</span>
+						<span className="detail_location">{detailPost.location} </span>
+						<span className="detail_location_line"> | </span>
+						<span className="detail_time"> {nowDate}</span>
 					</div>
 				</div>
 				<div className="detail_title">{detailPost.title}</div>
@@ -75,7 +94,7 @@ const Detail = () => {
 					</span>
 				</div>
 			</div>
-			<DetailMap data={detailPost}/>
+			<DetailMap data={detailPost} />
 		</div>
 	);
 };
