@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import KakaoMap from './KakaoMap';
 import { HiSearch } from 'react-icons/hi';
 import { BsXCircle } from 'react-icons/bs';
+import { AiOutlineClose } from 'react-icons/ai';
 
 const SearchPlace = ({ setSearchMapModal, setData, data }) => {
   const outSection = useRef();
@@ -14,16 +15,16 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
     longitude: '',
   });
   const onChange = (e) => {
-    setInputText(e.target.value);
+    setPlaceAdress(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setPlace(inputText);
-    setInputText('');
+    setPlace(placeAdress);
+    setPlaceName('');
   };
 
   const onSubmitSearchMap = () => {
-    if (coordNumber.latitude === '') {
+    if (placeAdress === '') {
       alert('장소를 입력하세요!!');
     } else {
       setData({
@@ -38,7 +39,7 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
   };
 
   const onResetButton = () => {
-    setInputText('');
+    setPlaceAdress('');
   };
 
   return (
@@ -60,12 +61,13 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
             <HiSearch className="KakaoMapinputIcon" />
           </div>
           <input
+            type="text"
             className="KakaoMapInputPlace"
-            placeholder="ex.강남역 10번 출구..."
+            placeholder="거래 장소를 입력 해주세요."
             onChange={onChange}
-            value={inputText}
+            value={placeAdress}
           />
-          {inputText === '' ? (
+          {placeAdress === '' ? (
             ''
           ) : (
             <BsXCircle
@@ -88,6 +90,14 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
         <button className="KakaoMapSubmitButton" onClick={onSubmitSearchMap}>
           완료
         </button>
+        <div className="KakaoMapClose">
+          <div
+            className="KakaoMapCloseIconBox"
+            onClick={() => setSearchMapModal(false)}
+          >
+            <AiOutlineClose className="KakaoMapCloseIcon" />
+          </div>
+        </div>
       </div>
     </div>
   );

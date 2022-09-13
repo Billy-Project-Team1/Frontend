@@ -7,6 +7,7 @@ import './Detail.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPost } from '../../redux/modules/postSlice';
+import DetailMap from '../../commponents/maps/DetailMap';
 
 const Detail = () => {
 	//2. 함수 만들 때 수입해서 쓸거임. slice에서 수입해올 때 사용하는 함수임.
@@ -47,6 +48,7 @@ const Detail = () => {
 			</div>
 			<div className="detail_wrap">
 				<div className="detail_user_profile">
+
 					<div className="detail_profile_img">
 						<img src={detailPost.profileUrl} />
 					</div>
@@ -73,6 +75,7 @@ const Detail = () => {
 					</span>
 				</div>
 			</div>
+			<DetailMap data={detailPost}/>
 		</div>
 	);
 };
