@@ -1,10 +1,13 @@
 .SearchWrap {
   width: 100%;
   padding: 0 1rem;
-  margin-top: 3.8125rem;
+  height: 53px;
+  display: flex;
+
 }
 
 .SearchHeader {
+  margin: auto;
   width: 100%;
   position: relative;
   display: flex;

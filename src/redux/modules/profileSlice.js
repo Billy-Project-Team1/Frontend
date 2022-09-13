@@ -52,7 +52,7 @@ export const myProfileSlice = createSlice({
       state.myProfile = action.payload;
     },
     [getProfileThunk.rejected]: (state, action) => {
-      console.log(action);
+     console.log(action.payload)
     },
     [editProfileThunk.fulfilled]: (state, action) => {
       state.myProfile = action.payload;

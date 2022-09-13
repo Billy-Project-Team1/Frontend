@@ -33,7 +33,6 @@ const Posting = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchMapModal, setSearchMapModal] = useState(false);
-  console.log(searchMapModal);
 
   const [calendarOpen, setCalendarOpen] = useState(false);
   const calendarClose = () => {
@@ -66,7 +65,7 @@ const Posting = () => {
   /////////////////
 
   const move = () => {
-		dispatch(addPost());
+    dispatch(addPost());
     // navigate(`/detail/${}`);
   };
 
