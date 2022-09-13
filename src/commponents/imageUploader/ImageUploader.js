@@ -9,12 +9,11 @@ import { FaMinusCircle } from 'react-icons/fa';
 
 import './ImageUploader.scss';
 
-const ImageUploader = (props) => {
+const ImageUploader = ({img, setImg}) => {
 	const dispatch = useDispatch();
 	const inputRef = React.useRef();
-	const is_edit = props.is_edit;
 
-	const [img, setImg] = useState([]); // file
+	
 	const [imgUrl, setImgUrl] = useState([]); // url
 
 	const change = (event) => {
@@ -57,13 +56,7 @@ const ImageUploader = (props) => {
 
 		const date = ['2022-09-22', '2022-10-22'];
 
-		for (let i = 0; i < date.length; i++) {
-			formData.append('blockDateDtoList', date[i]);
-		}
-
-		for (let i = 0; i < img.length; i++) {
-			formData.append('files', img[i]);
-		}
+	
 
 		dispatch(uploadToDB(formData));
 	};
@@ -89,7 +82,7 @@ const ImageUploader = (props) => {
 				onChange={(event) => change(event)}
 				type="file"
 				accept="image/*"
-				multiple={!is_edit}
+				multiple
 				style={{ display: 'none' }}
 			/>
 

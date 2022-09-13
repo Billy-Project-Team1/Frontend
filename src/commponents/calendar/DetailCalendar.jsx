@@ -39,16 +39,16 @@ const DetailCalendar = ({ data, detailPost }) => {
   };
   console.log(data);
 
-  const disableDate = () => {
-    const datesArray = [];
-    data.map((v) => {
-      if (new Date(v).getMonth() + 1 === month) {
-        datesArray.push(new Date(v).getDate());
-      }
-    });
-    setUnavailable(datesArray);
-  };
-  console.log(unavailable);
+  // const disableDate = () => {
+  //   const datesArray = [];
+  //   data.map((v) => {
+  //     if (new Date(v).getMonth() + 1 === month) {
+  //       datesArray.push(new Date(v).getDate());
+  //     }
+  //   });
+  //   setUnavailable(datesArray);
+  // };
+  // console.log(unavailable);
 
   // useEffect(() => {
   //   if (detailPost) {
@@ -57,11 +57,11 @@ const DetailCalendar = ({ data, detailPost }) => {
   // }, []);
   // console.log(unavailable);
 
-  useEffect(() => {
-    if (detailPost) {
-      disableDate(data);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (detailPost) {
+  //     disableDate(data);
+  //   }
+  // }, []);
 
   const setDateFormat = () => {
     if (date?.length > 0) {
