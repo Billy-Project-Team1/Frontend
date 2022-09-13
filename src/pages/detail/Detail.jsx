@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPost } from '../../redux/modules/postSlice';
 import DetailMap from '../../commponents/maps/DetailMap';
 import DetailCalendar from '../../commponents/calendar/DetailCalendar';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper';
+import 'swiper/css/bundle';
 
 const Detail = () => {
   //2. 함수 만들 때 수입해서 쓸거임. slice에서 수입해올 때 사용하는 함수임.
@@ -96,6 +99,7 @@ const Detail = () => {
         </div>
       </div>
       <DetailMap data={detailPost} />
+
       <div className="detail_user_profile" />
       <DetailCalendar
         data={detailPost.blockDate?.blockDateList}
