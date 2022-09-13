@@ -29,7 +29,7 @@ const DetailMap = ({ data }) => {
   return (
     <div className="DetailMapWrap">
       <div className="DetailMapTitle">거래 장소</div>
-      <div className="DetailMapPlace">{data.location}</div>
+      <div className="DetailMapPlace">{data.detailLocation}</div>
       <div id="map" className="DetailMapImg"></div>
     </div>
   );

@@ -10,7 +10,7 @@ import { useInView } from 'react-intersection-observer';
 const Main = () => {
   const dispatch = useDispatch();
   const [ref, inView] = useInView();
-  const SIZE = 5;
+  const SIZE = 7;
 
   useEffect(() => {
     if (postList.length === 0) {

@@ -81,7 +81,7 @@ const Posting = () => {
   // ”files”: form/data,
 
   //   //[1] post
-  const onPostingHandler = (e) => {
+  const onPostingHandler = async (e) => {
     e.preventDefault();
     //이미지 form 데이터
     let formData = new FormData();
@@ -97,8 +97,18 @@ const Posting = () => {
     for (let i = 0; i < blockDateDtoList.blockDateDtoList.length; i++) {
       formData.append('blockDateDtoList', blockDateDtoList.blockDateDtoList[i]);
     }
-    dispatch(addPost(formData));
-    // navigate(`/detail/${}`);
+    try {
+      const data = await dispatch(addPost(formData)).unwrap();
+      console.log(data);
+      if (data) {
+        window.location.replace('/');
+        window.location.replace(`/detail/${data.id}`);
+      } else {
+        console.log(data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

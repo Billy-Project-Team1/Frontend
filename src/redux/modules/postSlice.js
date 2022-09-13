@@ -36,12 +36,10 @@ export const addPost = createAsyncThunk(
 			const response = await instance.post(`/auth/posts`, payload, {
 				'Content-Type': 'multipart/form-data',
 			});
-			console.log(response)
-
 			//Rerult를 slice에 다 넣어줘야함. 그래야 이제 빼써 쓸 수 있음.
-			// if (response.data.success === true) {
-			// 	return thunkAPI.fulfillWithValue(response.data.result);
-			// }
+			if (response.data.success === true) {
+				return thunkAPI.fulfillWithValue(response.data.result);
+			}
 		} catch (error) {
 			console.log(error);
 		}
@@ -93,6 +91,9 @@ const postSlice = createSlice({
 	extraReducers: {
 		// initialState를 쓰려면 configstore에 등록줘야함
 		[getPost.fulfilled]: (state, action) => {
+			state.post = action.payload;
+		},
+		[addPost.fulfilled]: (state, action) => {
 			state.post = action.payload;
 		},
 	},
