@@ -1,0 +1,51 @@
+.SearchWrap {
+  width: 100%;
+  padding: 0 1rem;
+  margin-top: 3.8125rem;
+}
+
+.SearchHeader {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.SearchHeaderIconBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 1.5rem;
+}
+
+.SearchHeaderIcon {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.SearchHeaderInput {
+  width: 100%;
+  border: none;
+  border-radius: 0.75rem;
+  height: 2.375rem;
+  background: #ededed;
+  padding: 0 1rem;
+}
+
+.SearchHeaderInputXbutton {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 0.75rem;
+  top: 0.65rem;
+  color: #cccccc;
+}
+
+.SearchEmptyText {
+  padding: 0 1rem;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: #cccccc;
+}
