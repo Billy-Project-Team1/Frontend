@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import { Icon } from '@iconify/react';
 import LoginHeader from '../../commponents/header/LoginHeader';
 import './Chat.scss';
+import { getChatDetailPost } from '../../redux/modules/ChatSlice';
 
 var stompClient = null;
 
@@ -12,7 +15,14 @@ const Chat = () => {
   const { roomId } = useParams();
   const myNickname = localStorage.getItem('nickname');
   const PK = localStorage.getItem('memberId');
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getChatDetailPost(roomId));
+  }, []);
+
+  const roomData = useSelector((state) => state.ChatSlice.chatRoomDetail);
+  console.log(roomData);
   const [chatList, setChatList] = useState([]);
   const [userData, setUserData] = useState({
     type: '',
@@ -42,10 +52,9 @@ const Chat = () => {
   const registerUser = () => {
     var sockJS = new SockJS(process.env.REACT_APP_API_URL + '/wss/chat');
     // var sockJS = new SockJS('http://13.125.236.69/wss/chat');
-
     console.log(sockJS);
     stompClient = Stomp.over(sockJS);
-    stompClient.debug = null;
+    // stompClient.debug = null;
     console.log(stompClient);
     stompClient.connect({ PK }, onConnected, onError);
   };
@@ -76,7 +85,7 @@ const Chat = () => {
       quitOwner: '',
     };
 
-    // stompClient.send(`/pub/chat/message`, { PK }, JSON.stringify(chatMessage));
+    stompClient.send(`/pub/chat/message`, { PK }, JSON.stringify(chatMessage));
   };
 
   const onMessageReceived = (payload) => {
@@ -148,6 +157,18 @@ const Chat = () => {
   return (
     <>
       <LoginHeader />
+      <div className="ChatHeadContainer">
+        <div className="ChatHeadBox">
+        <div className="ChatHeadImgBox">
+          <img src={roomData.profileUrl} className="ChatHeadImg"/>
+        </div>
+        <div className="ChatHeadTextBox">
+          <div className="ChatHeadTitle">1212</div>
+          <div>1212</div>
+        </div>
+        <div></div>
+        </div>
+      </div>
       <div className="ChatContainer">
         {chatList?.map((chat, idx) => {
           return (

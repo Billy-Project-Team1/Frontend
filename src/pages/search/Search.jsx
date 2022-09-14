@@ -60,15 +60,18 @@ const Search = () => {
           )}
         </form>
       </div>
+
       {searchPostList.length === 0 ? (
         <div className="SearchEmptyText">
           지역명 + 제품명으로 검색하여 필요한 제품을 찾아보세요! 예) 강남
           자전거, 분당 노트북
         </div>
       ) : (
-        searchPostList.map((post) => {
-          return <MainListCard post={post} key={post.id} />;
-        })
+        <div className="SearchPostList">
+          {searchPostList.map((post) => {
+            return <MainListCard post={post} key={post.id} />;
+          })}
+        </div>
       )}
       <Footer />
     </>

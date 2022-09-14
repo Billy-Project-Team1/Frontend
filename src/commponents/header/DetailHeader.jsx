@@ -13,7 +13,6 @@ const AddPostingHeader = ({ authorId }) => {
 	const [modalOpen, setModalOpen] = useState(false);
 	const showModal = () => {
 		setModalOpen(!modalOpen);
-		console.log('222');
 	};
 
 	return (
@@ -28,20 +27,20 @@ const AddPostingHeader = ({ authorId }) => {
 					/>
 					{/* 4. 삼항연산자. props 이용해하기. api 확인~ */}
 
-					{userId === authorId ? (
-						<div>
-							<img
-								src={dotIcon}
-								style={{ width: '28px' }}
-								onClick={() => showModal()}
-							/>
-						</div>
-					) : (
+					{/* {userId === authorId ? ( */}
+					<div>
+						<img
+							src={dotIcon}
+							style={{ width: '28px' }}
+							onClick={() => showModal()}
+						/>
+					</div>
+					{/* ) : (
 						''
-					)}
+					)} */}
 				</div>
 			</div>
-			{modalOpen && <DetailModal setModalOpen={setModalOpen} />}
+			{modalOpen && <DetailModal showModal={showModal} />}
 		</div>
 	);
 };
