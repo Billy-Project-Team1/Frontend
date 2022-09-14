@@ -4,9 +4,7 @@ import { FaHeart } from 'react-icons/fa';
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
 
-const MyProfileMiddle = () => {
-  const [myPageState, setMyPageState] = useState('1');
-
+const MyProfileMiddle = ({ myPageState, setMyPageState }) => {
   return (
     <div className="MyProfileMiddleWrap">
       <div className="MyProfileMiddleContainer">
