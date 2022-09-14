@@ -119,8 +119,6 @@ const Detail = () => {
 				</div>
 			</div>
 			<DetailMap data={detailPost} />
-
-			<div className="detail_user_profile" />
 			<DetailCalendar
 				data={detailPost.blockDate?.blockDateList}
 				detailPost={detailPost}

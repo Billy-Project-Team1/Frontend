@@ -4,6 +4,7 @@ import instance from './instance';
 const initialState = {
   chatList: [],
   chatRoomList: [],
+  chatRoomDetail:{},
 };
 
 export const getMyChatRoom = createAsyncThunk(
@@ -19,6 +20,20 @@ export const getMyChatRoom = createAsyncThunk(
   },
 );
 
+export const getChatDetailPost = createAsyncThunk(
+	'getChatDetailPost',
+	async (payload, thunkAPI) => {
+		try {
+			const response = await instance.get(`/posts/details/${payload}`);
+			if (response.data.success === true) {
+				return thunkAPI.fulfillWithValue(response.data.result);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
 const chatListSlice = createSlice({
   name: "chatList",
   initialState,
@@ -27,6 +42,9 @@ const chatListSlice = createSlice({
 			// action.payload -> chatroom list
       state.chatRoomList.push(action.payload);
     },
+    [getChatDetailPost.fulfilled]:(state, action)=>{
+      state.chatRoomDetail = action.payload
+    }
   },
 });
 

@@ -1,24 +1,48 @@
-.DetailMapWrap{
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-    margin-bottom: 5.375rem;
-    padding: 0 1rem;
+.DetailMapWrap {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  padding: 0 1rem;
 }
 
-.DetailMapTitle{
-    display: flex;
+.DetailMapContainer {
+  display: flex;
+  flex-direction: column;
+
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+}
+
+.DetailMapTitle {
+
+  display: flex;
+  flex-direction: row;
+  font-size: 1rem;
+  color: #757575;
+}
+
+.DetailMapPlaceBox{
+display:flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.DetailMapPlace {
+  color: #757575;
+  font-size: 0.875rem;
+}
+.DetailMapImg {
+  margin: auto;
+  margin-top: 1rem;
+  border-radius: 12px;
+  width: 100%;
+  aspect-ratio: 1.7/1;
+  margin-bottom: 1.5rem;
+}
+
+.DetailMapTextBox{
+    display:flex;
     flex-direction: row;
-    font-size: 1rem;
-    color: #757575;
-}
-.DetailMapPlace{
-    color: #212121;
-}
-.DetailMapImg{
-    margin: auto;
-    margin-top: 1rem;
-    border-radius: 12px;
-    width: 100%;
-    aspect-ratio: 1.7/1;
+    margin-top: 1.5rem;
+    gap: 5px;
 }

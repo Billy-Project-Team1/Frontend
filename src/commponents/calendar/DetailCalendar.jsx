@@ -25,7 +25,7 @@ const DetailCalendar = ({ data, detailPost }) => {
   const [date, setDate] = useState([]);
   const [dates, setDates] = useState();
   const [unavailable, setUnavailable] = useState([]);
-  const [toggleOn, setToggleOn] = useState(false);
+  const [toggleOn, setToggleOn] = useState(true);
   // console.log(date.toLocaleString());
   // data={detailPost.blockDate?.blockDateList[0]}
 
@@ -75,7 +75,7 @@ const DetailCalendar = ({ data, detailPost }) => {
   //     disableDate(data);
   //   }
   // }, []);
-  
+
   // console.log(unavailable);
 
   // useEffect(() => {
@@ -84,7 +84,6 @@ const DetailCalendar = ({ data, detailPost }) => {
   //   }
   // }, []);
 
-
   const setDateFormat = () => {
     if (date?.length > 0) {
       noDates.current = null;
@@ -92,8 +91,8 @@ const DetailCalendar = ({ data, detailPost }) => {
         return v.format(v._format);
       });
       setDates(getDates);
-      if (date?.length < 3) {
-        noDates.current = [];
+      if (date?.length === 2) {
+        noDates2.current = [];
         for (let i = 0; i < date.length; i++) {
           const dateItem = `${
             date[i].month.number < 10
@@ -102,7 +101,17 @@ const DetailCalendar = ({ data, detailPost }) => {
           }.${date[i].day < 10 ? '0' + date[i].day : date[i].day}(${
             weekDays[date[i].weekDay.index]
           })`;
-          noDates.current.push(dateItem);
+          noDates2.current.push(dateItem);
+          const date1 = new Date(date[0]);
+          const date2 = new Date(date[1]);
+
+          const diffDate = date1.getTime() - date2.getTime();
+          const diffDateDay = Math.floor(
+            Math.abs(diffDate / (1000 * 60 * 60 * 24))
+          );
+          noDates.current = `${noDates2.current[0]}~${
+            noDates2.current[noDates2.current.length - 1]
+          } (${diffDateDay}박)`;
         }
       } else {
         noDates2.current = [];
@@ -118,9 +127,7 @@ const DetailCalendar = ({ data, detailPost }) => {
         }
         noDates.current = noDates2.current.sort();
 
-        noDates.current = `${noDates.current[0]},${noDates.current[1]}외 ${
-          date.length - 2
-        }일`;
+        noDates.current = `반납 일자를 정해 주세요`;
       }
     } else {
       noDates.current = [];
@@ -141,16 +148,15 @@ const DetailCalendar = ({ data, detailPost }) => {
     <div className="calendar-wrap">
       <div className="calendar-box">
         희망 대여 날짜
-        <input
-          readOnly
-          className="calendar-input"
+        <div className="calendar-input">
+          <div className="calendar-inputText">{noDates.current?.length > 0 ? noDates.current : ''}</div>
+        </div>
+        <div
+          className="calendar-toggleIcon"
           onClick={() => {
             toggleMode();
           }}
-          style={{ marginLeft: '10px' }}
-          value={noDates.current?.length > 0 ? noDates.current : ''}
-        />
-        <div className="calendar-toggleIcon">
+        >
           {toggleOn === true ? (
             <HiOutlineChevronUp style={{ margin: 'auto' }} />
           ) : (
@@ -173,16 +179,6 @@ const DetailCalendar = ({ data, detailPost }) => {
             onMonthChange={(date) => setMonth(new Date(date).getMonth() + 1)}
             className="calendar-toggleOn"
           />
-          <div className="calendar-btns">
-            <p onClick={() => deleteDates()}>전체 삭제</p>
-            <button
-              onClick={() => {
-                toggleMode(false);
-              }}
-            >
-              저장
-            </button>
-          </div>
         </div>
       ) : (
         ''

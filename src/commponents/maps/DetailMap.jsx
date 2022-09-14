@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import './DetailMap.scss';
 const { kakao } = window;
 
 const DetailMap = ({ data }) => {
+  const [toggleOn, setToggleOn] = useState(true);
+
+  const toggleMode = () => {
+    setToggleOn((toggleOn) => !toggleOn);
+  };
+
   useEffect(() => {
     const container = document.getElementById('map');
     const options = {
@@ -28,9 +35,27 @@ const DetailMap = ({ data }) => {
 
   return (
     <div className="DetailMapWrap">
-      <div className="DetailMapTitle">거래 장소</div>
-      <div className="DetailMapPlace">{data.detailLocation}</div>
-      <div id="map" className="DetailMapImg"></div>
+      <div className="DetailMapContainer">
+        <div className="DetailMapTextBox">
+          <div className="DetailMapTitle">거래 장소</div>
+          <div className="DetailMapPlaceBox">
+          <div className="DetailMapPlace">{data.detailLocation}</div>
+          </div>
+          <div
+            className="calendar-toggleIcon"
+            onClick={() => {
+              toggleMode();
+            }}
+          >
+            {toggleOn === true ? (
+              <HiOutlineChevronUp style={{ margin: 'auto' }} />
+            ) : (
+              <HiOutlineChevronDown style={{ margin: 'auto' }} />
+            )}
+          </div>
+        </div>
+        {toggleOn === true ? <div id="map" className="DetailMapImg"></div> : ''}
+      </div>
     </div>
   );
 };
