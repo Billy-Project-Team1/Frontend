@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Headers.scss';
+import DetailModal from '../header/DetailModal';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 import dotIcon from '../../static/image/detail_dot_icon.svg';
 
 //3.props 받은건데 47번에 보라색 이름이 들어오는거
-const AddPostingHeader = ({ move, mine }) => {
+const AddPostingHeader = ({ authorId }) => {
 	const navigate = useNavigate();
+	const userId = localStorage.getItem('userId');
+
+	const [modalOpen, setModalOpen] = useState(false);
+	const showModal = () => {
+		setModalOpen(!modalOpen);
+		console.log('222');
+	};
 
 	return (
 		<div className="detail_header_container">
@@ -18,11 +26,22 @@ const AddPostingHeader = ({ move, mine }) => {
 						size="24px"
 						onClick={() => navigate(-1)}
 					/>
-
 					{/* 4. 삼항연산자. props 이용해하기. api 확인~ */}
-					{mine === true ? <img src={dotIcon} /> : ''}
+
+					{userId === authorId ? (
+						<div>
+							<img
+								src={dotIcon}
+								style={{ width: '28px' }}
+								onClick={() => showModal()}
+							/>
+						</div>
+					) : (
+						''
+					)}
 				</div>
 			</div>
+			{modalOpen && <DetailModal setModalOpen={setModalOpen} />}
 		</div>
 	);
 };
