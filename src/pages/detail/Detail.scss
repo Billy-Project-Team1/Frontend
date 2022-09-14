@@ -26,6 +26,8 @@
 .detail_user_profile {
 	padding: 1rem 0;
 	border-bottom: 1px solid rgba(238, 238, 238, 1);
+	display: flex;
+	font-size: 0;
 
 	.detail_profile_img {
 		margin: 3px 10px 0 0;
@@ -38,6 +40,13 @@
 			border-radius: 50px;
 			float: left;
 		}
+	}
+
+	.detail_profile_wrap {
+		padding-top: 3px;
+	}
+	.detail_profile_second {
+		display: block;
 	}
 
 	.detail_nickname {
@@ -71,7 +80,7 @@
 
 .detail_rental {
 	color: #212121;
-	font-weight: 800;
+	font-weight: 700;
 	font-size: 18px;
 	.detail_price {
 		padding-right: 7px;
@@ -100,7 +109,12 @@
 }
 
 .detail_map {
-	padding-bottom: 25px;
+	padding: 1rem 0 1.4rem 0;
+	border-bottom: 1px solid rgba(238, 238, 238, 1);
+}
+
+.detail_calendar {
+	padding: 1rem 0 1.4rem 0;
 	border-bottom: 1px solid rgba(238, 238, 238, 1);
 }
 

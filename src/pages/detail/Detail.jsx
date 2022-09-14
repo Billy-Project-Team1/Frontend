@@ -27,6 +27,7 @@ const Detail = () => {
 		//3-1 에 넣은 postid가 여기로 들어옴. -> slice가서 확인해보면 payload값으로 들어가는걸 확인할 수 있음.
 		dispatch(getPost(postid));
 		// console.log("123")
+		window.scrollTo(0, 0);
 	}, []);
 
 	// slice에 있는 post를 쓸 수 있게 해줌. (리덕스 안에 있는 애를 뽑아쓸 때 필요함)
@@ -85,9 +86,11 @@ const Detail = () => {
 					</div>
 					<div className="detail_profile_wrap">
 						<div className="detail_nickname">{detailPost.nickname}</div>
-						<span className="detail_location">{detailPost.location} </span>
-						<span className="detail_location_line">&nbsp; | &nbsp;</span>
-						<span className="detail_time"> {nowDate}</span>
+						<div className="detail_profile_second">
+							<span className="detail_location">{detailPost.location} </span>
+							<span className="detail_location_line">&nbsp;|&nbsp;</span>
+							<span className="detail_time"> {nowDate}</span>
+						</div>
 					</div>
 				</div>
 				<div className="detail_content_part">
