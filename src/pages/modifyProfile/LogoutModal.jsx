@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getCookie } from '../../redux/modules/customCookies';
 import { logOut } from '../../redux/modules/memberSlice';
-import './DeleteIdModal.scss';
+import '../../commponents/footer/AlertModal.scss';
 
 const LogoutModal = ({ setModalOpen }) => {
   const dispatch = useDispatch();
@@ -24,10 +24,12 @@ const LogoutModal = ({ setModalOpen }) => {
       <div className="alertModal-box">
         <p>로그아웃 하시겠습니까?</p>
         <div className="alertModal-btns">
-          <button style={{ color: '#EB0000' }} onClick={logout}>
+          <button className="alertModal-whiteBtn" onClick={closeModal}>
+            취소
+          </button>
+          <button className="alertModal-blueBtn" onClick={logout}>
             로그아웃
           </button>
-          <button onClick={closeModal}>취소</button>
         </div>
       </div>
     </div>

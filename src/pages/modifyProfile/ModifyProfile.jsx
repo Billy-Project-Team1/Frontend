@@ -149,7 +149,7 @@ const ModifyProfile = () => {
             로그아웃
           </button>
           {modalOpen && <LogoutModal setModalOpen={setModalOpen} />}
-          <button className="modifyProfile-btn" onClick={isModal}>
+          <button className="modifyProfile-btn2" onClick={isModal}>
             회원탈퇴
           </button>
           {deleteModalOpen && (

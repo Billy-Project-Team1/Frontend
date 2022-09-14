@@ -14,12 +14,6 @@ const billyReservation = ({ reservationsState }) => {
         <ReservationCard billyState={reservationsState} />
       </div>
     );
-  } else if (reservationsState === '3') {
-    return (
-      <div>
-        <ReservationCard billyState={reservationsState} />
-      </div>
-    );
   } else if (reservationsState === '4') {
     return (
       <div>
@@ -27,6 +21,12 @@ const billyReservation = ({ reservationsState }) => {
       </div>
     );
   } else if (reservationsState === '5') {
+    return (
+      <div>
+        <ReservationCard billyState={reservationsState} />
+      </div>
+    );
+  } else if (reservationsState === '3') {
     return (
       <div>
         <ReservationCard billyState={reservationsState} />

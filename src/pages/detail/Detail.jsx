@@ -26,10 +26,12 @@ const Detail = () => {
 		//getPost(여기) 여기에 데이터를 넣으면 postslice의 payload 값이 됨.
 		//3-1 에 넣은 postid가 여기로 들어옴. -> slice가서 확인해보면 payload값으로 들어가는걸 확인할 수 있음.
 		dispatch(getPost(postid));
+		window.scrollTo(0,0);
 		// console.log("123")
 		window.scrollTo(0,0);
 
 	}, []);
+	
 
 	// slice에 있는 post를 쓸 수 있게 해줌. (리덕스 안에 있는 애를 뽑아쓸 때 필요함)
 	// state는 전역변수를 뜻하는거기 때문에 걍 쓰삼 (configstore를 뜻함)

@@ -6,17 +6,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {
   billyStateListThunk,
+  deliveryDoneThunk,
   reservationCancelThunk,
 } from '../../redux/modules/reservationSlice';
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ReservationCard = ({ billyState }) => {
   const dispatch = useDispatch();
-  const { reservationId } = useParams();
+  const navigate = useNavigate();
+  const is_login = localStorage.getItem('userId');
+  const [cancelMessage, setCancelMessage] = useState({
+    cancelMessage: '취소할게요',
+  });
 
   useEffect(() => {
     dispatch(billyStateListThunk(billyState));
-  }, []);
+  }, [dispatch]);
 
   const billylist = useSelector((state) => state.billystate?.billyList);
   console.log(billylist);
@@ -34,24 +40,32 @@ const ReservationCard = ({ billyState }) => {
   //   var a = new Date();
   //   a = getFormatDate(a);
 
-  const bb = (a) => {
-    function getFormatDate(date) {
-      var month = 1 + date.getMonth();
-      month = month >= 10 ? month : '0' + month;
-      var day = date.getDate();
-      day = day >= 10 ? day : '0' + day;
-      return month + '.' + day;
-    }
-    var a = new Date();
-    a = getFormatDate(a);
-  };
-  const cancelHandler = () => {
-    dispatch(reservationCancelThunk(reservationId));
+//   const bb = (a) => {
+//     console.log(a)
+//     function getFormatDate(date) {
+//       var month = 1 + date.getMonth();
+//       month = month >= 10 ? month : '0' + month;
+//       var day = date.getDate();
+//       day = day >= 10 ? day : '0' + day;
+//       return month + '.' + day;
+//     }
+//     var dddd = new Date();
+//     dddd = getFormatDate(a);
+//   };
+  const cancelHandler = (a, b) => {
+    // console.log(b)
+    dispatch(reservationCancelThunk({ a, b }));
+    window.location.replace(`/mypage/${is_login}`);
   };
 
+  const deliveryDoneHandler = (a) => {
+    dispatch(deliveryDoneThunk(a));
+    // window.location.replace(`/mypage/${is_login}`);
+  };
   return (
+    // .slice(0).reverse()
     <>
-      {billylist.map((item) => {
+      {billylist?.map((item,index) => {
         return (
           <div className="bookedCard-container">
             <div className="bookedCard-titleWrap">
@@ -71,7 +85,7 @@ const ReservationCard = ({ billyState }) => {
                   </div>
                 </div>
                 <div>
-                  예약일자 : {bb`${item.startDate}`}~{bb(item.endDate)}(
+                  예약일자 : {item.startDate}~{item.endDate}(
                   {rentalTotalDay(item.totalAmount, item.price)}박)
                 </div>
                 <div>
@@ -80,11 +94,11 @@ const ReservationCard = ({ billyState }) => {
                     ? '예약 대기중'
                     : billyState === '2'
                     ? '예약중'
-                    : billyState === '3'
-                    ? '대여중'
                     : billyState === '4'
-                    ? '거래 완료'
+                    ? '대여중'
                     : billyState === '5'
+                    ? '거래 완료'
+                    : billyState === '3'
                     ? '취소 완료'
                     : ''}
                 </div>
@@ -93,16 +107,26 @@ const ReservationCard = ({ billyState }) => {
             </div>
             <div className="bookedCard-btnWrap">
               {billyState === '1' ? (
-                <button className="bookedCard-btn" onClick={cancelHandler}>
+                <button
+                  className="bookedCard-btn"
+                  onClick={() =>
+                    cancelHandler(item.reservationId, cancelMessage)
+                  }
+                >
                   예약 취소
                 </button>
               ) : billyState === '2' ? (
-                <button className="bookedCard-btn">수령 완료</button>
-              ) : billyState === '3' ? (
-                <div style={{ marginBottom: '20px' }} />
+                <button
+                  className="bookedCard-btn"
+                  onClick={() => deliveryDoneHandler(item.reservationId)}
+                >
+                  수령 완료
+                </button>
               ) : billyState === '4' ? (
-                <button className="bookedCard-btn">리뷰 작성</button>
+                <div style={{ marginBottom: '20px' }} />
               ) : billyState === '5' ? (
+                <button className="bookedCard-btn">리뷰 작성</button>
+              ) : billyState === '3' ? (
                 <div style={{ marginBottom: '20px' }} />
               ) : (
                 ''
