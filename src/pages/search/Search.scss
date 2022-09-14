@@ -33,24 +33,28 @@
   border: none;
   border-radius: 0.75rem;
   height: 2.375rem;
-  background: #ededed;
+  background: #F7F7F7;
   padding: 0 1rem;
+  font-size: 0.9375rem;
+  outline: none;
+  color: #212121;
 }
 
 .SearchHeaderInputXbutton {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
   right: 0.75rem;
   top: 0.65rem;
-  color: #cccccc;
+  color: #212121;
 }
 
 .SearchEmptyText {
-  padding: 0 1rem;
+  padding: 10rem 1rem;
   margin-top: 2rem;
   font-size: 0.875rem;
   color: #cccccc;
+  text-align: center;
 }
 
 .SearchPostList{
