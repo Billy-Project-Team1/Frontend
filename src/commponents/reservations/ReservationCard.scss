@@ -1,11 +1,9 @@
 .bookedCard-container {
-  //   border: 1px solid red;
   width: 358px;
-  height: 172px;
   padding: 0 1rem;
   display: flex;
   flex-direction: column;
-  margin-top: 21px;
+  margin-top: 20px;
 }
 .bookedCard-titleWrap {
   //   border: 1px solid black;
@@ -55,4 +53,22 @@
   flex-direction: row;
   gap: 4px;
   margin-right: 10.14px;
+}
+.bookedCard-btnWrap {
+  // margin-top: 20px;
+}
+.bookedCard-btn {
+  width: 358px;
+  height: 43px;
+  border-radius: 12px;
+  background-color: white;
+  font-family: 'Noto Sans';
+  font-weight: 400;
+  color: #004eea;
+  border: 1px solid #004eea;
+
+  font-size: 0.8125rem;
+  // border: none;
+  // margin-bottom: 40px;
+  margin-top: 20px;
 }
