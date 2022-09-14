@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import { Icon } from '@iconify/react';
-import LoginHeader from '../../commponents/header/LoginHeader'
+import LoginHeader from '../../commponents/header/LoginHeader';
 import './Chat.scss';
+import { getChatDetailPost } from '../../redux/modules/ChatSlice';
 
 var stompClient = null;
 
@@ -12,7 +15,14 @@ const Chat = () => {
   const { roomId } = useParams();
   const myNickname = localStorage.getItem('nickname');
   const PK = localStorage.getItem('memberId');
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getChatDetailPost(roomId));
+  }, []);
+
+  const roomData = useSelector((state) => state.ChatSlice.chatRoomDetail);
+  console.log(roomData);
   const [chatList, setChatList] = useState([]);
   const [userData, setUserData] = useState({
     type: '',
@@ -42,10 +52,9 @@ const Chat = () => {
   const registerUser = () => {
     var sockJS = new SockJS(process.env.REACT_APP_API_URL + '/wss/chat');
     // var sockJS = new SockJS('http://13.125.236.69/wss/chat');
-    
     console.log(sockJS);
     stompClient = Stomp.over(sockJS);
-    stompClient.debug = null;
+    // stompClient.debug = null;
     console.log(stompClient);
     stompClient.connect({ PK }, onConnected, onError);
   };
@@ -76,17 +85,17 @@ const Chat = () => {
       quitOwner: '',
     };
 
-    // stompClient.send(`/pub/chat/message`, { PK }, JSON.stringify(chatMessage));
+    stompClient.send(`/pub/chat/message`, { PK }, JSON.stringify(chatMessage));
   };
 
   const onMessageReceived = (payload) => {
     let payloadData = JSON.parse(payload.body);
-    console.log(payloadData)
+    console.log(payloadData);
 
     if (payloadData.type === 'ENTER' || payloadData.type === 'TALK') {
       chatList.push(payloadData);
       setChatList([...chatList]);
-      console.log(chatList)
+      console.log(chatList);
     }
 
     scrollToBottom();
@@ -123,10 +132,9 @@ const Chat = () => {
     sendMessage();
   };
 
-  useEffect(()=>{
-
+  useEffect(() => {
     scrollToBottom();
-  },[chatList])
+  }, [chatList]);
 
   const detailDate = (a) => {
     const milliSeconds = new Date() - a;
@@ -146,55 +154,69 @@ const Chat = () => {
     return `${Math.floor(years)}년 전`;
   };
 
-
   return (
     <>
-    <LoginHeader />
-    <div className="ChatContainer">
-      {chatList?.map((chat, idx) => {
-        return (
-          <div key={idx}>
-            {chat.sender !== myNickname ? (
-              <div className='ChatOtherWrap'>
+      <LoginHeader />
+      <div className="ChatHeadContainer">
+        <div className="ChatHeadBox">
+        <div className="ChatHeadImgBox">
+          <img src={roomData.profileUrl} className="ChatHeadImg"/>
+        </div>
+        <div className="ChatHeadTextBox">
+          <div className="ChatHeadTitle">1212</div>
+          <div>1212</div>
+        </div>
+        <div></div>
+        </div>
+      </div>
+      <div className="ChatContainer">
+        {chatList?.map((chat, idx) => {
+          return (
+            <div key={idx}>
+              {chat.sender !== myNickname ? (
+                <div className="ChatOtherWrap">
                   <img src={chat.profileUrl} className="ChatOtherProfile" />
-                <div className="ChatOtherContainer">
-                <div className="ChatotherName">{chat.sender}</div>
-                  <div className="ChatOtherMsgClock">
-                  <div className="ChatOtherBox">{chat.message}</div>
+                  <div className="ChatOtherContainer">
+                    <div className="ChatotherName">{chat.sender}</div>
+                    <div className="ChatOtherMsgClock">
+                      <div className="ChatOtherBox">{chat.message}</div>
+                      <div className="ChatClockBox">
+                        <div className="ChatClock">오전 09:15</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="ChatMeContainer">
                   <div className="ChatClockBox">
                     <div className="ChatClock">오전 09:15</div>
                   </div>
-                  </div>
+                  <div className="ChatMeBox">{chat.message}</div>
                 </div>
-              </div>
-            ) : (
-              <div className="ChatMeContainer">
-                <div className="ChatClockBox">
-                  <div className="ChatClock">오전 09:15</div>
-                </div>
-                <div className="ChatMeBox">{chat.message}</div>
-              </div>
-            )}
-          </div>
-        );
-      })}
-      <div className="ChatInputContainer">
-        <form className="ChatInputBox" onSubmit={(event) => onKeyPress(event)}>
-          <input
-            className="ChatInput"
-            type="text"
-            placeholder="대화를 시작해보세요!"
-            value={userData.message}
-            onChange={(event) => handleValue(event)}
-          />
-          <div className="ChatInputButtonBox">
-            <button className="ChatInputButton">
-              <Icon icon="akar-icons:send" className="ChatButtonIcon" />
-            </button>
-          </div>
-        </form>
+              )}
+            </div>
+          );
+        })}
+        <div className="ChatInputContainer">
+          <form
+            className="ChatInputBox"
+            onSubmit={(event) => onKeyPress(event)}
+          >
+            <input
+              className="ChatInput"
+              type="text"
+              placeholder="대화를 시작해보세요!"
+              value={userData.message}
+              onChange={(event) => handleValue(event)}
+            />
+            <div className="ChatInputButtonBox">
+              <button className="ChatInputButton">
+                <Icon icon="akar-icons:send" className="ChatButtonIcon" />
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
     </>
   );
 };

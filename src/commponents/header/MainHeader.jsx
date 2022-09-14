@@ -21,7 +21,7 @@ const MainHeader = ({ move }) => {
 						style={{ marginRight: '14px' }}
 						color="#212121"
 						size="24px"
-						onClick={() => navigate(-1)}
+						onClick={() => navigate(`/search`)}
 					/>
 					<FaRegBell color="#212121" size="24px" />
 				</div>
