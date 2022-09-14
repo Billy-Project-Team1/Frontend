@@ -63,11 +63,19 @@ const DetailCalendar = ({ data, detailPost }) => {
   //   }
   // }, [unavailable]);
 
+  // // useEffect(() => {
+  // //   if (detailPost) {
+  // //     setUnavailable(data);
+  // //   }
+  // // }, []);
+  // // console.log(unavailable);
+
   // useEffect(() => {
   //   if (detailPost) {
-  //     setUnavailable(data);
+  //     disableDate(data);
   //   }
   // }, []);
+  
   // console.log(unavailable);
 
   // useEffect(() => {
@@ -75,6 +83,7 @@ const DetailCalendar = ({ data, detailPost }) => {
   //     disableDate(data);
   //   }
   // }, []);
+
 
   const setDateFormat = () => {
     if (date?.length > 0) {

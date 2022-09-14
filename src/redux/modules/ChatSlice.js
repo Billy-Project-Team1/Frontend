@@ -1,43 +1,33 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import instance from './instance';
 
 const initialState = {
-  postsList: [],
+  chatList: [],
+  chatRoomList: [],
 };
 
-export const createChatList = createAsyncThunk(
-    "CREATE/createChatList",
-    async (data) => {
-      try {
-        const response = await instance.post(`/posts`, data.formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-  
-        if (response.status === 200 && response.data.response) {
-          if (data.isLetter) {
-            data.navigate(`/chat/${response.data.postId}`);
-            return response.data.postId;
-          }
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  );
+export const getMyChatRoom = createAsyncThunk(
+  "getMyChatRoom",
+  async (payload, thunkAPI) => {
+		try {
+	    const response = await instance.get('/chat/rooms');
+     console.log(response)
+      return thunkAPI.fulfillWithValue(response.data);
+		} catch(err) {
+			console.log(err);
+		}
+  },
+);
 
-export const ChatSlice = createSlice({
-  name: 'createChatList',
+const chatListSlice = createSlice({
+  name: "chatList",
   initialState,
-  reducers: {},
   extraReducers: {
-    [createChatList.fulfilled]: (state, action) => {
-      action.payload.map((post) => {
-        return state.postsList.push(post);
-      });
+    [getMyChatRoom.fulfilled]: (state, action) => {
+			// action.payload -> chatroom list
+      state.chatRoomList.push(action.payload);
     },
   },
 });
 
-export default ChatSlice.reducer;
+export default chatListSlice.reducer;

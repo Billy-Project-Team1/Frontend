@@ -12,7 +12,7 @@ const AddPostingHeader = ({ move }) => {
 				<div className="header_content">
 					<HiOutlineChevronLeft
 						style={{ marginRight: '22px' }}
-						color="#656565"
+						color="#212121"
 						size="24px"
 						onClick={() => navigate(-1)}
 					/>

@@ -31,7 +31,7 @@ const Footer = () => {
   };
   const chattingPage = () => {
     if (is_login) {
-      navigate('/chat');
+      navigate('/chatList');
     } else {
       showModal();
     }
@@ -89,7 +89,7 @@ const Footer = () => {
           >
             <HiOutlineChat
               className="footer-icon"
-              style={{ color: pathname === '/chat' ? '#212121' : '#CCCCCC' }}
+              style={{ color: pathname === '/chatList' ? '#212121' : '#CCCCCC' }}
             />
           </div>
           <div

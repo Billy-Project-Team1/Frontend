@@ -1,0 +1,120 @@
+.ChatContainer {
+  width: 100%;
+  height: 100%;
+  padding:  0 0.75rem 5.5rem;
+}
+
+.ChattingWrap {
+
+}
+
+.ChatOtherWrap {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.ChatotherName{
+color:#757575;
+font-size: 0.875rem;
+
+}
+
+.ChatMeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  margin: 0.625rem 0;
+  gap: 0.5rem;
+}
+
+.ChatOtherContainer{
+    display: flex;
+  flex-direction: column;
+  margin: 0.625rem 0;
+  gap: 3px;
+}
+.ChatOtherMsgClock{
+    display: flex;
+    flex-direction: row;
+    gap:0.5rem;
+}
+
+.ChatOtherProfile{
+    margin-top: 10px;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+}
+
+.ChatClockBox {
+  color: #999999;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.ChatMeBox {
+  background-color: #ebf3fa;
+  border-bottom-left-radius: 0.75rem;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  padding: 0.625rem;
+}
+
+.ChatOtherBox{
+   background-color:  #F7F7F7;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  padding: 0.625rem;
+}
+
+.ChatInputBox {
+  display: flex;
+  flex-direction: row;
+  height: 2.625rem;
+  gap: 0.625rem;
+}
+
+.ChatInput {
+  width: 18.125rem;
+  height: 2.625rem;
+  border: none;
+  background-color: #f7f7f7;
+  border-radius: 0.4375rem;
+  padding: 0 0.911875rem;
+}
+
+.ChatInputButtonBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ChatInputButton {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background-color: white;
+}
+.ChatButtonIcon {
+  width: 100%;
+  height: 100%;
+  background-color: none;
+}
+
+.ChatInputContainer {
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  left: 50%;
+  bottom: 0;
+  padding-top: 10px;
+  transform: translateX(-50%);
+  height: 5.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
