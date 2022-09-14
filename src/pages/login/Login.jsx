@@ -39,6 +39,8 @@ const Login = () => {
         .then((res) => {
           if (res.data.success === true) {
             return (
+              localStorage.setItem('nickname', res.data.result.nickname),
+              localStorage.setItem('memberId', res.data.result.id),
               localStorage.setItem('userId', res.data.result.userId),
               localStorage.setItem('accessToken', res.headers.authorization),
               cookies.set('refreshToken', res.headers[`refresh-token`]),
