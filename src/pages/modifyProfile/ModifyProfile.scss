@@ -8,7 +8,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 40px;
+  gap: 20px;
 }
 .modifyProfile-imgBox {
   position: relative;
@@ -23,9 +24,11 @@
   margin-right: 24px;
   padding-top: 3%;
   width: 80%;
+  // margin-top: 20px;
+
   p {
     font-family: 'Noto Sans';
-    font-size: 0.75em;
+    font-size: 0.875rem;
     color: #cccccc;
     font-weight: 400;
   }
@@ -35,6 +38,8 @@
   height: 26px;
   font-family: 'Noto Sans';
   font-size: 1rem;
+  font-weight: 400px;
+  color: #212121;
   padding-left: 5px;
   border: none;
   border-bottom: 1px solid rgba($color: #a8a8a8, $alpha: 0.5);
@@ -48,19 +53,33 @@
   justify-content: center;
   align-items: center;
   gap: 24px;
-  margin-top: 50px;
+  margin-top: 48px;
 }
 .modifyProfile-btn {
   height: 47px;
   width: 80%;
   cursor: pointer;
   font-family: 'Noto Sans';
-  background-color: #ededed;
-  border: none;
+  background-color: white;
+  border: 1px solid #004EEA;
+  color: #004EEA;
   border-radius: 12px;
-  color: #212121;
   font-size: 1rem;
   font-weight: 500;
+}
+.modifyProfile-btn2{
+  height: 47px;
+  width: 80%;
+  cursor: pointer;
+  font-family: 'Noto Sans';
+  background-color: #004EEA;
+  border: none;
+  color: #F7F7F7;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+
+
 }
 .modifiyProfile-iconWrap {
   position: absolute;

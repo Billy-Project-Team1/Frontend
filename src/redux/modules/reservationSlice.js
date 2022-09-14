@@ -41,12 +41,29 @@ export const billyStateListThunk = createAsyncThunk(
 export const reservationCancelThunk = createAsyncThunk(
   'reservationCancelThunk',
   async (payload, thunkAPI) => {
+    // console.log(payload)
     try {
       const response = await instance.patch(
-        `/auth/reservations/billy/${payload}`
+        `/auth/reservations/billy/${payload.a}`,
+        payload.b
       );
-      return console.log(response);
-      //   return thunkAPI.fulfillWithValue(response.data.result);
+      //   return console.log(response);
+      return thunkAPI.fulfillWithValue(response.data.result);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+// 빌리의 수령 완료 Patch /auth/reservations/billy/delivery/{reservationId}
+export const deliveryDoneThunk = createAsyncThunk(
+  'deliveryDoneThunk',
+  async (payload, thunkAPI) => {
+    try {
+      const response = await instance.patch(
+        `/auth/reservations/billy/delivery/${payload}`
+      );
+      // return console.log(response);
+      return thunkAPI.fulfillWithValue(response.data.result);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
@@ -79,6 +96,12 @@ export const reservationSlice = createSlice({
       state.billyList = action.payload;
     },
     [reservationCancelThunk.rejected]: (state, action) => {
+      console.log(action.payload);
+    },
+    [deliveryDoneThunk.fulfilled]: (state, action) => {
+      state.billyList = action.payload;
+    },
+    [deliveryDoneThunk.rejected]: (state, action) => {
       console.log(action.payload);
     },
   },
