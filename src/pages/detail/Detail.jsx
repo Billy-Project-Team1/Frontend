@@ -27,6 +27,7 @@ const Detail = () => {
 		//3-1 에 넣은 postid가 여기로 들어옴. -> slice가서 확인해보면 payload값으로 들어가는걸 확인할 수 있음.
 		dispatch(getPost(postid));
 		// console.log("123")
+		window.scrollTo(0,0);
 	}, []);
 
 	// slice에 있는 post를 쓸 수 있게 해줌. (리덕스 안에 있는 애를 뽑아쓸 때 필요함)
