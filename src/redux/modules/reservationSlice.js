@@ -6,7 +6,7 @@ export const billyReservationCntThunk = createAsyncThunk(
   'billyReservationStateThunk',
   async (payload, thunkAPI) => {
     try {
-      const response = await instance.get(`/auth/reservations/billy`, payload);
+      const response = await instance.get('/auth/reservations/billy', payload);
       //   return console.log(response);
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
@@ -26,7 +26,7 @@ export const billyStateListThunk = createAsyncThunk(
       const response = await instance.get(
         `/auth/reservations/billy/${payload}`
       );
-      return console.log(response);
+      //   return console.log(response);
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       } else {
@@ -37,14 +37,29 @@ export const billyStateListThunk = createAsyncThunk(
     }
   }
 );
+// 빌리 예약 취소 Patch /auth/reservations/billy/{reservationId}
+export const reservationCancelThunk = createAsyncThunk(
+  'reservationCancelThunk',
+  async (payload, thunkAPI) => {
+    try {
+      const response = await instance.patch(
+        `/auth/reservations/billy/${payload}`
+      );
+      return console.log(response);
+      //   return thunkAPI.fulfillWithValue(response.data.result);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
 
 const initialState = {
   billyState: {},
-  billyList: {},
+  billyList: [],
 };
 
 export const reservationSlice = createSlice({
-  name: 'mystate',
+  name: 'billystate',
   initialState,
   reducers: {},
   extraReducers: {
@@ -58,6 +73,12 @@ export const reservationSlice = createSlice({
       state.billyList = action.payload;
     },
     [billyStateListThunk.rejected]: (state, action) => {
+      console.log(action.payload);
+    },
+    [reservationCancelThunk.fulfilled]: (state, action) => {
+      state.billyList = action.payload;
+    },
+    [reservationCancelThunk.rejected]: (state, action) => {
       console.log(action.payload);
     },
   },

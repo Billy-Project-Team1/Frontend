@@ -16,7 +16,7 @@ const LogoutModal = ({ setModalOpen }) => {
   };
   const logout = () => {
     dispatch(logOut({ refreshToken, token }));
-    navigate('/');
+    window.location.replace('/');
   };
 
   return (
