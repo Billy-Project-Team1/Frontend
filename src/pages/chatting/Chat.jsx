@@ -52,7 +52,6 @@ const Chat = () => {
   const registerUser = () => {
     var sockJS = new SockJS(process.env.REACT_APP_API_URL + '/wss/chat');
     // var sockJS = new SockJS('http://13.125.236.69/wss/chat');
-
     console.log(sockJS);
     stompClient = Stomp.over(sockJS);
     // stompClient.debug = null;
