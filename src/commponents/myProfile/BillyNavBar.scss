@@ -1,34 +1,30 @@
-.MyProfileMiddleWrap {
+.myProfileNavBar-Wrap {
   padding: 0 1rem;
-  margin-top: 2.1875rem;
 }
-
-.MyProfileMiddleContainer {
+.myProfileNavBar-Container {
   height: 5.5rem;
   border-bottom: 1px solid rgba($color: #a8a8a8, $alpha: 0.5);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 5px;
 }
-
-.MyProfileMiddleBox {
+.myProfileNavBar-Box {
   position: relative;
   display: flex;
   flex-direction: column;
   width: 2.75rem;
   gap: 0.5rem;
 }
-
-.MyPorfileMiddleIconContainer {
+.myProfileNavBar-IconContainer {
   position: relative;
   margin: 0 auto;
   width: 100%;
-  background-color: #f7f7f7;
+  //   background-color: #f7f7f7;
   border-radius: 50%;
   aspect-ratio: 1/1;
 }
-
-.MyProfileMiddleIconBox {
+.myProfileNavBar-IconBox {
   position: absolute;
   width: 1.5rem;
   height: 1.5rem;
@@ -36,8 +32,35 @@
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
-
-.MyProfileMiddleText {
+.myProfileNavBar-IconCheck {
+  width: 100%;
+  height: 100%;
+  //   margin: auto;
+  margin-left: 6px;
+  color: #004eea;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.myProfileNavBar-Icon {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  color: #cccccc;
+  margin-left: 6px;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.myProfileNavBar-TextCheck {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 0.6875rem;
+  white-space: nowrap;
+  overflow: visible;
+  color: #004eea;
+}
+.myProfileNavBar-Text {
   position: absolute;
   top: 65%;
   left: 50%;
@@ -46,50 +69,4 @@
   white-space: nowrap;
   overflow: visible;
   color: #cccccc;
-}
-
-.MyProfileMiddleTextCheck {
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  font-size: 0.6875rem;
-  white-space: nowrap;
-  overflow: visible;
-  color: #004eea;
-}
-
-.MyProfileMiddleIcon {
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  color: #cccccc;
-}
-.MyProfileMiddleIconCheck {
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  color: #004eea;
-}
-
-.MyProfileMiddleIconTrans {
-  margin: auto;
-  width: 100%;
-  height: 100%;
-  color: #cccccc;
-  transform: rotate(180deg);
-}
-
-.MyProfileMiddleIconTransCheck {
-  margin: auto;
-  width: 100%;
-  height: 100%;
-  color: #004eea;
-  transform: rotate(180deg);
-}
-.please {
-  display: flex;
-  // flex-direction: row;
-  // margin-top: 20px;
-  // border: red 1px solid;
 }

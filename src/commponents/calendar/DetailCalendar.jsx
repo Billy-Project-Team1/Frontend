@@ -75,6 +75,15 @@ const DetailCalendar = ({ data, detailPost }) => {
   //     disableDate(data);
   //   }
   // }, []);
+  
+  // console.log(unavailable);
+
+  // useEffect(() => {
+  //   if (detailPost) {
+  //     disableDate(data);
+  //   }
+  // }, []);
+
 
   const setDateFormat = () => {
     if (date?.length > 0) {

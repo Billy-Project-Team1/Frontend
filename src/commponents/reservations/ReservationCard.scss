@@ -1,0 +1,58 @@
+.bookedCard-container {
+  //   border: 1px solid red;
+  width: 358px;
+  height: 172px;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 21px;
+}
+.bookedCard-titleWrap {
+  //   border: 1px solid black;
+  width: 238px;
+  height: 22px;
+  display: flex;
+}
+.bookedCard-title {
+  font-size: 1rem;
+  font-family: 'Noto Sans';
+  font-weight: 500;
+  color: #212121;
+}
+.bookedCard-detailWrap {
+  //   border: 1px solid green;
+  width: 323px;
+  height: 110px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+.bookedCard-img {
+  //   border: 1px solid red;
+  width: 110.24px;
+  height: 110px;
+  background: #cccccc;
+  border-radius: 7px;
+}
+.bookedCard-bodyBox {
+  //   border: 1px solid black;
+  width: 197px;
+  height: 91px;
+  margin-left: 15.76px;
+  margin-top: 9px;
+  font-size: 0.75rem;
+  font-family: 'Noto Sans';
+  font-weight: 400;
+  color: #212121;
+}
+.bookedCard-iconBox {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+.bookedCard-price {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  margin-right: 10.14px;
+}
