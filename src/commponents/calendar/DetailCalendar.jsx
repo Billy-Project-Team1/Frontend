@@ -37,44 +37,44 @@ const DetailCalendar = ({ data, detailPost }) => {
     setDates();
     noDates.current = [];
   };
-  console.log(data);
-  // .getMonth() + 1 === month
-  const disableDate = () => {
-    const datesArray = [];
-    data.map((v) => {
-      if (new Date(v)) {
-        datesArray.push(new Date(v).getDate());
-      }
-    });
-    setUnavailable(datesArray);
-  };
-  console.log(unavailable);
+  // console.log(data);
+  // // .getMonth() + 1 === month
+  // const disableDate = () => {
+  //   const datesArray = [];
+  //   data.map((v) => {
+  //     if (new Date(v)) {
+  //       datesArray.push(new Date(v).getDate());
+  //     }
+  //   });
+  //   setUnavailable(datesArray);
+  // };
+  // console.log(unavailable);
 
-  useEffect(() => {
-    const elements = document.querySelectorAll(
-      '.calendar-toggleOn.rmdp-day .sd'
-    );
-    for (let i = 0; i < elements.length; i++) {
-      for (let j = 0; j < unavailable.length; j++) {
-        if (elements[i].innerText / 1 === unavailable[j]) {
-          elements[i].parentNode.classList.add('.rmdp-day. rmdp-disabled');
-        }
-      }
-    }
-  }, [unavailable]);
+  // useEffect(() => {
+  //   const elements = document.querySelectorAll(
+  //     '.calendar-toggleOn.rmdp-day .sd'
+  //   );
+  //   for (let i = 0; i < elements.length; i++) {
+  //     for (let j = 0; j < unavailable.length; j++) {
+  //       if (elements[i].innerText / 1 === unavailable[j]) {
+  //         elements[i].parentNode.classList.add('.rmdp-day. rmdp-disabled');
+  //       }
+  //     }
+  //   }
+  // }, [unavailable]);
+
+  // // useEffect(() => {
+  // //   if (detailPost) {
+  // //     setUnavailable(data);
+  // //   }
+  // // }, []);
+  // // console.log(unavailable);
 
   // useEffect(() => {
   //   if (detailPost) {
-  //     setUnavailable(data);
+  //     disableDate(data);
   //   }
   // }, []);
-  // console.log(unavailable);
-
-  useEffect(() => {
-    if (detailPost) {
-      disableDate(data);
-    }
-  }, []);
 
   const setDateFormat = () => {
     if (date?.length > 0) {
