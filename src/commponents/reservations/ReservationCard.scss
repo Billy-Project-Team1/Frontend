@@ -1,4 +1,12 @@
+// .a {
+//   padding: 0 1rem;
+//   width: 358px;
+//   border-top: 1px solid rgba($color: #a8a8a8, $alpha: 0.5);
+//   // margin-left: 16px;
+//   // margin-top: -15px;
+// }
 .bookedCard-container {
+  // border-bottom: 1px solid rgba($color: #a8a8a8, $alpha: 0.5);
   width: 358px;
   padding: 0 1rem;
   display: flex;
@@ -42,6 +50,23 @@
   font-family: 'Noto Sans';
   font-weight: 400;
   color: #212121;
+  position: relative;
+}
+.reservationcard_chatbtn {
+  position: absolute;
+  bottom: 5px;
+  left: 80px;
+  border: none;
+  background-color: #ededed;
+  border-radius: 3px;
+  width: 50px;
+  height: 18px;
+  font-size: 0.625rem;
+  font-family: 'Noto Sans';
+  font-weight: 400;
+  text-align: center;
+  display: flex;
+  padding: 2px 2px 7px 7px;
 }
 .bookedCard-iconBox {
   display: flex;
@@ -54,9 +79,6 @@
   gap: 4px;
   margin-right: 10.14px;
 }
-.bookedCard-btnWrap {
-  // margin-top: 20px;
-}
 .bookedCard-btn {
   width: 358px;
   height: 43px;
@@ -66,9 +88,28 @@
   font-weight: 400;
   color: #004eea;
   border: 1px solid #004eea;
-
   font-size: 0.8125rem;
-  // border: none;
-  // margin-bottom: 40px;
   margin-top: 20px;
 }
+.bar {
+  border-bottom: 1px solid rgba($color: #a8a8a8, $alpha: 0.5);
+}
+.reservationcard_alertcontent {
+  font-family: 'Noto Sans';
+  font-weight: 400;
+  color: #004eea;
+  font-size: 0.625rem;
+  margin-top: 5px;
+}
+// .btn2 {
+//   width: 358px;
+//   height: 43px;
+//   border-radius: 12px;
+//   background-color: white;
+//   font-family: 'Noto Sans';
+//   font-weight: 400;
+//   color: red;
+//   border: 1px solid #004eea;
+//   font-size: 0.8125rem;
+//   margin-top: 20px;
+// }

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import '../../pages/modifyProfile/AlertModal.scss';
-import './AlertModal.scss';
+import './AlertSmallModal.scss';
 
 const LoginModal = ({ setModalOpen }) => {
   const navigate = useNavigate();

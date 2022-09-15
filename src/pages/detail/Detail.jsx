@@ -1,16 +1,17 @@
-import React from 'react';
-import DetailHeader from '../../commponents/header/DetailHeader';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './Detail.scss';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPost } from '../../redux/modules/postSlice';
-import DetailMap from '../../commponents/maps/DetailMap';
-import DetailCalendar from '../../commponents/calendar/DetailCalendar';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import 'swiper/css/bundle';
 import { createChatRoom, getMyChatRoom } from '../../redux/modules/ChatSlice';
+import './Detail.scss';
+import DetailHeader from '../../commponents/header/DetailHeader';
+import DetailMap from '../../commponents/maps/DetailMap';
+import DetailCalendar from '../../commponents/calendar/DetailCalendar';
+// import DetailFooter from '../../commponents/footer/DetailFooter';
+import MyDetailFooter from '../../commponents/footer/MyDetailFooter';
 
 const Detail = () => {
 	//2. 함수 만들 때 수입해서 쓸거임. slice에서 수입해올 때 사용하는 함수임.
@@ -27,13 +28,12 @@ const Detail = () => {
 		//getPost(여기) 여기에 데이터를 넣으면 postslice의 payload 값이 됨.
 		//3-1 에 넣은 postid가 여기로 들어옴. -> slice가서 확인해보면 payload값으로 들어가는걸 확인할 수 있음.
 		dispatch(getPost(postid));
-		window.scrollTo(0,0);
+		window.scrollTo(0, 0);
 		// console.log("123")
-		window.scrollTo(0,0);
-
+		window.scrollTo(0, 0);
 	}, []);
 	
-
+	
 	// slice에 있는 post를 쓸 수 있게 해줌. (리덕스 안에 있는 애를 뽑아쓸 때 필요함)
 	// state는 전역변수를 뜻하는거기 때문에 걍 쓰삼 (configstore를 뜻함)
 	// state.post 는 configstore에 지정해둔 post 값임 slice를 뜻함
@@ -44,6 +44,13 @@ const Detail = () => {
 	//1. props 내려주는거임
 	//로그인 정보를 가져옴. 게시글 삭제 버튼을 위함 ㅋㅋ~
 	const myUserId = localStorage.getItem('userId');
+	
+	const detailPrice = detailPost.price
+		?.toString()
+		.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+	const detailDeposit =
+		detailPost.deposit?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
 	//시간 바꾸기
 	const detailDate = (a) => {
@@ -104,11 +111,9 @@ const Detail = () => {
 				<div className="detail_content_part">
 					<div className="detail_title">{detailPost.title}</div>
 					<div className="detail_rental">
-						<span className="detail_price">일 대여금 {detailPost.price}원</span>
+						<span className="detail_price">일 대여금 {detailPrice}원</span>
 						<span className="detail_rental_line">|</span>
-						<span className="detail_deposit">
-							보증금 {detailPost.deposit}원
-						</span>
+						<span className="detail_deposit">보증금 {detailDeposit}원</span>
 					</div>
 					<div className="detail_content">
 						{detailPost.content?.split('\n').map((line) => {
@@ -141,6 +146,7 @@ const Detail = () => {
 					detailPost={detailPost}
 				/>
 			</div>
+			<MyDetailFooter />
 		</div>
 	);
 };
