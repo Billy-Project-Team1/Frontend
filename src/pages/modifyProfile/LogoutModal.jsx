@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getCookie } from '../../redux/modules/customCookies';
 import { logOut } from '../../redux/modules/memberSlice';
-import '../../commponents/footer/AlertModal.scss';
+import '../../commponents/footer/AlertSmallModal.scss';
 
 const LogoutModal = ({ setModalOpen }) => {
   const dispatch = useDispatch();
