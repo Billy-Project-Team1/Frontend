@@ -1,6 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import instance from './instance';
 
+//예약 신청 Post /auth/reservations
+export const reservationThunk = createAsyncThunk(
+  'reservationThunk',
+  async (payload, thunkAPI) => {
+    try {
+      const response = await instance.post(`/auth/reservations`, payload);
+      return console.log ('렁러알',response)
+      if (response.data.success === true) {
+        return thunkAPI.fulfillWithValue(response.data.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 // 빌리의 예약 카운트 조회 Get /auth/reservations/billy
 export const billyReservationCntThunk = createAsyncThunk(
   'billyReservationStateThunk',
@@ -63,7 +79,7 @@ export const deliveryDoneThunk = createAsyncThunk(
         `/auth/reservations/billy/delivery/${payload}`
       );
       // return console.log(response);
-      return thunkAPI.fulfillWithValue(response.data.result);
+      return thunkAPI.fulfillWithValue(payload);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
@@ -99,7 +115,16 @@ export const reservationSlice = createSlice({
       console.log(action.payload);
     },
     [deliveryDoneThunk.fulfilled]: (state, action) => {
-      state.billyList = action.payload;
+      console.log(state.billyList);
+
+      state.billyList = state.billyList.map((item) => {
+        if (item.reservationId === action.payload) {
+          return { ...item, state: 4 };
+        } else {
+          return { ...item };
+        }
+      });
+      // console.log(state.billyList);
     },
     [deliveryDoneThunk.rejected]: (state, action) => {
       console.log(action.payload);

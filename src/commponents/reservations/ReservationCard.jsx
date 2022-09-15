@@ -3,69 +3,67 @@ import './ReservationCard.scss';
 import dailycost from '../../static/image/dailycost.svg';
 import deposit from '../../static/image/deposit.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   billyStateListThunk,
   deliveryDoneThunk,
   reservationCancelThunk,
 } from '../../redux/modules/reservationSlice';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const ReservationCard = ({ billyState }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const is_login = localStorage.getItem('userId');
   const [cancelMessage, setCancelMessage] = useState({
     cancelMessage: '취소할게요',
   });
-
-  useEffect(() => {
-    dispatch(billyStateListThunk(billyState));
-  }, [dispatch]);
+  const [onDelivery, setOnDelivery] = useState('');
 
   const billylist = useSelector((state) => state.billystate?.billyList);
   console.log(billylist);
 
-  const rentalTotalDay = (a, b) => {
+  useEffect(() => {
+    dispatch(billyStateListThunk(billyState));
+  }, []);
+
+  useEffect(() => {}, [JSON.stringify(billylist)]);
+
+  const rentalTotalDate = (a, b) => {
     return Math.floor(a / b);
   };
-  //   function getFormatDate(date) {
-  //     var month = 1 + date.getMonth();
-  //     month = month >= 10 ? month : '0' + month;
-  //     var day = date.getDate();
-  //     day = day >= 10 ? day : '0' + day;
-  //     return month + '.' + day;
-  //   }
-  //   var a = new Date();
-  //   a = getFormatDate(a);
 
-//   const bb = (a) => {
-//     console.log(a)
-//     function getFormatDate(date) {
-//       var month = 1 + date.getMonth();
-//       month = month >= 10 ? month : '0' + month;
-//       var day = date.getDate();
-//       day = day >= 10 ? day : '0' + day;
-//       return month + '.' + day;
-//     }
-//     var dddd = new Date();
-//     dddd = getFormatDate(a);
-//   };
+  function rentalDate(a) {
+    var d = new Date(a);
+    return (
+      (d.getMonth() + 1 > 9
+        ? (d.getMonth() + 1).toString()
+        : '0' + (d.getMonth() + 1)) +
+      '.' +
+      (d.getDate() > 9
+        ? d.getDate().toString()
+        : '0' + d.getDate().toString()) +
+      '(' +
+      ('월화수목금토일'.charAt(d.getUTCDay()) + '') +
+      ')'
+    );
+  }
+  // console.log(rentalDate())
+
   const cancelHandler = (a, b) => {
     // console.log(b)
     dispatch(reservationCancelThunk({ a, b }));
     window.location.replace(`/mypage/${is_login}`);
   };
 
-  const deliveryDoneHandler = (a) => {
-    dispatch(deliveryDoneThunk(a));
+  const deliveryDoneHandler = (e) => {
+     dispatch(deliveryDoneThunk(e));
+
     // window.location.replace(`/mypage/${is_login}`);
   };
+
   return (
     // .slice(0).reverse()
     <>
-      {billylist?.map((item,index) => {
+      {billylist?.map((item, index) => {
         return (
           <div className="bookedCard-container">
             <div className="bookedCard-titleWrap">
@@ -74,6 +72,7 @@ const ReservationCard = ({ billyState }) => {
             <div className="bookedCard-detailWrap">
               <img className="bookedCard-img" src={item.postImgUrl} />
               <div className="bookedCard-bodyBox">
+                <button className="reservationcard_chatbtn">1:1 문의</button>
                 <div className="bookedCard-iconBox">
                   <div className="bookedCard-price">
                     <img src={dailycost} />
@@ -85,8 +84,9 @@ const ReservationCard = ({ billyState }) => {
                   </div>
                 </div>
                 <div>
-                  예약일자 : {item.startDate}~{item.endDate}(
-                  {rentalTotalDay(item.totalAmount, item.price)}박)
+                  예약일자 : {rentalDate(item.startDate)}~
+                  {rentalDate(item.endDate)}&nbsp;(
+                  {rentalTotalDate(item.totalAmount, item.price)}박)
                 </div>
                 <div>
                   예약상태 :&nbsp;
@@ -103,6 +103,18 @@ const ReservationCard = ({ billyState }) => {
                     : ''}
                 </div>
                 <div>대여자명 : {item.jullyNickname}</div>
+                <div className="reservationcard_alertcontent">
+                  {billyState === '2'
+                    ? '• 거래 완료시 수령 완료 버튼을 체크해주세요.'
+                    : ''}
+                </div>
+                {billyState === '3' ? (
+                  <div className="reservationcard_alertcontent">
+                    취소사유 : {item.cancelMessage}
+                  </div>
+                ) : (
+                  ''
+                )}
               </div>
             </div>
             <div className="bookedCard-btnWrap">
@@ -117,7 +129,7 @@ const ReservationCard = ({ billyState }) => {
                 </button>
               ) : billyState === '2' ? (
                 <button
-                  className="bookedCard-btn"
+                  className= "bookedCard-btn"
                   onClick={() => deliveryDoneHandler(item.reservationId)}
                 >
                   수령 완료

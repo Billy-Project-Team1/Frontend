@@ -23,8 +23,8 @@
   justify-content: center;
 }
 
-.calendar-inputText{
-color:#757575;
+.calendar-inputText {
+  color: #757575;
 }
 
 .calendar-input:focus {
@@ -114,6 +114,10 @@ color:#757575;
   }
 }
 
-.calendar-wrap{
+.calendar-wrap {
   padding: 0 1rem;
+}
+.rmdp-range {
+  border-radius: 50%;
+  color: #f7f7f7;
 }
