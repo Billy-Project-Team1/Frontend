@@ -160,11 +160,6 @@ const Posting = () => {
 					</div>
 				</div>
 
-				<div className="posting_calendar_wrap">
-					<div className="posting_calendar_icon">
-						<Calendar setData={setBlockDateDtoList} data={blockDateDtoList} />
-					</div>
-				</div>
 
 				<div className="posting_content">
 					<textarea
@@ -175,6 +170,11 @@ const Posting = () => {
 						value={data.content}
 						onChange={onChangeHandler}
 					/>
+				</div>
+				<div className="posting_calendar_wrap">
+					<div className="posting_calendar_icon">
+						<Calendar setData={setBlockDateDtoList} data={blockDateDtoList} />
+					</div>
 				</div>
 				<PostingMap setSearchMapModal={setSearchMapModal} data={data} />
 				{searchMapModal && (
