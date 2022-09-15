@@ -71,7 +71,7 @@ const ReservationCard = ({ billyState,setMyPageState }) => {
 
   return (
     // .slice(0).reverse()
-    <>
+    <div className='a'>
       {billylist?.map((item, index) => {
         return (
           <div className="bookedCard-container">
@@ -156,7 +156,7 @@ const ReservationCard = ({ billyState,setMyPageState }) => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 export default ReservationCard;
