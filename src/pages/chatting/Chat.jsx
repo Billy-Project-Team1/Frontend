@@ -28,6 +28,7 @@ const Chat = () => {
   }, []);
 
   const roomData = useSelector((state) => state.ChatSlice?.chatRoomDetail);
+  console.log(roomData);
   const [chatList, setChatList] = useState([]);
   const [userData, setUserData] = useState({
     type: '',
@@ -41,8 +42,12 @@ const Chat = () => {
     quitOwner: '',
   });
 
-  const postPrice = roomData.price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  const postDeposit = roomData.deposit?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const postPrice = roomData.price
+    ?.toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const postDeposit = roomData.deposit
+    ?.toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
   //ScrollY값 가장 하단으로 이동
   const scrollToBottom = () => {
@@ -163,20 +168,26 @@ const Chat = () => {
   return (
     <>
       <LoginHeader />
-      <div className="Chat_Head_Container" onClick={()=>navigate(`/detail/${roomData.id}`)}>
+      <div
+        className="Chat_Head_Container"
+        onClick={() => navigate(`/detail/${roomData.id}`)}
+      >
         <div className="Chat_Head_Box">
           <div className="Chat_Head_Img_Box">
-            <img src={roomData.profileUrl} className="Chat_Head_Img" />
+            <img
+              src={roomData.postImgUrl?.postImgUrlList[0]}
+              className="Chat_Head_Img"
+            />
           </div>
           <div className="Chat_Head_Text_Box">
             <div className="Chat_Head_Title">{roomData.title}</div>
             <div className="chat_head_cost">
               <div className="chat_head_cost_icon_box">
-              <img className="chat_head_cost_icon" src={dailycost} />
+                <img className="chat_head_cost_icon" src={dailycost} />
               </div>
               {postPrice}
               <div className="chat_head_cost_icon_box">
-              <img className="chat_head_cost_icon" src={deposit} />
+                <img className="chat_head_cost_icon" src={deposit} />
               </div>
               {postDeposit}
             </div>

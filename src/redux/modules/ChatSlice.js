@@ -25,8 +25,8 @@ export const createChatRoom = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.post(`/create/chat/${payload}`);
-      return console.log(response)
-      return thunkAPI.fulfillWithValue(response.data.messageDto);
+    //  return console.log(response)
+      return thunkAPI.fulfillWithValue(response.data.result);
     } catch (err) {
       console.log(err);
     }
