@@ -27,7 +27,7 @@ const AddPostingHeader = ({ authorId }) => {
 					/>
 					{/* 4. 삼항연산자. props 이용해하기. api 확인~ */}
 
-					{/* {userId === authorId ? ( */}
+					{userId === authorId ? (
 					<div>
 						<img
 							src={dotIcon}
@@ -35,9 +35,9 @@ const AddPostingHeader = ({ authorId }) => {
 							onClick={() => showModal()}
 						/>
 					</div>
-					{/* ) : (
+					) : (
 						''
-					)} */}
+					)}
 				</div>
 			</div>
 			{modalOpen && <DetailModal showModal={showModal} />}

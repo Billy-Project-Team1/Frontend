@@ -1,0 +1,52 @@
+.detail_footer {
+	max-width: 428px;
+}
+.detail_footer_container {
+	height: 116px;
+	position: fixed;
+	z-index: 4;
+	bottom: 0;
+	width: 100%;
+	background-color: #f7f7f7;
+	border-radius: 20px 20px 0px 0px;
+	padding: 1rem;
+
+	.detail_footer_wrap {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		position: sticky;
+	}
+}
+
+.detail_footer_icon {
+	width: 24px;
+	height: 24px;
+	margin-right: 10px;
+	margin-top: 4%;
+	color: #212121;
+}
+
+.detail_chat_btn {
+	width: 126px;
+	height: 52px;
+	text-align: center;
+	font-weight: 700;
+	font-size: 16px;
+	color: #004eea;
+	border: 1.5px solid #004eea;
+	border-radius: 12px;
+	padding: 13px;
+}
+
+.detail_reservattion_btn {
+	width: 180px;
+	height: 52px;
+	text-align: center;
+	font-weight: 700;
+	font-size: 18px;
+	color: #f7f7f7;
+	background: #004eea;
+	border-radius: 12px;
+	padding: 13px;
+}

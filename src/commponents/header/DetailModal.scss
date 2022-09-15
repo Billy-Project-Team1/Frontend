@@ -5,29 +5,33 @@
 	bottom: 0;
 	right: 0;
 	background: rgba(0, 0, 0, 0.4);
+	z-index: 3;
 }
 
 .detail_modal_container {
 	padding: 0 8px;
 	position: fixed;
 	width: 100%;
-	z-index: 2;
+	z-index: 4;
 	text-align: center;
 	font-size: 18px;
 	font-weight: 500;
 	justify-content: center;
 	align-items: center;
-	bottom: 50px;
+	bottom: 3rem;
 }
+
 .detail_btn_first {
 	flex-direction: column;
 }
+
 .detail_edit_btn {
 	height: 57px;
 	background: #f7f7f7;
 	border-radius: 12px 12px 0px 0px;
-  padding: 16px;
+	padding: 16px;
 }
+
 .detail_del_btn {
 	height: 57px;
 	background: #f7f7f7;
@@ -35,19 +39,17 @@
 	border-top: 0.5px solid #999999;
 	margin-bottom: 12px;
 	color: #eb0000;
-  padding: 16px;
+	padding: 16px;
 }
-.detail_btn_second {
-}
+
 .detail_cancel_btn {
 	top: 69.52%;
 	bottom: 0%;
 	background: #f7f7f7;
 	border-radius: 12px;
-	//  position: absolute;
 	height: 57px;
 	left: calc(50% - 374px / 2 - 0.42px);
 	bottom: 49.08px;
 	align-items: center;
-  padding: 16px;
+	padding: 16px;
 }
