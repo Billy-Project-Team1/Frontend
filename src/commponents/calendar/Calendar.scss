@@ -46,16 +46,17 @@
 }
 .rmdp-day {
 	margin-right: 9px;
+  width: 35px;
+		height: 35px;
 
 	span {
 		font-size: 0.875rem;
 		width: 35px;
 		height: 35px;
-      color: #CCCCCC;
-
+		color: #cccccc;
 	}
-  	span.sd {
-    color: #212121;
+	span.sd {
+		color: #212121;
 	}
 }
 .rmdp-week-day {
@@ -95,6 +96,10 @@
 	display: flex;
 	flex-direction: column;
 }
+.rmdp-wrapper {
+	margin: auto;
+}
+
 .rmdp-wrapper.rmdp-shadow {
 	box-shadow: none;
 	// box-shadow: 0 0 5px #8798ad;
@@ -131,4 +136,6 @@
 .rmdp-range {
 	border-radius: 50%;
 	color: #f7f7f7;
+	width: 35px;
+	height: 35px;
 }
