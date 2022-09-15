@@ -88,26 +88,10 @@ const Detail = () => {
   const [pickDate, setPickDate] = useState(initialState);
   console.log(pickDate);
 
-  const onReservationHandler = (event) => {
-    event.preventDefault();
-    if (pickDate == false ) {
-      event.preventDefault();
-    } else {
-      event.preventDefault();
-      dispatch(reservationThunk(pickDate));
-      navigate(`/mypage/${myUserId}`)
-      window.location.replace(`/mypage/${myUserId}`);
-    }
-  }; 
-  // const onReservationHandler = ()=>{
-  //   const response = dispatch(reservationThunk(pickDate))
-  //   if (response){
-  //     const onReservationHandler
-
-  //   }
-  // }
-
-
+  const onReservationHandler = () => {
+    dispatch(reservationThunk(pickDate));
+    window.location.replace(`/mypage/${myUserId}`);
+  };
 
   return (
     <div className="detail_container">
