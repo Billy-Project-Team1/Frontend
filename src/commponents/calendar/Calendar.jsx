@@ -96,9 +96,9 @@ const PostingCalendar = ({ setData, data }) => {
     <div className="calendar-wrap">
       <div className="calendar-box">
         <HiOutlineCalendar
-          style={{ marginRight: '14px' }}
+          style={{ marginRight: '5px', marginTop:'2px' }}
           color="#757575"
-          size="24px"
+          size="19px"
         />
         <input
           readOnly
