@@ -44,7 +44,7 @@ const MyProfileMiddle = ({ myPageState, setMyPageState }) => {
           {myPageState === '2' ? (
             <div className="MyProfileMiddle_Text_Check">빌린 예약건</div>
           ) : (
-            <div className="MyProfileMiddleText">빌린 예약건</div>
+            <div className="MyProfileMiddle_Text">빌린 예약건</div>
           )}
         </div>
         <div className="MyProfileMiddle_Box" onClick={() => setMyPageState('3')}>
