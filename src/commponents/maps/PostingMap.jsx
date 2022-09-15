@@ -29,7 +29,6 @@ const PostingMap = ({ setSearchMapModal, data }) => {
   return (
     <div className="PostingMap_Wrap">
       <div className="PostingMap_Title">
-        거래 장소 검색
         <div
           className="PostingMap_Icon_Box"
           onClick={() => {
@@ -40,12 +39,25 @@ const PostingMap = ({ setSearchMapModal, data }) => {
             <HiSearch className="PostingMap_HiIcon" />
           </div>
         </div>
+        {data.location === '' ? (
+          <div
+            onClick={() => {
+              setSearchMapModal(true);
+            }}
+          >
+            거래 장소 검색
+          </div>
+        ) : (
+          <div
+            onClick={() => {
+              setSearchMapModal(true);
+            }}
+            className="PostingMap_Detail_Location"
+          >
+            {data.detailLocation}
+          </div>
+        )}
       </div>
-      {data.location === '' ? (
-        ''
-      ) : (
-        <div className="PostingMap_Place">{data.detailLocation}</div>
-      )}
       <div id="map" className="PostingMap_Img"></div>
     </div>
   );

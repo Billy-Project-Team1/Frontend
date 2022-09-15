@@ -16,7 +16,7 @@ const ChattingRoom = () => {
     dispatch(getMyChatRoom());
   }, []);
 
-  const myChatList = useSelector((state) => state.ChatSlice.chatRoomList);
+  const myChatList = useSelector((state) => state.ChatSlice?.chatRoomList);
   console.log(myChatList);
 
   return (
