@@ -3,7 +3,7 @@ import { Calendar } from 'react-multi-date-picker';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import './Calendar.scss';
 
-const DetailCalendar = ({ data, detailPost }) => {
+const DetailCalendar = ({ data,pickDate,setPickDate }) => {
   const noDates = useRef();
   const noDates2 = useRef();
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
@@ -26,7 +26,7 @@ const DetailCalendar = ({ data, detailPost }) => {
   const [dates, setDates] = useState();
   const [unavailable, setUnavailable] = useState([]);
   const [toggleOn, setToggleOn] = useState(true);
-  // console.log(date.toLocaleString());
+  console.log(date.toLocaleString());
   // data={detailPost.blockDate?.blockDateList[0]}
 
   const toggleMode = () => {
@@ -134,15 +134,16 @@ const DetailCalendar = ({ data, detailPost }) => {
     }
   };
 
-  const blockDate = date.toLocaleString();
-
   useEffect(() => {
     setDateFormat();
-    // setData({
-    //   ...data,
-    //   blockDateDtoList: [blockDate],
-    // });
+    setPickDate({
+      ...pickDate,
+      startDate : date[0]?.toLocaleString(),
+      endDate : date[1]?.toLocaleString(),
+    })
+
   }, [date]);
+
 
   return (
     <div className="calendar-wrap">
