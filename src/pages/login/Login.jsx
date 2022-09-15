@@ -57,35 +57,35 @@ const Login = () => {
   return (
     <>
       <LginHeader />
-      <div className="LoginWrap">
-        <div className="LoginEmailBox">
+      <div className="Login_Wrap">
+        <div className="Login_EmailBox">
           <div>이메일</div>
           <input
             ref={email_ref}
-            className="LoginEmailInput"
+            className="Login_Email_Input"
             placeholder="이메일을 입력해주세요"
           />
         </div>
-        <div className="LoginPassword">
+        <div className="Login_Password">
           <div>비밀번호</div>
-          <div className="LoginPasswordBox">
+          <div className="Login_Password_Box">
             {doNotAccess ? (
               <input
                 ref={pw_ref}
                 type={passwordView}
-                className="LoginPasswordInput"
+                className="Login_Password_Input"
                 placeholder="비밀번호를 입력해주세요"
               />
             ) : (
               <input
                 ref={pw_ref}
                 type={passwordView}
-                className="LoginPasswordInputAlert"
+                className="Login_Password_Input_Alert"
                 placeholder="비밀번호를 입력해주세요"
               />
             )}
 
-            <div className="LoginPasswordEye">
+            <div className="Login_Password_Eye">
               {passwordView === 'text' ? (
                 <FaEyeSlash onClick={onDisVisablePassword} />
               ) : (
@@ -94,25 +94,25 @@ const Login = () => {
             </div>
           </div>
           {doNotAccess ? (
-            <div className="LoginAlertText1">&nbsp;</div>
+            <div className="Login_Alert_Text1">&nbsp;</div>
           ) : (
-            <div className="LoginAlertText">
+            <div className="Login_Alert_Text">
               아이디 혹은 비밀번호를 다시 확인하세요.
             </div>
           )}
         </div>
-        <button className="LoginButton" onClick={Loginform}>
+        <button className="Login_Button" onClick={Loginform}>
           로그인
         </button>
-        <a className="LoginKakao" href={KAKAO_AUTH_URL}>
-          <div className="LoginKakaoBox">
-            <img src={kakaoLoginimg} className="KakaoLoginImg" />
-            <div className="LoginKakaoTitle">카카오로 로그인하기</div>
+        <a className="Login_Kakao" href={KAKAO_AUTH_URL}>
+          <div className="Login_Kakao_Box">
+            <img src={kakaoLoginimg} className="Kakao_Login_Img" />
+            <div className="Login_Kakao_Title">카카오로 로그인하기</div>
           </div>
         </a>
-        <div className="LoginFindBox">
-          <div className="LoginFind">빌리가 처음 이신가요?</div>
-          <div className="LoginFindNavi" onClick={() => navigate(`/signup`)}>
+        <div className="Login_Find_Box">
+          <div className="Login_Find">빌리가 처음 이신가요?</div>
+          <div className="Login_Find_Navi" onClick={() => navigate(`/signup`)}>
             회원가입
           </div>
         </div>

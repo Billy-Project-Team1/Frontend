@@ -1,16 +1,16 @@
-.DetailMapWrap {
+.DetailMap_Wrap {
 	display: flex;
 	flex-direction: column;
 
 	padding: 0 1rem;
 }
 
-.DetailMapContainer {
+.DetailMap_Container {
 	display: flex;
 	flex-direction: column;
 }
 
-.DetailMapTitle {
+.DetailMap_Title {
 	display: flex;
 	flex-direction: row;
 	font-size: 1rem;
@@ -24,11 +24,11 @@
 	justify-content: center;
 }
 
-.DetailMapPlace {
+.DetailMap_Place {
 	color: #757575;
 	font-size: 0.875rem;
 }
-.DetailMapImg {
+.DetailMap_Img {
 	margin: auto;
 	margin-top: 1rem;
 	border-radius: 12px;
@@ -36,7 +36,7 @@
 	aspect-ratio: 1.7/1;
 }
 
-.DetailMapTextBox {
+.DetailMap_TextBox {
 	display: flex;
 	flex-direction: row;
 	gap: 5px;

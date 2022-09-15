@@ -51,7 +51,7 @@ const Chat = () => {
 
   const registerUser = () => {
     var sockJS = new SockJS(process.env.REACT_APP_API_URL + '/wss/chat');
-    // var sockJS = new SockJS('http://3.34.2.159:8080/wss/chat');
+    // var sockJS = new SockJS('http://13.125.236.69/wss/chat');
     console.log(sockJS);
     stompClient = Stomp.over(sockJS);
     // stompClient.debug = null;
@@ -157,61 +157,61 @@ const Chat = () => {
   return (
     <>
       <LoginHeader />
-      <div className="ChatHeadContainer">
-        <div className="ChatHeadBox">
-        <div className="ChatHeadImgBox">
-          <img src={roomData.profileUrl} className="ChatHeadImg"/>
+      <div className="Chat_Head_Container">
+        <div className="Chat_Head_Box">
+        <div className="Chat_Head_Img_Box">
+          <img src={roomData.profileUrl} className="Chat_Head_Img"/>
         </div>
-        <div className="ChatHeadTextBox">
-          <div className="ChatHeadTitle">1212</div>
+        <div className="Chat_Head_Text_Box">
+          <div className="Chat_Head_Title">1212</div>
           <div>1212</div>
         </div>
         <div></div>
         </div>
       </div>
-      <div className="ChatContainer">
+      <div className="Chat_Container">
         {chatList?.map((chat, idx) => {
           return (
             <div key={idx}>
               {chat.sender !== myNickname ? (
-                <div className="ChatOtherWrap">
-                  <img src={chat.profileUrl} className="ChatOtherProfile" />
-                  <div className="ChatOtherContainer">
-                    <div className="ChatotherName">{chat.sender}</div>
-                    <div className="ChatOtherMsgClock">
-                      <div className="ChatOtherBox">{chat.message}</div>
-                      <div className="ChatClockBox">
-                        <div className="ChatClock">오전 09:15</div>
+                <div className="Chat_Other_Wrap">
+                  <img src={chat.profileUrl} className="Chat_Other_Profile" />
+                  <div className="Chat_Other_Container">
+                    <div className="Chat_Other_Name">{chat.sender}</div>
+                    <div className="Chat_Other_Msg_Clock">
+                      <div className="Chat_Other_Box">{chat.message}</div>
+                      <div className="Chat_Clock_Box">
+                        <div className="Chat_Clock">오전 09:15</div>
                       </div>
                     </div>
                   </div>
                 </div>
               ) : (
-                <div className="ChatMeContainer">
-                  <div className="ChatClockBox">
-                    <div className="ChatClock">오전 09:15</div>
+                <div className="Chat_Me_Container">
+                  <div className="Chat_Clock_Box">
+                    <div className="Chat_Clock">오전 09:15</div>
                   </div>
-                  <div className="ChatMeBox">{chat.message}</div>
+                  <div className="Chat_Me_Box">{chat.message}</div>
                 </div>
               )}
             </div>
           );
         })}
-        <div className="ChatInputContainer">
+        <div className="Chat_Input_Container">
           <form
-            className="ChatInputBox"
+            className="Chat_Input_Box"
             onSubmit={(event) => onKeyPress(event)}
           >
             <input
-              className="ChatInput"
+              className="Chat_Input"
               type="text"
               placeholder="대화를 시작해보세요!"
               value={userData.message}
               onChange={(event) => handleValue(event)}
             />
-            <div className="ChatInputButtonBox">
-              <button className="ChatInputButton">
-                <Icon icon="akar-icons:send" className="ChatButtonIcon" />
+            <div className="Chat_Input_Button_Box">
+              <button className="Chat_Input_Button">
+                <Icon icon="akar-icons:send" className="Chat_Button_Icon" />
               </button>
             </div>
           </form>

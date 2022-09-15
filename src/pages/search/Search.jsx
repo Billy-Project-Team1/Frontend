@@ -34,16 +34,16 @@ const Search = () => {
 
   return (
 		<>
-			<div className="SearchWrap">
-				<form className="SearchHeader" onSubmit={onSubmitHandler}>
-					<div className="SearchHeaderIconBox">
+			<div className="Search_Wrap">
+				<form className="Search_Header" onSubmit={onSubmitHandler}>
+					<div className="Search_Header_Icon_Box">
 						<HiOutlineChevronLeft
-							className="SearchHeaderIcon"
+							className="Search_Header_Icon"
 							onClick={() => navigate(-1)}
 						/>
 					</div>
 					<input
-						className="SearchHeaderInput"
+						className="Search_Header_Input"
 						placeholder="검색어를 입력해주세요."
 						onChange={onChange}
 						value={inputText}
@@ -52,7 +52,7 @@ const Search = () => {
 						''
 					) : (
 						<FiX
-							className="SearchHeaderInputXbutton"
+							className="Search_Header_Input_Xbutton"
 							onClick={() => {
 								onResetButton();
 							}}
@@ -62,12 +62,12 @@ const Search = () => {
 			</div>
 
 			{searchPostList.length === 0 ? (
-				<div className="SearchEmptyText">
+				<div className="Search_Empty_Text">
 					지역명 + 제품명으로 검색하여 필요한 제품을 찾아보세요! <br/> 예) 강남
 					자전거, 분당 노트북
 				</div>
 			) : (
-				<div className="SearchPostList">
+				<div className="Search_Post_List">
 					{searchPostList.map((post) => {
 						return <MainListCard post={post} key={post.id} />;
 					})}
