@@ -17,6 +17,7 @@ const Chat = () => {
   const { postId } = useParams();
   const { roomId } = useParams();
   const navigate = useNavigate();
+  const nowDate = new Date();
 
   const myNickname = localStorage.getItem('nickname');
   const PK = localStorage.getItem('memberId');
@@ -27,7 +28,6 @@ const Chat = () => {
   }, []);
 
   const roomData = useSelector((state) => state.ChatSlice?.chatRoomDetail);
-  console.log(roomData);
   const [chatList, setChatList] = useState([]);
   const [userData, setUserData] = useState({
     type: '',
@@ -40,12 +40,9 @@ const Chat = () => {
     memberId: '',
     quitOwner: '',
   });
-  // const postPrice = roomData?.price
-  //   .toString()
-  //   .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  // const postDeposit = roomData?.deposit
-  //   .toString()
-  //   .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+  const postPrice = roomData.price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const postDeposit = roomData.deposit?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
   //ScrollY값 가장 하단으로 이동
   const scrollToBottom = () => {
@@ -73,10 +70,7 @@ const Chat = () => {
   };
 
   const onConnected = () => {
-    stompClient.subscribe(
-      `/sub/chat/room/${roomId}`,
-      onMessageReceived
-    );
+    stompClient.subscribe(`/sub/chat/room/${roomId}`, onMessageReceived);
     userJoin();
     scrollToBottom();
   };
@@ -169,21 +163,24 @@ const Chat = () => {
   return (
     <>
       <LoginHeader />
-      <div className="Chat_Head_Container">
+      <div className="Chat_Head_Container" onClick={()=>navigate(`/detail/${roomData.id}`)}>
         <div className="Chat_Head_Box">
           <div className="Chat_Head_Img_Box">
             <img src={roomData.profileUrl} className="Chat_Head_Img" />
           </div>
           <div className="Chat_Head_Text_Box">
             <div className="Chat_Head_Title">{roomData.title}</div>
-            {/* <div className="chat_head_cost">
-              <img className="MainListCardIcon" src={dailycost} />
+            <div className="chat_head_cost">
+              <div className="chat_head_cost_icon_box">
+              <img className="chat_head_cost_icon" src={dailycost} />
+              </div>
               {postPrice}
-              <img className="MainListCardIcon" src={deposit} />
+              <div className="chat_head_cost_icon_box">
+              <img className="chat_head_cost_icon" src={deposit} />
+              </div>
               {postDeposit}
-            </div> */}
+            </div>
           </div>
-          <div>12</div>
           <div></div>
         </div>
       </div>
