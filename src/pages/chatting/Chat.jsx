@@ -1,27 +1,32 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
+import dailycost from '../../static/image/dailycost.svg';
+import deposit from '../../static/image/deposit.svg';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import { Icon } from '@iconify/react';
 import LoginHeader from '../../commponents/header/LoginHeader';
 import './Chat.scss';
 import { getChatDetailPost } from '../../redux/modules/ChatSlice';
+import { IoConstructOutline } from 'react-icons/io5';
 
 var stompClient = null;
 
 const Chat = () => {
+  const { postId } = useParams();
   const { roomId } = useParams();
+  const navigate = useNavigate();
+
   const myNickname = localStorage.getItem('nickname');
   const PK = localStorage.getItem('memberId');
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getChatDetailPost(roomId));
+    dispatch(getChatDetailPost(postId));
   }, []);
 
-  const roomData = useSelector((state) => state.ChatSlice.chatRoomDetail);
+  const roomData = useSelector((state) => state.ChatSlice?.chatRoomDetail);
   console.log(roomData);
   const [chatList, setChatList] = useState([]);
   const [userData, setUserData] = useState({
@@ -35,6 +40,14 @@ const Chat = () => {
     memberId: '',
     quitOwner: '',
   });
+  // const postPrice = roomData?.price
+  //   .toString()
+  //   .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  // const postDeposit = roomData?.deposit
+  //   .toString()
+  //   .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+  //ScrollY값 가장 하단으로 이동
   const scrollToBottom = () => {
     window.scrollTo(0, document.body.scrollHeight);
   };
@@ -51,7 +64,7 @@ const Chat = () => {
 
   const registerUser = () => {
     var sockJS = new SockJS(process.env.REACT_APP_API_URL + '/wss/chat');
-    // var sockJS = new SockJS('http://3.34.2.159:8080/wss/chat');
+    // var sockJS = new SockJS('http://13.125.236.69/wss/chat');
     console.log(sockJS);
     stompClient = Stomp.over(sockJS);
     // stompClient.debug = null;
@@ -61,7 +74,7 @@ const Chat = () => {
 
   const onConnected = () => {
     stompClient.subscribe(
-      `/sub/chat/room/${parseInt(roomId)}`,
+      `/sub/chat/room/${roomId}`,
       onMessageReceived
     );
     userJoin();
@@ -95,7 +108,6 @@ const Chat = () => {
     if (payloadData.type === 'ENTER' || payloadData.type === 'TALK') {
       chatList.push(payloadData);
       setChatList([...chatList]);
-      console.log(chatList);
     }
 
     scrollToBottom();
@@ -136,82 +148,88 @@ const Chat = () => {
     scrollToBottom();
   }, [chatList]);
 
-  const detailDate = (a) => {
-    const milliSeconds = new Date() - a;
-    const seconds = milliSeconds / 1000;
-    if (seconds < 60) return `방금 전`;
-    const minutes = seconds / 60;
-    if (minutes < 60) return `${Math.floor(minutes)}분 전`;
-    const hours = minutes / 60;
-    if (hours < 24) return `${Math.floor(hours)}시간 전`;
-    const days = hours / 24;
-    if (days < 7) return `${Math.floor(days)}일 전`;
-    const weeks = days / 7;
-    if (weeks < 5) return `${Math.floor(weeks)}주 전`;
-    const months = days / 30;
-    if (months < 12) return `${Math.floor(months)}개월 전`;
-    const years = days / 365;
-    return `${Math.floor(years)}년 전`;
-  };
+  // const detailDate = (a) => {
+  //   const milliSeconds = new Date() - a;
+  //   const seconds = milliSeconds / 1000;
+  //   if (seconds < 60) return `방금 전`;
+  //   const minutes = seconds / 60;
+  //   if (minutes < 60) return `${Math.floor(minutes)}분 전`;
+  //   const hours = minutes / 60;
+  //   if (hours < 24) return `${Math.floor(hours)}시간 전`;
+  //   const days = hours / 24;
+  //   if (days < 7) return `${Math.floor(days)}일 전`;
+  //   const weeks = days / 7;
+  //   if (weeks < 5) return `${Math.floor(weeks)}주 전`;
+  //   const months = days / 30;
+  //   if (months < 12) return `${Math.floor(months)}개월 전`;
+  //   const years = days / 365;
+  //   return `${Math.floor(years)}년 전`;
+  // };
 
   return (
     <>
       <LoginHeader />
-      <div className="ChatHeadContainer">
-        <div className="ChatHeadBox">
-        <div className="ChatHeadImgBox">
-          <img src={roomData.profileUrl} className="ChatHeadImg"/>
-        </div>
-        <div className="ChatHeadTextBox">
-          <div className="ChatHeadTitle">1212</div>
-          <div>1212</div>
-        </div>
-        <div></div>
+      <div className="Chat_Head_Container">
+        <div className="Chat_Head_Box">
+          <div className="Chat_Head_Img_Box">
+            <img src={roomData.profileUrl} className="Chat_Head_Img" />
+          </div>
+          <div className="Chat_Head_Text_Box">
+            <div className="Chat_Head_Title">{roomData.title}</div>
+            {/* <div className="chat_head_cost">
+              <img className="MainListCardIcon" src={dailycost} />
+              {postPrice}
+              <img className="MainListCardIcon" src={deposit} />
+              {postDeposit}
+            </div> */}
+          </div>
+          <div>12</div>
+          <div></div>
         </div>
       </div>
-      <div className="ChatContainer">
+      <div className="Chat_Container">
         {chatList?.map((chat, idx) => {
           return (
             <div key={idx}>
-              {chat.sender !== myNickname ? (
-                <div className="ChatOtherWrap">
-                  <img src={chat.profileUrl} className="ChatOtherProfile" />
-                  <div className="ChatOtherContainer">
-                    <div className="ChatotherName">{chat.sender}</div>
-                    <div className="ChatOtherMsgClock">
-                      <div className="ChatOtherBox">{chat.message}</div>
-                      <div className="ChatClockBox">
-                        <div className="ChatClock">오전 09:15</div>
+              {chat.memberId != PK ? (
+                <div className="Chat_Other_Wrap">
+                  <img src={chat.profileUrl} className="Chat_Other_Profile" />
+                  <div className="Chat_Other_Container">
+                    <div className="Chat_Other_Name">{chat.sender}</div>
+                    <div className="Chat_Other_Msg_Clock">
+                      <div className="Chat_Other_Box">{chat.message}</div>
+                      <div className="Chat_Clock_Box">
+                        <div className="Chat_Clock">오전 09:15</div>
                       </div>
                     </div>
                   </div>
                 </div>
               ) : (
-                <div className="ChatMeContainer">
-                  <div className="ChatClockBox">
-                    <div className="ChatClock">오전 09:15</div>
+                <div className="Chat_Me_Container">
+                  <div className="Chat_Clock_Box">
+                    <div className="Chat_Clock">오전 09:15</div>
                   </div>
-                  <div className="ChatMeBox">{chat.message}</div>
+                  <div className="Chat_Me_Box">{chat.message}</div>
                 </div>
               )}
             </div>
           );
         })}
-        <div className="ChatInputContainer">
+        <div className="Chat_Input_Container">
           <form
-            className="ChatInputBox"
+            className="Chat_Input_Box"
             onSubmit={(event) => onKeyPress(event)}
           >
             <input
-              className="ChatInput"
+              className="Chat_Input"
               type="text"
               placeholder="대화를 시작해보세요!"
               value={userData.message}
               onChange={(event) => handleValue(event)}
             />
-            <div className="ChatInputButtonBox">
-              <button className="ChatInputButton">
-                <Icon icon="akar-icons:send" className="ChatButtonIcon" />
+            <div className="Chat_Input_Button_Box">
+              <button className="Chat_Input_Button">
+                <Icon icon="akar-icons:send" className="Chat_Button_Icon" />
               </button>
             </div>
           </form>

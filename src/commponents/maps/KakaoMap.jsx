@@ -139,7 +139,7 @@ const KakaoMap = ({
     }
   }, [searchPlace]);
 
-  return <div id="Mymap" className="KakaoMapImg"></div>;
+  return <div id="Mymap" className="KakaoMap_Img"></div>;
 };
 
 export default KakaoMap;

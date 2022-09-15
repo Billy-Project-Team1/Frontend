@@ -126,14 +126,14 @@ const SignUp = () => {
   return (
     <>
     <SingnUpHeader />
-    <div className="SignUpWrap">
+    <div className="SignUp_Wrap">
       <form onSubmit={onSubmitHandler}>
-        <div className="SignUpTopName">회원가입</div>
-        <div className="SignUpInputBox">
+        <div className="SignUp_Top_Name">회원가입</div>
+        <div className="SignUp_Input_Box">
           <div>닉네임</div>
           {member.nickname === '' ? (
             <input
-              className="SignUpInput"
+              className="SignUp_Input"
               placeholder="2-8자 이내, 특수문자/띄어쓰기 불가"
               name="nickname"
               value={member.nickname}
@@ -141,7 +141,7 @@ const SignUp = () => {
             />
           ) : nicknameCheck ? (
             <input
-              className="SignUpInput"
+              className="SignUp_Input"
               placeholder="2-8자 이내, 특수문자/띄어쓰기 불가"
               name="nickname"
               value={member.nickname}
@@ -149,7 +149,7 @@ const SignUp = () => {
             />
           ) : (
             <input
-              className="SignUpInputAlert"
+              className="SignUp_Input_Alert"
               placeholder="2-8자 이내, 특수문자/띄어쓰기 불가"
               name="nickname"
               value={member.nickname}
@@ -158,20 +158,20 @@ const SignUp = () => {
           )}
 
           {member.nickname === '' ? (
-            <div className="SignUpAlertText">&nbsp;</div>
+            <div className="SignUp_Alert_Text">&nbsp;</div>
           ) : nicknameCheck ? (
-            <div className="SignUpAlertText">&nbsp;</div>
+            <div className="SignUp_Alert_Text">&nbsp;</div>
           ) : (
-            <div className="SignUpAlertText">
+            <div className="SignUp_Alert_Text">
               특수문자, 띄어쓰기는 불가하며 2-8자 이내로 입력해주세요.
             </div>
           )}
         </div>
-        <div className="SignUpInputBox">
+        <div className="SignUp_Input_Box">
           <div>이메일</div>
           {member.email === '' ? (
             <input
-              className="SignUpInput"
+              className="SignUp_Input"
               placeholder="이메일 주소 입력"
               name="email"
               value={member.email}
@@ -180,7 +180,7 @@ const SignUp = () => {
           ) : emailCheck ? (
             emailDuplicate ? (
               <input
-                className="SignUpInput"
+                className="SignUp_Input"
                 placeholder="이메일 주소 입력"
                 name="email"
                 value={member.email}
@@ -188,7 +188,7 @@ const SignUp = () => {
               />
             ) : (
               <input
-                className="SignUpInputAlert"
+                className="SignUp_Input_Alert"
                 placeholder="이메일 주소 입력"
                 name="email"
                 value={member.email}
@@ -197,7 +197,7 @@ const SignUp = () => {
             )
           ) : (
             <input
-              className="SignUpInputAlert"
+              className="SignUp_Input_Alert"
               placeholder="이메일 주소 입력"
               name="email"
               value={member.email}
@@ -205,26 +205,26 @@ const SignUp = () => {
             />
           )}
           {member.email === '' ? (
-            <div className="SignUpAlertText">&nbsp;</div>
+            <div className="SignUp_Alert_Text">&nbsp;</div>
           ) : emailCheck ? (
             emailDuplicate ? (
-              <div className="SignUpAlertText">&nbsp;</div>
+              <div className="SignUp_Aler_tText">&nbsp;</div>
             ) : (
-              <div className="SignUpAlertText">
+              <div className="SignUp_Alert_Text">
                 이미 가입된 이메일 주소입니다.
               </div>
             )
           ) : (
-            <div className="SignUpAlertText">
+            <div className="SignUp_Alert_Text">
               이메일 형식이 올바르지 않습니다
             </div>
           )}
         </div>
-        <div className="SignUpInputBox">
+        <div className="SignUp_Input_Box">
           <div>비밀번호</div>
           {member.password === '' ? (
             <input
-              className="SignUpInput"
+              className="SignUp_Input"
               type="password"
               placeholder="영문, 숫자, 특수기호 포함하여 14자 이내"
               name="password"
@@ -233,7 +233,7 @@ const SignUp = () => {
             />
           ) : passwordCheck ? (
             <input
-              className="SignUpInput"
+              className="SignUp_Input"
               type="password"
               placeholder="영문, 숫자, 특수기호 포함하여 14자 이내"
               name="password"
@@ -242,7 +242,7 @@ const SignUp = () => {
             />
           ) : (
             <input
-              className="SignUpInputAlert"
+              className="SignUp_Input_Alert"
               type="password"
               placeholder="영문, 숫자, 특수기호 포함하여 14자 이내"
               name="password"
@@ -252,20 +252,20 @@ const SignUp = () => {
           )}
 
           {member.password === '' ? (
-            <div className="SignUpAlertText">&nbsp;</div>
+            <div className="SignUp_Alert_Text">&nbsp;</div>
           ) : passwordCheck ? (
-            <div className="SignUpAlertText">&nbsp;</div>
+            <div className="SignUp_Alert_Text">&nbsp;</div>
           ) : (
-            <div className="SignUpAlertText">
+            <div className="SignUp_Alert_Text">
               영문, 숫자, 특수기호를 포함하여 14자 이내로 입력해주세요.
             </div>
           )}
         </div>
-        <div className="SignUpInputBox">
+        <div className="SignUp_Input_Box">
           <div>비밀번호 확인</div>
           {member.password2 === '' ? (
             <input
-              className="SignUpInput"
+              className="SignUp_Input"
               type="password"
               placeholder="비밀번호와 동일하게 입력"
               name="password2"
@@ -274,7 +274,7 @@ const SignUp = () => {
             />
           ) : member.password === member.password2 ? (
             <input
-              className="SignUpInput"
+              className="SignUp_Input"
               type="password"
               placeholder="비밀번호와 동일하게 입력"
               name="password2"
@@ -283,7 +283,7 @@ const SignUp = () => {
             />
           ) : (
             <input
-              className="SignUpInputAlert"
+              className="SignUp_Input_Alert"
               type="password"
               placeholder="비밀번호와 동일하게 입력"
               name="password2"
@@ -293,24 +293,24 @@ const SignUp = () => {
           )}
 
           {member.password2 === '' ? (
-            <div className="SignUpAlertText">&nbsp;</div>
+            <div className="SignUp_Alert_Text">&nbsp;</div>
           ) : member.password === member.password2 ? (
-            <div className="SignUpAlertText">&nbsp;</div>
+            <div className="SignUp_Alert_Text">&nbsp;</div>
           ) : (
-            <div className="SignUpAlertText">비밀번호와 동일하지 않습니다.</div>
+            <div className="SignUp_Alert_Text">비밀번호와 동일하지 않습니다.</div>
           )}
         </div>
-        <div className="SignUpAgreeBox">
-          <div className="SignUpAgreeLeft">
+        <div className="SignUp_Agree_Box">
+          <div className="SignUp_Agree_Left">
             {!signUpAgree ? (
-              <div className="SignUpAgreeLeft1">
+              <div className="SignUp_Agree_Left1">
                 <BsCheckSquare
                   className="BsCheckSquareOpacity"
                   onClick={() => onCheckAgreeHandler()}
                 />
               </div>
             ) : (
-              <div className="SignUpAgreeLeft1">
+              <div className="SignUp_Agree_Left1">
                 <BsCheckSquareFill
                   className="BsCheckSquareFill"
                   onClick={() => onCheckAgreeHandler()}
@@ -318,13 +318,13 @@ const SignUp = () => {
               </div>
             )}
 
-            <div className="SignUpEssential">
+            <div className="SignUp_Essential">
               [필수] 서비스 이용약관 및 개인정보 수집 이용에 동의
             </div>
           </div>
-          <div className="SignUpAdd">보기</div>
+          <div className="SignUp_Add">보기</div>
         </div>
-        <button className="SignUpButton">완료</button>
+        <button className="SignUp_Button">완료</button>
       </form>
     </div>
     </>

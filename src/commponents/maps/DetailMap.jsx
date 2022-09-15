@@ -34,12 +34,12 @@ const DetailMap = ({ data }) => {
 	}, [data.latitude]);
 
 	return (
-		<div className="DetailMapWrap">
-			<div className="DetailMapContainer">
-				<div className="DetailMapTextBox">
-					<div className="DetailMapTitle">거래 장소</div>
+		<div className="DetailMap_Wrap">
+			<div className="DetailMap_Container">
+				<div className="DetailMap_TextBox">
+					<div className="DetailMap_Title">거래 장소</div>
 					<div className="DetailMapPlaceBox">
-						<div className="DetailMapPlace">{data.detailLocation}</div>
+						<div className="DetailMap_Place">{data.detailLocation}</div>
 					</div>
 					<div
 						className="calendar-toggleIcon"
@@ -58,7 +58,7 @@ const DetailMap = ({ data }) => {
 						)}
 					</div>
 				</div>
-				{toggleOn === true ? <div id="map" className="DetailMapImg"></div> : ''}
+				{toggleOn === true ? <div id="map" className="DetailMap_Img"></div> : ''}
 			</div>
 		</div>
 	);

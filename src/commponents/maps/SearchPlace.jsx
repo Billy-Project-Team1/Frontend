@@ -44,7 +44,7 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
 
   return (
     <div
-      className="kakaoMapModal"
+      className="kakaoMap_Modal"
       ref={outSection}
       onClick={(e) => {
         if (outSection.current === e.target) {
@@ -53,16 +53,16 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
       }}
     >
       <div
-        className="KakaoMapwrap
+        className="KakaoMap_wrap
     "
       >
-        <form className="KakaoMapinputForm" onSubmit={handleSubmit}>
-          <div className="KakaoMapinputIconBox">
-            <HiSearch className="KakaoMapinputIcon" />
+        <form className="KakaoMap_input_Form" onSubmit={handleSubmit}>
+          <div className="KakaoMap_input_IconBox">
+            <HiSearch className="KakaoMap_input_Icon" />
           </div>
           <input
             type="text"
-            className="KakaoMapInputPlace"
+            className="KakaoMap_Input_Place"
             placeholder="거래 장소를 입력 해주세요."
             onChange={onChange}
             value={placeAdress}
@@ -71,7 +71,7 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
             ''
           ) : (
             <BsXCircle
-              className="KakaoMapInputPlaceXbutton"
+              className="KakaoMap_Input_Place_Xbutton"
               onClick={() => {
                 onResetButton();
               }}
@@ -87,15 +87,15 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
           setPlaceAdress={setPlaceAdress}
         />
 
-        <button className="KakaoMapSubmitButton" onClick={onSubmitSearchMap}>
+        <button className="KakaoMap_Submit_Button" onClick={onSubmitSearchMap}>
           완료
         </button>
-        <div className="KakaoMapClose">
+        <div className="KakaoMap_Close">
           <div
-            className="KakaoMapCloseIconBox"
+            className="KakaoMap_Close_IconBox"
             onClick={() => setSearchMapModal(false)}
           >
-            <AiOutlineClose className="KakaoMapCloseIcon" />
+            <AiOutlineClose className="KakaoMap_Close_Icon" />
           </div>
         </div>
       </div>

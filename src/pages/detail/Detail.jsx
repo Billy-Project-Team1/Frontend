@@ -5,6 +5,7 @@ import { getPost } from '../../redux/modules/postSlice';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import 'swiper/css/bundle';
+import { createChatRoom, getMyChatRoom } from '../../redux/modules/ChatSlice';
 import './Detail.scss';
 import DetailHeader from '../../commponents/header/DetailHeader';
 import DetailMap from '../../commponents/maps/DetailMap';
@@ -72,6 +73,10 @@ const Detail = () => {
 
 	const nowDate = detailDate(new Date(detailPost.createdAt));
 
+	const onCreateChatRoom = () =>{
+		dispatch(createChatRoom(detailPost.id))
+	}
+
 	return (
 		<div className="detail_container">
 			{/* 2. props 내려줌 그럼 받는측은 ㅇㄷ? header 가보기~*/}
@@ -128,6 +133,7 @@ const Detail = () => {
 						<span className="detail_like">
 							&nbsp;관심&nbsp;{detailPost.likeCount}
 						</span>
+						<button onClick={onCreateChatRoom}>채팅</button>
 					</div>
 				</div>
 			</div>

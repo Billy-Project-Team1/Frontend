@@ -1,50 +1,62 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import instance from './instance';
 
 const initialState = {
   chatList: [],
   chatRoomList: [],
-  chatRoomDetail:{},
+  chatRoomDetail: {},
 };
 
 export const getMyChatRoom = createAsyncThunk(
-  "getMyChatRoom",
+  'getMyChatRoom',
   async (payload, thunkAPI) => {
-		try {
-	    const response = await instance.get('/chat/rooms');
-     console.log(response)
-      return thunkAPI.fulfillWithValue(response.data);
-		} catch(err) {
-			console.log(err);
-		}
-  },
+    try {
+      const response = await instance.get('/chat/rooms');
+      return console.log(response)
+      // return thunkAPI.fulfillWithValue(response.data.messageDto);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
+export const createChatRoom = createAsyncThunk(
+  'createChatRoom',
+  async (payload, thunkAPI) => {
+    try {
+      const response = await instance.post(`/create/chat/${payload}`);
+      return console.log(response)
+      return thunkAPI.fulfillWithValue(response.data.messageDto);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 );
 
 export const getChatDetailPost = createAsyncThunk(
-	'getChatDetailPost',
-	async (payload, thunkAPI) => {
-		try {
-			const response = await instance.get(`/posts/details/${payload}`);
-			if (response.data.success === true) {
-				return thunkAPI.fulfillWithValue(response.data.result);
-			}
-		} catch (error) {
-			console.log(error);
-		}
-	}
+  'getChatDetailPost',
+  async (payload, thunkAPI) => {
+    try {
+      const response = await instance.get(`/posts/details/${payload}`);
+      if (response.data.success === true) {
+        return thunkAPI.fulfillWithValue(response.data.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 );
 
 const chatListSlice = createSlice({
-  name: "chatList",
+  name: 'chatList',
   initialState,
   extraReducers: {
     [getMyChatRoom.fulfilled]: (state, action) => {
-			// action.payload -> chatroom list
-      state.chatRoomList.push(action.payload);
+      state.chatRoomList = action.payload;
     },
-    [getChatDetailPost.fulfilled]:(state, action)=>{
-      state.chatRoomDetail = action.payload
-    }
+    [getChatDetailPost.fulfilled]: (state, action) => {
+      state.chatRoomDetail = action.payload;
+    },
   },
 });
 
