@@ -7,7 +7,7 @@ export const reservationThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.post(`/auth/reservations`, payload);
-      return console.log ('렁러알',response)
+      // return console.log ('렁러알',response)
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       }
@@ -129,6 +129,14 @@ export const reservationSlice = createSlice({
     [deliveryDoneThunk.rejected]: (state, action) => {
       console.log(action.payload);
     },
+    [reservationThunk.fulfilled]: (state, action) => {
+      state.billyState = action.payload;
+    },
+    [reservationThunk.rejected]: (state, action) => {
+      console.log(action.payload);
+    },
+
+
   },
 });
 export default reservationSlice.reducer;

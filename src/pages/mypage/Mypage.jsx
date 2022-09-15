@@ -40,6 +40,7 @@ const Mypage = () => {
         <BillyNavBar
           reservationsState={reservationsState}
           setReservationsState={setReservationsState}
+          setMyPageState={setMyPageState}
         />
       ) : myPageState === '3' ? (
         <BillyNavBar
@@ -53,6 +54,7 @@ const Mypage = () => {
         <BillyReservation
           reservationsState={reservationsState}
           myPageState={myPageState}
+          setMyPageState={setMyPageState}
         />
       ) : (
         ''

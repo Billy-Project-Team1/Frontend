@@ -1,11 +1,11 @@
 import React from 'react';
 import ReservationCard from '../reservations/ReservationCard';
 
-const billyReservation = ({ reservationsState }) => {
+const billyReservation = ({ reservationsState,setMyPageState }) => {
   if (reservationsState === '1') {
     return (
       <div>
-        <ReservationCard billyState={reservationsState} />
+        <ReservationCard billyState={reservationsState} setMyPageState={setMyPageState}/>
       </div>
     );
   } else if (reservationsState === '2') {

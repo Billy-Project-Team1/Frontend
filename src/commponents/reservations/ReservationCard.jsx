@@ -10,7 +10,7 @@ import {
   reservationCancelThunk,
 } from '../../redux/modules/reservationSlice';
 
-const ReservationCard = ({ billyState }) => {
+const ReservationCard = ({ billyState,setMyPageState }) => {
   const dispatch = useDispatch();
   const is_login = localStorage.getItem('userId');
   const [cancelMessage, setCancelMessage] = useState({
@@ -48,10 +48,19 @@ const ReservationCard = ({ billyState }) => {
   }
   // console.log(rentalDate())
 
-  const cancelHandler = (a, b) => {
+  const cancelHandler = async(a, b) => {
     // console.log(b)
-    dispatch(reservationCancelThunk({ a, b }));
-    window.location.replace(`/mypage/${is_login}`);
+    try{ 
+      const response = await dispatch(reservationCancelThunk({ a, b }))
+      if (response) {
+        return window.location.replace(`/mypage/${is_login}`)
+        // setMyPageState('2'),
+        // console.log('dffdfd')
+        
+      }}
+      catch{
+        
+      }
   };
 
   const deliveryDoneHandler = (e) => {
