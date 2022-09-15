@@ -13,7 +13,7 @@ import SearchPlace from './commponents/maps/SearchPlace';
 import MainListCard from './commponents/mainListCard/MainListCard';
 import Mypage from './pages/mypage/Mypage';
 import Search from './pages/search/Search';
-import CahttingRoom from './pages/chatting/CahttingRoom';
+import ChattingRoom from './pages/chatting/ChattingRoom';
 import Chat from './pages/chatting/Chat';
 
 function App() {
@@ -31,8 +31,9 @@ function App() {
       <Route path="/main/test" element={<MainListCard />} />
       <Route path="/mypage/:id" element={<Mypage />} />
       <Route path="/search" element={<Search />} />
-      <Route path="/chatList" element={<CahttingRoom />} />
-      <Route path="/chat/:roomId" element={<Chat />} />
+      <Route path="/chatList" element={<ChattingRoom />} />
+      {/* <Route path="/chat/:roomId" element={<Chat />} /> */}
+      <Route path="/chat/room/:postId/:roomId" element={<Chat />} />
     </Routes>
   );
 }

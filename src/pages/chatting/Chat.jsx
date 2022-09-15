@@ -1,27 +1,32 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
+import dailycost from '../../static/image/dailycost.svg';
+import deposit from '../../static/image/deposit.svg';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import { Icon } from '@iconify/react';
 import LoginHeader from '../../commponents/header/LoginHeader';
 import './Chat.scss';
 import { getChatDetailPost } from '../../redux/modules/ChatSlice';
+import { IoConstructOutline } from 'react-icons/io5';
 
 var stompClient = null;
 
 const Chat = () => {
+  const { postId } = useParams();
   const { roomId } = useParams();
+  const navigate = useNavigate();
+
   const myNickname = localStorage.getItem('nickname');
   const PK = localStorage.getItem('memberId');
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getChatDetailPost(roomId));
+    dispatch(getChatDetailPost(postId));
   }, []);
 
-  const roomData = useSelector((state) => state.ChatSlice.chatRoomDetail);
+  const roomData = useSelector((state) => state.ChatSlice?.chatRoomDetail);
   console.log(roomData);
   const [chatList, setChatList] = useState([]);
   const [userData, setUserData] = useState({
@@ -35,6 +40,14 @@ const Chat = () => {
     memberId: '',
     quitOwner: '',
   });
+  // const postPrice = roomData?.price
+  //   .toString()
+  //   .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  // const postDeposit = roomData?.deposit
+  //   .toString()
+  //   .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+  //ScrollY값 가장 하단으로 이동
   const scrollToBottom = () => {
     window.scrollTo(0, document.body.scrollHeight);
   };
@@ -61,7 +74,7 @@ const Chat = () => {
 
   const onConnected = () => {
     stompClient.subscribe(
-      `/sub/chat/room/${parseInt(roomId)}`,
+      `/sub/chat/room/${roomId}`,
       onMessageReceived
     );
     userJoin();
@@ -95,7 +108,6 @@ const Chat = () => {
     if (payloadData.type === 'ENTER' || payloadData.type === 'TALK') {
       chatList.push(payloadData);
       setChatList([...chatList]);
-      console.log(chatList);
     }
 
     scrollToBottom();
@@ -136,44 +148,50 @@ const Chat = () => {
     scrollToBottom();
   }, [chatList]);
 
-  const detailDate = (a) => {
-    const milliSeconds = new Date() - a;
-    const seconds = milliSeconds / 1000;
-    if (seconds < 60) return `방금 전`;
-    const minutes = seconds / 60;
-    if (minutes < 60) return `${Math.floor(minutes)}분 전`;
-    const hours = minutes / 60;
-    if (hours < 24) return `${Math.floor(hours)}시간 전`;
-    const days = hours / 24;
-    if (days < 7) return `${Math.floor(days)}일 전`;
-    const weeks = days / 7;
-    if (weeks < 5) return `${Math.floor(weeks)}주 전`;
-    const months = days / 30;
-    if (months < 12) return `${Math.floor(months)}개월 전`;
-    const years = days / 365;
-    return `${Math.floor(years)}년 전`;
-  };
+  // const detailDate = (a) => {
+  //   const milliSeconds = new Date() - a;
+  //   const seconds = milliSeconds / 1000;
+  //   if (seconds < 60) return `방금 전`;
+  //   const minutes = seconds / 60;
+  //   if (minutes < 60) return `${Math.floor(minutes)}분 전`;
+  //   const hours = minutes / 60;
+  //   if (hours < 24) return `${Math.floor(hours)}시간 전`;
+  //   const days = hours / 24;
+  //   if (days < 7) return `${Math.floor(days)}일 전`;
+  //   const weeks = days / 7;
+  //   if (weeks < 5) return `${Math.floor(weeks)}주 전`;
+  //   const months = days / 30;
+  //   if (months < 12) return `${Math.floor(months)}개월 전`;
+  //   const years = days / 365;
+  //   return `${Math.floor(years)}년 전`;
+  // };
 
   return (
     <>
       <LoginHeader />
       <div className="Chat_Head_Container">
         <div className="Chat_Head_Box">
-        <div className="Chat_Head_Img_Box">
-          <img src={roomData.profileUrl} className="Chat_Head_Img"/>
-        </div>
-        <div className="Chat_Head_Text_Box">
-          <div className="Chat_Head_Title">1212</div>
-          <div>1212</div>
-        </div>
-        <div></div>
+          <div className="Chat_Head_Img_Box">
+            <img src={roomData.profileUrl} className="Chat_Head_Img" />
+          </div>
+          <div className="Chat_Head_Text_Box">
+            <div className="Chat_Head_Title">{roomData.title}</div>
+            {/* <div className="chat_head_cost">
+              <img className="MainListCardIcon" src={dailycost} />
+              {postPrice}
+              <img className="MainListCardIcon" src={deposit} />
+              {postDeposit}
+            </div> */}
+          </div>
+          <div>12</div>
+          <div></div>
         </div>
       </div>
       <div className="Chat_Container">
         {chatList?.map((chat, idx) => {
           return (
             <div key={idx}>
-              {chat.sender !== myNickname ? (
+              {chat.memberId != PK ? (
                 <div className="Chat_Other_Wrap">
                   <img src={chat.profileUrl} className="Chat_Other_Profile" />
                   <div className="Chat_Other_Container">

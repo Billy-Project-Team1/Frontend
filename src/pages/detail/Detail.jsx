@@ -10,6 +10,7 @@ import DetailCalendar from '../../commponents/calendar/DetailCalendar';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import 'swiper/css/bundle';
+import { createChatRoom, getMyChatRoom } from '../../redux/modules/ChatSlice';
 
 const Detail = () => {
 	//2. 함수 만들 때 수입해서 쓸거임. slice에서 수입해올 때 사용하는 함수임.
@@ -64,6 +65,10 @@ const Detail = () => {
 	};
 
 	const nowDate = detailDate(new Date(detailPost.createdAt));
+
+	const onCreateChatRoom = () =>{
+		dispatch(createChatRoom(detailPost.id))
+	}
 
 	return (
 		<div className="detail_container">
@@ -123,6 +128,7 @@ const Detail = () => {
 						<span className="detail_like">
 							&nbsp;관심&nbsp;{detailPost.likeCount}
 						</span>
+						<button onClick={onCreateChatRoom}>채팅</button>
 					</div>
 				</div>
 			</div>
