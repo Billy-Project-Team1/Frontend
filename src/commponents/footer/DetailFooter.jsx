@@ -1,11 +1,29 @@
 import React from 'react';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { createChatRoom } from '../../redux/modules/ChatSlice';
 import './DetailFooter.scss';
 
-const DetailFooter = ({ authorId, onReservationHandler={onReservationHandler}}) => {
+const DetailFooter = ({
+  authorId,
+  detailPost,
+  onReservationHandler = { onReservationHandler },
+}) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const userId = localStorage.getItem('userId');
+
+  const onCreateChatRoom = async () => {
+    try {
+      const data = await dispatch(createChatRoom(detailPost.id)).unwrap();
+      if (data) {
+        return navigate(`/chat/room/${detailPost.id}/${data}`)
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div className="detail_footer">
@@ -14,7 +32,7 @@ const DetailFooter = ({ authorId, onReservationHandler={onReservationHandler}}) 
           <div className="mydetail_footer_wrap">
             <div
               className="mydetail_reservation_btn"
-              onClick={() => navigate('/chatList')}
+              onClick={() => navigate(`/mypage/${userId}`)}
             >
               예약현황
             </div>
@@ -23,13 +41,15 @@ const DetailFooter = ({ authorId, onReservationHandler={onReservationHandler}}) 
         ) : (
           <div className="detail_footer_wrap">
             <FaRegHeart className="detail_footer_icon" />
-            <div
-              className="detail_chat_btn"
-              onClick={() => navigate('/chatList')}
-            >
+            <div className="detail_chat_btn" onClick={onCreateChatRoom}>
               채팅하기
             </div>
-            <div className="detail_reservattion_btn" onClick={onReservationHandler}>대여 예약하기</div>
+            <div
+              className="detail_reservattion_btn"
+              onClick={onReservationHandler}
+            >
+              대여 예약하기
+            </div>
           </div>
         )}
       </div>

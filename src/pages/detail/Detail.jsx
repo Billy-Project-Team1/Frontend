@@ -41,7 +41,6 @@ const Detail = () => {
   // state.post 는 configstore에 지정해둔 post 값임 slice를 뜻함
   // state.post.post는 slice안에 있는 Initialstate값을 가져옴
   const detailPost = useSelector((state) => state.post.post);
-  console.log(detailPost);
 
   //1. props 내려주는거임
   //로그인 정보를 가져옴. 게시글 삭제 버튼을 위함 ㅋㅋ~
@@ -88,9 +87,16 @@ const Detail = () => {
   const [pickDate, setPickDate] = useState(initialState);
   console.log(pickDate);
 
-  const onReservationHandler = () => {
-    dispatch(reservationThunk(pickDate));
-    window.location.replace(`/mypage/${myUserId}`);
+  const onReservationHandler = async() => {
+    try{
+      const response = await dispatch(reservationThunk(pickDate))
+      if(response){
+        return window.location.replace(`/mypage/${myUserId}`);
+      }
+    }
+    catch(e){
+      return console.log(e)
+    }
   };
 
   return (
@@ -149,7 +155,6 @@ const Detail = () => {
             <span className="detail_like">
               &nbsp;관심&nbsp;{detailPost.likeCount}
             </span>
-            <button onClick={onCreateChatRoom}>채팅</button>
           </div>
         </div>
       </div>
@@ -167,6 +172,7 @@ const Detail = () => {
       <DetailFooter
         authorId={detailPost.authorId}
         onReservationHandler={onReservationHandler}
+        detailPost={detailPost}
       />
     </div>
   );
