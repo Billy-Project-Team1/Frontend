@@ -1,6 +1,11 @@
+.detail_container {
+	padding-bottom: 7rem;
+}
+
 .detail_contents_wrap {
 	padding: 0 1rem;
 }
+
 .DetailHeader {
 	position: relative;
 	width: 32px;
@@ -8,7 +13,9 @@
 	left: 342px;
 	top: 64px;
 	display: flex;
+	z-index: 100;
 }
+
 .detail_image_box {
 	position: relative;
 	width: 100%;
@@ -23,6 +30,7 @@
 		object-fit: cover;
 	}
 }
+
 .detail_user_profile {
 	padding: 1rem 0;
 	border-bottom: 1px solid rgba(238, 238, 238, 1);
@@ -32,6 +40,7 @@
 	.detail_profile_img {
 		margin: 3px 10px 0 0;
 		float: left;
+
 		img {
 			width: 40px;
 			height: 40px;
@@ -45,6 +54,7 @@
 	.detail_profile_wrap {
 		padding-top: 3px;
 	}
+
 	.detail_profile_second {
 		display: block;
 	}
@@ -52,15 +62,18 @@
 	.detail_nickname {
 		font-size: 1rem;
 	}
+
 	.detail_location {
 		color: #757575;
 		font-size: 12px;
 	}
+
 	.detail_location_line {
 		font-size: 8px;
 		color: #757575;
 		line-height: 10%;
 	}
+	
 	.detail_time {
 		color: #757575;
 		font-size: 12px;
