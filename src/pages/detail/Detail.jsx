@@ -85,14 +85,18 @@ const Detail = () => {
   const [pickDate, setPickDate] = useState(initialState);
 
   const onReservationHandler = async () => {
-    try {
-      const response = await dispatch(reservationThunk(pickDate));
-      if (response) {
-        return window.location.replace(`/mypage/${myUserId}`);
+      try {
+        const response = await dispatch(reservationThunk(pickDate));
+        if (response.payload === "예약이 접수되었습니다.") {
+          return window.location.replace(`/mypage/${myUserId}`);
+        }
+        else{
+          return ;
+        }
+      } catch (e) {
+        return console.log(e);
       }
-    } catch (e) {
-      return console.log(e);
-    }
+  
   };
 
   return (
@@ -145,7 +149,7 @@ const Detail = () => {
           </div>
           <div className="detail_bottom_contents">
             <span className="detail_like">
-              대여&nbsp;{detailPost.likeCount}&nbsp;
+              대여&nbsp;{detailPost.reservationCount}&nbsp;
             </span>
             <span className="detail_contents_line">|</span>
             <span className="detail_like">

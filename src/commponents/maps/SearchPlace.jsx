@@ -15,16 +15,16 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
     longitude: '',
   });
   const onChange = (e) => {
-    setPlaceAdress(e.target.value);
+    setInputText(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setPlace(placeAdress);
+    setPlace(inputText);
     setPlaceName('');
   };
 
   const onSubmitSearchMap = () => {
-    if (placeAdress === '') {
+    if (placeName === '') {
       alert('장소를 입력하세요!!');
     } else {
       setData({
@@ -39,7 +39,7 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
   };
 
   const onResetButton = () => {
-    setPlaceAdress('');
+    setInputText('');
   };
 
   return (
@@ -65,7 +65,7 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
             className="KakaoMap_Input_Place"
             placeholder="거래 장소를 입력 해주세요."
             onChange={onChange}
-            value={placeAdress}
+            value={inputText}
           />
           {placeAdress === '' ? (
             ''
@@ -81,6 +81,7 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
         <KakaoMap
           searchPlace={place}
           setPlaceName={setPlaceName}
+          setInputText={setInputText}
           setCoordNumber={setCoordNumber}
           coordNumber={coordNumber}
           placeName={placeName}

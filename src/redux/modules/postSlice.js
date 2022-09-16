@@ -92,7 +92,7 @@ export const dibsPost = createAsyncThunk(
       const response = await instance.put(`/auth/posts/${payload}/likes`);
 	  console.log(response)
       if (response.data.success === true) {
-        return thunkAPI.fulfillWithValue(payload);
+        return thunkAPI.fulfillWithValue(response.data.result);
       }
     } catch (error) {
       console.log(error);
@@ -113,7 +113,15 @@ const postSlice = createSlice({
       state.post = action.payload;
     },
     [dibsPost.fulfilled]: (state, action) => {
-	 state.post.like = !state.post.like
+      if(action.payload === "찜하기 취소!"){
+        state.post.like = !state.post.like
+        state.post.likeCount = state.post.likeCount-1
+      }
+      else{
+        state.post.like = !state.post.like
+        state.post.likeCount = state.post.likeCount+1
+      }
+	 
 	},
   },
 });

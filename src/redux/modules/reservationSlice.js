@@ -12,7 +12,7 @@ export const reservationThunk = createAsyncThunk(
         return thunkAPI.fulfillWithValue(response.data.result);
       }
     } catch (error) {
-      console.log(error);
+    
     }
   }
 );
