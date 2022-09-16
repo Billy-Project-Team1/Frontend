@@ -58,7 +58,7 @@ const Login = () => {
     <>
       <LginHeader />
       <div className="Login_Wrap">
-        <div className="Login_EmailBox">
+        <div className="Login_Email_Box">
           <div>이메일</div>
           <input
             ref={email_ref}
