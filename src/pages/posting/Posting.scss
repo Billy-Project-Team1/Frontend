@@ -2,6 +2,10 @@
 	padding: 0 1rem;
 }
 
+.posting_image {
+
+}
+
 .posting_title {
 	border: none;
 	border-top: 1px solid rgba(238, 238, 238, 1);
@@ -29,12 +33,12 @@
 		outline: none;
 	}
 	label.posting_price_label {
-		width: 67px;
+		width: 72px;
 		display: inline-block;
 	}
 	label.posting_deposit_label {
 		margin-top: 4px;
-		width: 67px;
+		width: 72px;
 		display: inline-block;
 	}
 	input {
@@ -78,6 +82,10 @@
 	padding: 1.2rem 0 1.4rem ;
 	display: flex;
 	flex-direction: row;
+}
+
+.posting_map_wrap {
+	margin-bottom: 130px;
 }
 
 ::placeholder {
