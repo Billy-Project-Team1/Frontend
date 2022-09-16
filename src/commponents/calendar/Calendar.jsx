@@ -111,9 +111,9 @@ const PostingCalendar = ({ setData, data }) => {
         />
         <div className="calendar-toggleIcon">
           {toggleOn === true ? (
-            <HiOutlineChevronUp style={{ margin: 'auto' }} />
+            <HiOutlineChevronUp />
           ) : (
-            <HiOutlineChevronDown style={{ margin: 'auto' }} />
+            <HiOutlineChevronDown />
           )}
         </div>
       </div>
