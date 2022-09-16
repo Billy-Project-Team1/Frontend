@@ -16,34 +16,34 @@ const DetailMap = ({ data }) => {
   
 
   return (
-    <div className="DetailMap_Wrap">
-      <div className="DetailMap_Container">
-        <div className="DetailMap_TextBox">
-          <div className="DetailMap_Title">거래 장소</div>
-          <div className="DetailMapPlaceBox">
-            <div className="DetailMap_Place">{data.detailLocation}</div>
-          </div>
-          <div
-            className="calendar-toggleIcon"
-            onClick={() => {
-              toggleMode();
-            }}
-          >
-            {toggleOn === true ? (
-              <HiOutlineChevronUp
-                style={{ margin: 'auto', color: '#999999' }}
-              />
-            ) : (
-              <HiOutlineChevronDown
-                style={{ margin: 'auto', color: '#999999' }}
-              />
-            )}
-          </div>
-        </div>
-      </div>
-      {toggleOn === true ? <DetailMapView data={data} /> : ''}
-    </div>
-  );
+		<div className="DetailMap_Wrap">
+			<div className="DetailMap_Container">
+				<div className="DetailMap_TextBox">
+					<div className="DetailMap_Title">거래 장소</div>
+					<div className="DetailMapPlaceBox">
+						<div className="DetailMap_Place">{data.detailLocation}</div>
+					</div>
+					<div
+						className="calendar-toggleIcon"
+						onClick={() => {
+							toggleMode();
+						}}
+					>
+						{toggleOn === true ? (
+							<HiOutlineChevronUp
+								style={{ margin: 'auto', color: '#212121' }}
+							/>
+						) : (
+							<HiOutlineChevronDown
+								style={{ margin: 'auto', color: '#212121' }}
+							/>
+						)}
+					</div>
+				</div>
+			</div>
+			{toggleOn === true ? <DetailMapView data={data} /> : ''}
+		</div>
+	);
 };
 
 export default DetailMap;

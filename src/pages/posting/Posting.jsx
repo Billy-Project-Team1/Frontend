@@ -30,75 +30,75 @@ import PostingMap from '../../commponents/maps/PostingMap';
 import { addPost } from '../../redux/modules/postSlice';
 
 const Posting = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [searchMapModal, setSearchMapModal] = useState(false);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const [searchMapModal, setSearchMapModal] = useState(false);
 
-  const [calendarOpen, setCalendarOpen] = useState(false);
-  const calendarClose = () => {
-    setCalendarOpen(!calendarOpen);
-  };
+	const [calendarOpen, setCalendarOpen] = useState(false);
+	const calendarClose = () => {
+		setCalendarOpen(!calendarOpen);
+	};
 
-  /////////////////
+	/////////////////
 
-  const initialState = {
-    title: '',
-    content: '',
-    price: '',
-    deposit: '',
-    location: '',
-    detailLocation: '',
-    latitude: '',
-    longitude: '',
-    // blockDateDtoList: {},
-    // files: form/data,
-  };
-  const [data, setData] = useState(initialState);
-  const [blockDateDtoList, setBlockDateDtoList] = useState([]);
-  const [img, setImg] = useState([]); // file
+	const initialState = {
+		title: '',
+		content: '',
+		price: '',
+		deposit: '',
+		location: '',
+		detailLocation: '',
+		latitude: '',
+		longitude: '',
+		// blockDateDtoList: {},
+		// files: form/data,
+	};
+	const [data, setData] = useState(initialState);
+	const [blockDateDtoList, setBlockDateDtoList] = useState([]);
+	const [img, setImg] = useState([]); // file
 
-  const onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    //...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
-    setData({ ...data, [name]: value });
-  };
-  console.log(data);
-  console.log(blockDateDtoList.blockDateDtoList);
+	const onChangeHandler = (e) => {
+		const { name, value } = e.target;
+		//...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
+		setData({ ...data, [name]: value });
+	};
+	console.log(data);
+	console.log(blockDateDtoList.blockDateDtoList);
 
-  /////////////////
+	/////////////////
 
-  //   //[1] post
-  const onPostingHandler = async (e) => {
-    e.preventDefault();
-    //이미지 form 데이터
-    let formData = new FormData();
-    //a는 이름으로  b를 저장한다. c는 어떠한 타입으로 / form은 c를 굳이 안써도됨
-    // formData.append(a,b)
-    formData.append(
-      'postUploadRequestDto',
-      new Blob([JSON.stringify(data)], { type: 'application/json' })
-    );
-    for (let i = 0; i < img.length; i++) {
-      formData.append('files', img[i]);
-    }
-    for (let i = 0; i < blockDateDtoList.blockDateDtoList.length; i++) {
-      formData.append('blockDateDtoList', blockDateDtoList.blockDateDtoList[i]);
-    }
-    try {
-      const data = await dispatch(addPost(formData)).unwrap();
-      console.log(data);
-      if (data) {
-        window.location.replace('/');
-        window.location.replace(`/detail/${data.id}`);
-      } else {
-        console.log(data);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+	//   //[1] post
+	const onPostingHandler = async (e) => {
+		e.preventDefault();
+		//이미지 form 데이터
+		let formData = new FormData();
+		//a는 이름으로  b를 저장한다. c는 어떠한 타입으로 / form은 c를 굳이 안써도됨
+		// formData.append(a,b)
+		formData.append(
+			'postUploadRequestDto',
+			new Blob([JSON.stringify(data)], { type: 'application/json' })
+		);
+		for (let i = 0; i < img.length; i++) {
+			formData.append('files', img[i]);
+		}
+		for (let i = 0; i < blockDateDtoList.blockDateDtoList.length; i++) {
+			formData.append('blockDateDtoList', blockDateDtoList.blockDateDtoList[i]);
+		}
+		try {
+			const data = await dispatch(addPost(formData)).unwrap();
+			console.log(data);
+			if (data) {
+				window.location.replace('/');
+				window.location.replace(`/detail/${data.id}`);
+			} else {
+				console.log(data);
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
-  return (
+	return (
 		<div>
 			<AddPostingHeader onPostingHandler={onPostingHandler} />
 			{/* <AddLocationHeader></AddLocationHeader>
@@ -160,7 +160,6 @@ const Posting = () => {
 					</div>
 				</div>
 
-
 				<div className="posting_content">
 					<textarea
 						type="text"
@@ -176,14 +175,16 @@ const Posting = () => {
 						<Calendar setData={setBlockDateDtoList} data={blockDateDtoList} />
 					</div>
 				</div>
-				<PostingMap setSearchMapModal={setSearchMapModal} data={data} />
-				{searchMapModal && (
-					<SearchPlace
-						setSearchMapModal={setSearchMapModal}
-						setData={setData}
-						data={data}
-					/>
-				)}
+				<div className="posting_map_wrap">
+					<PostingMap setSearchMapModal={setSearchMapModal} data={data} />
+					{searchMapModal && (
+						<SearchPlace
+							setSearchMapModal={setSearchMapModal}
+							setData={setData}
+							data={data}
+						/>
+					)}
+				</div>
 			</div>
 			<Footer />
 		</div>

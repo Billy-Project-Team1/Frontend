@@ -158,9 +158,6 @@ const Detail = () => {
           </div>
         </div>
       </div>
-      <div className="detail_map">
-        <DetailMap data={detailPost} />
-      </div>
       <div className="detail_calendar">
         <DetailCalendar
           data={detailPost.blockDate?.blockDateList}
@@ -168,6 +165,9 @@ const Detail = () => {
           setPickDate={setPickDate}
           pickDate={pickDate}
         />
+      </div>
+      <div className="detail_map">
+        <DetailMap data={detailPost} />
       </div>
       <DetailFooter
         authorId={detailPost.authorId}
