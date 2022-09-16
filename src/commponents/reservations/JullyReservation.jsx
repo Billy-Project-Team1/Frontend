@@ -1,12 +1,12 @@
 import React from 'react';
-import ReservationCard from '../reservations/ReservationCard';
+import JullyReservationCard from './JullyReservationCard';
 
-const billyReservation = ({ reservationsState, setMyPageState }) => {
+const JullyReservation = ({ reservationsState, setMyPageState }) => {
   if (reservationsState === '1') {
     return (
       <div>
-        <ReservationCard
-          billyState={reservationsState}
+        <JullyReservationCard
+          jullyState={reservationsState}
           setMyPageState={setMyPageState}
         />
       </div>
@@ -14,25 +14,25 @@ const billyReservation = ({ reservationsState, setMyPageState }) => {
   } else if (reservationsState === '2') {
     return (
       <div>
-        <ReservationCard billyState={reservationsState} />
+        <JullyReservationCard jullyState={reservationsState} />
       </div>
     );
   } else if (reservationsState === '4') {
     return (
       <div>
-        <ReservationCard billyState={reservationsState} />
+        <JullyReservationCard jullyState={reservationsState} />
       </div>
     );
   } else if (reservationsState === '5') {
     return (
       <div>
-        <ReservationCard billyState={reservationsState} />
+        <JullyReservationCard jullyState={reservationsState} />
       </div>
     );
   } else if (reservationsState === '3') {
     return (
       <div>
-        <ReservationCard billyState={reservationsState} />
+        <JullyReservationCard jullyStatee={reservationsState} />
       </div>
     );
   } else {
@@ -40,4 +40,4 @@ const billyReservation = ({ reservationsState, setMyPageState }) => {
   }
 };
 
-export default billyReservation;
+export default JullyReservation;

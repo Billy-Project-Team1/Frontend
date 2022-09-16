@@ -9,7 +9,7 @@ import './DetailFooter.scss';
 const DetailFooter = ({
   authorId,
   detailPost,
-  onReservationHandler = { onReservationHandler },
+  onReservationHandler,
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
