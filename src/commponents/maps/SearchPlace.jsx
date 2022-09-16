@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react';
 import KakaoMap from './KakaoMap';
+import PostingMapHeader from '../header/PostingMapHeader';
 import { HiSearch } from 'react-icons/hi';
-import { BsXCircle } from 'react-icons/bs';
+import { FiX } from 'react-icons/fi';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const SearchPlace = ({ setSearchMapModal, setData, data }) => {
+
   const outSection = useRef();
   const [inputText, setInputText] = useState('');
   const [place, setPlace] = useState('');
@@ -88,20 +90,20 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
           setPlaceAdress={setPlaceAdress}
         />
 
-        <button className="KakaoMap_Submit_Button" onClick={onSubmitSearchMap}>
-          완료
-        </button>
-        <div className="KakaoMap_Close">
-          <div
-            className="KakaoMap_Close_IconBox"
-            onClick={() => setSearchMapModal(false)}
-          >
-            <AiOutlineClose className="KakaoMap_Close_Icon" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+				<button className="KakaoMap_Submit_Button" onClick={onSubmitSearchMap}>
+					선택한 위치로 설정
+				</button>
+				{/* <div className="KakaoMap_Close">
+					<div
+						className="KakaoMap_Close_IconBox"
+						onClick={() => setSearchMapModal(false)}
+					>
+						<AiOutlineClose className="KakaoMap_Close_Icon" />
+					</div>
+				</div> */}
+			</div>
+		</div>
+	);
 };
 
 export default SearchPlace;
