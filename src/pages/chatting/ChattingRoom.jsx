@@ -6,8 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getMyChatRoom } from '../../redux/modules/ChatSlice';
 import ChattingRoomHeader from '../../commponents/header/ChattingRoomHeader';
 import ChattingRoomCard from '../../commponents/chattingRoomCard/ChattingRoomCard';
-import './ChattingRoom.scss'
-
+import './ChattingRoom.scss';
 
 const ChattingRoom = () => {
   const dispatch = useDispatch();
@@ -23,9 +22,10 @@ const ChattingRoom = () => {
     <div>
       <ChattingRoomHeader />
       <div className="chattingroom_wrap">
-      {myChatList.map((post) => {
+        {/* {myChatList.map((post) => {
         return <ChattingRoomCard post={post} />;
-      })}
+      })} */}
+        <div className="chattingroom_alert">구현중</div>
       </div>
     </div>
   );

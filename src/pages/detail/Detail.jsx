@@ -85,18 +85,16 @@ const Detail = () => {
   const [pickDate, setPickDate] = useState(initialState);
 
   const onReservationHandler = async () => {
-      try {
-        const response = await dispatch(reservationThunk(pickDate));
-        if (response.payload === "예약이 접수되었습니다.") {
-          return window.location.replace(`/mypage/${myUserId}`);
-        }
-        else{
-          return ;
-        }
-      } catch (e) {
-        return console.log(e);
+    try {
+      const response = await dispatch(reservationThunk(pickDate));
+      if (response.payload === '예약이 접수되었습니다.') {
+        return window.location.replace(`/mypage/${myUserId}`);
+      } else {
+        return;
       }
-  
+    } catch (e) {
+      return console.log(e);
+    }
   };
 
   return (
