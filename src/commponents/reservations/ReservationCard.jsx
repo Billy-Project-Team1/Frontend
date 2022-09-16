@@ -79,101 +79,99 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
 
   return (
     // .slice(0).reverse()
-    <div className="a">
+    <div className="bookedCard-firstContainer">
       {billylist?.map((item, index) => {
         return (
           <div className="bookedCard-container">
-            <div className="bookedCard-titleWrap">
-              <div className="bookedCard-title">{item.title}</div>
-            </div>
-            <div className="bookedCard-detailWrap">
-              <img className="bookedCard-img" src={item.postImgUrl} />
-              <div className="bookedCard-bodyBox">
-                {/* <button className="reservationcard_chatbtn">1:1 문의</button> */}
-                <div className="bookedCard-iconBox">
-                  <div className="bookedCard-price">
-                    <img src={dailycost} />
-                    <p>{dailyPrice(item.price)}</p>
+            <div className="bookedCard-smallContainer">
+              <div className="bookedCard-titleWrap">
+                <div className="bookedCard-title">{item.title}</div>
+              </div>
+              <div className="bookedCard-detailWrap">
+                <img className="bookedCard-img" src={item.postImgUrl} />
+                <div className="bookedCard-bodyBox">
+                  <div className="bookedCard-iconBox">
+                    <div className="bookedCard-price">
+                      <img src={dailycost} />
+                      <p>{dailyPrice(item.price)}</p>
+                    </div>
+                    <div className="bookedCard-price">
+                      <img src={deposit} />
+                      <p>{depositPrice(item.deposit)}</p>
+                    </div>
                   </div>
-                  <div className="bookedCard-price">
-                    <img src={deposit} />
-                    <p>{depositPrice(item.deposit)}</p>
+                  <div>
+                    예약일자 : {rentalDate(item.startDate)}~
+                    {rentalDate(item.endDate)}&nbsp;(
+                    {rentalTotalDate(item.totalAmount, item.price)}박)
                   </div>
-                </div>
-                <div>
-                  예약일자 : {rentalDate(item.startDate)}~
-                  {rentalDate(item.endDate)}&nbsp;(
-                  {rentalTotalDate(item.totalAmount, item.price)}박)
-                </div>
-                <div>
-                  예약상태 :&nbsp;
-                  {billyState === '1'
-                    ? '예약 대기중'
-                    : billyState === '2'
-                    ? '예약중'
-                    : billyState === '4'
-                    ? '대여중'
-                    : billyState === '5'
-                    ? '거래 완료'
-                    : billyState === '3'
-                    ? '취소 완료'
-                    : ''}
-                </div>
-                <div className="reservationcard_nameWrap">
-                  <div className="reservationcard_name">
-                    대여자 : {item.jullyNickname}
+                  <div>
+                    예약상태 :&nbsp;
+                    {billyState === '1'
+                      ? '예약 대기중'
+                      : billyState === '2'
+                      ? '예약중'
+                      : billyState === '4'
+                      ? '대여중'
+                      : billyState === '5'
+                      ? '거래 완료'
+                      : billyState === '3'
+                      ? '취소 완료'
+                      : ''}
                   </div>
-                  <div className='reservationcard_chatbtnWrap'>
+                  <div className="reservationcard_nameWrap">
+                    <div className="reservationcard_name">
+                      대여자 : {item.jullyNickname}
+                    </div>
                     <button className="reservationcard_chatbtn">
                       1:1 문의
                     </button>
                   </div>
-                </div>
-                <div className="reservationcard_alertcontent">
-                  {billyState === '2'
-                    ? '• 거래 완료시 수령 완료 버튼을 체크해주세요.'
-                    : ''}
-                </div>
-                {billyState === '3' ? (
                   <div className="reservationcard_alertcontent">
-                    취소사유 : {item.cancelMessage}
+                    {billyState === '2'
+                      ? '• 거래 완료시 수령 완료 버튼을 체크해주세요.'
+                      : ''}
                   </div>
+                  {billyState === '3' ? (
+                    <div className="reservationcard_alertcontent">
+                      취소사유 : {item.cancelMessage}
+                    </div>
+                  ) : (
+                    ''
+                  )}
+                </div>
+              </div>
+              <div className="bookedCard-btnWrap">
+                {billyState === '1' ? (
+                  <button
+                    className="bookedCard-btn"
+                    onClick={() =>
+                      cancelHandler(item.reservationId, cancelMessage)
+                    }
+                  >
+                    예약 취소
+                  </button>
+                ) : billyState === '2' ? (
+                  item.delivery === true ? (
+                    <button className="bookedCard-waitBtn">승인 대기 중</button>
+                  ) : (
+                    <button
+                      className="bookedCard-btn"
+                      onClick={() => deliveryDoneHandler(item.reservationId)}
+                    >
+                      수령 완료
+                    </button>
+                  )
+                ) : billyState === '4' ? (
+                  <div style={{ marginBottom: '20px' }} />
+                ) : billyState === '5' ? (
+                  <button className="bookedCard-btn">리뷰 작성</button>
+                ) : billyState === '3' ? (
+                  <div style={{ marginBottom: '20px' }} />
                 ) : (
                   ''
                 )}
               </div>
-            </div>
-            <div className="bookedCard-btnWrap">
-              {billyState === '1' ? (
-                <button
-                  className="bookedCard-btn"
-                  onClick={() =>
-                    cancelHandler(item.reservationId, cancelMessage)
-                  }
-                >
-                  예약 취소
-                </button>
-              ) : billyState === '2' ? (
-                <BillyAcceptButton
-                  deliveryDoneHandler={deliveryDoneHandler}
-                  delivery={item.delivery}
-                  reservationId={item.reservationId}
-                />
-              ) : // <button
-              //   className= "bookedCard-btn"
-              //   onClick={() => deliveryDoneHandler(item.reservationId)}
-              // >
-              //   수령 완료
-              // </button>
-              billyState === '4' ? (
-                <div style={{ marginBottom: '20px' }} />
-              ) : billyState === '5' ? (
-                <button className="bookedCard-btn">리뷰 작성</button>
-              ) : billyState === '3' ? (
-                <div style={{ marginBottom: '20px' }} />
-              ) : (
-                ''
-              )}
             </div>
           </div>
         );

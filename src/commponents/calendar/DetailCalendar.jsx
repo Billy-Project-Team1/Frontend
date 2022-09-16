@@ -29,39 +29,40 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
 	console.log(date.toLocaleString());
 	// data={detailPost.blockDate?.blockDateList[0]}
 
-	const toggleMode = () => {
-		setToggleOn((toggleOn) => !toggleOn);
-	};
-	const deleteDates = () => {
-		setDate([]);
-		setDates();
-		noDates.current = [];
-	};
-	// console.log(data);
-	// // .getMonth() + 1 === month
-	// const disableDate = () => {
-	//   const datesArray = [];
-	//   data.map((v) => {
-	//     if (new Date(v)) {
-	//       datesArray.push(new Date(v).getDate());
-	//     }
-	//   });
-	//   setUnavailable(datesArray);
-	// };
-	// console.log(unavailable);
+  const toggleMode = () => {
+    setToggleOn((toggleOn) => !toggleOn);
+  };
+  const deleteDates = () => {
+    setDate([]);
+    setDates();
+    noDates.current = [];
+  };
+  console.log(data);
+  // .getMonth() + 1 === month
+  const disableDate = () => {
+    const datesArray = [];
+    data.map((v) => {
+      if (new Date(v)) {
+        datesArray.push(new Date(v).getDate());
+      }
+    });
+    setUnavailable(datesArray);
+  };
+  console.log(unavailable);
 
-	// useEffect(() => {
-	//   const elements = document.querySelectorAll(
-	//     '.calendar-toggleOn.rmdp-day .sd'
-	//   );
-	//   for (let i = 0; i < elements.length; i++) {
-	//     for (let j = 0; j < unavailable.length; j++) {
-	//       if (elements[i].innerText / 1 === unavailable[j]) {
-	//         elements[i].parentNode.classList.add('.rmdp-day. rmdp-disabled');
-	//       }
-	//     }
-	//   }
-	// }, [unavailable]);
+  useEffect(() => {
+    const elements = document.querySelectorAll(
+            '.rmdp-day'
+    );
+    // console.log(elements[5].innerText)
+    for (let i = 0; i < elements.length; i++) {
+      for (let j = 0; j < unavailable.length; j++) {
+        if (elements[i].innerText / 1 === unavailable[j]) {
+          elements[i].parentNode.classList.add('.rmdp-day. rmdp-disabled');
+        }
+      }
+    }
+  }, [unavailable]);
 
 	// // useEffect(() => {
 	// //   if (detailPost) {

@@ -30,6 +30,7 @@ const Mypage = () => {
 
   const myDipList = useSelector((state) => state.member.myDibsList);
   const myUploadList = useSelector((state) => state.member.myUploadList);
+  console.log(myDipList)
   return (
     <div>
       <MypageHeader />
@@ -100,6 +101,7 @@ const Mypage = () => {
           reservationsState={reservationsState}
           myPageState={myPageState}
           setMyPageState={setMyPageState}
+          postId={myDipList.id}
         />
       ) : (
         ''
