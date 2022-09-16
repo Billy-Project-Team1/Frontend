@@ -45,8 +45,9 @@ const PostingCalendar = ({ setData, data }) => {
         return v.format(v._format);
       });
       setDates(getDates);
-      if (date?.length < 3) {
+      if (date?.length < 2) {
         noDates.current = [];
+        noDates2.current = [];
         for (let i = 0; i < date.length; i++) {
           const dateItem = `${
             date[i].month.number < 10
@@ -55,7 +56,22 @@ const PostingCalendar = ({ setData, data }) => {
           }.${date[i].day < 10 ? '0' + date[i].day : date[i].day}(${
             weekDays[date[i].weekDay.index]
           })`;
-          noDates.current.push(dateItem);
+          noDates2.current.push(dateItem);
+          noDates.current = `${noDates2.current[0]}`;
+        }
+      } else if (date?.length <= 2) {
+        noDates.current = [];
+        noDates2.current = [];
+        for (let i = 0; i < date.length; i++) {
+          const dateItem = `${
+            date[i].month.number < 10
+              ? '0' + date[i].month.number
+              : date[i].month.number
+          }.${date[i].day < 10 ? '0' + date[i].day : date[i].day}(${
+            weekDays[date[i].weekDay.index]
+          })`;
+          noDates2.current.push(dateItem);
+          noDates.current = `${noDates2.current[0]},${noDates2.current[1]}`;
         }
       } else {
         noDates2.current = [];
@@ -94,26 +110,23 @@ const PostingCalendar = ({ setData, data }) => {
 
   return (
     <div className="calendar-wrap">
-      <div className="calendar-box">
-        <HiOutlineCalendar
-          style={{ marginRight: '5px', marginTop:'2px' }}
-          color="#757575"
-          size="19px"
-        />
-        <input
-          readOnly
-          placeholder="대여 불가능한 날짜를 체크해주세요"
-          className="calendar-input"
+      <div className="calendar_box">
+        <HiOutlineCalendar color="#757575" size="22px" />
+        <div
           onClick={() => {
             toggleMode();
           }}
-          value={noDates.current?.length > 0 ? noDates.current : ''}
-        />
+          className="calendar_box_text"
+        >
+          {noDates.current?.length > 0
+            ? noDates.current
+            : '대여 불가능한 날짜를 체크해주세요'}
+        </div>
         <div className="calendar-toggleIcon">
           {toggleOn === true ? (
-            <HiOutlineChevronUp style={{ margin: 'auto' }} />
+            <HiOutlineChevronUp />
           ) : (
-            <HiOutlineChevronDown style={{ margin: 'auto' }} />
+            <HiOutlineChevronDown />
           )}
         </div>
       </div>
