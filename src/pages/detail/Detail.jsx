@@ -23,15 +23,14 @@ const Detail = () => {
 
   //3. 주소창에 있는 id num을 불러오기 위함. app.js에서 확인
   const { postid } = useParams();
-  console.log(postid);
+  const myUserId = localStorage.getItem('userId');
   // 1. 포스팅에서 완료버튼 누르면 내용 불러오기
   // [] 안에 있는게 변화하면 실행을 해주는 함수. [] 안에 내용이 없으면 처음 페이지가 랜더링 되었을 때 한번만 실행해줌.
   useEffect(() => {
     //slice에 있는 함수 불러오기
     //getPost(여기) 여기에 데이터를 넣으면 postslice의 payload 값이 됨.
     //3-1 에 넣은 postid가 여기로 들어옴. -> slice가서 확인해보면 payload값으로 들어가는걸 확인할 수 있음.
-    dispatch(getPost(postid));
-    window.scrollTo(0, 0);
+    dispatch(getPost({ postid, myUserId }));
     // console.log("123")
     window.scrollTo(0, 0);
   }, []);
@@ -44,7 +43,6 @@ const Detail = () => {
 
   //1. props 내려주는거임
   //로그인 정보를 가져옴. 게시글 삭제 버튼을 위함 ㅋㅋ~
-  const myUserId = localStorage.getItem('userId');
 
   const detailPrice = detailPost.price
     ?.toString()
@@ -85,17 +83,15 @@ const Detail = () => {
     endDate: '',
   };
   const [pickDate, setPickDate] = useState(initialState);
-  console.log(pickDate);
 
-  const onReservationHandler = async() => {
-    try{
-      const response = await dispatch(reservationThunk(pickDate))
-      if(response){
+  const onReservationHandler = async () => {
+    try {
+      const response = await dispatch(reservationThunk(pickDate));
+      if (response) {
         return window.location.replace(`/mypage/${myUserId}`);
       }
-    }
-    catch(e){
-      return console.log(e)
+    } catch (e) {
+      return console.log(e);
     }
   };
 

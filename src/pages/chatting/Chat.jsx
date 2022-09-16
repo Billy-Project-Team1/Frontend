@@ -147,23 +147,21 @@ const Chat = () => {
     scrollToBottom();
   }, [chatList]);
 
-  // const detailDate = (a) => {
-  //   const milliSeconds = new Date() - a;
-  //   const seconds = milliSeconds / 1000;
-  //   if (seconds < 60) return `방금 전`;
-  //   const minutes = seconds / 60;
-  //   if (minutes < 60) return `${Math.floor(minutes)}분 전`;
-  //   const hours = minutes / 60;
-  //   if (hours < 24) return `${Math.floor(hours)}시간 전`;
-  //   const days = hours / 24;
-  //   if (days < 7) return `${Math.floor(days)}일 전`;
-  //   const weeks = days / 7;
-  //   if (weeks < 5) return `${Math.floor(weeks)}주 전`;
-  //   const months = days / 30;
-  //   if (months < 12) return `${Math.floor(months)}개월 전`;
-  //   const years = days / 365;
-  //   return `${Math.floor(years)}년 전`;
-  // };
+
+
+  const detailTime = (a) => {
+    const nowTime = new Date(a)
+    const nowHour = nowTime.getHours();
+    const nowMt = nowTime.getMinutes();
+    if(nowHour <= 12){
+      return `오전 `+nowHour+':'+nowMt
+    }
+    else {
+      const afterHour = nowHour-12
+      return `오후 `+afterHour +':'+nowMt
+    }
+
+  };
 
   return (
     <>
@@ -207,7 +205,7 @@ const Chat = () => {
                     <div className="Chat_Other_Msg_Clock">
                       <div className="Chat_Other_Box">{chat.message}</div>
                       <div className="Chat_Clock_Box">
-                        <div className="Chat_Clock">오전 09:15</div>
+                        <div className="Chat_Clock">{detailTime( chat.createdAt)}</div>
                       </div>
                     </div>
                   </div>
@@ -215,7 +213,7 @@ const Chat = () => {
               ) : (
                 <div className="Chat_Me_Container">
                   <div className="Chat_Clock_Box">
-                    <div className="Chat_Clock">오전 09:15</div>
+                    <div className="Chat_Clock">{detailTime( chat.createdAt)}</div>
                   </div>
                   <div className="Chat_Me_Box">{chat.message}</div>
                 </div>
