@@ -85,7 +85,6 @@ export const deliveryDoneThunk = createAsyncThunk(
     }
   }
 );
-
 // 줄리의 예약 카운트 조회 Get /auth/reservations/jully
 export const jullyReservationCntThunk = createAsyncThunk(
   'jullyReservationCntThunk',
@@ -103,7 +102,6 @@ export const jullyReservationCntThunk = createAsyncThunk(
     }
   }
 );
-
 // 줄리로서 계약한 예약 상태별 조회 Get /auth/reservations/jully/{state}
 export const jullyStateListThunk = createAsyncThunk(
   'jullyStateListThunk',
@@ -118,6 +116,22 @@ export const jullyStateListThunk = createAsyncThunk(
       } else {
         return console.log(response);
       }
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+// 줄리 예약 상태 변경 상태 - 1 : 예약 대기 / 2 : 예약 완료 / 3 : 예약 취소 / 4 : 대여 중 / 5 : 반납 완료
+// Patch /auth/reservations/jully/{reservationId}
+export const jullyStateChangeThunk = createAsyncThunk(
+  'jullyStateChangeThunk',
+  async (payload, thunkAPI) => {
+    try {
+      const response = await instance.patch(
+        `/auth/reservations/jully/${payload.a}`, payload.b
+      );
+      // return console.log(response);
+      return thunkAPI.fulfillWithValue(response.data.result);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
@@ -154,18 +168,22 @@ export const reservationSlice = createSlice({
     [reservationCancelThunk.rejected]: (state, action) => {
       console.log(action.payload);
     },
-    [deliveryDoneThunk.fulfilled]: (state, action) => {
-      console.log(state.billyList);
+    // [deliveryDoneThunk.fulfilled]: (state, action) => {
+    //   console.log(state.billyList);
 
-      state.billyList = state.billyList.map((item) => {
-        if (item.reservationId === action.payload) {
-          return { ...item, state: 4 };
-        } else {
-          return { ...item };
-        }
-      });
-      // console.log(state.billyList);
+    //   state.billyList = state.billyList.map((item) => {
+    //     if (item.reservationId === action.payload) {
+    //       return { ...item, state: 4 };
+    //     } else {
+    //       return { ...item };
+    //     }
+    //   });
+    //   console.log(state.billyList);
+    // },
+    [deliveryDoneThunk.fulfilled]: (state, action) => {
+      state.billyList = action.payload;
     },
+
     [deliveryDoneThunk.rejected]: (state, action) => {
       console.log(action.payload);
     },
@@ -187,6 +205,13 @@ export const reservationSlice = createSlice({
     [jullyStateListThunk.rejected]: (state, action) => {
       console.log(action.payload);
     },
+    [jullyStateChangeThunk.fulfilled]: (state, action) => {
+      state.jullyList = action.payload;
+    },
+    [jullyStateChangeThunk.rejected]: (state, action) => {
+      console.log(action.payload);
+    },
+
   },
 });
 export default reservationSlice.reducer;
