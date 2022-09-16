@@ -9,6 +9,7 @@ const KakaoMap = ({
   coordNumber,
   placeName,
   setPlaceAdress,
+  setInputText
 }) => {
   useEffect(() => {
     const container = document.getElementById('Mymap');
@@ -50,6 +51,7 @@ const KakaoMap = ({
           function callAddressFinal(result, status) {
             if (status === kakao.maps.services.Status.OK) {
               setPlaceAdress(`${result[0].address.address_name}`);
+              setInputText(`${result[0].address.address_name}`)
             }
           }
         }
@@ -91,6 +93,7 @@ const KakaoMap = ({
             function callAddressFinal(result, status) {
               if (status === kakao.maps.services.Status.OK) {
                 setPlaceAdress(`${result[0].address.address_name}`);
+                setInputText(`${result[0].address.address_name}`)
               }
             }
           }
@@ -117,7 +120,6 @@ const KakaoMap = ({
 
             function callAddressName(result, status) {
               if (status === kakao.maps.services.Status.OK) {
-                console.log(result);
                 setPlaceName(`${result[0].address_name}`);
                 setCoordNumber({ latitude: coords.Ma, longitude: coords.La });
 
@@ -129,6 +131,7 @@ const KakaoMap = ({
                 function callAddressFinal(result, status) {
                   if (status === kakao.maps.services.Status.OK) {
                     setPlaceAdress(`${result[0].address.address_name}`);
+                    setInputText(`${result[0].address.address_name}`)
                   }
                 }
               }
