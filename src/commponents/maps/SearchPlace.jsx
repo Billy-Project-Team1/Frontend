@@ -6,89 +6,91 @@ import { FiX } from 'react-icons/fi';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const SearchPlace = ({ setSearchMapModal, setData, data }) => {
+	const outSection = useRef();
+	const [inputText, setInputText] = useState('');
+	const [place, setPlace] = useState('');
+	const [placeName, setPlaceName] = useState('');
+	const [placeAdress, setPlaceAdress] = useState('');
+	const [coordNumber, setCoordNumber] = useState({
+		latitude: '',
+		longitude: '',
+	});
+	const onChange = (e) => {
+		setInputText(e.target.value);
+	};
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setPlace(inputText);
+		setPlaceName('');
+	};
 
-  const outSection = useRef();
-  const [inputText, setInputText] = useState('');
-  const [place, setPlace] = useState('');
-  const [placeName, setPlaceName] = useState('');
-  const [placeAdress, setPlaceAdress] = useState('');
-  const [coordNumber, setCoordNumber] = useState({
-    latitude: '',
-    longitude: '',
-  });
-  const onChange = (e) => {
-    setInputText(e.target.value);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setPlace(inputText);
-    setPlaceName('');
-  };
+	const onSubmitSearchMap = () => {
+		if (placeName === '') {
+			alert('장소를 입력하세요!!');
+		} else {
+			setData({
+				...data,
+				location: placeName,
+				detailLocation: placeAdress,
+				latitude: coordNumber.latitude,
+				longitude: coordNumber.longitude,
+			});
+			setSearchMapModal(false);
+		}
+	};
 
-  const onSubmitSearchMap = () => {
-    if (placeName === '') {
-      alert('장소를 입력하세요!!');
-    } else {
-      setData({
-        ...data,
-        location: placeName,
-        detailLocation: placeAdress,
-        latitude: coordNumber.latitude,
-        longitude: coordNumber.longitude,
-      });
-      setSearchMapModal(false);
-    }
-  };
+	const onResetButton = () => {
+		setInputText('');
+	};
 
-  const onResetButton = () => {
-    setInputText('');
-  };
-
-  return (
-    <div
-      className="kakaoMap_Modal"
-      ref={outSection}
-      onClick={(e) => {
-        if (outSection.current === e.target) {
-          setSearchMapModal(false);
-        }
-      }}
-    >
-      <div
-        className="KakaoMap_wrap
+	return (
+		<div
+			className="kakaoMap_Modal"
+			ref={outSection}
+			onClick={(e) => {
+				if (outSection.current === e.target) {
+					setSearchMapModal(false);
+				}
+			}}
+		>
+			<div
+				className="KakaoMap_wrap
     "
-      >
-        <form className="KakaoMap_input_Form" onSubmit={handleSubmit}>
-          <div className="KakaoMap_input_IconBox">
-            <HiSearch className="KakaoMap_input_Icon" />
-          </div>
-          <input
-            type="text"
-            className="KakaoMap_Input_Place"
-            placeholder="거래 장소를 입력 해주세요."
-            onChange={onChange}
-            value={inputText}
-          />
-          {placeAdress === '' ? (
-            ''
-          ) : (
-            <BsXCircle
-              className="KakaoMap_Input_Place_Xbutton"
-              onClick={() => {
-                onResetButton();
-              }}
-            />
-          )}
-        </form>
-        <KakaoMap
-          searchPlace={place}
-          setPlaceName={setPlaceName}
-          setInputText={setInputText}
-          setCoordNumber={setCoordNumber}
-          coordNumber={coordNumber}
-          placeName={placeName}
-          setPlaceAdress={setPlaceAdress}
-        />
+			>
+				<div className="KakaoMap_Header">
+					<PostingMapHeader />
+				</div>
+				<form className="KakaoMap_input_Form" onSubmit={handleSubmit}>
+					<input
+						type="text"
+						className="KakaoMap_Input_Place"
+						placeholder="거래 장소를 입력 해주세요."
+						onChange={onChange}
+						value={inputText}
+					/>
+					<div className="KakaoMap_input_IconBox">
+						<HiSearch className="KakaoMap_input_Icon" />
+					</div>
+					{inputText === '' ? (
+						''
+					) : (
+						<FiX
+							className="KakaoMap_Input_Place_Xbutton"
+							onClick={() => {
+								onResetButton();
+							}}
+						/>
+					)}
+				</form>
+				<KakaoMap
+					searchPlace={place}
+					setPlaceName={setPlaceName}
+					setInputText={setInputText}
+					setCoordNumber={setCoordNumber}
+					coordNumber={coordNumber}
+					placeName={placeName}
+					setPlaceAdress={setPlaceAdress}
+				/>
 
 				<button className="KakaoMap_Submit_Button" onClick={onSubmitSearchMap}>
 					선택한 위치로 설정

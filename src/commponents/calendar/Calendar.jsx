@@ -111,7 +111,7 @@ const PostingCalendar = ({ setData, data }) => {
   return (
     <div className="calendar-wrap">
       <div className="calendar_box">
-        <HiOutlineCalendar color="#757575" size="22px" />
+        <HiOutlineCalendar color="#757575" size="18px" style={{margin:"2px 6px 0 0"}}/>
         <div
           onClick={() => {
             toggleMode();
