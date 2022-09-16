@@ -1,12 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { withdrawal } from '../../redux/modules/memberSlice';
 import '../../commponents/footer/AlertLargeModal.scss';
 
 const DeleteIdModal = ({ setDeleteModalOpen }) => {
   const dispatch = useDispatch();
-  const Navigate = useNavigate();
   const userId = localStorage.getItem('userId');
 
   const closeModal = () => {
@@ -14,7 +12,6 @@ const DeleteIdModal = ({ setDeleteModalOpen }) => {
   };
   const Withdrawal = () => {
     dispatch(withdrawal(userId));
-    Navigate('/');
   };
 
   return (

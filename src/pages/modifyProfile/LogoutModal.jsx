@@ -7,7 +7,6 @@ import '../../commponents/footer/AlertSmallModal.scss';
 
 const LogoutModal = ({ setModalOpen }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const refreshToken = getCookie('refreshToken');
   const token = localStorage.getItem('accessToken');
 
@@ -16,7 +15,7 @@ const LogoutModal = ({ setModalOpen }) => {
   };
   const logout = () => {
     dispatch(logOut({ refreshToken, token }));
-    window.location.replace('/');
+   
   };
 
   return (

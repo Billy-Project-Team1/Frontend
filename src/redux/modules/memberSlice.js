@@ -22,9 +22,9 @@ export const logOut = createAsyncThunk('logOut', async (data) => {
     if (response.status === 200) {
       localStorage.clear();
       deleteCookie('refreshToken');
-      deleteCookie('accessToken');
       deleteCookie('webid_ts');
       deleteCookie('webid');
+      window.location.replace('/');
     }
   } catch (e) {
     console.log(e);
@@ -71,9 +71,9 @@ export const withdrawal = createAsyncThunk('withdrawal', async (data) => {
     if (response.status === 200) {
       localStorage.clear();
       deleteCookie('refreshToken');
-      deleteCookie('accessToken');
       deleteCookie('webid_ts');
       deleteCookie('webid');
+      window.location.replace('/');
     }
   } catch (e) {
     console.log(e);

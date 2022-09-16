@@ -3,7 +3,7 @@ import Footer from '../../commponents/footer/Footer';
 import MyProfileHeader from '../../commponents/myProfile/MyProfileHeader';
 import MypageHeader from '../../commponents/header/MypageHeader';
 import MyProfileMiddle from '../../commponents/myProfile/MyProfileMiddle';
-import BillyNavBar from '../../commponents/myProfile/BillyNavBar';
+import BillyNavBar from '../../commponents/reservations/BillyNavBar';
 import BillyReservation from '../../commponents/reservations/BillyReservation';
 import DibsCard from '../../commponents/profileCard/DibsCard';
 import UploadCard from '../../commponents/profileCard/UploadCard';
@@ -15,6 +15,8 @@ import {
   getmyUpLoadData,
 } from '../../redux/modules/memberSlice';
 import './Mypage.scss';
+import JullyNavBar from '../../commponents/reservations/JullyNavBar';
+import JullyReservation from '../../commponents/reservations/JullyReservation';
 
 const Mypage = () => {
   const dispatch = useDispatch();
@@ -43,13 +45,14 @@ const Mypage = () => {
           setMyPageState={setMyPageState}
         />
       ) : myPageState === '3' ? (
-        <BillyNavBar
+        <JullyNavBar
           reservationsState={reservationsState}
           setReservationsState={setReservationsState}
         />
       ) : (
         ''
       )}
+      {/* 빌린예약건 */}
       {myPageState === '2' && reservationsState === '1' ? (
         <BillyReservation
           reservationsState={reservationsState}
@@ -85,6 +88,48 @@ const Mypage = () => {
       )}
       {myPageState === '2' && reservationsState === '5' ? (
         <BillyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+        />
+      ) : (
+        ''
+      )}
+      {/* 빌려준 예약건 */}
+      {myPageState === '3' && reservationsState === '1' ? (
+        <JullyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+          setMyPageState={setMyPageState}
+        />
+      ) : (
+        ''
+      )}
+      {myPageState === '3' && reservationsState === '2' ? (
+        <JullyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+        />
+      ) : (
+        ''
+      )}
+      {myPageState === '3' && reservationsState === '3' ? (
+        <JullyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+        />
+      ) : (
+        ''
+      )}
+      {myPageState === '3' && reservationsState === '4' ? (
+        <JullyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+        />
+      ) : (
+        ''
+      )}
+      {myPageState === '3' && reservationsState === '5' ? (
+        <JullyReservation
           reservationsState={reservationsState}
           myPageState={myPageState}
         />

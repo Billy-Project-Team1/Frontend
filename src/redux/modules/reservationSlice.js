@@ -86,9 +86,49 @@ export const deliveryDoneThunk = createAsyncThunk(
   }
 );
 
+// 줄리의 예약 카운트 조회 Get /auth/reservations/jully
+export const jullyReservationCntThunk = createAsyncThunk(
+  'jullyReservationCntThunk',
+  async (payload, thunkAPI) => {
+    try {
+      const response = await instance.get('/auth/reservations/jully ', payload);
+      //   return console.log(response);
+      if (response.data.success === true) {
+        return thunkAPI.fulfillWithValue(response.data.result);
+      } else {
+        return console.log(response);
+      }
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
+// 줄리로서 계약한 예약 상태별 조회 Get /auth/reservations/jully/{state}
+export const jullyStateListThunk = createAsyncThunk(
+  'jullyStateListThunk',
+  async (payload, thunkAPI) => {
+    try {
+      const response = await instance.get(
+        `/auth/reservations/jully/${payload}`
+      );
+      //   return console.log(response);
+      if (response.data.success === true) {
+        return thunkAPI.fulfillWithValue(response.data.result);
+      } else {
+        return console.log(response);
+      }
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
 const initialState = {
   billyState: {},
   billyList: [],
+  jullyState: {},
+  jullyList: [],
 };
 
 export const reservationSlice = createSlice({
@@ -135,8 +175,18 @@ export const reservationSlice = createSlice({
     [reservationThunk.rejected]: (state, action) => {
       console.log(action.payload);
     },
-
-
+    [jullyReservationCntThunk.fulfilled]: (state, action) => {
+      state.jullyState = action.payload;
+    },
+    [jullyReservationCntThunk.rejected]: (state, action) => {
+      console.log(action.payload);
+    },
+    [jullyStateListThunk.fulfilled]: (state, action) => {
+      state.jullyList = action.payload;
+    },
+    [jullyStateListThunk.rejected]: (state, action) => {
+      console.log(action.payload);
+    },
   },
 });
 export default reservationSlice.reducer;
