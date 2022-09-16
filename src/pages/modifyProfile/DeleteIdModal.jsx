@@ -14,7 +14,7 @@ const DeleteIdModal = ({ setDeleteModalOpen }) => {
   };
   const Withdrawal = () => {
     dispatch(withdrawal(userId));
-    Navigate('/');
+
   };
 
   return (

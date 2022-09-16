@@ -14,9 +14,9 @@ const LogoutModal = ({ setModalOpen }) => {
   const closeModal = () => {
     setModalOpen(false);
   };
-  const logout = () => {
+  const logout = async() => {
     dispatch(logOut({ refreshToken, token }));
-    window.location.replace('/');
+
   };
 
   return (
