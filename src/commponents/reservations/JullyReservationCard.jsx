@@ -7,25 +7,26 @@ import { useEffect, useState } from 'react';
 import {
   billyStateListThunk,
   deliveryDoneThunk,
+  jullyStateListThunk,
   reservationCancelThunk,
 } from '../../redux/modules/reservationSlice';
 import BillyAcceptButton from './BillyAcceptButton';
 
-const ReservationCard = ({ billyState, setMyPageState }) => {
+const JullyReservationCard = ({ jullyState, setMyPageState }) => {
   const dispatch = useDispatch();
   const is_login = localStorage.getItem('userId');
   const [cancelMessage, setCancelMessage] = useState({
     cancelMessage: '취소할게요',
   });
 
-  const billylist = useSelector((state) => state.billystate?.billyList);
-  console.log(billylist);
-
   useEffect(() => {
-    dispatch(billyStateListThunk(billyState));
+    dispatch(jullyStateListThunk(jullyState));
   }, []);
+  const jullylist = useSelector((state) => state.billystate.jullyList);
+  console.log(jullylist);
 
-  useEffect(() => {}, [JSON.stringify(billylist)]);
+
+  useEffect(() => {}, [JSON.stringify(jullylist)]);
 
   const rentalTotalDate = (a, b) => {
     return Math.floor(a / b);
@@ -80,7 +81,7 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
   return (
     // .slice(0).reverse()
     <div className="a">
-      {billylist?.map((item, index) => {
+      {jullylist?.map((item, index) => {
         return (
           <div className="bookedCard-container">
             <div className="bookedCard-titleWrap">
@@ -107,21 +108,21 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
                 </div>
                 <div>
                   예약상태 :&nbsp;
-                  {billyState === '1'
+                  {jullyState === '1'
                     ? '예약 대기중'
-                    : billyState === '2'
+                    : jullyState === '2'
                     ? '예약중'
-                    : billyState === '4'
+                    : jullyState === '4'
                     ? '대여중'
-                    : billyState === '5'
+                    : jullyState === '5'
                     ? '거래 완료'
-                    : billyState === '3'
+                    : jullyState === '3'
                     ? '취소 완료'
                     : ''}
                 </div>
                 <div className="reservationcard_nameWrap">
                   <div className="reservationcard_name">
-                    대여자 : {item.jullyNickname}
+                     예약자: {item.billyNickname}
                   </div>
                   <div className='reservationcard_chatbtnWrap'>
                     <button className="reservationcard_chatbtn">
@@ -130,11 +131,11 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
                   </div>
                 </div>
                 <div className="reservationcard_alertcontent">
-                  {billyState === '2'
+                  {jullyState === '2'
                     ? '• 거래 완료시 수령 완료 버튼을 체크해주세요.'
                     : ''}
                 </div>
-                {billyState === '3' ? (
+                {jullyState === '3' ? (
                   <div className="reservationcard_alertcontent">
                     취소사유 : {item.cancelMessage}
                   </div>
@@ -144,7 +145,7 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
               </div>
             </div>
             <div className="bookedCard-btnWrap">
-              {billyState === '1' ? (
+              {jullyState === '1' ? (
                 <button
                   className="bookedCard-btn"
                   onClick={() =>
@@ -153,7 +154,7 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
                 >
                   예약 취소
                 </button>
-              ) : billyState === '2' ? (
+              ) : jullyState === '2' ? (
                 <BillyAcceptButton
                   deliveryDoneHandler={deliveryDoneHandler}
                   delivery={item.delivery}
@@ -165,11 +166,11 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
               // >
               //   수령 완료
               // </button>
-              billyState === '4' ? (
+              jullyState === '4' ? (
                 <div style={{ marginBottom: '20px' }} />
-              ) : billyState === '5' ? (
+              ) : jullyState === '5' ? (
                 <button className="bookedCard-btn">리뷰 작성</button>
-              ) : billyState === '3' ? (
+              ) : jullyState === '3' ? (
                 <div style={{ marginBottom: '20px' }} />
               ) : (
                 ''
@@ -181,4 +182,4 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
     </div>
   );
 };
-export default ReservationCard;
+export default JullyReservationCard;
