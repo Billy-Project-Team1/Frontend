@@ -10,6 +10,7 @@ import LoginHeader from '../../commponents/header/LoginHeader';
 import './Chat.scss';
 import { getChatDetailPost } from '../../redux/modules/ChatSlice';
 import { IoConstructOutline } from 'react-icons/io5';
+import { isRejected } from '@reduxjs/toolkit';
 
 var stompClient = null;
 
@@ -147,20 +148,40 @@ const Chat = () => {
     scrollToBottom();
   }, [chatList]);
 
-
-
   const detailTime = (a) => {
-    const nowTime = new Date(a)
+    const nowTime = new Date(a);
     const nowHour = nowTime.getHours();
     const nowMt = nowTime.getMinutes();
-    if(nowHour <= 12){
-      return `오전 `+nowHour+':'+nowMt
+    if (nowHour <= 12) {
+      if (nowHour < 10) {
+        if (nowMt < 10) {
+          return `오전 ` + '0' + nowHour + ':' + '0' + nowMt;
+        } else {
+          return `오전 ` + '0' + nowHour + ':' + nowMt;
+        }
+      } else {
+        if (nowMt < 10) {
+          return `오전 ` + nowHour + ':' + '0' + nowMt;
+        } else {
+          return `오전 ` + nowHour + ':' + nowMt;
+        }
+      }
+    } else {
+      const afterHour = nowHour - 12;
+      if (afterHour < 10) {
+        if (nowMt < 10) {
+          return `오후 ` + '0' + afterHour + ':' + '0' + nowMt;
+        } else {
+          return `오후 ` + '0' + afterHour + ':' + nowMt;
+        }
+      } else {
+        if (nowMt < 10) {
+          return `오후 ` + afterHour + ':' + '0' + nowMt;
+        } else {
+          return `오후 ` + afterHour + ':' + nowMt;
+        }
+      }
     }
-    else {
-      const afterHour = nowHour-12
-      return `오후 `+afterHour +':'+nowMt
-    }
-
   };
 
   return (
@@ -205,7 +226,9 @@ const Chat = () => {
                     <div className="Chat_Other_Msg_Clock">
                       <div className="Chat_Other_Box">{chat.message}</div>
                       <div className="Chat_Clock_Box">
-                        <div className="Chat_Clock">{detailTime( chat.createdAt)}</div>
+                        <div className="Chat_Clock">
+                          {detailTime(chat.createdAt)}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -213,7 +236,9 @@ const Chat = () => {
               ) : (
                 <div className="Chat_Me_Container">
                   <div className="Chat_Clock_Box">
-                    <div className="Chat_Clock">{detailTime( chat.createdAt)}</div>
+                    <div className="Chat_Clock">
+                      {detailTime(chat.createdAt)}
+                    </div>
                   </div>
                   <div className="Chat_Me_Box">{chat.message}</div>
                 </div>
