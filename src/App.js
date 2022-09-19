@@ -15,6 +15,7 @@ import Mypage from './pages/mypage/Mypage';
 import Search from './pages/search/Search';
 import ChattingRoom from './pages/chatting/ChattingRoom';
 import Chat from './pages/chatting/Chat';
+import ReviewPosting from './pages/reviewPosting/ReviewPosting';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
       <Route path="/chatList" element={<ChattingRoom />} />
       {/* <Route path="/chat/:roomId" element={<Chat />} /> */}
       <Route path="/chat/room/:postId/:roomId" element={<Chat />} />
+      <Route path="/reviewPosting" element={<ReviewPosting />} />
     </Routes>
   );
 }
