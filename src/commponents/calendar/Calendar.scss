@@ -149,20 +149,18 @@
   background-color: #004eea;
   padding: 20px;
 }
-// .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
-//   background-color: #004eea;
-// }
-.rmdp-disabled{
-  pointer-events: none;
-}
 
-.rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover{
+.rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
+  box-shadow: none;
   background-color: transparent;
-  color: #ededed;
+  color: #212121;
 }
-.rmdp-day.rmdp-selected span:not(.highlight),
-.rmdp-day.rmdp-selected span:not(.highlight):hover{
+.rmdp-day.rmdp-range span:not(.highlight),
+.rmdp-day.rmdp-range span:not(.highlight):hover {
   box-shadow: none;
   background-color: #004eea;
-  color: #ededed;
+  color: #fff;
+}
+.rmdp-disabled {
+  pointer-events: none;
 }
