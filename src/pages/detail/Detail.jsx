@@ -20,6 +20,7 @@ const Detail = () => {
   // redux toolkit 전역변수는 props 따로 사용할 필요 없이 함수를 받아올 수 있게 해줌.
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [blockDate, setBlockDate] = useState([]);
 
   //3. 주소창에 있는 id num을 불러오기 위함. app.js에서 확인
   const { postid } = useParams();
@@ -41,6 +42,15 @@ const Detail = () => {
   // state.post.post는 slice안에 있는 Initialstate값을 가져옴
   const detailPost = useSelector((state) => state.post.post);
 
+  const blockDateList = detailPost.blockDate?.blockDateList;
+  const reservationDateList = detailPost.blockDate?.reservationDateList
+
+  useEffect(()=>{
+    if(blockDateList&&reservationDateList){
+      setBlockDate([...blockDate,...reservationDateList,...blockDateList])
+  }
+  },[blockDateList])
+  
   //1. props 내려주는거임
   //로그인 정보를 가져옴. 게시글 삭제 버튼을 위함 ㅋㅋ~
 
@@ -158,7 +168,7 @@ const Detail = () => {
       </div>
       <div className="detail_calendar">
         <DetailCalendar
-          data={detailPost.blockDate?.blockDateList}
+          data={blockDate}
           detailPost={detailPost}
           setPickDate={setPickDate}
           pickDate={pickDate}

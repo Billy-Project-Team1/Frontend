@@ -150,8 +150,16 @@
   padding: 20px;
 }
 .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
-  background-color: #004eea;
+  box-shadow: none;
+  background-color: transparent;
+  color: #212121;
 }
-.rmdp-disabled{
+.rmdp-day.rmdp-range span:not(.highlight),
+.rmdp-day.rmdp-range span:not(.highlight):hover {
+  box-shadow: none;
+  background-color: #004eea;
+  color: #fff;
+}
+.rmdp-disabled {
   pointer-events: none;
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Calendar } from 'react-multi-date-picker';
+import { Calendar, DateObject } from 'react-multi-date-picker';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import './Calendar.scss';
 import { Navigate } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { Navigate } from 'react-router-dom';
 const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   const noDates = useRef();
   const noDates2 = useRef();
-  const clickref = useRef();
+  const today = new DateObject();
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
   const months = [
     '1월',
@@ -34,8 +34,6 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   const toggleMode = () => {
     setToggleOn((toggleOn) => !toggleOn);
   };
-  console.log(data);
-  // .getMonth() + 1 === month
 
   const disableDate = () => {
     const datesArray = [];
@@ -44,19 +42,17 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
         datesArray.push(new Date(v).getDate());
       }
     });
-    // console.log(datesArray);
 
     setUnavailable(datesArray);
   };
 
   useEffect(() => {
-    const elements = document.querySelectorAll(
-      '.calendar_toggleOn .rmdp-day .sd'
-    );
-    // console.log(elements)
+    let elements = null;
+    elements = document.querySelectorAll('.calendar_toggleOn .rmdp-day .sd');
     for (let i = 0; i < elements.length; i++) {
+      elements[i].parentNode.classList.remove('rmdp-disabled');
       for (let j = 0; j < unavailable.length; j++) {
-        if (elements[i].innerText / 1 === unavailable[j]) {
+        if (elements[i].innerText == unavailable[j]) {
           elements[i].parentNode.classList.add('rmdp-disabled');
         }
       }
@@ -68,11 +64,11 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
       disableDate();
     }
   }, [month, data, date, toggleOn]);
-  // console.log(unavailable);
 
   // console.log(date[0])
   useEffect(() => {
     date.sort();
+    console.log(date[0])
     for (let i = 0; i < data?.length; i++) {
       if (
         new Date(date[0]) < new Date(data[i]) &&
@@ -80,6 +76,11 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
       ) {
         date.pop();
         return alert('잘못된 날짜입니다');
+      }
+      else if(date[0]?.toLocaleString() == date[1]?.toLocaleString()){
+        date.pop();
+        date.pop();
+        return alert('최소 1일 이상 설정해주세요')
       }
     }
   }, [date]);
@@ -144,7 +145,7 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   }, [date]);
 
   return (
-    <div className="calendar_wrap" ref={clickref}>
+    <div className="calendar_wrap">
       <div className="calendar_box">
         <div className="calendar_title">희망 대여 날짜</div>
         <div className="calendar_input">
@@ -169,15 +170,14 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
         <div>
           <Calendar
             // multiple
-            range={true}
+            range
             value={date}
-            multiple={false}
             onChange={setDate}
             weekDays={weekDays}
             months={months}
             format="YYYY/MM/DD"
             minDate={new Date()}
-            maxDate={new Date().setDate(90)}
+            maxDate={new Date(today.year, today.month.number + 2, today.day)}
             onMonthChange={(date) => setMonth(new Date(date).getMonth() + 1)}
             shadow={false}
             className="calendar_toggleOn"
