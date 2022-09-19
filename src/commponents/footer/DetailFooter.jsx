@@ -50,6 +50,7 @@ const DetailFooter = ({
             {detailPost.like === true ? (
               <FaHeart
                 className="detail_footer_icon"
+                style={{color : '#EB0000'}}
                 onClick={() => onDibsHander()}
               />
             ) : (
