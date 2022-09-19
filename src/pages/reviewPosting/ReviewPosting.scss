@@ -1,0 +1,60 @@
+.reviewPost_container {
+	padding: 0 1rem;
+}
+
+.reviewPost_rating {
+	position: relative;
+	display: flex;
+  flex-direction: row;
+}
+
+.reviewPost_img {
+	width: 60px;
+	height: 60px;
+	background: #cccccc;
+	border-radius: 7px;
+}
+
+.reviewPost_right_topbox {
+	margin-left: 10px;
+	display: inline-block;
+}
+.reviewPost_title {
+	font-size: 1rem;
+	color: #212121;
+}
+.reviewPost_star {
+	display: flex;
+	flex-direction: column;
+}
+
+.reviewPost_option {
+	font-size: 0.875rem;
+	color: #757575;
+}
+
+.reviewPost_write {
+}
+
+.reviewPost_write_content {
+	border: 1px solid #ededed;
+	border-radius: 12px;
+	margin-top: 1rem;
+
+	:focus {
+		outline: none;
+	}
+
+	textarea {
+		width: 100%;
+		height: 175px;
+		color: #212121;
+		border: none;
+		font-size: 0.875rem;
+		padding: 1rem;
+	}
+}
+
+::placeholder {
+	color: #cccccc;
+}
