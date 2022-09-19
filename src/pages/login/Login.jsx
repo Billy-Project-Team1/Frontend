@@ -10,6 +10,7 @@ import { KAKAO_AUTH_URL } from '../../shared/socialAuth';
 import { Cookies } from 'react-cookie';
 import LginHeader from '../../commponents/header/LoginHeader';
 import './Login.scss';
+import { setCookie } from '../../redux/modules/customCookies';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -39,11 +40,12 @@ const Login = () => {
         .then((res) => {
           if (res.data.success === true) {
             return (
+              console.log(res),
               localStorage.setItem('nickname', res.data.result.nickname),
               localStorage.setItem('memberId', res.data.result.id),
               localStorage.setItem('userId', res.data.result.userId),
               localStorage.setItem('accessToken', res.headers.authorization),
-              cookies.set('refreshToken', res.headers[`refresh-token`]),
+              setCookie('refreshToken', res.headers[`refresh-token`]),
               navigate(`/`)
             );
           }

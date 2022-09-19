@@ -9,3 +9,11 @@ export const getCookie = (name) => {
 export const deleteCookie = (name) => {
   document.cookie = name + '=; expires = Thu, 01 Jan 1999 00:00:10 GMT;';
 };
+
+export const setCookie = (name, value) => {
+  const date = new Date();
+  date.setTime(date.getTime() + 7 * 24 * 60 * 60 * 1000);
+  const expires = '; expires=' + date.toGMTString();
+
+  document.cookie = name + '=' + value + expires + '; path=/';
+};
