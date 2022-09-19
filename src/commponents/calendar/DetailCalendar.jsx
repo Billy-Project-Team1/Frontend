@@ -2,10 +2,12 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Calendar } from 'react-multi-date-picker';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import './Calendar.scss';
+import { Navigate } from 'react-router-dom';
 
 const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   const noDates = useRef();
   const noDates2 = useRef();
+  const clickref = useRef();
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
   const months = [
     '1월',
@@ -48,7 +50,9 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   };
 
   useEffect(() => {
-    const elements = document.querySelectorAll('.calendar_toggleOn .rmdp-day .sd');
+    const elements = document.querySelectorAll(
+      '.calendar_toggleOn .rmdp-day .sd'
+    );
     // console.log(elements)
     for (let i = 0; i < elements.length; i++) {
       for (let j = 0; j < unavailable.length; j++) {
@@ -63,23 +67,22 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
     if (data) {
       disableDate();
     }
-  }, [month,data]);
+  }, [month, data, date, toggleOn]);
   // console.log(unavailable);
 
   // console.log(date[0])
-  useEffect (()=>{
-    for (let i = 0; i< unavailable.length; i++ ){
-      if (new Date(date[0]).getDate()< unavailable[i] && new Date(date[1]).getDate()> unavailable[i]){
-          alert('잘못된 날짜입니다'); 
-          date.pop();
-          dates.pop();
-          document.getElementById('prevent');
-          
+  useEffect(() => {
+    date.sort();
+    for (let i = 0; i < data?.length; i++) {
+      if (
+        new Date(date[0]) < new Date(data[i]) &&
+        new Date(date[1]) > new Date(data[i])
+      ) {
+        date.pop();
+        return alert('잘못된 날짜입니다');
       }
     }
-  },[date])
-  console.log(dates)
-
+  }, [date]);
 
   const setDateFormat = () => {
     if (date?.length > 0) {
@@ -141,7 +144,7 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   }, [date]);
 
   return (
-    <div className="calendar_wrap">
+    <div className="calendar_wrap" ref={clickref}>
       <div className="calendar_box">
         <div className="calendar_title">희망 대여 날짜</div>
         <div className="calendar_input">
@@ -166,8 +169,9 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
         <div>
           <Calendar
             // multiple
-            range ={true}
-            value={date && date}
+            range={true}
+            value={date}
+            multiple={false}
             onChange={setDate}
             weekDays={weekDays}
             months={months}
@@ -177,7 +181,7 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
             onMonthChange={(date) => setMonth(new Date(date).getMonth() + 1)}
             shadow={false}
             className="calendar_toggleOn"
-            id='prevent'
+            id="prevent"
           />
         </div>
       ) : (
