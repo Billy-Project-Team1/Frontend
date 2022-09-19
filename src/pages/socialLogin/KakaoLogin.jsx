@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
+import { setCookie } from '../../redux/modules/customCookies';
 
 const Kakao = () => {
   const code = new URL(window.location.href).searchParams.get('code');
@@ -19,7 +20,7 @@ const Kakao = () => {
             return (
               localStorage.setItem('userId', res.data.result.userId),
               localStorage.setItem('accessToken', res.headers.authorization),
-              cookies.set('refreshToken', res.headers[`refresh-token`]),
+              setCookie('refreshToken', res.headers[`refresh-token`]),
               navigate(`/`)
             );
           }
