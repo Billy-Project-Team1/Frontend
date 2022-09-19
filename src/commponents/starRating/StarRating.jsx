@@ -13,7 +13,7 @@ const StarRating = ({ onChangeHandler }) => {
         return (
           <label key={i}>
             <input
-              className="rating"
+              className="starRating_rating"
               type="radio"
               name="star"
               value={ratingValue}
@@ -21,7 +21,7 @@ const StarRating = ({ onChangeHandler }) => {
               onClick={() => setRating(ratingValue)}
             />
             <FaStar
-              className="star"
+              className="starRating_star"
               color={ratingValue <= (hover || rating) ? '#fcbe32' : '#e4e5e9'}
               size={40}
               onMouseEnter={() => setHover(ratingValue)}

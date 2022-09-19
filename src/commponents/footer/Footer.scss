@@ -2,7 +2,7 @@
   // padding: 0 1rem;
   max-width: 428px;
 }
-.footer-container {
+.footer_container {
   height: 84px;
   position: fixed;
   z-index: 4;
@@ -12,14 +12,14 @@
   border-radius: 20px 20px 0px 0px;
   padding: 16px 24px 46px;
 
-  .footer-wrap {
+  .footer_wrap {
     width: 100%;
     display: flex;
     justify-content: space-between;
     position: sticky;
   }
 }
-.footer-icon {
+.footer_icon {
   width: 24px;
   height: 24px;
 }

@@ -1,4 +1,4 @@
-.alertModalLargeModal-container {
+.alertModalLargeModal_container {
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
 }
-.alertModalLargeModal-box {
+.alertModalLargeModal_box {
   width: 325px;
   height: 151px;
   background-color: #fff;
@@ -29,7 +29,7 @@
     font-weight: 500;
   }
 }
-.alertModalLargeModal-btns {
+.alertModalLargeModal_btns {
   width: 282px;
   height: 41px;
   display: flex;
@@ -40,7 +40,7 @@
   margin-bottom: 24px;
   margin-top: 24px;
 }
-.alertModal-whiteBtn {
+.alertModal_whiteBtn {
   width: 137px;
   height: 41px;
   border-radius: 7px;
@@ -51,7 +51,7 @@
   background-color: #f7f7f7;
   border: 1px solid #cccccc;
 }
-.alertModal-blueBtn {
+.alertModal_blueBtn {
   width: 137px;
   height: 41px;
   border-radius: 7px;

@@ -18,14 +18,14 @@ const LogoutModal = ({ setModalOpen }) => {
   };
 
   return (
-    <div className="alertModal-container">
-      <div className="alertModal-box">
+    <div className="alertModal_container">
+      <div className="alertModal_box">
         <p>로그아웃 하시겠습니까?</p>
-        <div className="alertModal-btns">
-          <button className="alertModal-whiteBtn" onClick={closeModal}>
+        <div className="alertModal_btns">
+          <button className="alertModal_whiteBtn" onClick={closeModal}>
             취소
           </button>
-          <button className="alertModal-blueBtn" onClick={logout}>
+          <button className="alertModal_blueBtn" onClick={logout}>
             로그아웃
           </button>
         </div>

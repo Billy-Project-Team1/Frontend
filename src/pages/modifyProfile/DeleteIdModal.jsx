@@ -15,15 +15,15 @@ const DeleteIdModal = ({ setDeleteModalOpen }) => {
   };
 
   return (
-    <div className="alertModalLargeModal-container">
-      <div className="alertModalLargeModal-box">
+    <div className="alertModalLargeModal_container">
+      <div className="alertModalLargeModal_box">
         <p>탈퇴시 사용자님의 정보가 모두 삭제됩니다.</p>
         <p>탈퇴하시겠습니까?</p>
-        <div className="alertModalLargeModal-btns">
-          <button className="alertModal-whiteBtn" onClick={closeModal}>
+        <div className="alertModalLargeModal_btns">
+          <button className="alertModal_whiteBtn" onClick={closeModal}>
             취소
           </button>
-          <button className="alertModal-blueBtn" onClick={Withdrawal}>
+          <button className="alertModal_blueBtn" onClick={Withdrawal}>
             탈퇴
           </button>
         </div>

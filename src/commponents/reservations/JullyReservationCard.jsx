@@ -5,17 +5,25 @@ import deposit from '../../static/image/deposit.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import {
-  deliveryDoneThunk,
   jullyStateChangeThunk,
   jullyStateListThunk,
 } from '../../redux/modules/reservationSlice';
 
-const JullyReservationCard = ({ jullyState, setMyPageState }) => {
+const JullyReservationCard = ({ jullyState, setMyPageState}) => {
   const dispatch = useDispatch();
-
   const is_login = localStorage.getItem('userId');
   const [cancelMessage, setCancelMessage] = useState({
     cancelMessage: '취소할게요',
+    state: '3',
+  });
+  const [reservationApproved, setReservationApproved] = useState({
+    state: '2',
+  });
+  const [handleDone, setHandleDone] = useState({
+    state: '4',
+  });
+  const [returnDone, setReturnDone] = useState({
+    state: '5',
   });
 
   useEffect(() => {
@@ -55,7 +63,7 @@ const JullyReservationCard = ({ jullyState, setMyPageState }) => {
     return a?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
-  const jullyCancelHandler = async (a, b) => {
+  const jullyStateHandler = async (a, b) => {
     try {
       const response = await dispatch(jullyStateChangeThunk({ a, b }));
       if (response) {
@@ -66,34 +74,25 @@ const JullyReservationCard = ({ jullyState, setMyPageState }) => {
     } catch {}
   };
 
-  const deliveryDoneHandler = async (e) => {
-    try {
-      const response = await dispatch(deliveryDoneThunk(e));
-      if (response) {
-        return window.location.replace(`/mypage/${is_login}`);
-      }
-    } catch {}
-  };
-
   return (
     // .slice(0).reverse()
-    <div className="bookedCard-firstContainer">
+    <div className="reservationcard_first_container">
       {jullylist?.map((item, index) => {
         return (
-          <div className="bookedCard-container">
-            <div className="bookedCard-smallContainer">
-              <div className="bookedCard-titleWrap">
-                <div className="bookedCard-title">{item.title}</div>
+          <div className="reservationcard_container">
+            <div className="reservationcard_small_container">
+              <div className="reservationcard_title_wrap">
+                <div className="reservationcard_title">{item.title}</div>
               </div>
-              <div className="bookedCard-detailWrap">
-                <img className="bookedCard-img" src={item.postImgUrl} />
-                <div className="bookedCard-bodyBox">
-                  <div className="bookedCard-iconBox">
-                    <div className="bookedCard-price">
+              <div className="reservationcard_detail_wrap">
+                <img className="reservationcard_img" src={item.postImgUrl} />
+                <div className="reservationcard_body_box">
+                  <div className="reservationcard_icon_box">
+                    <div className="reservationcard_price">
                       <img src={dailycost} />
                       <p>{dailyPrice(item.price)}</p>
                     </div>
-                    <div className="bookedCard-price">
+                    <div className="reservationcard_price">
                       <img src={deposit} />
                       <p>{depositPrice(item.deposit)}</p>
                     </div>
@@ -117,21 +116,21 @@ const JullyReservationCard = ({ jullyState, setMyPageState }) => {
                       ? '취소 완료'
                       : ''}
                   </div>
-                  <div className="reservationcard_nameWrap">
+                  <div className="reservationcard_name_wrap">
                     <div className="reservationcard_name">
                       예약자: {item.billyNickname}
                     </div>
-                    <button className="reservationcard_chatbtn">
+                    <button className="reservationcard_chat_btn">
                       1:1 문의
                     </button>
                   </div>
-                  <div className="reservationcard_alertcontent">
+                  <div className="reservationcard_alert_content">
                     {jullyState === '2'
                       ? '• 거래 완료시 전달 완료 버튼을 체크해주세요.'
                       : ''}
                   </div>
                   {jullyState === '3' ? (
-                    <div className="reservationcard_alertcontent">
+                    <div className="reservationcard_alert_content">
                       취소사유 : {item.cancelMessage}
                     </div>
                   ) : (
@@ -139,33 +138,57 @@ const JullyReservationCard = ({ jullyState, setMyPageState }) => {
                   )}
                 </div>
               </div>
-              <div className="bookedCard-btnWrap">
+              <div className="reservationcard_btn_wrap">
                 {jullyState === '1' ? (
-                  <div className="jullyReservation_btnSet">
+                  <div className="jullyReservation_set_btn">
                     <button
                       className="jullyReservation_btn"
                       onClick={() =>
-                        jullyCancelHandler(item.reservationId, cancelMessage)
+                        jullyStateHandler(item.reservationId, cancelMessage)
                       }
                     >
                       예약 취소
                     </button>
-                    <button className="jullyReservation_btn">승인</button>
+                    <button
+                      className="jullyReservation_btn"
+                      onClick={() =>
+                        jullyStateHandler(
+                          item.reservationId,
+                          reservationApproved
+                        )
+                      }
+                    >
+                      승인
+                    </button>
                   </div>
                 ) : jullyState === '2' ? (
-                  <div className="jullyReservation_btnSet">
+                  <div className="jullyReservation_set_btn">
                     <button
                       className="jullyReservation_btn"
                       onClick={() =>
-                        jullyCancelHandler(item.reservationId, cancelMessage)
+                        jullyStateHandler(item.reservationId, cancelMessage)
                       }
                     >
                       예약 취소
                     </button>
-                    <button className="jullyReservation_btn">전달 완료</button>
+                    <button
+                      className="jullyReservation_btn"
+                      onClick={() =>
+                        jullyStateHandler(item.reservationId, handleDone)
+                      }
+                    >
+                      전달 완료
+                    </button>
                   </div>
                 ) : jullyState === '4' ? (
-                  <button className="bookedCard-btn">반납 완료</button>
+                  <button
+                    className="reservationcard_btn"
+                    onClick={() =>
+                      jullyStateHandler(item.reservationId, returnDone)
+                    }
+                  >
+                    반납 완료
+                  </button>
                 ) : jullyState === '5' ? (
                   <div style={{ marginBottom: '20px' }} />
                 ) : jullyState === '3' ? (

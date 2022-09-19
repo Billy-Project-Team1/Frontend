@@ -1,8 +1,8 @@
-.modifiyProfile-wrap {
+.modifiyProfile_wrap {
   // max-width: 428px;
   padding: 0 1rem;
 }
-.modifyProfile-container {
+.modifyProfile_container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,16 +11,16 @@
   margin-top: 40px;
   gap: 20px;
 }
-.modifyProfile-imgBox {
+.modifyProfile_img_box {
   position: relative;
   display: flex;
 }
-.modifyProfile-img {
+.modifyProfile_img {
   height: 100px;
-  width: 100%;
+  width: 100px;
   border-radius: 50%;
 }
-.modifyProfile-rightBox {
+.modifyProfile_right_box {
   margin-left: 24px;
   margin-right: 24px;
   padding-top: 3%;
@@ -34,7 +34,7 @@
     font-weight: 400;
   }
 }
-.modifyProfile-input {
+.modifyProfile_input {
   width: 100%;
   height: 26px;
   font-family: 'Noto Sans';
@@ -45,10 +45,10 @@
   border: none;
   border-bottom: 1px solid rgba($color: #a8a8a8, $alpha: 0.5);
 }
-.modifyProfile-input:focus {
+.modifyProfile_input:focus {
   outline: none;
 }
-.modifyProfile-setbtns {
+.modifyProfile_setbtns {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,7 +56,7 @@
   gap: 24px;
   margin-top: 48px;
 }
-.modifyProfile-btn {
+.modifyProfile_btn {
   height: 47px;
   width: 80%;
   cursor: pointer;
@@ -68,7 +68,7 @@
   font-size: 1rem;
   font-weight: 500;
 }
-.modifyProfile-btn2{
+.modifyProfile_btn2{
   height: 47px;
   width: 80%;
   cursor: pointer;
@@ -82,19 +82,19 @@
 
 
 }
-.modifiyProfile-iconWrap {
+.modifiyProfile_icon_wrap {
   position: absolute;
   display: flex;
   bottom: 0;
   right: 0;
 }
-.modifiyProfile-icon {
+.modifiyProfile_icon {
   width: 40px;
   height: 40px;
   background-color: #eeeeee;
   border-radius: 50%;
 }
-.modifiyProfile-camera {
+.modifiyProfile_camera {
   width: 24px;
   height: 24px;
   margin: 8px 8px 8px 8px;

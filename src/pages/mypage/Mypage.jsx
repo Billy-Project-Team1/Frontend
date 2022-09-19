@@ -101,7 +101,6 @@ const Mypage = () => {
           reservationsState={reservationsState}
           myPageState={myPageState}
           setMyPageState={setMyPageState}
-          postId={myDipList.id}
         />
       ) : (
         ''

@@ -1,23 +1,19 @@
-.rmdp-top-class {
-  width: 358px;
+.calendar_box {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  ::placeholder {
+    color: #757575;
+  }
 }
-.rmdp-calendar {
-	width: 100%;
-	height: 100%;
-	font-family: 'Noto Sans';
-	padding: 30px 0 10px;
+.calendar_box_text {
+  color: #757575;
+  font-weight: 400;
 }
-.rmdp-day-picker {
-  display: block !important;
-  width: 100%;
-  height: 100%;
-  margin: 10px 10px 0 0;
+.calendar_title {
+  padding-right: 5px;
 }
-.calendar-deleteButton {
-  margin-left: 30px;
-}
-
-.calendar-input {
+.calendar_input {
   font-size: 1rem;
   border: none;
   cursor: pointer;
@@ -25,26 +21,62 @@
   flex-direction: column;
   justify-content: center;
 }
-.calendar_box {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
-.calendar_box_text {
-  color: #757575;
-  font-weight: 400;
-}
-
-.calendar-inputText {
+.calendar_input_text {
   color: #212121;
   font-weight: normal;
   font-size: 0.875rem;
 }
-
-.calendar-input:focus {
+.calendar_input:focus {
   outline: none;
 }
+.calendar_toggleIcon {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1px;
+}
+.calendar_btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
+  button {
+    background-color: #004eea;
+    border-radius: 7px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    font-family: 'Noto Sans';
+    font-weight: 600;
+    font-size: 1rem;
+    color: #f7f7f7;
+    margin-top: 2px;
+  }
+  p {
+    color: #212121;
+    font-family: 'Noto Sans';
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: underline;
+    text-underline-position: under;
+    margin-left: 8px;
+    margin-top: 9px;
+  }
+}
+.rmdp-top-class {
+  width: 358px;
+}
+.rmdp-calendar {
+  width: 100%;
+  height: 100%;
+  font-family: 'Noto Sans';
+  padding: 30px 0 10px;
+}
+.rmdp-day-picker {
+  display: block !important;
+  width: 100%;
+  height: 100%;
+  margin: 10px 10px 0 0;
+}
 .rmdp-arrow {
   color: #212121;
 }
@@ -103,82 +135,12 @@
 .rmdp-week {
   padding-bottom: 18px;
 }
-.calendar-box {
-	display: flex;
-	flex-direction: row;
-	gap: 5px;
-	color: #212121;
-	font-weight: 600;
-
-  ::placeholder {
-    color: #757575;
-  }
-}
-
-.calendar-title {
-  padding-right: 5px;
-}
-.calendar-toggleIcon {
-  display: flex;
-  flex-direction: column;
-
-	margin-top: 1px;
-}
-
-.calendar-input {
-	font-size: 1rem;
-	border: none;
-	cursor: pointer;
-	justify-content: center;
-}
-
-.calendar-inputText {
-	color: #212121;
-	font-weight: normal;
-	font-size: 0.875rem;
-}
-
-.calendar-input:focus {
-	outline: none;
-}
-
 .rmdp-wrapper {
   margin: auto;
 }
-
 .rmdp-wrapper.rmdp-shadow {
   box-shadow: none;
-  // box-shadow: 0 0 5px #8798ad;
 }
-.calendar-btns {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-
-	button {
-		background-color: #004eea;
-		border-radius: 7px;
-		width: 100px;
-		height: 40px;
-		border: none;
-		font-family: 'Noto Sans';
-		font-weight: 600;
-		font-size: 1rem;
-		color: #f7f7f7;
-		margin-top: 2px;
-	}
-	p {
-		color: #212121;
-		font-family: 'Noto Sans';
-		font-weight: 600;
-		font-size: 0.875rem;
-		text-decoration: underline;
-		text-underline-position: under;
-		margin-left: 8px;
-		margin-top: 9px;
-	}
-}
-
 .rmdp-range {
   border-radius: 50%;
   color: #f7f7f7;
@@ -187,7 +149,6 @@
   background-color: #004eea;
   padding: 20px;
 }
-
 .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
   background-color: #004eea;
 }

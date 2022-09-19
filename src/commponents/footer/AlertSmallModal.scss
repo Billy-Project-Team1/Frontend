@@ -1,4 +1,4 @@
-.alertModal-container {
+.alertModal_container {
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
 }
-.alertModal-box {
+.alertModal_box {
   width: 324px;
   height: 133px;
   background-color: #f7f7f7;
@@ -29,7 +29,7 @@
     margin: 24px 0;
   }
 }
-.alertModal-btns {
+.alertModal_btns {
   width: 282px;
   height: 41px;
   display: flex;
@@ -40,7 +40,7 @@
   // margin: 0px 35px;
   margin-bottom: 23.56px;
 }
-.alertModal-whiteBtn{
+.alertModal_whiteBtn{
   width: 137px;
   height: 41px;
   border-radius: 7px;
@@ -51,7 +51,7 @@
   background-color: #f7f7f7;
   border: 1px solid #CCCCCC;
 }
-.alertModal-blueBtn{
+.alertModal_blueBtn{
   width: 137px;
   height: 41px;
   border-radius: 7px;

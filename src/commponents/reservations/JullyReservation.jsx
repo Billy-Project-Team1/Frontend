@@ -32,7 +32,7 @@ const JullyReservation = ({ reservationsState, setMyPageState }) => {
   } else if (reservationsState === '3') {
     return (
       <div>
-        <JullyReservationCard jullyStatee={reservationsState} />
+        <JullyReservationCard jullyState={reservationsState} />
       </div>
     );
   } else {
