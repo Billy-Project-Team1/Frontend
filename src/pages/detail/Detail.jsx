@@ -17,10 +17,12 @@ import { useState } from 'react';
 import { reservationThunk } from '../../redux/modules/reservationSlice';
 
 const Detail = () => {
-	//2. 함수 만들 때 수입해서 쓸거임. slice에서 수입해올 때 사용하는 함수임.
-	// redux toolkit 전역변수는 props 따로 사용할 필요 없이 함수를 받아올 수 있게 해줌.
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
+  //2. 함수 만들 때 수입해서 쓸거임. slice에서 수입해올 때 사용하는 함수임.
+  // redux toolkit 전역변수는 props 따로 사용할 필요 없이 함수를 받아올 수 있게 해줌.
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [blockDate, setBlockDate] = useState([]);
+
 
 	//3. 주소창에 있는 id num을 불러오기 위함. app.js에서 확인
 	const { postid } = useParams();
@@ -42,8 +44,17 @@ const Detail = () => {
 	// state.post.post는 slice안에 있는 Initialstate값을 가져옴
 	const detailPost = useSelector((state) => state.post.post);
 
-	//1. props 내려주는거임
-	//로그인 정보를 가져옴. 게시글 삭제 버튼을 위함 ㅋㅋ~
+  const blockDateList = detailPost.blockDate?.blockDateList;
+  const reservationDateList = detailPost.blockDate?.reservationDateList
+
+  useEffect(()=>{
+    if(blockDateList&&reservationDateList){
+      setBlockDate([...blockDate,...reservationDateList,...blockDateList])
+  }
+  },[blockDateList])
+  
+  //1. props 내려주는거임
+  //로그인 정보를 가져옴. 게시글 삭제 버튼을 위함 ㅋㅋ~
 
 	const detailPrice = detailPost.price
 		?.toString()
@@ -98,86 +109,83 @@ const Detail = () => {
 		}
 	};
 
-	return (
-		<div className="detail_container">
-			{/* 2. props 내려줌 그럼 받는측은 ㅇㄷ? header 가보기~*/}
-			<div className="detail_header">
-				<DetailHeader authorId={detailPost.authorId} />
-			</div>
-			<div className="detail_image_box">
-				<Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-					{detailPost.postImgUrl?.postImgUrlList.map((item) => {
-						return (
-							<SwiperSlide>
-								<img src={item} />
-							</SwiperSlide>
-						);
-					})}
-				</Swiper>
-			</div>
-			<div className="detail_contents_wrap">
-				<div className="detail_user_profile">
-					<div className="detail_profile_img">
-						<img src={detailPost.profileUrl} />
-					</div>
-					<div className="detail_profile_wrap">
-						<div className="detail_nickname">{detailPost.nickname}</div>
-						<div className="detail_profile_second">
-							<span className="detail_location">{detailPost.location} </span>
-							<span className="detail_location_line">&nbsp;|&nbsp;</span>
-							<span className="detail_time"> {nowDate}</span>
-						</div>
-					</div>
-				</div>
-				<div className="detail_content_part">
-					<div className="detail_title">{detailPost.title}</div>
-					<div className="detail_rental">
-						<span className="detail_price">일 대여금 {detailPrice}원</span>
-						<span className="detail_rental_line">|</span>
-						<span className="detail_deposit">보증금 {detailDeposit}원</span>
-					</div>
-					<div className="detail_content">
-						{detailPost.content?.split('\n').map((line) => {
-							return (
-								<span>
-									{line}
-									<br />
-								</span>
-							);
-						})}
-					</div>
-					<div className="detail_bottom_contents">
-						<span className="detail_like">
-							대여&nbsp;{detailPost.reservationCount}&nbsp;
-						</span>
-						<span className="detail_contents_line">|</span>
-						<span className="detail_like">
-							&nbsp;관심&nbsp;{detailPost.likeCount}
-						</span>
-					</div>
-				</div>
-			</div>
-			<div className="detail_calendar">
-				<DetailCalendar
-					data={detailPost.blockDate?.blockDateList}
-					detailPost={detailPost}
-					setPickDate={setPickDate}
-					pickDate={pickDate}
-				/>
-			</div>
-			<div className="detail_map">
-				<DetailMap data={detailPost} />
-			</div>
-			<div className="detail_review">
-				<ReviewCard />
-			</div>
-			<DetailFooter
-				authorId={detailPost.authorId}
-				onReservationHandler={onReservationHandler}
-				detailPost={detailPost}
-			/>
-		</div>
-	);
+  return (
+    <div className="detail_container">
+      {/* 2. props 내려줌 그럼 받는측은 ㅇㄷ? header 가보기~*/}
+      <div className="detail_header">
+        <DetailHeader authorId={detailPost.authorId} />
+      </div>
+      <div className="detail_image_box">
+        <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+          {detailPost.postImgUrl?.postImgUrlList.map((item) => {
+            return (
+              <SwiperSlide>
+                <img src={item} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
+      <div className="detail_contents_wrap">
+        <div className="detail_user_profile">
+          <div className="detail_profile_img">
+            <img src={detailPost.profileUrl} />
+          </div>
+          <div className="detail_profile_wrap">
+            <div className="detail_nickname">{detailPost.nickname}</div>
+            <div className="detail_profile_second">
+              <span className="detail_location">{detailPost.location} </span>
+              <span className="detail_location_line">&nbsp;|&nbsp;</span>
+              <span className="detail_time"> {nowDate}</span>
+            </div>
+          </div>
+        </div>
+        <div className="detail_content_part">
+          <div className="detail_title">{detailPost.title}</div>
+          <div className="detail_rental">
+            <span className="detail_price">일 대여금 {detailPrice}원</span>
+            <span className="detail_rental_line">|</span>
+            <span className="detail_deposit">보증금 {detailDeposit}원</span>
+          </div>
+          <div className="detail_content">
+            {detailPost.content?.split('\n').map((line) => {
+              return (
+                <span>
+                  {line}
+                  <br />
+                </span>
+              );
+            })}
+          </div>
+          <div className="detail_bottom_contents">
+            <span className="detail_like">
+              대여&nbsp;{detailPost.reservationCount}&nbsp;
+            </span>
+            <span className="detail_contents_line">|</span>
+            <span className="detail_like">
+              &nbsp;관심&nbsp;{detailPost.likeCount}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="detail_calendar">
+        <DetailCalendar
+          data={blockDate}
+          detailPost={detailPost}
+          setPickDate={setPickDate}
+          pickDate={pickDate}
+        />
+      </div>
+      <div className="detail_map">
+        <DetailMap data={detailPost} />
+      </div>
+      <DetailFooter
+        authorId={detailPost.authorId}
+        onReservationHandler={onReservationHandler}
+        detailPost={detailPost}
+      />
+    </div>
+  );
 };
 
 export default Detail;

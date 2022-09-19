@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Calendar } from 'react-multi-date-picker';
+import { Calendar, DateObject } from 'react-multi-date-picker';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import './Calendar.scss';
+import { Navigate } from 'react-router-dom';
 
 const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   const noDates = useRef();
   const noDates2 = useRef();
+  const today = new DateObject();
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
   const months = [
     '1월',
@@ -32,8 +34,6 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   const toggleMode = () => {
     setToggleOn((toggleOn) => !toggleOn);
   };
-  console.log(data);
-  // .getMonth() + 1 === month
 
   const disableDate = () => {
     const datesArray = [];
@@ -42,17 +42,17 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
         datesArray.push(new Date(v).getDate());
       }
     });
-    // console.log(datesArray);
 
     setUnavailable(datesArray);
   };
 
   useEffect(() => {
-    const elements = document.querySelectorAll('.calendar_toggleOn .rmdp-day .sd');
-    // console.log(elements)
+    let elements = null;
+    elements = document.querySelectorAll('.calendar_toggleOn .rmdp-day .sd');
     for (let i = 0; i < elements.length; i++) {
+      elements[i].parentNode.classList.remove('rmdp-disabled');
       for (let j = 0; j < unavailable.length; j++) {
-        if (elements[i].innerText / 1 === unavailable[j]) {
+        if (elements[i].innerText == unavailable[j]) {
           elements[i].parentNode.classList.add('rmdp-disabled');
         }
       }
@@ -63,23 +63,27 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
     if (data) {
       disableDate();
     }
-  }, [month,data]);
-  // console.log(unavailable);
+  }, [month, data, date, toggleOn]);
 
   // console.log(date[0])
-  useEffect (()=>{
-    for (let i = 0; i< unavailable.length; i++ ){
-      if (new Date(date[0]).getDate()< unavailable[i] && new Date(date[1]).getDate()> unavailable[i]){
-          alert('잘못된 날짜입니다'); 
-          date.pop();
-          dates.pop();
-          document.getElementById('prevent');
-          
+  useEffect(() => {
+    date.sort();
+    console.log(date[0])
+    for (let i = 0; i < data?.length; i++) {
+      if (
+        new Date(date[0]) < new Date(data[i]) &&
+        new Date(date[1]) > new Date(data[i])
+      ) {
+        date.pop();
+        return alert('잘못된 날짜입니다');
+      }
+      else if(date[0]?.toLocaleString() == date[1]?.toLocaleString()){
+        date.pop();
+        date.pop();
+        return alert('최소 1일 이상 설정해주세요')
       }
     }
-  },[date])
-  console.log(dates)
-
+  }, [date]);
 
   const setDateFormat = () => {
     if (date?.length > 0) {
@@ -166,18 +170,18 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
         <div>
           <Calendar
             // multiple
-            range ={true}
-            value={date && date}
+            range
+            value={date}
             onChange={setDate}
             weekDays={weekDays}
             months={months}
             format="YYYY/MM/DD"
             minDate={new Date()}
-            maxDate={new Date().setDate(90)}
+            maxDate={new Date(today.year, today.month.number + 2, today.day)}
             onMonthChange={(date) => setMonth(new Date(date).getMonth() + 1)}
             shadow={false}
             className="calendar_toggleOn"
-            id='prevent'
+            id="prevent"
           />
         </div>
       ) : (
