@@ -9,7 +9,7 @@ import {
   jullyStateListThunk,
 } from '../../redux/modules/reservationSlice';
 
-const JullyReservationCard = ({ jullyState, setMyPageState}) => {
+const JullyReservationCard = ({ jullyState, setMyPageState }) => {
   const dispatch = useDispatch();
   const is_login = localStorage.getItem('userId');
   const [cancelMessage, setCancelMessage] = useState({
@@ -125,7 +125,7 @@ const JullyReservationCard = ({ jullyState, setMyPageState}) => {
                     </button>
                   </div>
                   <div className="reservationcard_alert_content">
-                    {jullyState === '2'
+                    {jullyState === '2' && item.delivery === true
                       ? '• 거래 완료시 전달 완료 버튼을 체크해주세요.'
                       : ''}
                   </div>
@@ -162,25 +162,44 @@ const JullyReservationCard = ({ jullyState, setMyPageState}) => {
                     </button>
                   </div>
                 ) : jullyState === '2' ? (
-                  <div className="jullyReservation_set_btn">
+                  item.delivery === true ? (
                     <button
-                      className="jullyReservation_btn"
-                      onClick={() =>
-                        jullyStateHandler(item.reservationId, cancelMessage)
-                      }
-                    >
-                      예약 취소
-                    </button>
-                    <button
-                      className="jullyReservation_btn"
+                      className="reservationcard_btn"
                       onClick={() =>
                         jullyStateHandler(item.reservationId, handleDone)
                       }
                     >
                       전달 완료
                     </button>
-                  </div>
-                ) : jullyState === '4' ? (
+                  ) : (
+                    <button
+                      className="reservationcard_btn"
+                      onClick={() =>
+                        jullyStateHandler(item.reservationId, cancelMessage)
+                      }
+                    >
+                      예약 취소
+                    </button>
+                  )
+                ) : // <div className="jullyReservation_set_btn">
+                //   <button
+                //     className="jullyReservation_btn"
+                //     onClick={() =>
+                //       jullyStateHandler(item.reservationId, cancelMessage)
+                //     }
+                //   >
+                //     예약 취소
+                //   </button>
+                //   <button
+                //     className="jullyReservation_btn"
+                //     onClick={() =>
+                //       jullyStateHandler(item.reservationId, handleDone)
+                //     }
+                //   >
+                //     전달 완료
+                //   </button>
+                // </div>
+                jullyState === '4' ? (
                   <button
                     className="reservationcard_btn"
                     onClick={() =>
