@@ -26,62 +26,60 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   const [dates, setDates] = useState();
   const [unavailable, setUnavailable] = useState([]);
   const [toggleOn, setToggleOn] = useState(true);
-  console.log(date.toLocaleString());
+  // console.log(date.toLocaleString());
   // data={detailPost.blockDate?.blockDateList[0]}
 
   const toggleMode = () => {
     setToggleOn((toggleOn) => !toggleOn);
   };
-  const deleteDates = () => {
-    setDate([]);
-    setDates();
-    noDates.current = [];
-  };
   console.log(data);
   // .getMonth() + 1 === month
+
   const disableDate = () => {
     const datesArray = [];
-    data.map((v) => {
-      if (new Date(v)) {
+    data?.map((v) => {
+      if (new Date(v).getMonth() + 1 === month) {
         datesArray.push(new Date(v).getDate());
       }
     });
+    // console.log(datesArray);
+
     setUnavailable(datesArray);
   };
-  console.log(unavailable);
 
   useEffect(() => {
-    const elements = document.querySelectorAll('.rmdp-day');
-    // console.log(elements[5].innerText)
+    const elements = document.querySelectorAll('.calendar_toggleOn .rmdp-day .sd');
+    // console.log(elements)
     for (let i = 0; i < elements.length; i++) {
       for (let j = 0; j < unavailable.length; j++) {
         if (elements[i].innerText / 1 === unavailable[j]) {
-          elements[i].parentNode.classList.add('.rmdp-day. rmdp-disabled');
+          elements[i].parentNode.classList.add('rmdp-disabled');
         }
       }
     }
   }, [unavailable]);
 
-  // // useEffect(() => {
-  // //   if (detailPost) {
-  // //     setUnavailable(data);
-  // //   }
-  // // }, []);
-  // // console.log(unavailable);
-
-  // useEffect(() => {
-  //   if (detailPost) {
-  //     disableDate(data);
-  //   }
-  // }, []);
-
+  useEffect(() => {
+    if (data) {
+      disableDate();
+    }
+  }, [month,data]);
   // console.log(unavailable);
 
-  // useEffect(() => {
-  //   if (detailPost) {
-  //     disableDate(data);
-  //   }
-  // }, []);
+  // console.log(date[0])
+  useEffect (()=>{
+    for (let i = 0; i< unavailable.length; i++ ){
+      if (new Date(date[0]).getDate()< unavailable[i] && new Date(date[1]).getDate()> unavailable[i]){
+          alert('잘못된 날짜입니다'); 
+          date.pop();
+          dates.pop();
+          document.getElementById('prevent');
+          
+      }
+    }
+  },[date])
+  console.log(dates)
+
 
   const setDateFormat = () => {
     if (date?.length > 0) {
@@ -168,8 +166,8 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
         <div>
           <Calendar
             // multiple
-            range
-            value={date & data}
+            range ={true}
+            value={date && date}
             onChange={setDate}
             weekDays={weekDays}
             months={months}
@@ -177,7 +175,9 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
             minDate={new Date()}
             maxDate={new Date().setDate(90)}
             onMonthChange={(date) => setMonth(new Date(date).getMonth() + 1)}
+            shadow={false}
             className="calendar_toggleOn"
+            id='prevent'
           />
         </div>
       ) : (

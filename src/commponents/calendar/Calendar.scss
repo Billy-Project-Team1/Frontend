@@ -152,3 +152,6 @@
 .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
   background-color: #004eea;
 }
+.rmdp-disabled{
+  pointer-events: none;
+}
