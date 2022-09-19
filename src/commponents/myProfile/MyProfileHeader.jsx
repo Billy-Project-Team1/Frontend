@@ -17,7 +17,7 @@ const MyProfileHeader = () => {
   }, []);
 
   const profile = useSelector((state) => state.myprofile.myProfile);
-  console.log(profile);
+  // console.log(profile);
   return (
     <>
       <div className="myProfileHeader_container">

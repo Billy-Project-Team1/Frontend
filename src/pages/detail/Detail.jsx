@@ -132,7 +132,8 @@ const Detail = () => {
             <img src={detailPost.profileUrl} />
           </div>
           <div className="detail_profile_wrap">
-            <div className="detail_nickname">{detailPost.nickname}</div>
+            <div className="detail_nickname" onClick={()=>navigate(`/mypage/${detailPost.authorId
+}`)}>{detailPost.nickname}</div>
             <div className="detail_profile_second">
               <span className="detail_location">{detailPost.location} </span>
               <span className="detail_location_line">&nbsp;|&nbsp;</span>
