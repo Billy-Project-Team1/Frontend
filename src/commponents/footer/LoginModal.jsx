@@ -10,13 +10,13 @@ const LoginModal = ({ setModalOpen }) => {
     setModalOpen(false);
   };
   return (
-    <div className="alertModal-container">
-      <div className="alertModal-box">
+    <div className="alertModal_container">
+      <div className="alertModal_box">
         <p>로그인이 필요한 페이지입니다</p>
-        <div className="alertModal-btns">
-          <button className='alertModal-whiteBtn' onClick={closeModal}>취소</button>
+        <div className="alertModal_btns">
+          <button className='alertModal_whiteBtn' onClick={closeModal}>취소</button>
           <button
-            className="alertModal-blueBtn"
+            className="alertModal_blueBtn"
             onClick={() => navigate('/login')}
           >
             로그인

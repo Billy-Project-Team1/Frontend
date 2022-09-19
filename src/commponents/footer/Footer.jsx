@@ -58,17 +58,17 @@ const Footer = () => {
 
   return (
     <div className="footer">
-      <div className="footer-container">
-        <div className="footer-wrap">
+      <div className="footer_container">
+        <div className="footer_wrap">
           <div onClick={() => navigate('/')}>
             <HiOutlineHome
-              className="footer-icon"
+              className="footer_icon"
               style={{ color: pathname === '/' ? '#212121' : '#CCCCCC' }}
             />
           </div>
           <div onClick={() => navigate('/search')}>
             <HiSearch
-              className="footer-icon"
+              className="footer_icon"
               style={{ color: pathname === '/search' ? '#212121' : '#CCCCCC' }}
             />
           </div>
@@ -78,7 +78,7 @@ const Footer = () => {
             }}
           >
             <HiOutlinePlusCircle
-              className="footer-icon"
+              className="footer_icon"
               style={{ color: pathname === '/posting' ? '#212121' : '#CCCCCC' }}
             />
           </div>
@@ -88,7 +88,7 @@ const Footer = () => {
             }}
           >
             <HiOutlineChat
-              className="footer-icon"
+              className="footer_icon"
               style={{ color: pathname === '/chatList' ? '#212121' : '#CCCCCC' }}
             />
           </div>
@@ -98,7 +98,7 @@ const Footer = () => {
             }}
           >
             <HiOutlineUser
-              className="footer-icon"
+              className="footer_icon"
               style={{
                 color:
                   pathname === `/mypage/${is_login}` ? '#212121' : '#CCCCCC',

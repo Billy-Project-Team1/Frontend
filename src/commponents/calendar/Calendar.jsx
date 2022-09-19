@@ -53,7 +53,7 @@ const PostingCalendar = ({ setData, data }) => {
             date[i].month.number < 10
               ? '0' + date[i].month.number
               : date[i].month.number
-          }.${date[i].day < 10 ? '0' + date[i].day : date[i].day}(${
+          }월 ${date[i].day < 10 ? '0' + date[i].day : date[i].day}일 (${
             weekDays[date[i].weekDay.index]
           })`;
           noDates2.current.push(dateItem);
@@ -67,11 +67,11 @@ const PostingCalendar = ({ setData, data }) => {
             date[i].month.number < 10
               ? '0' + date[i].month.number
               : date[i].month.number
-          }.${date[i].day < 10 ? '0' + date[i].day : date[i].day}(${
+          }월 ${date[i].day < 10 ? '0' + date[i].day : date[i].day}일 (${
             weekDays[date[i].weekDay.index]
           })`;
           noDates2.current.push(dateItem);
-          noDates.current = `${noDates2.current[0]},${noDates2.current[1]}`;
+          noDates.current = `${noDates2.current[0]}, ${noDates2.current[1]}`;
         }
       } else {
         noDates2.current = [];
@@ -80,14 +80,14 @@ const PostingCalendar = ({ setData, data }) => {
             date[i].month.number < 10
               ? '0' + date[i].month.number
               : date[i].month.number
-          }.${date[i].day < 10 ? '0' + date[i].day : date[i].day}(${
+          }월 ${date[i].day < 10 ? '0' + date[i].day : date[i].day}일 (${
             weekDays[date[i].weekDay.index]
           })`;
           noDates2.current.push(dateItem);
         }
         noDates.current = noDates2.current.sort();
 
-        noDates.current = `${noDates.current[0]},${noDates.current[1]}외 ${
+        noDates.current = `${noDates.current[0]}, ${noDates.current[1]}외 ${
           date.length - 2
         }일`;
       }
@@ -109,9 +109,13 @@ const PostingCalendar = ({ setData, data }) => {
   }, [date]);
 
   return (
-    <div className="calendar-wrap">
+    <div className="calendar_wrap">
       <div className="calendar_box">
-        <HiOutlineCalendar color="#757575" size="18px" style={{margin:"2px 6px 0 0"}}/>
+        <HiOutlineCalendar
+          color="#757575"
+          size="18px"
+          style={{ margin: '2px 6px 0 0' }}
+        />
         <div
           onClick={() => {
             toggleMode();
@@ -122,7 +126,7 @@ const PostingCalendar = ({ setData, data }) => {
             ? noDates.current
             : '대여 불가능한 날짜를 체크해주세요'}
         </div>
-        <div className="calendar-toggleIcon">
+        <div className="calendar_toggleIcon">
           {toggleOn === true ? (
             <HiOutlineChevronUp />
           ) : (
@@ -142,7 +146,7 @@ const PostingCalendar = ({ setData, data }) => {
             minDate={new Date()}
             maxDate={new Date().setDate(90)}
           />
-          <div className="calendar-btns">
+          <div className="calendar_btns">
             <p onClick={() => deleteDates()}>전체 삭제</p>
             <button
               onClick={() => {

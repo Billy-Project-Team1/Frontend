@@ -9,10 +9,11 @@ import {
   deliveryDoneThunk,
   reservationCancelThunk,
 } from '../../redux/modules/reservationSlice';
-import BillyAcceptButton from './BillyAcceptButton';
+import { useNavigate } from 'react-router-dom';
 
 const ReservationCard = ({ billyState, setMyPageState }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const is_login = localStorage.getItem('userId');
   const [cancelMessage, setCancelMessage] = useState({
     cancelMessage: '취소할게요',
@@ -79,23 +80,23 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
 
   return (
     // .slice(0).reverse()
-    <div className="bookedCard-firstContainer">
+    <div className="reservationcard_first_container">
       {billylist?.map((item, index) => {
         return (
-          <div className="bookedCard-container">
-            <div className="bookedCard-smallContainer">
-              <div className="bookedCard-titleWrap">
-                <div className="bookedCard-title">{item.title}</div>
+          <div className="reservationcard_container">
+            <div className="reservationcard_small_container">
+              <div className="reservationcard_title_wrap">
+                <div className="reservationcard_title">{item.title}</div>
               </div>
-              <div className="bookedCard-detailWrap">
-                <img className="bookedCard-img" src={item.postImgUrl} />
-                <div className="bookedCard-bodyBox">
-                  <div className="bookedCard-iconBox">
-                    <div className="bookedCard-price">
+              <div className="reservationcard_detail_wrap">
+                <img className="reservationcard_img" src={item.postImgUrl} />
+                <div className="reservationcard_body_box">
+                  <div className="reservationcard_icon_box">
+                    <div className="reservationcard_price">
                       <img src={dailycost} />
                       <p>{dailyPrice(item.price)}</p>
                     </div>
-                    <div className="bookedCard-price">
+                    <div className="reservationcard_price">
                       <img src={deposit} />
                       <p>{depositPrice(item.deposit)}</p>
                     </div>
@@ -119,21 +120,21 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
                       ? '취소 완료'
                       : ''}
                   </div>
-                  <div className="reservationcard_nameWrap">
+                  <div className="reservationcard_name_wrap">
                     <div className="reservationcard_name">
                       대여자 : {item.jullyNickname}
                     </div>
-                    <button className="reservationcard_chatbtn">
+                    <button className="reservationcard_chat_btn">
                       1:1 문의
                     </button>
                   </div>
-                  <div className="reservationcard_alertcontent">
+                  <div className="reservationcard_alert_content">
                     {billyState === '2'
                       ? '• 거래 완료시 수령 완료 버튼을 체크해주세요.'
                       : ''}
                   </div>
                   {billyState === '3' ? (
-                    <div className="reservationcard_alertcontent">
+                    <div className="reservationcard_alert_content">
                       취소사유 : {item.cancelMessage}
                     </div>
                   ) : (
@@ -141,10 +142,10 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
                   )}
                 </div>
               </div>
-              <div className="bookedCard-btnWrap">
+              <div className="reservationcard_btn_wrap">
                 {billyState === '1' ? (
                   <button
-                    className="bookedCard-btn"
+                    className="reservationcard_btn"
                     onClick={() =>
                       cancelHandler(item.reservationId, cancelMessage)
                     }
@@ -153,10 +154,10 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
                   </button>
                 ) : billyState === '2' ? (
                   item.delivery === true ? (
-                    <button className="bookedCard-waitBtn">승인 대기 중</button>
+                    <button className="reservationcard_wait_btn">승인 대기 중</button>
                   ) : (
                     <button
-                      className="bookedCard-btn"
+                      className="reservationcard_btn"
                       onClick={() => deliveryDoneHandler(item.reservationId)}
                     >
                       수령 완료
@@ -165,7 +166,7 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
                 ) : billyState === '4' ? (
                   <div style={{ marginBottom: '20px' }} />
                 ) : billyState === '5' ? (
-                  <button className="bookedCard-btn">리뷰 작성</button>
+                  <button className="reservationcard_btn">리뷰 작성</button>
                 ) : billyState === '3' ? (
                   <div style={{ marginBottom: '20px' }} />
                 ) : (

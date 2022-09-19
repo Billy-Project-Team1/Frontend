@@ -11,12 +11,9 @@ export const reservationThunk = createAsyncThunk(
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       }
-    } catch (error) {
-    
-    }
+    } catch (error) {}
   }
 );
-
 // 빌리의 예약 카운트 조회 Get /auth/reservations/billy
 export const billyReservationCntThunk = createAsyncThunk(
   'billyReservationStateThunk',
@@ -77,6 +74,7 @@ export const deliveryDoneThunk = createAsyncThunk(
     try {
       const response = await instance.patch(
         `/auth/reservations/billy/delivery/${payload}`
+        // `/auth/reservations/billy/delivery/${response.data.result}`
       );
       // return console.log(response);
       return thunkAPI.fulfillWithValue(payload);
@@ -128,7 +126,8 @@ export const jullyStateChangeThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.patch(
-        `/auth/reservations/jully/${payload.a}`, payload.b
+        `/auth/reservations/jully/${payload.a}`,
+        payload.b
       );
       // return console.log(response);
       return thunkAPI.fulfillWithValue(response.data.result);
@@ -211,7 +210,6 @@ export const reservationSlice = createSlice({
     [jullyStateChangeThunk.rejected]: (state, action) => {
       console.log(action.payload);
     },
-
   },
 });
 export default reservationSlice.reducer;

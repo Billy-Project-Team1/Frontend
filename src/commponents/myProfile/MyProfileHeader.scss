@@ -1,8 +1,8 @@
-.myProfileHeader-container {
+.myProfileHeader_container {
   padding: 0 1rem;
   // max-width: 428px;
 }
-.myProfileHeader-wrap {
+.myProfileHeader_wrap {
   width: 230px;
   height: 60px;
   display: flex;
@@ -12,18 +12,18 @@
   margin: 34px 136px 0px 8px;
   position: relative;
 }
-.myProfileHeader-imgBox {
+.myProfileHeader_img_box {
   height: 60px;
   width: 60px;
   border-radius: 50%;
   margin-left: -34px;
 }
-.myProfileHeader-img {
+.myProfileHeader_img {
   height: 60px;
   width: 60px;
   border-radius: 50%;
 }
-.myProfileHeader-rightBox {
+.myProfileHeader_right_box {
   margin-left: 14px;
   margin-top: 5px;
 
@@ -34,21 +34,21 @@
     font-weight: 400;
   }
 }
-.myProfileHeader-nickname {
+.myProfileHeader_nickname {
   font-size: 1.5rem;
   color: #212121;
   font-family: 'Noto Sans';
 }
-.myProfileHeader-settingBtn {
+.myProfileHeader_setting_btn {
   color: #cccccc;
   cursor: pointer;
   margin: auto;
 }
-.myProfileHeader-rightTopBox {
+.myProfileHeader_right_topbox {
   display: flex;
   flex-direction: row;
 }
-.myProfileHeader-icon {
+.myProfileHeader_icon {
   display: flex;
   flex-direction: column;
 }

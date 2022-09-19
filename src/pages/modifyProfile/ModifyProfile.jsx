@@ -114,9 +114,9 @@ const ModifyProfile = () => {
         sumbitHandler={sumbitHandler}
         // disabled={btnState ? false : true}
       />
-      <div className="modifiyProfile-wrap">
-        <div className="modifyProfile-container">
-          <div className="modifyProfile-imgBox">
+      <div className="modifiyProfile_wrap">
+        <div className="modifyProfile_container">
+          <div className="modifyProfile_img_box">
             <input
               ref={memberImg_ref}
               type="file"
@@ -125,18 +125,18 @@ const ModifyProfile = () => {
               onChange={onLoadFile}
               style={{ display: 'none' }}
             />
-            <img src={image} alt="" className="modifyProfile-img" />
-            <div className="modifiyProfile-iconWrap">
-              <div className="modifiyProfile-icon">
+            <img src={image} alt="" className="modifyProfile_img" />
+            <div className="modifiyProfile_icon_wrap">
+              <div className="modifiyProfile_icon">
                 <label className="Img_label" htmlFor="img_upFile">
-                  <FaCamera color="#CCCCCC" className="modifiyProfile-camera" />
+                  <FaCamera color="#CCCCCC" className="modifiyProfile_camera" />
                 </label>
               </div>
             </div>
           </div>
-          <div className="modifyProfile-rightBox">
+          <div className="modifyProfile_right_box">
             <input
-              className="modifyProfile-input"
+              className="modifyProfile_input"
               name="nickname"
               value={reviseProfile.nickname}
               onChange={onChangeHandler}
@@ -144,12 +144,12 @@ const ModifyProfile = () => {
             <p>2-8자 이내, 특수문자/띄어쓰기 불가</p>
           </div>
         </div>
-        <div className="modifyProfile-setbtns">
-          <button className="modifyProfile-btn" onClick={showModal}>
+        <div className="modifyProfile_setbtns">
+          <button className="modifyProfile_btn" onClick={showModal}>
             로그아웃
           </button>
           {modalOpen && <LogoutModal setModalOpen={setModalOpen} />}
-          <button className="modifyProfile-btn2" onClick={isModal}>
+          <button className="modifyProfile_btn2" onClick={isModal}>
             회원탈퇴
           </button>
           {deleteModalOpen && (

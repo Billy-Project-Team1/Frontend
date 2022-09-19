@@ -20,23 +20,23 @@ const MyProfileHeader = () => {
   console.log(profile);
   return (
     <>
-      <div className="myProfileHeader-container">
-        <div className="myProfileHeader-wrap">
-          <div className="myProfileHeader-imgBox">
+      <div className="myProfileHeader_container">
+        <div className="myProfileHeader_wrap">
+          <div className="myProfileHeader_img_box">
             <img
               src={profile.profileUrl ? profile.profileUrl : profileimg}
-              className="myProfileHeader-img"
+              className="myProfileHeader_img"
             />
           </div>
-          <div className="myProfileHeader-rightBox">
-            <div className="myProfileHeader-rightTopBox">
-              <div className="myProfileHeader-nickname">{profile.nickname}</div>
+          <div className="myProfileHeader_right_box">
+            <div className="myProfileHeader_right_topbox">
+              <div className="myProfileHeader_nickname">{profile.nickname}</div>
               {userId === profile.userId ? (
-                <div className="myProfileHeader-icon">
+                <div className="myProfileHeader_icon">
                   <Icon
                     icon="ic:baseline-settings"
                     onClick={() => navigate('/modifyprofile')}
-                    className="myProfileHeader-settingBtn"
+                    className="myProfileHeader_setting_btn"
                   />
                 </div>
               ) : (
