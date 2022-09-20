@@ -11,7 +11,7 @@ import SignUp from './pages/signup/SignUp';
 import Kakao from './pages/socialLogin/KakaoLogin';
 import SearchPlace from './commponents/maps/SearchPlace';
 import MainListCard from './commponents/mainListCard/MainListCard';
-import MyPage from './pages/mypage/MyPage';
+import MyPage1 from './pages/mypage/MyPage1';
 import Search from './pages/search/Search';
 import ChattingRoom from './pages/chatting/ChattingRoom';
 import Chat from './pages/chatting/Chat';
@@ -38,6 +38,7 @@ function App() {
     })
     .catch((err) => console.log('failed: ', err));
 
+    return (
     <div>
       {show ? (
         <ReactNotificationComponent
@@ -59,7 +60,7 @@ function App() {
         <Route path="/kakao" element={<Kakao />} />
         <Route path="/map/test" element={<SearchPlace />} />
         <Route path="/main/test" element={<MainListCard />} />
-        <Route path="/mypage/:id" element={<MyPage />} />
+        <Route path="/mypage/:id" element={<MyPage1 />} />
         <Route path="/search" element={<Search />} />
         <Route path="/chatList" element={<ChattingRoom />} />
         {/* <Route path="/chat/:roomId" element={<Chat />} /> */}
