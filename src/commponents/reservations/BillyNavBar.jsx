@@ -13,7 +13,7 @@ const BillyNavBar = ({ reservationsState, setReservationsState,setMyPageState })
   }, []);
 
   const bookedState = useSelector((state) => state.billystate.billyState);
-  console.log(bookedState);
+  // console.log(bookedState);
 
   return (
     <div className="myProfileNavBar_wrap">

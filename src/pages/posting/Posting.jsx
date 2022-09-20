@@ -104,7 +104,7 @@ const Posting = () => {
 
   return (
     <div>
-      <AddPostingHeader onPostingHandler={onPostingHandler} />
+      <AddPostingHeader pageName='글쓰기' onClickSave={onPostingHandler} type='완료'/>
       {/* <AddLocationHeader></AddLocationHeader>
 			<ModifyPostingHeader></ModifyPostingHeader>
 			<ModifyProfileHeader></ModifyProfileHeader>

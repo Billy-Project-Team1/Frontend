@@ -11,7 +11,7 @@ import {
 } from '../../redux/modules/reservationSlice';
 import { useNavigate } from 'react-router-dom';
 
-const ReservationCard = ({ billyState, setMyPageState }) => {
+const ReservationCard = ({ billyState }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const is_login = localStorage.getItem('userId');
@@ -20,7 +20,7 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
   });
 
   const billylist = useSelector((state) => state.billystate?.billyList);
-  console.log(billylist);
+  // console.log(billylist);
 
   useEffect(() => {
     dispatch(billyStateListThunk(billyState));
@@ -62,9 +62,7 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
     try {
       const response = await dispatch(reservationCancelThunk({ a, b }));
       if (response) {
-        return window.location.replace(`/mypage/${is_login}`);
-        // setMyPageState('2'),
-        // console.log('dffdfd')
+        // return window.location.replace(`/mypage/${is_login}`);
       }
     } catch {}
   };
@@ -73,7 +71,7 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
     try {
       const response = await dispatch(deliveryDoneThunk(e));
       if (response) {
-        return window.location.replace(`/mypage/${is_login}`);
+        // return window.location.replace(`/mypage/${is_login}`);
       }
     } catch {}
   };
@@ -147,7 +145,8 @@ const ReservationCard = ({ billyState, setMyPageState }) => {
                   <button
                     className="reservationcard_btn"
                     onClick={() =>
-                      cancelHandler(item.reservationId, cancelMessage)
+                      // cancelHandler(item.reservationId, cancelMessage)
+                      navigate('/cancelPage',{title:item.title},{img:item.postImgUrl},{price:item.price},{deposit:item.deposit})
                     }
                   >
                     예약 취소

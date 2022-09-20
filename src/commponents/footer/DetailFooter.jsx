@@ -30,7 +30,7 @@ const DetailFooter = ({
     dispatch(dibsPost(detailPost.id));
   };
 
-  console.log(detailPost);
+  // console.log(detailPost);
 
   return (
     <div className="detail_footer">

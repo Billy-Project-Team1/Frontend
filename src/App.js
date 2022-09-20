@@ -19,6 +19,7 @@ import ReviewPosting from './pages/reviewPosting/ReviewPosting';
 import { onMessageListener } from './firebaseInit';
 import Notifications from './commponents/notifications/Notifications';
 import ReactNotificationComponent from './commponents/notifications/ReactNotification';
+import CancelPage from './commponents/reservations/CancelPage';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -37,7 +38,6 @@ function App() {
     })
     .catch((err) => console.log('failed: ', err));
 
-  return (
     <div>
       {show ? (
         <ReactNotificationComponent
@@ -65,6 +65,7 @@ function App() {
         {/* <Route path="/chat/:roomId" element={<Chat />} /> */}
         <Route path="/chat/room/:postId/:roomId" element={<Chat />} />
         <Route path="/reviewPosting" element={<ReviewPosting />} />
+        <Route path="/cancelPage" element={<CancelPage />} />
       </Routes>
     </div>
   );

@@ -3,7 +3,7 @@ import './Headers.scss';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 
-const AddPostingHeader = ({ onPostingHandler }) => {
+const AddPostingHeader = ({ pageName, onClickSave, type }) => {
 	const navigate = useNavigate();
 
 	return (
@@ -16,9 +16,9 @@ const AddPostingHeader = ({ onPostingHandler }) => {
 						size="24px"
 						onClick={() => navigate(-1)}
 					/>
-					<div className="header_title">글 쓰기</div>
-					<div className="header_done" onClick={onPostingHandler}>
-						완료
+					<div className="header_title">{pageName}</div>
+					<div className="header_done" onClick={onClickSave}>
+						{type}
 					</div>
 				</div>
 				<div className="header_line"></div>

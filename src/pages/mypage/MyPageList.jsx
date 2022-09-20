@@ -25,8 +25,8 @@ const Mypage = () => {
 
   const myDipList = useSelector((state) => state.member.myDibsList);
   const myUploadList = useSelector((state) => state.member.myUploadList);
-
-  console.log(myDipList);
+  // console.log(myDipList);
+  
   return (
     <div>
       <MyProfileMiddle

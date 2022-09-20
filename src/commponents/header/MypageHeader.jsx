@@ -3,7 +3,7 @@ import './Headers.scss';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 
-const AddPostingHeader = ({ move }) => {
+const AddPostingHeader = ({ pageName }) => {
 	const navigate = useNavigate();
 
 	return (
@@ -16,7 +16,7 @@ const AddPostingHeader = ({ move }) => {
 						size="24px"
 						onClick={() => navigate(-1)}
 					/>
-					<div className="mypage_header_title">마이 페이지</div>
+					<div className="mypage_header_title">{pageName}</div>
 					<div className="mypage_header_done">&nbsp;</div>
 				</div>
 				<div className="header_line"></div>
