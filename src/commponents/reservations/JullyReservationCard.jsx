@@ -79,7 +79,7 @@ const JullyReservationCard = ({ jullyState, setMyPageState }) => {
     <div className="reservationcard_first_container">
       {jullylist?.map((item, index) => {
         return (
-          <div className="reservationcard_container">
+          <div className="reservationcard_container" key={index}>
             <div className="reservationcard_small_container">
               <div className="reservationcard_title_wrap">
                 <div className="reservationcard_title">{item.title}</div>

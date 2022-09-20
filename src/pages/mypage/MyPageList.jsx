@@ -136,14 +136,14 @@ const Mypage = () => {
 
       {myPageState === '1' ? (
         <div className="mypage_list_margin">
-          {myDipList.map((post) => {
-            return <DibsCard post={post} />;
+          {myDipList.map((post,index) => {
+            return <DibsCard post={post} key={index} />;
           })}{' '}
         </div>
       ) : myPageState === '4' ? (
         <div className="mypage_list_margin">
-          {myUploadList.map((post) => {
-            return <UploadCard post={post} />;
+          {myUploadList.map((post,index) => {
+            return <UploadCard post={post} key={index} />;
           })}
         </div>
       ) : (
