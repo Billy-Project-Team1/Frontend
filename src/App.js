@@ -16,6 +16,7 @@ import Search from './pages/search/Search';
 import ChattingRoom from './pages/chatting/ChattingRoom';
 import Chat from './pages/chatting/Chat';
 import ReviewPosting from './pages/reviewPosting/ReviewPosting';
+import CancelPage from './commponents/reservations/CancelPage';
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
       {/* <Route path="/chat/:roomId" element={<Chat />} /> */}
       <Route path="/chat/room/:postId/:roomId" element={<Chat />} />
       <Route path="/reviewPosting" element={<ReviewPosting />} />
+      <Route path="/cancelPage" element={<CancelPage />} />
+
     </Routes>
   );
 }

@@ -30,7 +30,7 @@ const JullyReservationCard = ({ jullyState, setMyPageState }) => {
     dispatch(jullyStateListThunk(jullyState));
   }, []);
   const jullylist = useSelector((state) => state.billystate.jullyList);
-  console.log(jullylist);
+  // console.log(jullylist);
 
   useEffect(() => {}, [JSON.stringify(jullylist)]);
 

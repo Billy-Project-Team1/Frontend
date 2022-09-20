@@ -1,0 +1,51 @@
+.yourPageList_wrap {
+  padding: 0 1rem;
+  margin-top: 24px;
+}
+.yourPageList_container {
+  border-bottom: 1px solid rgba($color: #a8a8a8, $alpha: 0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 20px;  
+}
+.yourPageList_icon_box {
+  border: none;
+  width: 169px;
+  height: 44px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 35px;
+  padding-top: 10px;
+  background-color: #f7f7f7;
+  border-radius: 7px;
+}
+.yourPageList_icon_check {
+  width: 21px;
+  height: 24px;
+  color: #004eea;
+}
+.yourPageList_text_check {
+  font-family: 'Noto Sans';
+  font-weight: 400;
+  font-size: 0.875rem;
+  padding-bottom: 13px;
+  color: #004eea;
+  margin-left: 10px;
+}
+.yourPageList_icon {
+  width: 22px;
+  height: 22px;
+  color: #cccccc;
+}
+.yourPageList_text {
+  font-family: 'Noto Sans';
+  font-weight: 400;
+  font-size: 0.875rem;
+  padding-bottom: 13px;
+  color: #cccccc;
+  margin-left: 10px;
+}
+.yourPageList_margin{
+    margin-bottom: 84px;
+}

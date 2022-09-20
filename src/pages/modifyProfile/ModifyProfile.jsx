@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import ModifyProfileHeader from '../../commponents/header/ModifyProfileHeader';
 import profileimg from '../../static/image/profileimg.png';
 import DeleteIdModal from './DeleteIdModal';
 import LogoutModal from './LogoutModal';
 import './ModifyProfile.scss';
 import { FaCamera } from 'react-icons/fa';
 import { editProfileThunk } from '../../redux/modules/profileSlice';
+import AddPostingHeader from '../../commponents/header/AddPostingHeader';
 
 const ModifyProfile = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const ModifyProfile = () => {
   const is_login = localStorage.getItem('userId');
 
   const member = useSelector((state) => state.myprofile.myProfile);
-  console.log(member);
+  // console.log(member);
   const initialState = {
     nickname: `${member.nickname}`,
     profileUrl: member.profileUrl,
@@ -81,6 +81,7 @@ const ModifyProfile = () => {
   const sumbitHandler = async (event) => {
     if (nickCheck == false) {
       event.preventDefault();
+      alert('잘못된 형식입니다')
     } else {
       event.preventDefault();
       let formData = new FormData();
@@ -110,10 +111,12 @@ const ModifyProfile = () => {
 
   return (
     <>
-      <ModifyProfileHeader
-        sumbitHandler={sumbitHandler}
-        // disabled={btnState ? false : true}
+      <AddPostingHeader
+        pageName="프로필 편집"
+        onClickSave={sumbitHandler}
+        type="완료"
       />
+
       <div className="modifiyProfile_wrap">
         <div className="modifyProfile_container">
           <div className="modifyProfile_img_box">

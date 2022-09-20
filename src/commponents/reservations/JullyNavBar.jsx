@@ -13,7 +13,7 @@ const JullyNavBar = ({ reservationsState, setReservationsState,setMyPageState })
   }, []);
 
   const JullyBoookingState = useSelector((state) => state.billystate.jullyState);
-  console.log(JullyBoookingState)
+  // console.log(JullyBoookingState)
 
   return (
     <div className="myProfileNavBar_wrap">

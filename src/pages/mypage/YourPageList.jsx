@@ -1,30 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import MyProfileMiddle from '../../commponents/myProfile/MyProfileMiddle';
+import YourPageMiddle from '../../commponents/myProfile/YourPageMiddle';
 import UploadCard from '../../commponents/profileCard/UploadCard';
 import { getmyUpLoadData } from '../../redux/modules/memberSlice';
 
 const YourPageList = () => {
-    const dispatch = useDispatch();
-    const [myPageState, setMyPageState] = useState('1');
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getmyUpLoadData());
-        
-      }, []);
-    
+  const [yourPageState, setYourPageState] = useState('1');
+  useEffect(() => {
+    dispatch(getmyUpLoadData());
+  }, []);
+
   const myUploadList = useSelector((state) => state.member.myUploadList);
+  // console.log(myUploadList)
 
-  return <div>
-    <MyProfileMiddle myPageState={myPageState} setMyPageState={setMyPageState}/>
-    {myPageState === '4'? (
-        <div className='mypage_list_margin'>{myUploadList.map((post) => {
+  return (
+    <div>
+      <YourPageMiddle
+        yourPageState={yourPageState}
+        setYourPageState={setYourPageState}
+      />
+      {yourPageState === '1' ? (
+        <div className="mypage_list_margin">
+          {myUploadList.map((post) => {
             return <UploadCard post={post} />;
-          })}</div>
-    ): myPageState === '5'?(
-        <div>리뷰</div>
-    ):('')}
-  </div>;
+          })}
+        </div>
+      ) : yourPageState ==='2'?('댓글'):('')}
+    </div>
+  );
 };
 
 export default YourPageList;

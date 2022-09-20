@@ -163,6 +163,10 @@ export const reservationSlice = createSlice({
     },
     [reservationCancelThunk.fulfilled]: (state, action) => {
       state.billyList = action.payload;
+      // state.billyList = state.billyList.filter(
+      //   (item) => item.reservationId !== action.payload
+      // );
+ 
     },
     [reservationCancelThunk.rejected]: (state, action) => {
       console.log(action.payload);
