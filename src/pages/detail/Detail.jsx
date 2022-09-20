@@ -117,9 +117,9 @@ const Detail = () => {
       </div>
       <div className="detail_image_box">
         <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-          {detailPost.postImgUrl?.postImgUrlList.map((item) => {
+          {detailPost.postImgUrl?.postImgUrlList.map((item,index) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={index}>
                 <img src={item} />
               </SwiperSlide>
             );
@@ -149,9 +149,9 @@ const Detail = () => {
             <span className="detail_deposit">보증금 {detailDeposit}원</span>
           </div>
           <div className="detail_content">
-            {detailPost.content?.split('\n').map((line) => {
+            {detailPost.content?.split('\n').map((line,index) => {
               return (
-                <span>
+                <span key={index}>
                   {line}
                   <br />
                 </span>

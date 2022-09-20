@@ -23,8 +23,8 @@ const YourPageList = () => {
       />
       {yourPageState === '1' ? (
         <div className="mypage_list_margin">
-          {myUploadList.map((post) => {
-            return <UploadCard post={post} />;
+          {myUploadList.map((post,index) => {
+            return <UploadCard post={post} key={index}/>;
           })}
         </div>
       ) : yourPageState ==='2'?('댓글'):('')}
