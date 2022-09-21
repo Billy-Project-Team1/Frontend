@@ -1,3 +1,5 @@
+@import '../../common/color.scss';
+
 .detail_container {
 	padding-bottom: 7rem;
 }
@@ -22,7 +24,7 @@
 	height: 390px;
 	top: 0px;
 	display: flex;
-	background: #cccccc;
+	background: $color-placeholder;
 
 	img {
 		width: 100%;
@@ -33,7 +35,7 @@
 
 .detail_user_profile {
 	padding: 1rem 0;
-	border-bottom: 1px solid rgba(238, 238, 238, 1);
+	border-bottom: 1px solid $color-border;
 	display: flex;
 	font-size: 0;
 
@@ -64,35 +66,35 @@
 	}
 
 	.detail_location {
-		color: #757575;
+		color: $color-medium;
 		font-size: 12px;
 	}
 
 	.detail_location_line {
 		font-size: 8px;
-		color: #757575;
+		color: $color-medium;
 		line-height: 10%;
 	}
 	
 	.detail_time {
-		color: #757575;
+		color: $color-medium;
 		font-size: 12px;
 	}
 }
 
 .detail_content_part {
 	padding: 25px 0;
-	border-bottom: 1px solid rgba(238, 238, 238, 1);
+	border-bottom: 1px solid $color-border;
 }
 
 .detail_title {
-	color: #212121;
+	color: $color-primary;
 	font-weight: 500;
 	font-size: 18px;
 }
 
 .detail_rental {
-	color: #212121;
+	color: $color-primary;
 	font-weight: 700;
 	font-size: 18px;
 	.detail_price {
@@ -105,14 +107,14 @@
 }
 
 .detail_content {
-	color: #212121;
+	color: $color-primary;
 	font-weight: 400;
 	font-size: 16px;
 	padding-top: 1rem;
 }
 
 .detail_bottom_contents {
-	color: #757575;
+	color: $color-medium;
 	font-size: 12px;
 	padding-top: 2rem;
 }
@@ -123,12 +125,12 @@
 
 .detail_map {
 	padding: 1rem 0 1.4rem 0;
-	border-bottom: 1px solid rgba(238, 238, 238, 1);
+	border-bottom: 1px solid $color-border;
 }
 
 .detail_calendar {
 	padding: 1rem 1rem 1.4rem 1rem;
-	border-bottom: 1px solid rgba(238, 238, 238, 1);
+	border-bottom: 1px solid $color-border;
 }
 
 //swiper
@@ -140,7 +142,7 @@
 .swiper-slide {
 	text-align: center;
 	font-size: 18px;
-	background: #fff;
+	background: $color-light;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: -webkit-flex;
