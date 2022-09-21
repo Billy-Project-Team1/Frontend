@@ -1,12 +1,11 @@
 import React from 'react';
+import { useState } from 'react';
+import './ReviewPosting.scss';
 import ReviewHeader from '../../commponents/header/ReviewHeader';
 import StarRating from '../../commponents/starRating/StarRating';
 import ImageUploader from '../../commponents/imageUploader/ImageUploader';
-import './ReviewPosting.scss';
-import { useState } from 'react';
 
 const ReviewPosting = () => {
-	//API 참고해서 적기
 	const initialState = {
 		reservationId: '',
 		stars: '',
@@ -15,10 +14,8 @@ const ReviewPosting = () => {
 	const [data, setData] = useState(initialState);
 	const [img, setImg] = useState([]);
 
-	//이거 그냥 복붙! onChangeHandler & setData만 바꿔주기
 	const onChangeHandler = (e) => {
 		const { name, value } = e.target;
-		//...data 기존 데이터 두고 추가시키는 느낌
 		setData({ ...data, [name]: value });
 	};
 	console.log(data);
@@ -38,7 +35,7 @@ const ReviewPosting = () => {
 						<div className="reviewPost_star">
 							<StarRating
 								name="star"
-								value={data.content}
+								value={data.stars}
 								onChange={onChangeHandler}
 							/>
 						</div>
@@ -52,12 +49,13 @@ const ReviewPosting = () => {
 						<textarea
 							type="text"
 							placeholder="후기를 남겨주시면 다른 대여자들에게 도움이 됩니다!"
-							name="content"
-							value={data.content}
+							name="comment"
+							value={data.comment}
 							onChange={onChangeHandler}
 						/>
 					</div>
 				</div>
+
 				<div className="reviewPost_upload_img">
 					<span className="reviewPost_title">제품 사진을 올려주세요.</span>
 					<span className="reviewPost_option"> (선택)</span>

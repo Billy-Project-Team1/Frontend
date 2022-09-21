@@ -1,7 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
+// React import
+import React, { useState } from 'react';
 
-// import { imgActions } from '../../redux/modules/image';
+// Package import
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadToDB } from '../../redux/modules/image';
 import upload_image from '../../static/image/upload_image.svg';
@@ -9,11 +9,10 @@ import { FaMinusCircle } from 'react-icons/fa';
 
 import './ImageUploader.scss';
 
-const ImageUploader = ({img, setImg}) => {
+const ImageUploader = ({ img, setImg }) => {
 	const dispatch = useDispatch();
 	const inputRef = React.useRef();
 
-	
 	const [imgUrl, setImgUrl] = useState([]); // url
 
 	const change = (event) => {
@@ -32,6 +31,10 @@ const ImageUploader = ({img, setImg}) => {
 		// 이미지 미리보기로 보여줄려면 url이 필요함
 		for (let i = 0; i < imagesMax10.length; i++) {
 			imgUrl.push(URL.createObjectURL(imagesMax10[i]));
+		}
+		if (imagesMax10 > 10) {
+			alert('10장 초과 노노');
+			return;
 		}
 	};
 
@@ -56,8 +59,6 @@ const ImageUploader = ({img, setImg}) => {
 
 		const date = ['2022-09-22', '2022-10-22'];
 
-	
-
 		dispatch(uploadToDB(formData));
 	};
 
@@ -68,8 +69,15 @@ const ImageUploader = ({img, setImg}) => {
 		};
 	}, [imgUrl]);
 
+	//img 삭제
+	const removeImage = (id) => {
+		let newList = setImg.filter((image) => image.id !== id);
+		setImg(newList);
+		return;
+	};
+
 	return (
-		<div className='imgUploader_container'>
+		<div className="imgUploader_container">
 			<img
 				src={upload_image}
 				style={{ width: '85px' }}
@@ -90,7 +98,10 @@ const ImageUploader = ({img, setImg}) => {
 				{imgUrl.map((item) => (
 					<div className="preview_container">
 						<img className="preview_img" src={item} alt="" />
-						<FaMinusCircle className="preview_del" />
+						<FaMinusCircle
+							className="preview_del"
+							onClick={() => removeImage(upload_image.id)}
+						/>
 					</div>
 				))}
 				<div></div>
