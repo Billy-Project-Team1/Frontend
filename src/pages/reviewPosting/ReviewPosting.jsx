@@ -4,6 +4,8 @@ import './ReviewPosting.scss';
 import ReviewHeader from '../../commponents/header/ReviewHeader';
 import StarRating from '../../commponents/starRating/StarRating';
 import ImageUploader from '../../commponents/imageUploader/ImageUploader';
+import { addReview } from '../../redux/modules/reviewSlice';
+
 
 const ReviewPosting = () => {
 	const initialState = {
@@ -13,6 +15,10 @@ const ReviewPosting = () => {
 	};
 	const [data, setData] = useState(initialState);
 	const [img, setImg] = useState([]);
+
+	// useEffect(() => {
+	// 	dispatch(addReview(id));
+	// }, [dispatch]);
 
 	const onChangeHandler = (e) => {
 		const { name, value } = e.target;
@@ -33,9 +39,7 @@ const ReviewPosting = () => {
 							거래에 대한 평가를 남겨주세요.
 						</div>
 						<div className="reviewPost_star">
-							<StarRating
-								onChangeHandler={onChangeHandler}
-							/>
+							<StarRating onChangeHandler={onChangeHandler} />
 						</div>
 					</div>
 				</div>
