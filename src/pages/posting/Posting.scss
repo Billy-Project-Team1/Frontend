@@ -1,15 +1,16 @@
+@import '../../common/color.scss';
+
 .posting_container {
 	padding: 0 1rem;
 }
 
 .posting_image {
-
 }
 
 .posting_title {
 	border: none;
-	border-top: 1px solid rgba(238, 238, 238, 1);
-	border-bottom: 1px solid rgba(238, 238, 238, 1);
+	border-top: 1px solid $color-border;
+	border-bottom: 1px solid $color-border;
 	margin-top: 1rem;
 
 	:focus {
@@ -17,7 +18,7 @@
 	}
 
 	input {
-		color: #212121;
+		color: $color-primary;
 		border: none;
 		font-size: 1rem;
 		padding: 1rem 0;
@@ -42,7 +43,7 @@
 		display: inline-block;
 	}
 	input {
-		color: #212121;
+		color: $color-primary;
 		border: none;
 		font-size: 1rem;
 		font-weight: 600;
@@ -51,7 +52,7 @@
 
 .posting_content {
 	border: none;
-	border-top: 1px solid rgba(238, 238, 238, 1);
+	border-top: 1px solid $color-border;
 
 	:focus {
 		outline: none;
@@ -60,16 +61,17 @@
 	textarea {
 		width: 100%;
 		height: 175px;
-		color: #212121;
+		color: $color-primary;
 		border: none;
 		font-size: 1rem;
 		padding-top: 1rem;
+		resize: none;
 	}
 }
 
 .posting_calendar_wrap {
-	border-top: 1px solid rgba(238, 238, 238, 1);
-	border-bottom: 1px solid rgba(238, 238, 238, 1);
+	border-top: 1px solid $color-border;
+	border-bottom: 1px solid $color-border;
 	margin-top: 1rem;
 }
 
@@ -79,18 +81,12 @@
 	padding-top: 1rem;
 }
 .posting_calendar_icon {
-	padding: 1.2rem 0 1.4rem ;
+	padding: 1.2rem 0 1.4rem;
 	flex-direction: row;
-	
 }
 
 .posting_map_wrap {
 	margin-bottom: 130px;
-}
-
-::placeholder {
-	// color: #757575;
-  color: #c7c7c7;
 }
 
 .name {

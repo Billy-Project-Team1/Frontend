@@ -1,3 +1,5 @@
+@import '../../common/color.scss';
+
 .detail_modal_background {
 	position: fixed;
 	top: 0;
@@ -27,25 +29,25 @@
 
 .detail_edit_btn {
 	height: 57px;
-	background: #f7f7f7;
+	background: $color-light;
 	border-radius: 12px 12px 0px 0px;
 	padding: 16px;
 }
 
 .detail_del_btn {
 	height: 57px;
-	background: #f7f7f7;
+	background: $color-light;
 	border-radius: 0px 0px 12px 12px;
 	border-top: 0.5px solid #999999;
 	margin-bottom: 12px;
-	color: #eb0000;
+	color: $font-red;
 	padding: 16px;
 }
 
 .detail_cancel_btn {
 	top: 69.52%;
 	bottom: 0%;
-	background: #f7f7f7;
+	background: $color-light;
 	border-radius: 12px;
 	height: 57px;
 	left: calc(50% - 374px / 2 - 0.42px);

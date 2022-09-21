@@ -1,8 +1,11 @@
+@import '../../common/color.scss';
+
 .reviewPost_container {
 	padding: 0 1rem;
 }
 
 .reviewPost_rating_container {
+	margin-top: 20px;
 	display: flex;
 	flex-direction: row;
 }
@@ -10,17 +13,17 @@
 .reviewPost_img {
 	width: 60px;
 	height: 60px;
-	background: #cccccc;
+	background: $color-placeholder;
 	border-radius: 7px;
 }
 
 .reviewPost_right_box {
-	margin-left: 10px;
+	margin: 2px 0 0 10px;
 }
 
 .reviewPost_title {
 	font-size: 1rem;
-	color: #212121;
+	color: $color-primary;
 }
 
 .reviewPost_star {
@@ -28,17 +31,17 @@
 	flex-direction: row;
 }
 
+.reviewPost_write {
+	margin-top: 30px;
+}
+
 .reviewPost_option {
 	font-size: 0.875rem;
 	color: #757575;
 }
 
-.reviewPost_write {
-	margin-top: 30px;
-}
-
 .reviewPost_write_content {
-	border: 1px solid #ededed;
+	border: 1px solid $color-sub;
 	border-radius: 12px;
 	margin-top: 1rem;
 
@@ -49,28 +52,32 @@
 	textarea {
 		width: 100%;
 		height: 120px;
-		color: #212121;
+		color: $color-primary;
 		border: none;
 		font-size: 0.875rem;
 		padding: 1rem;
-    resize: none;
+		resize: none;
 	}
 }
+
 .reviewPost_upload_img {
 	margin-top: 30px;
 }
 
 .reviewPost_submit_btn {
-width: 358px;
-height: 52px;
+	width: 358px;
+	height: 52px;
 	font-size: 1rem;
 	font-weight: 600;
-	color: #f7f7f7;
-	background-color: #004EEA;
-  border-radius: 12px;
-  text-align: center;
-  padding-top: 14px;
+	color: $color-light;
+	background-color: $color-main;
+	border-radius: 12px;
+	text-align: center;
+	padding-top: 14px;
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 50px;
 }
 ::placeholder {
-	color: #cccccc;
+	color: $color-placeholder;
 }

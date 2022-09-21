@@ -1,3 +1,5 @@
+@import '../../common/color.scss';
+
 .billy_logo {
 	background-image: url('../../static/image/Billy_Logo.png');
 	background-size: contain;
@@ -13,7 +15,7 @@
 	position: sticky;
 	top: 0;
 	z-index: 2;
-	background-color: #ffffff;
+	background-color: $color-white;
 }
 
 .header_container {
@@ -21,7 +23,7 @@
 	position: sticky;
 	top: 0;
 	z-index: 2;
-	background-color: #ffffff;
+	background-color: $color-white;
 }
 
 .header_top {
@@ -39,7 +41,7 @@
 	z-index: 2;
 	justify-content: flex-end;
 	align-items: center;
-	background-color: #ffffff;
+	background-color: $color-white;
 }
 
 .header_content {
@@ -57,7 +59,7 @@
 }
 
 .header_done {
-	color: rgba(0, 78, 234, 1);
+	color: $color-main;
 	font-size: 1rem;
 	font-weight: 500;
 	margin-left: 11px;
@@ -94,7 +96,6 @@
 //detail header
 .detail_header_container {
 	padding: 0 1rem;
-	// border-bottom: 2px solid rgba(238, 238, 238, 1);
 	position: fixed;
 	top: 0;
 	left: 0;
