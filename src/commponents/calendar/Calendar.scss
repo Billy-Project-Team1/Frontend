@@ -161,6 +161,12 @@
   background-color: #004eea;
   color: #fff;
 }
+.rmdp-day.rmdp-selected span:not(.highlight),
+.rmdp-day.rmdp-selected span:not(.highlight):hover {
+  box-shadow: none;
+  background-color: #004eea;
+  color: #fff;
+}
 .rmdp-disabled {
   pointer-events: none;
 }

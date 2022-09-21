@@ -1,8 +1,8 @@
 // Scripts for firebase and firebase messaging
 // eslint-disable-next-line no-undef
-importScripts('https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js');
 // eslint-disable-next-line no-undef
-importScripts('https://www.gstatic.com/firebasejs/8.8.0/firebase-messaging.js');
+importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js');
 
 // Initialize the Firebase app in the service worker by passing the generated config
 const firebaseConfig = {
@@ -13,6 +13,7 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_SENDERID,
   appId: process.env.REACT_APP_FIREBASE_APPID,
 };
+console.log(firebaseConfig)
 
 // eslint-disable-next-line no-undef
 firebase.initializeApp(firebaseConfig);
