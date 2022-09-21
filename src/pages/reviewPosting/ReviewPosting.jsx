@@ -1,6 +1,6 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './ReviewPosting.scss';
+// import components
 import ReviewHeader from '../../commponents/header/ReviewHeader';
 import StarRating from '../../commponents/starRating/StarRating';
 import ImageUploader from '../../commponents/imageUploader/ImageUploader';
@@ -34,9 +34,7 @@ const ReviewPosting = () => {
 						</div>
 						<div className="reviewPost_star">
 							<StarRating
-								name="star"
-								value={data.stars}
-								onChange={onChangeHandler}
+								onChangeHandler={onChangeHandler}
 							/>
 						</div>
 					</div>

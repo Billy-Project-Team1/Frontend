@@ -9,8 +9,8 @@
 
 .posting_title {
 	border: none;
-	border-top: 1px solid $color-border;
-	border-bottom: 1px solid $color-border;
+	border-top: 1px solid $color-sub;
+	border-bottom: 1px solid $color-sub;
 	margin-top: 1rem;
 
 	:focus {
@@ -52,7 +52,7 @@
 
 .posting_content {
 	border: none;
-	border-top: 1px solid $color-border;
+	border-top: 1px solid $color-sub;
 
 	:focus {
 		outline: none;
@@ -70,8 +70,8 @@
 }
 
 .posting_calendar_wrap {
-	border-top: 1px solid $color-border;
-	border-bottom: 1px solid $color-border;
+	border-top: 1px solid $color-sub;
+	border-bottom: 1px solid $color-sub;
 	margin-top: 1rem;
 }
 

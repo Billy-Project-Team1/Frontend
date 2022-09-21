@@ -1,12 +1,11 @@
 // React import
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { addPosting } from '../../redux/modules/posting';
 
-// Style
+// Style import
 import './Posting.scss';
 
-//icons
+// iconsimport
 import { FaCamera } from 'react-icons/fa';
 
 // Component import
