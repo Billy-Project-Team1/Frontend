@@ -131,13 +131,13 @@ const Detail = () => {
           <div className="detail_profile_img">
             <img
               src={detailPost.profileUrl}
-              onClick={() => navigate(`/mypage/${detailPost.authorId}`)}
+              onClick={() => navigate(`/mypage/${detailPost.memberUserId}`)}
             />
           </div>
           <div className="detail_profile_wrap">
             <div
               className="detail_nickname"
-              onClick={() => navigate(`/mypage/${detailPost.authorId}`)}
+              onClick={() => navigate(`/mypage/${detailPost.memberUserId}`)}
             >
               {detailPost.nickname}
             </div>
