@@ -188,7 +188,7 @@ const Detail = () => {
         <DetailMap data={detailPost} />
       </div>
       <DetailFooter
-        authorId={detailPost.authorId}
+        authorId={detailPost.memberUserId}
         onReservationHandler={onReservationHandler}
         detailPost={detailPost}
       />

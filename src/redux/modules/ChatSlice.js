@@ -12,8 +12,11 @@ export const getMyChatRoom = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.get('/chat/rooms');
-      return console.log(response)
-      // return thunkAPI.fulfillWithValue(response.data.messageDto);
+      if (response.status === 200) {
+        return thunkAPI.fulfillWithValue(response.data.chatRoomResponseDtoList);
+      } else {
+        return;
+      }
     } catch (err) {
       console.log(err);
     }
@@ -25,7 +28,7 @@ export const createChatRoom = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.post(`/create/chat/${payload}`);
-    //  return console.log(response)
+      //  return console.log(response)
       return thunkAPI.fulfillWithValue(response.data.result);
     } catch (err) {
       console.log(err);
@@ -54,6 +57,7 @@ const chatListSlice = createSlice({
     [getMyChatRoom.fulfilled]: (state, action) => {
       state.chatRoomList = action.payload;
     },
+    [getMyChatRoom.rejected]: (state, action) => {},
     [getChatDetailPost.fulfilled]: (state, action) => {
       state.chatRoomDetail = action.payload;
     },
