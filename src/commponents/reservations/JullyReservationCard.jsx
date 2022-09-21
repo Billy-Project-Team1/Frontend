@@ -5,6 +5,7 @@ import deposit from '../../static/image/deposit.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import {
+  jullyReservationCntThunk,
   jullyStateChangeThunk,
   jullyStateListThunk,
 } from '../../redux/modules/reservationSlice';
@@ -77,6 +78,7 @@ const JullyReservationCard = ({ jullyState }) => {
   };
   useEffect(() => {
     dispatch(jullyStateListThunk(jullyState));
+    dispatch(jullyReservationCntThunk())
   }, [test]);
 
   return (

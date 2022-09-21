@@ -130,7 +130,7 @@ export const jullyStateChangeThunk = createAsyncThunk(
         payload.b
       );
       // return console.log(response);
-      return thunkAPI.fulfillWithValue(response.data.result);
+      return thunkAPI.fulfillWithValue(response.data.success);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
@@ -163,28 +163,11 @@ export const reservationSlice = createSlice({
     },
     [reservationCancelThunk.fulfilled]: (state, action) => {
       state.billyList = action.payload;
-      // state.billyList = state.billyList.filter(
-      //   (item) => item.reservationId !== action.payload
-      // );
- 
     },
     [reservationCancelThunk.rejected]: (state, action) => {
       console.log(action.payload);
     },
-    // [deliveryDoneThunk.fulfilled]: (state, action) => {
-    //   console.log(state.billyList);
-
-    //   state.billyList = state.billyList.map((item) => {
-    //     if (item.reservationId === action.payload) {
-    //       return { ...item, state: 4 };
-    //     } else {
-    //       return { ...item };
-    //     }
-    //   });
-    //   console.log(state.billyList);
-    // },
-    [deliveryDoneThunk.fulfilled]: (state, action) => {
-    },
+    [deliveryDoneThunk.fulfilled]: (state, action) => {},
 
     [deliveryDoneThunk.rejected]: (state, action) => {
       console.log(action.payload);
@@ -208,7 +191,7 @@ export const reservationSlice = createSlice({
       console.log(action.payload);
     },
     [jullyStateChangeThunk.fulfilled]: (state, action) => {
-      state.jullyList = action.payload;
+      // state.jullyList = action.payload;
     },
     [jullyStateChangeThunk.rejected]: (state, action) => {
       console.log(action.payload);

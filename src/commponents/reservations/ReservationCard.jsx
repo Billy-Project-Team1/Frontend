@@ -12,6 +12,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import ApprovalModal from './ApprovalModal';
 import CancelPage from './CancelPage';
+import CancelButton from './CancelButton';
 
 const ReservationCard = ({ billyState }) => {
   const dispatch = useDispatch();
@@ -149,20 +150,7 @@ const ReservationCard = ({ billyState }) => {
               </div>
               <div className="reservationcard_btn_wrap">
                 {billyState === '1' ? (
-                  <button
-                    className="reservationcard_btn"
-                    onClick={() => showModal()}
-                  >
-                    예약 취소
-                    {modalOpen && (
-                      <CancelPage
-                        setModalOpen={setModalOpen}
-                        title={item.title}
-                        dailyPrice={dailyPrice(item.price)}
-                        img={item.postImgUrl}
-                      />
-                    )}
-                  </button>
+                  <CancelButton item={item} />
                 ) : billyState === '2' ? (
                   item.delivery === true ? (
                     <button className="reservationcard_wait_btn">
