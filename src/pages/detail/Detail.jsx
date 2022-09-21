@@ -113,7 +113,7 @@ const Detail = () => {
     <div className="detail_container">
       {/* 2. props 내려줌 그럼 받는측은 ㅇㄷ? header 가보기~*/}
       <div className="detail_header">
-        <DetailHeader authorId={detailPost.authorId} />
+        <DetailHeader authorId={detailPost.memberUserId} />
       </div>
       <div className="detail_image_box">
         <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
