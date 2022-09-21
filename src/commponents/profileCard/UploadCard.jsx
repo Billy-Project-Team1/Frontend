@@ -13,13 +13,15 @@ const UploadCard = ({ post }) => {
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-    if(post.length === 0){
-        return;
-    }
-
+  if (post.length === 0) {
+    return;
+  }
 
   return (
-    <div className="MainListWrap" onClick={()=>navigate(`/detail/${post.id}`)}>
+    <div
+      className="MainListWrap"
+      onClick={() => navigate(`/detail/${post.id}`)}
+    >
       <div className="MainListCardContainer">
         <div className="MainListCardBox">
           <img className="MainListCardImg" src={post.imgUrl} />

@@ -23,7 +23,6 @@ const Detail = () => {
   const navigate = useNavigate();
   const [blockDate, setBlockDate] = useState([]);
 
-
   //3. 주소창에 있는 id num을 불러오기 위함. app.js에서 확인
   const { postid } = useParams();
   const myUserId = localStorage.getItem('userId');
@@ -43,16 +42,17 @@ const Detail = () => {
   // state.post 는 configstore에 지정해둔 post 값임 slice를 뜻함
   // state.post.post는 slice안에 있는 Initialstate값을 가져옴
   const detailPost = useSelector((state) => state.post.post);
+  // console.log(detailPost)
 
   const blockDateList = detailPost.blockDate?.blockDateList;
-  const reservationDateList = detailPost.blockDate?.reservationDateList
+  const reservationDateList = detailPost.blockDate?.reservationDateList;
 
-  useEffect(()=>{
-    if(blockDateList&&reservationDateList){
-      setBlockDate([...blockDate,...reservationDateList,...blockDateList])
-  }
-  },[blockDateList])
-  
+  useEffect(() => {
+    if (blockDateList && reservationDateList) {
+      setBlockDate([...blockDate, ...reservationDateList, ...blockDateList]);
+    }
+  }, [blockDateList]);
+
   //1. props 내려주는거임
   //로그인 정보를 가져옴. 게시글 삭제 버튼을 위함 ㅋㅋ~
 
@@ -117,7 +117,7 @@ const Detail = () => {
       </div>
       <div className="detail_image_box">
         <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-          {detailPost.postImgUrl?.postImgUrlList.map((item,index) => {
+          {detailPost.postImgUrl?.postImgUrlList.map((item, index) => {
             return (
               <SwiperSlide key={index}>
                 <img src={item} />
@@ -129,11 +129,18 @@ const Detail = () => {
       <div className="detail_contents_wrap">
         <div className="detail_user_profile">
           <div className="detail_profile_img">
-            <img src={detailPost.profileUrl} />
+            <img
+              src={detailPost.profileUrl}
+              onClick={() => navigate(`/mypage/${detailPost.authorId}`)}
+            />
           </div>
           <div className="detail_profile_wrap">
-            <div className="detail_nickname" onClick={()=>navigate(`/mypage/${detailPost.authorId
-}`)}>{detailPost.nickname}</div>
+            <div
+              className="detail_nickname"
+              onClick={() => navigate(`/mypage/${detailPost.authorId}`)}
+            >
+              {detailPost.nickname}
+            </div>
             <div className="detail_profile_second">
               <span className="detail_location">{detailPost.location} </span>
               <span className="detail_location_line">&nbsp;|&nbsp;</span>
@@ -149,7 +156,7 @@ const Detail = () => {
             <span className="detail_deposit">보증금 {detailDeposit}원</span>
           </div>
           <div className="detail_content">
-            {detailPost.content?.split('\n').map((line,index) => {
+            {detailPost.content?.split('\n').map((line, index) => {
               return (
                 <span key={index}>
                   {line}

@@ -1,15 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getmyUpLoadData } from '../../redux/modules/memberSlice';
+import React from 'react';
 import { Icon } from '@iconify/react';
 import './YourPageMiddle.scss';
 
 const YourPageList = ({yourPageState, setYourPageState}) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getmyUpLoadData());
-  }, []);
 
   return (
     <div className="yourPageList_wrap">

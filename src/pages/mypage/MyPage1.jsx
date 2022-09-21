@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../../commponents/footer/Footer';
 import MyProfileHeader from '../../commponents/myProfile/MyProfileHeader';
-import MypageHeader from '../../commponents/header/MypageHeader';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import MyPageList from './MyPageList';
 import YourPageList from './YourPageList';
 import AddPostingHeader from '../../commponents/header/MypageHeader';
+import { useParams } from 'react-router-dom';
+import { getProfileThunk } from '../../redux/modules/profileSlice';
+import { getmyDibsData, getmyUpLoadData } from '../../redux/modules/memberSlice';
 
 const Mypage = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProfileThunk(id));
+    dispatch(getmyDibsData());
+    dispatch(getmyUpLoadData(id));
+  }, []);
+
   const profile = useSelector((state) => state.myprofile.myProfile);
   const myUserId = localStorage.getItem('userId');
 
@@ -19,7 +30,7 @@ const Mypage = () => {
         <AddPostingHeader pageName="프로필" />
       )}
 
-      <MyProfileHeader />
+      <MyProfileHeader profile={profile} />
       {myUserId === profile.userId ? <MyPageList /> : <YourPageList />}
 
       <Footer />

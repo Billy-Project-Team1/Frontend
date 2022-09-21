@@ -32,7 +32,8 @@ export const getmyUpLoadData = createAsyncThunk(
   'getmyUpLoadData',
   async (payload, thunkAPI) => {
     try {
-      const response = await instance.get(`/auth/posts/my-page`);
+      const response = await instance.get(`/auth/posts/member-page/${payload}`);
+      // console.log(response)
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       } else {
@@ -90,6 +91,9 @@ export const memberSlice = createSlice({
   extraReducers: {
     [getmyUpLoadData.fulfilled]: (state, action) => {
       state.myUploadList = action.payload;
+    },
+    [getmyUpLoadData.rejected]: (state, action) => {
+      console.log(action.payload);
     },
     [getmyDibsData.fulfilled]: (state, action) => {
       state.myDibsList = action.payload;

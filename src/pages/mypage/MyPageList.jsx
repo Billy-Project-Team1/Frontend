@@ -4,29 +4,18 @@ import BillyNavBar from '../../commponents/reservations/BillyNavBar';
 import BillyReservation from '../../commponents/reservations/BillyReservation';
 import DibsCard from '../../commponents/profileCard/DibsCard';
 import UploadCard from '../../commponents/profileCard/UploadCard';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getmyDibsData,
-  getmyUpLoadData,
-} from '../../redux/modules/memberSlice';
+import { useSelector } from 'react-redux';
 import './MyPageList.scss';
 import JullyNavBar from '../../commponents/reservations/JullyNavBar';
 import JullyReservation from '../../commponents/reservations/JullyReservation';
 
 const Mypage = () => {
-  const dispatch = useDispatch();
   const [myPageState, setMyPageState] = useState('1');
   const [reservationsState, setReservationsState] = useState('1');
-  useEffect(() => {
-    dispatch(getmyUpLoadData());
-    dispatch(getmyDibsData());
-  }, []);
-
   const myDipList = useSelector((state) => state.member.myDibsList);
   const myUploadList = useSelector((state) => state.member.myUploadList);
   // console.log(myDipList);
-  
+
   return (
     <div>
       <MyProfileMiddle
@@ -136,20 +125,19 @@ const Mypage = () => {
 
       {myPageState === '1' ? (
         <div className="mypage_list_margin">
-          {myDipList.map((post,index) => {
+          {myDipList.map((post, index) => {
             return <DibsCard post={post} key={index} />;
-          })}{' '}
+          })}
         </div>
       ) : myPageState === '4' ? (
         <div className="mypage_list_margin">
-          {myUploadList.map((post,index) => {
+          {myUploadList.map((post, index) => {
             return <UploadCard post={post} key={index} />;
           })}
         </div>
       ) : (
         ''
       )}
-
     </div>
   );
 };
