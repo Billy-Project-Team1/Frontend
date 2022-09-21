@@ -19,15 +19,11 @@ const Chat = () => {
   const { postId } = useParams();
   const { roomId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const nowDate = new Date();
 
   const myNickname = localStorage.getItem('nickname');
   const PK = localStorage.getItem('memberId');
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getChatDetailPost(postId));
-  }, []);
 
   const roomData = useSelector((state) => state.ChatSlice?.chatRoomDetail);
   const [chatList, setChatList] = useState([]);
@@ -42,13 +38,6 @@ const Chat = () => {
     memberId: '',
     quitOwner: '',
   });
-
-  const postPrice = roomData.price
-    ?.toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  const postDeposit = roomData.deposit
-    ?.toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
   //ScrollY값 가장 하단으로 이동
   const scrollToBottom = () => {
@@ -73,17 +62,20 @@ const Chat = () => {
     stompClient.connect({ PK }, onConnected, onError);
   };
 
-  const onConnected = () => {
-    stompClient.subscribe(`/sub/chat/room/${roomId}`, onMessageReceived);
-    userJoin();
-    scrollToBottom();
+  const onConnected = async () => {
+    const response = await dispatch(getChatDetailPost(postId)).unwrap();
+    if (response) {
+      stompClient.subscribe(`/sub/chat/room/${roomId}`, onMessageReceived);
+      userJoin(response);
+      scrollToBottom();
+    }
   };
 
   const onError = (err) => {
     console.log(err);
   };
 
-  const userJoin = () => {
+  const userJoin = (response) => {
     let chatMessage = {
       type: 'ENTER',
       roomId: roomId,
@@ -96,7 +88,24 @@ const Chat = () => {
       quitOwner: '',
     };
 
+    let otherChatMessage = {
+      type: 'ENTER',
+      roomId: roomId,
+      sender: response.nickname,
+      message: '',
+      profileUrl: '',
+      enterUserCnt: '',
+      createdAt: '',
+      memberId: '',
+      quitOwner: '',
+    };
+
     stompClient.send(`/pub/chat/message`, { PK }, JSON.stringify(chatMessage));
+    stompClient.send(
+      `/pub/chat/message`,
+      { PK: response.memberId },
+      JSON.stringify(otherChatMessage)
+    );
   };
 
   const onMessageReceived = (payload) => {
@@ -105,9 +114,9 @@ const Chat = () => {
     if (payloadData.type === 'ENTER' || payloadData.type === 'TALK') {
       chatList.push(payloadData);
       setChatList([...chatList]);
-      instance.get(`/chat/message/${roomId}`).then((res)=>{
-        return setChatList([...res.data])
-      })
+      instance.get(`/chat/message/${roomId}`).then((res) => {
+        return setChatList([...res.data]);
+      });
     }
 
     scrollToBottom();
@@ -139,29 +148,23 @@ const Chat = () => {
   };
 
   const quitRoom = () => {
-    
-      let chatMessage = {
-        type: 'QUIT',
-        roomId: roomId,
-        sender: myNickname,
-        message: '',
-        profileUrl: '',
-        enterUserCnt: '',
-        createdAt: '',
-        memberId: '',
-        quitOwner: '',
-      };
+    let chatMessage = {
+      type: 'QUIT',
+      roomId: roomId,
+      sender: myNickname,
+      message: '',
+      profileUrl: '',
+      enterUserCnt: '',
+      createdAt: '',
+      memberId: '',
+      quitOwner: '',
+    };
 
-      stompClient.send(
-        '/pub/chat/message',
-        { PK },
-        JSON.stringify(chatMessage)
-      );
-      console.log(chatMessage)
-      setUserData({ ...userData, message: '' });
-    
+    stompClient.send('/pub/chat/message', { PK }, JSON.stringify(chatMessage));
+    console.log(chatMessage);
+    setUserData({ ...userData, message: '' });
 
-    navigate('/')
+    navigate('/');
   };
 
   const onKeyPress = (event) => {
@@ -210,9 +213,16 @@ const Chat = () => {
     }
   };
 
+  const postPrice = roomData.price
+    ?.toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const postDeposit = roomData.deposit
+    ?.toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
   return (
     <>
-      <ChatHeder quitRoom={quitRoom}/>
+      <ChatHeder quitRoom={quitRoom} />
       <div
         className="Chat_Head_Container"
         onClick={() => navigate(`/detail/${roomData.id}`)}
@@ -243,22 +253,28 @@ const Chat = () => {
         {chatList?.map((chat, idx) => {
           return (
             <div key={idx}>
-              {chat.memberId != PK ? chat.message === '' ? '' :(
-                <div className="Chat_Other_Wrap">
-                  <img src={chat.profileUrl} className="Chat_Other_Profile" />
-                  <div className="Chat_Other_Container">
-                    <div className="Chat_Other_Name">{chat.sender}</div>
-                    <div className="Chat_Other_Msg_Clock">
-                      <div className="Chat_Other_Box">{chat.message}</div>
-                      <div className="Chat_Clock_Box">
-                        <div className="Chat_Clock">
-                          {detailTime(chat.createdAt)}
+              {chat.memberId != PK ? (
+                chat.message === '' ? (
+                  ''
+                ) : (
+                  <div className="Chat_Other_Wrap">
+                    <img src={chat.profileUrl} className="Chat_Other_Profile" />
+                    <div className="Chat_Other_Container">
+                      <div className="Chat_Other_Name">{chat.sender}</div>
+                      <div className="Chat_Other_Msg_Clock">
+                        <div className="Chat_Other_Box">{chat.message}</div>
+                        <div className="Chat_Clock_Box">
+                          <div className="Chat_Clock">
+                            {detailTime(chat.createdAt)}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ) : chat.message === '' ? '' :(
+                )
+              ) : chat.message === '' ? (
+                ''
+              ) : (
                 <div className="Chat_Me_Container">
                   <div className="Chat_Clock_Box">
                     <div className="Chat_Clock">

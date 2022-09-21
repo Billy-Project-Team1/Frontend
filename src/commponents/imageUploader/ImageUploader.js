@@ -38,6 +38,8 @@ const ImageUploader = ({ img, setImg }) => {
 		}
 	};
 
+	console.log(img)
+
 	const sendData = () => {
 		console.log('sendData');
 
@@ -70,10 +72,18 @@ const ImageUploader = ({ img, setImg }) => {
 	}, [imgUrl]);
 
 	//img 삭제
-	const removeImage = (id) => {
-		let newList = img.filter((image) => image.id !== id);
-		setImg(newList);
-		return;
+	const removeImage = (payload) => {
+		let removeList = imgUrl.splice(payload, 1)
+		let newList = imgUrl.filter((item)=>{
+			return item !== removeList
+		})
+		setImgUrl(newList)
+
+		let removeFile = img.splice(payload,1)
+		let newFile = img.filter((item)=>{
+			return item !== removeFile
+		})
+		setImg(newFile)
 	};
 
 	return (
@@ -95,12 +105,12 @@ const ImageUploader = ({ img, setImg }) => {
 			/>
 
 			<div className="preview_img_container">
-				{imgUrl.map((item) => (
-					<div className="preview_container">
+				{imgUrl.map((item, index) => (
+					<div className="preview_container" key={index}>
 						<img className="preview_img" src={item} alt="" />  
 						<FaMinusCircle
 							className="preview_del"
-							onClick={() => removeImage(upload_image.id)}
+							onClick={() => removeImage(index)}
 						/>
 					</div>
 				))}

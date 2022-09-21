@@ -7,6 +7,7 @@ import { getMyChatRoom } from '../../redux/modules/ChatSlice';
 import ChattingRoomHeader from '../../commponents/header/ChattingRoomHeader';
 import ChattingRoomCard from '../../commponents/chattingRoomCard/ChattingRoomCard';
 import './ChattingRoom.scss';
+import Footer from '../../commponents/footer/Footer';
 
 const ChattingRoom = () => {
   const dispatch = useDispatch();
@@ -15,18 +16,19 @@ const ChattingRoom = () => {
     dispatch(getMyChatRoom());
   }, []);
 
-  const myChatList = useSelector((state) => state.ChatSlice?.chatRoomList);
-  console.log(myChatList);
+  const myChatList = useSelector((state) => state.ChatSlice.chatRoomList);
 
   return (
     <div>
       <ChattingRoomHeader />
       <div className="chattingroom_wrap">
-        {/* {myChatList.map((post) => {
-        return <ChattingRoomCard post={post} />;
-      })} */}
-        <div className="chattingroom_alert">구현중</div>
+        {myChatList === undefined
+          ? ''
+          : myChatList.map((post, index) => {
+              return <ChattingRoomCard post={post} key={index} />;
+            })}
       </div>
+      <Footer />
     </div>
   );
 };
