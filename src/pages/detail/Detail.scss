@@ -35,7 +35,7 @@
 
 .detail_user_profile {
 	padding: 1rem 0;
-	border-bottom: 1px solid $color-border;
+	border-bottom: 1px solid $color-sub;
 	display: flex;
 	font-size: 0;
 
@@ -84,7 +84,7 @@
 
 .detail_content_part {
 	padding: 25px 0;
-	border-bottom: 1px solid $color-border;
+	border-bottom: 1px solid $color-sub;
 }
 
 .detail_title {
@@ -125,12 +125,12 @@
 
 .detail_map {
 	padding: 1rem 0 1.4rem 0;
-	border-bottom: 1px solid $color-border;
+	border-bottom: 1px solid $color-sub;
 }
 
 .detail_calendar {
 	padding: 1rem 1rem 1.4rem 1rem;
-	border-bottom: 1px solid $color-border;
+	border-bottom: 1px solid $color-sub;
 }
 
 //swiper
