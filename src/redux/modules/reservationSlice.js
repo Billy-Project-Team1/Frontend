@@ -184,14 +184,13 @@ export const reservationSlice = createSlice({
     //   console.log(state.billyList);
     // },
     [deliveryDoneThunk.fulfilled]: (state, action) => {
-      state.billyList = action.payload;
     },
 
     [deliveryDoneThunk.rejected]: (state, action) => {
       console.log(action.payload);
     },
     [reservationThunk.fulfilled]: (state, action) => {
-      state.billyState = action.payload;
+      // state.billyState = action.payload;
     },
     [reservationThunk.rejected]: (state, action) => {
       console.log(action.payload);
