@@ -75,11 +75,10 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
       ) {
         date.pop();
         return alert('잘못된 날짜입니다');
-      }
-      else if(date[0]?.toLocaleString() == date[1]?.toLocaleString()){
+      } else if (date[0]?.toLocaleString() == date[1]?.toLocaleString()) {
         date.pop();
         date.pop();
-        return alert('최소 1일 이상 설정해주세요')
+        return alert('최소 1일 이상 설정해주세요');
       }
     }
   }, [date]);
