@@ -71,7 +71,7 @@ const ImageUploader = ({ img, setImg }) => {
 
 	//img 삭제
 	const removeImage = (id) => {
-		let newList = setImg.filter((image) => image.id !== id);
+		let newList = img.filter((image) => image.id !== id);
 		setImg(newList);
 		return;
 	};
@@ -97,7 +97,7 @@ const ImageUploader = ({ img, setImg }) => {
 			<div className="preview_img_container">
 				{imgUrl.map((item) => (
 					<div className="preview_container">
-						<img className="preview_img" src={item} alt="" />
+						<img className="preview_img" src={item} alt="" />  
 						<FaMinusCircle
 							className="preview_del"
 							onClick={() => removeImage(upload_image.id)}

@@ -1,0 +1,44 @@
+.cancelpage_wrap {
+  padding: 0 1rem;
+}
+.cancelpage_container {
+  height: 60px;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  p {
+    font-family: 'Noto Sans';
+    font-size: 1rem;
+    font-weight: 400px;
+    color: #212121;
+  }
+}
+.cancelpage_img {
+  width: 60px;
+  height: 60px;
+  background-color: #cccccc;
+  border-radius: 7px;
+}
+.cancelpagae_price_wrap {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4.5px;
+  gap: 10px;
+}
+.cancelpage_price_box {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  font-family: 'Noto Sans';
+  font-size: 0.875rem;
+  font-weight: 500px;
+  color: #212121;
+}
+.cancelpage_body{
+    font-family: 'Noto Sans';
+    font-size: 1rem;
+    font-weight: 400px;
+    color: #212121;
+    margin-top: 40px;
+}

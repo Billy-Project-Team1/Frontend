@@ -9,22 +9,31 @@ import {
   deliveryDoneThunk,
   reservationCancelThunk,
 } from '../../redux/modules/reservationSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import ApprovalModal from './ApprovalModal';
+import CancelPage from './CancelPage';
 
 const ReservationCard = ({ billyState }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const is_login = localStorage.getItem('userId');
   const [cancelMessage, setCancelMessage] = useState({
     cancelMessage: '취소할게요',
   });
-
-  const billylist = useSelector((state) => state.billystate?.billyList);
-  // console.log(billylist);
+  const [modalOpen, setModalOpen] = useState(false);
+  const showModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   useEffect(() => {
     dispatch(billyStateListThunk(billyState));
   }, []);
+
+  const billylist = useSelector((state) => state.billystate?.billyList);
+  console.log(billylist);
 
   useEffect(() => {}, [JSON.stringify(billylist)]);
 
@@ -75,7 +84,15 @@ const ReservationCard = ({ billyState }) => {
       }
     } catch {}
   };
-
+  // const title = 'ㅠㅠ'
+  //   const cancel = () => {
+  //     navigate('/cancelPage', {
+  //       state: { title:title, price: '오만원' },
+  //     });
+  //   };
+  const cancel = ()=>{
+    navigate('/cancelPage')
+  }
   return (
     // .slice(0).reverse()
     <div className="reservationcard_first_container">
@@ -144,23 +161,42 @@ const ReservationCard = ({ billyState }) => {
                 {billyState === '1' ? (
                   <button
                     className="reservationcard_btn"
-                    onClick={() =>
-                      // cancelHandler(item.reservationId, cancelMessage)
-                      navigate('/cancelPage',{title:item.title},{img:item.postImgUrl},{price:item.price},{deposit:item.deposit})
-                    }
+                    onClick={cancel}
+                    // onClick={() => {
+                    //   '/cancelPage',
+                    //     {
+                    //       state: { title: item.title, price: '오만원' },
+                    //     };
+                    // }}
+                    // onClick={() =>
+                    // cancelHandler(item.reservationId, cancelMessage)
+                    // }
                   >
                     예약 취소
                   </button>
                 ) : billyState === '2' ? (
                   item.delivery === true ? (
-                    <button className="reservationcard_wait_btn">승인 대기 중</button>
-                  ) : (
-                    <button
-                      className="reservationcard_btn"
-                      onClick={() => deliveryDoneHandler(item.reservationId)}
-                    >
-                      수령 완료
+                    <button className="reservationcard_wait_btn">
+                      승인 대기 중
                     </button>
+                  ) : (
+                    <>
+                      <button
+                        className="reservationcard_btn"
+                        onClick={showModal}
+                        // onClick={() => deliveryDoneHandler(item.reservationId)}
+                      >
+                        수령 완료
+                      </button>
+                      {modalOpen && (
+                        <ApprovalModal
+                          word="수령"
+                          buttonType="수령 완료"
+                          onClickSaver={deliveryDoneHandler(item.reservationId)}
+                          setModalOpen={setModalOpen}
+                        />
+                      )}
+                    </>
                   )
                 ) : billyState === '4' ? (
                   <div style={{ marginBottom: '20px' }} />
