@@ -28,7 +28,6 @@ instance.interceptors.response.use(
     if (error.response.status === 401) {
       try {
         const userId = localStorage.getItem('userId');
-        console.log(userId);
         const originalRequest = error.config;
         localStorage.removeItem('accessToken');
         const data = await instance.post('/auth/members/reissue', {

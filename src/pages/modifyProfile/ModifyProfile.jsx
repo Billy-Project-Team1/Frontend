@@ -53,7 +53,6 @@ const ModifyProfile = () => {
     const { name, value } = e.target;
     setReviseProfile({ ...reviseProfile, [name]: value });
   };
-  console.log(reviseProfile);
   //프로필 사진 변경 함수
   const onLoadFile = (e) => {
     if (e.target.files[0]) {

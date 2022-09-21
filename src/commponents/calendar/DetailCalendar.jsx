@@ -68,7 +68,6 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   // console.log(date[0])
   useEffect(() => {
     date.sort();
-    console.log(date[0])
     for (let i = 0; i < data?.length; i++) {
       if (
         new Date(date[0]) < new Date(data[i]) &&
