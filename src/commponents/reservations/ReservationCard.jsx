@@ -9,25 +9,21 @@ import {
   deliveryDoneThunk,
   reservationCancelThunk,
 } from '../../redux/modules/reservationSlice';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ApprovalModal from './ApprovalModal';
 import CancelPage from './CancelPage';
 
 const ReservationCard = ({ billyState }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const is_login = localStorage.getItem('userId');
   const [cancelMessage, setCancelMessage] = useState({
     cancelMessage: '취소할게요',
   });
+  const [reload, setReload] = useState();
   const [modalOpen, setModalOpen] = useState(false);
   const showModal = () => {
     setModalOpen(true);
   };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
   useEffect(() => {
     dispatch(billyStateListThunk(billyState));
   }, []);
@@ -78,21 +74,16 @@ const ReservationCard = ({ billyState }) => {
 
   const deliveryDoneHandler = async (e) => {
     try {
-      const response = await dispatch(deliveryDoneThunk(e));
+      const response = await dispatch(deliveryDoneThunk(e)).unwrap();
       if (response) {
-        // return window.location.replace(`/mypage/${is_login}`);
+        setReload(response);
       }
     } catch {}
   };
-  // const title = 'ㅠㅠ'
-  //   const cancel = () => {
-  //     navigate('/cancelPage', {
-  //       state: { title:title, price: '오만원' },
-  //     });
-  //   };
-  const cancel = ()=>{
-    navigate('/cancelPage')
-  }
+  useEffect(() => {
+    dispatch(billyStateListThunk(billyState));
+  }, [reload]);
+
   return (
     // .slice(0).reverse()
     <div className="reservationcard_first_container">
@@ -161,18 +152,17 @@ const ReservationCard = ({ billyState }) => {
                 {billyState === '1' ? (
                   <button
                     className="reservationcard_btn"
-                    onClick={cancel}
-                    // onClick={() => {
-                    //   '/cancelPage',
-                    //     {
-                    //       state: { title: item.title, price: '오만원' },
-                    //     };
-                    // }}
-                    // onClick={() =>
-                    // cancelHandler(item.reservationId, cancelMessage)
-                    // }
+                    onClick={() => showModal()}
                   >
                     예약 취소
+                    {modalOpen && (
+                      <CancelPage
+                        setModalOpen={setModalOpen}
+                        title={item.title}
+                        dailyPrice={dailyPrice(item.price)}
+                        img={item.postImgUrl}
+                      />
+                    )}
                   </button>
                 ) : billyState === '2' ? (
                   item.delivery === true ? (
@@ -183,8 +173,7 @@ const ReservationCard = ({ billyState }) => {
                     <>
                       <button
                         className="reservationcard_btn"
-                        onClick={showModal}
-                        // onClick={() => deliveryDoneHandler(item.reservationId)}
+                        onClick={() => showModal()}
                       >
                         수령 완료
                       </button>
@@ -192,8 +181,9 @@ const ReservationCard = ({ billyState }) => {
                         <ApprovalModal
                           word="수령"
                           buttonType="수령 완료"
-                          onClickSaver={deliveryDoneHandler(item.reservationId)}
+                          onClickSave={deliveryDoneHandler}
                           setModalOpen={setModalOpen}
+                          data={item.reservationId}
                         />
                       )}
                     </>

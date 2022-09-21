@@ -8,10 +8,10 @@ import {
   jullyStateChangeThunk,
   jullyStateListThunk,
 } from '../../redux/modules/reservationSlice';
+import ApprovalModal from './ApprovalModal';
 
-const JullyReservationCard = ({ jullyState, setMyPageState }) => {
+const JullyReservationCard = ({ jullyState }) => {
   const dispatch = useDispatch();
-  const is_login = localStorage.getItem('userId');
   const [cancelMessage, setCancelMessage] = useState({
     cancelMessage: '취소할게요',
     state: '3',
@@ -25,11 +25,15 @@ const JullyReservationCard = ({ jullyState, setMyPageState }) => {
   const [returnDone, setReturnDone] = useState({
     state: '5',
   });
-
+  const [test, setTest] = useState();
+  const [modalOpen, setModalOpen] = useState(false);
+  const showModal = () => {
+    setModalOpen(true);
+  };
   useEffect(() => {
     dispatch(jullyStateListThunk(jullyState));
   }, []);
-  const jullylist = useSelector((state) => state.billystate.jullyList);
+  const jullylist = useSelector((state) => state.billystate?.jullyList);
   // console.log(jullylist);
 
   useEffect(() => {}, [JSON.stringify(jullylist)]);
@@ -65,14 +69,15 @@ const JullyReservationCard = ({ jullyState, setMyPageState }) => {
 
   const jullyStateHandler = async (a, b) => {
     try {
-      const response = await dispatch(jullyStateChangeThunk({ a, b }));
+      const response = await dispatch(jullyStateChangeThunk({ a, b })).unwrap();
       if (response) {
-        return window.location.replace(`/mypage/${is_login}`);
-        // setMyPageState('2'),
-        // console.log('dffdfd')
+        setTest(response);
       }
     } catch {}
   };
+  useEffect(() => {
+    dispatch(jullyStateListThunk(jullyState));
+  }, [test]);
 
   return (
     // .slice(0).reverse()
@@ -163,14 +168,24 @@ const JullyReservationCard = ({ jullyState, setMyPageState }) => {
                   </div>
                 ) : jullyState === '2' ? (
                   item.delivery === true ? (
-                    <button
-                      className="reservationcard_btn"
-                      onClick={() =>
-                        jullyStateHandler(item.reservationId, handleDone)
-                      }
-                    >
-                      전달 완료
-                    </button>
+                    <>
+                      <button
+                        className="reservationcard_btn"
+                        onClick={() => showModal()}
+                      >
+                        전달 완료
+                      </button>
+                      {modalOpen && (
+                        <ApprovalModal
+                          word="전달"
+                          buttonType="전달 완료"
+                          onClickSave={jullyStateHandler}
+                          setModalOpen={setModalOpen}
+                          data={item.reservationId}
+                          data2={handleDone}
+                        />
+                      )}
+                    </>
                   ) : (
                     <button
                       className="reservationcard_btn"
@@ -181,33 +196,26 @@ const JullyReservationCard = ({ jullyState, setMyPageState }) => {
                       예약 취소
                     </button>
                   )
-                ) : // <div className="jullyReservation_set_btn">
-                //   <button
-                //     className="jullyReservation_btn"
-                //     onClick={() =>
-                //       jullyStateHandler(item.reservationId, cancelMessage)
-                //     }
-                //   >
-                //     예약 취소
-                //   </button>
-                //   <button
-                //     className="jullyReservation_btn"
-                //     onClick={() =>
-                //       jullyStateHandler(item.reservationId, handleDone)
-                //     }
-                //   >
-                //     전달 완료
-                //   </button>
-                // </div>
-                jullyState === '4' ? (
-                  <button
-                    className="reservationcard_btn"
-                    onClick={() =>
-                      jullyStateHandler(item.reservationId, returnDone)
-                    }
-                  >
-                    반납 완료
-                  </button>
+                ) : jullyState === '4' ? (
+                  <>
+                    <button
+                      className="reservationcard_btn"
+                      onClick={() => showModal()}
+                      // jullyStateHandler(item.reservationId, returnDone)
+                    >
+                      반납 완료
+                    </button>
+                    {modalOpen && (
+                      <ApprovalModal
+                        word="반납"
+                        buttonType="반납 완로"
+                        onClickSave={jullyStateHandler}
+                        setModalOpen={setModalOpen}
+                        data={item.reservationId}
+                        data2={returnDone}
+                      />
+                    )}
+                  </>
                 ) : jullyState === '5' ? (
                   <div style={{ marginBottom: '20px' }} />
                 ) : jullyState === '3' ? (
