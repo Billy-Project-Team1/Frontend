@@ -1,3 +1,4 @@
+@import '../../common/color.scss';
 .reservationcard_first_container {
   margin-bottom: 85px;
 }
@@ -75,15 +76,13 @@
   width: 342px;
   height: 43px;
   border-radius: 12px;
-  background-color: white;
-  font-family: 'Noto Sans';
   font-weight: 400;
-  counter-reset: #212121;
-  background-color: #eeeeee;
+  background-color: $color-light;
   border: none;
   font-size: 0.9375rem;
   margin-top: 20px;
   margin-bottom: 20px;
+  color: $color-placeholder;
 }
 .reservationcard_name_wrap {
   display: flex;
@@ -106,7 +105,7 @@
   font-weight: 400;
   color: #004eea;
   font-size: 0.625rem;
-  margin-top: 5px;
+  // margin-top: 5px;
 }
 .jullyReservation_set_btn {
   margin-top: 20px;
