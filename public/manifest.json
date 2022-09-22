@@ -8,18 +8,18 @@
       "type": "image/x-icon"
     },
     {
-      "src": "billylogo",
+      "src": "billylogo.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "billylogo",
+      "src": "billylogo.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
-  "display": "fullscreen",
+  "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
