@@ -1,3 +1,4 @@
+@import '../../common/color.scss';
 .cancelpage_modal {
   width: 100%;
   height: 100vh;
@@ -81,7 +82,37 @@
   font-family: 'Noto Sans';
   font-size: 1rem;
   font-weight: 400px;
-  color: #212121;
+  color: $color-primary;
   margin-top: 40px;
   text-align: left;
+}
+.cancelpage_select {
+  margin-top: 16px;
+  width: 358px;
+  height: 38px;
+  border-radius: 7px;
+  &:focus {
+    border-color: $color-main;
+  }
+  &:disabled{
+    background-color: #cccccc;
+  }
+  option {
+    width: 358px;
+  }
+}
+.cancelpage_cancel_btn_wrap {
+  position: absolute;
+  width: 358px;
+  bottom: 48px;
+}
+.cancelpage_cancel_btn {
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  background-color: $color-main;
+  border: none;
+  color: $color-light;
+  font-size: 1rem;
+  font-weight: 600;
 }
