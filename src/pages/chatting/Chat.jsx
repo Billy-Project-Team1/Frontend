@@ -161,7 +161,6 @@ const Chat = () => {
     };
 
     stompClient.send('/pub/chat/message', { PK }, JSON.stringify(chatMessage));
-    console.log(chatMessage);
     setUserData({ ...userData, message: '' });
 
     navigate('/');

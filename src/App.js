@@ -16,9 +16,33 @@ import Search from './pages/search/Search';
 import ChattingRoom from './pages/chatting/ChattingRoom';
 import Chat from './pages/chatting/Chat';
 import ReviewPosting from './pages/reviewPosting/ReviewPosting';
+import Notifications from './commponents/notifications/Notifications';
+import { onMessageListener } from './firebaseInit';
+import ReactNotificationComponent from './commponents/notifications/ReactNotification';
 
 function App() {
-    return (
+  const [show, setShow] = useState(false);
+  const [notification, setNotification] = useState({ title: '', body: '' });
+  onMessageListener()
+    .then((payload) => {
+      setShow(true);
+      setNotification({
+        title: payload.notification.title,
+        body: payload.notification.body,
+      });
+    })
+    .catch((err) => console.log('failed: ', err));
+  return (
+    <>
+      {show ? (
+        <ReactNotificationComponent
+          title={notification.title}
+          body={notification.body}
+        />
+      ) : (
+        <></>
+      )}
+      <Notifications />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
@@ -37,6 +61,7 @@ function App() {
         <Route path="/chat/room/:postId/:roomId" element={<Chat />} />
         <Route path="/reviewPosting" element={<ReviewPosting />} />
       </Routes>
+    </>
   );
 }
 
