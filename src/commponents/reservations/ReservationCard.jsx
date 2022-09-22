@@ -5,21 +5,15 @@ import deposit from '../../static/image/deposit.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import {
+  billyReservationCntThunk,
   billyStateListThunk,
   deliveryDoneThunk,
-  reservationCancelThunk,
 } from '../../redux/modules/reservationSlice';
-import { useNavigate } from 'react-router-dom';
 import ApprovalModal from './ApprovalModal';
-import CancelPage from './CancelPage';
 import CancelButton from './CancelButton';
 
 const ReservationCard = ({ billyState }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [cancelMessage, setCancelMessage] = useState({
-    cancelMessage: '취소할게요',
-  });
   const [reload, setReload] = useState();
   const [modalOpen, setModalOpen] = useState(false);
   const showModal = () => {
@@ -62,16 +56,6 @@ const ReservationCard = ({ billyState }) => {
     return a?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
-  const cancelHandler = async (a, b) => {
-    // console.log(b)
-    try {
-      const response = await dispatch(reservationCancelThunk({ a, b }));
-      if (response) {
-        // return window.location.replace(`/mypage/${is_login}`);
-      }
-    } catch {}
-  };
-
   const deliveryDoneHandler = async (e) => {
     try {
       const response = await dispatch(deliveryDoneThunk(e)).unwrap();
@@ -82,6 +66,7 @@ const ReservationCard = ({ billyState }) => {
   };
   useEffect(() => {
     dispatch(billyStateListThunk(billyState));
+    dispatch(billyReservationCntThunk());
   }, [reload]);
 
   return (
@@ -150,7 +135,7 @@ const ReservationCard = ({ billyState }) => {
               </div>
               <div className="reservationcard_btn_wrap">
                 {billyState === '1' ? (
-                  <CancelButton item={item} />
+                  <CancelButton item={item} billyState={billyState}/>
                 ) : billyState === '2' ? (
                   item.delivery === true ? (
                     <button className="reservationcard_wait_btn">

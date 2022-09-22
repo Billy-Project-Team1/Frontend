@@ -26,6 +26,7 @@
 .myProfileHeader_right_box {
   margin-left: 14px;
   margin-top: 5px;
+  gap: 14px;
 
   p {
     font-size: 0.75rem;
@@ -44,6 +45,8 @@
   color: #cccccc;
   cursor: pointer;
   margin: auto;
+  width: 18px;
+  height: 18px;
 }
 .myProfileHeader_right_topbox {
   display: flex;

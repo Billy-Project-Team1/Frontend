@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CancelPage from './CancelPage';
 
-const CancelButton = ({ item }) => {
+const CancelButton = ({ item, billyState, jullyState }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const showModal = () => {
     setModalOpen(true);
@@ -9,20 +9,70 @@ const CancelButton = ({ item }) => {
 
   return (
     <>
-      <button className="reservationcard_btn" onClick={() => showModal()}>
-        예약 취소
-      </button>
-      {modalOpen && (
-        <CancelPage
-          setModalOpen={setModalOpen}
-          title={item.title}
-          dailyPrice={item.price}
-          depositPrice={item.deposit}
-          img={item.postImgUrl}
-          startDate={item.startDate}
-          endDate={item.endDate}
-          totalAmount={item.totalAmount}
-        />
+      {billyState === '1' ? (
+        <>
+          {' '}
+          <button className="reservationcard_btn" onClick={() => showModal()}>
+            예약 취소
+          </button>
+          {modalOpen && (
+            <CancelPage
+              setModalOpen={setModalOpen}
+              title={item.title}
+              dailyPrice={item.price}
+              depositPrice={item.deposit}
+              img={item.postImgUrl}
+              startDate={item.startDate}
+              endDate={item.endDate}
+              totalAmount={item.totalAmount}
+              reservationId={item.reservationId}
+              billyState={billyState}
+            />
+          )}
+        </>
+      ) : jullyState === '1' ? (
+        <>
+          <button className="jullyReservation_btn" onClick={() => showModal()}>
+            예약 취소
+          </button>
+          {modalOpen && (
+            <CancelPage
+              setModalOpen={setModalOpen}
+              title={item.title}
+              dailyPrice={item.price}
+              depositPrice={item.deposit}
+              img={item.postImgUrl}
+              startDate={item.startDate}
+              endDate={item.endDate}
+              totalAmount={item.totalAmount}
+              reservationId={item.reservationId}
+              jullyState={jullyState}
+            />
+          )}
+        </>
+      ) : jullyState === '2' ? (
+        <>
+          <button className="reservationcard_btn" onClick={() => showModal()}>
+            예약 취소
+          </button>
+          {modalOpen && (
+            <CancelPage
+              setModalOpen={setModalOpen}
+              title={item.title}
+              dailyPrice={item.price}
+              depositPrice={item.deposit}
+              img={item.postImgUrl}
+              startDate={item.startDate}
+              endDate={item.endDate}
+              totalAmount={item.totalAmount}
+              reservationId={item.reservationId}
+              jullyState={jullyState}
+
+            />
+          )}
+        </>
+      ) : (
+        ''
       )}
     </>
   );

@@ -10,13 +10,10 @@ import {
   jullyStateListThunk,
 } from '../../redux/modules/reservationSlice';
 import ApprovalModal from './ApprovalModal';
+import CancelButton from './CancelButton';
 
 const JullyReservationCard = ({ jullyState }) => {
   const dispatch = useDispatch();
-  const [cancelMessage, setCancelMessage] = useState({
-    cancelMessage: '취소할게요',
-    state: '3',
-  });
   const [reservationApproved, setReservationApproved] = useState({
     state: '2',
   });
@@ -148,14 +145,7 @@ const JullyReservationCard = ({ jullyState }) => {
               <div className="reservationcard_btn_wrap">
                 {jullyState === '1' ? (
                   <div className="jullyReservation_set_btn">
-                    <button
-                      className="jullyReservation_btn"
-                      onClick={() =>
-                        jullyStateHandler(item.reservationId, cancelMessage)
-                      }
-                    >
-                      예약 취소
-                    </button>
+                    <CancelButton item={item} jullyState={jullyState} />
                     <button
                       className="jullyReservation_btn"
                       onClick={() =>
@@ -189,14 +179,7 @@ const JullyReservationCard = ({ jullyState }) => {
                       )}
                     </>
                   ) : (
-                    <button
-                      className="reservationcard_btn"
-                      onClick={() =>
-                        jullyStateHandler(item.reservationId, cancelMessage)
-                      }
-                    >
-                      예약 취소
-                    </button>
+                    <CancelButton item={item} jullyState={jullyState} />
                   )
                 ) : jullyState === '4' ? (
                   <>
