@@ -4,18 +4,13 @@
   "icons": [
     {
       "src": "billyIcon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "64x64",
       "type": "image/x-icon"
     },
     {
-      "src": "billylogo",
+      "src": "billylogo.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "billylogo",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "653x662"
     }
   ],
   "start_url": ".",
