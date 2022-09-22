@@ -39,8 +39,8 @@ const CancelPage = ({
     state: '3',
   });
 
-  const [test, setTest] = useState();
-  const [reload, setReload] = useState();
+  const [test, setTest] = useState(false);
+  const [reload, setReload] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -84,29 +84,43 @@ const CancelPage = ({
         reservationCancelThunk({ a, b })
       ).unwrap();
       if (response) {
-        return window.location.replace(`/mypage/${is_login}`);
-        // setReload(response);
+        setReload(true);
       }
     } catch {}
   };
-  // useEffect(() => {
-  //   dispatch(billyStateListThunk(billyState));
-  //   dispatch(billyReservationCntThunk());
-  // }, [reload]);
+  useEffect(() => {
+    if (billyState !== undefined && reload == true) {
+      async function fetchBillyState() {
+        dispatch(billyStateListThunk(billyState));
+        const response = await dispatch(billyReservationCntThunk()).unwrap();
+        if (response) {
+          closeModal();
+        }
+      }
+      fetchBillyState();
+    }
+  }, [reload]);
 
   const jullyCancelHandler = async (a, b) => {
     try {
       const response = await dispatch(jullyStateChangeThunk({ a, b })).unwrap();
       if (response) {
-        return window.location.replace(`/mypage/${is_login}`);
-        // setReload(response);
+        setTest(true);
       }
     } catch {}
   };
-  // useEffect(() => {
-  //   dispatch(jullyStateListThunk(jullyState));
-  //   dispatch(jullyReservationCntThunk());
-  // }, [reload]);
+  useEffect(() => {
+    if (jullyState !== undefined && test == true) {
+      async function fetchJullyState() {
+        dispatch(jullyStateListThunk(jullyState));
+        const response = await dispatch(jullyReservationCntThunk()).unwrap();
+        if (response) {
+          closeModal();
+        }
+      }
+      fetchJullyState();
+    }
+  }, [test]);
 
   return (
     <div className="cancelpage_modal">

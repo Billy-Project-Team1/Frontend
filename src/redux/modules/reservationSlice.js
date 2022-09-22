@@ -60,8 +60,8 @@ export const reservationCancelThunk = createAsyncThunk(
         `/auth/reservations/billy/${payload.a}`,
         payload.b
       );
-      //   return console.log(response);
-      return thunkAPI.fulfillWithValue(response.data.result);
+        // return console.log(response);
+      return thunkAPI.fulfillWithValue(response.data.success);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
@@ -162,7 +162,7 @@ export const reservationSlice = createSlice({
       console.log(action.payload);
     },
     [reservationCancelThunk.fulfilled]: (state, action) => {
-      state.billyList = action.payload;
+      // state.billyList = action.payload;
     },
     [reservationCancelThunk.rejected]: (state, action) => {
       console.log(action.payload);
@@ -187,9 +187,9 @@ export const reservationSlice = createSlice({
     [jullyStateListThunk.fulfilled]: (state, action) => {
       state.jullyList = action.payload;
     },
-    [jullyStateListThunk.rejected]: (state, action) => {
-      console.log(action.payload);
-    },
+    // [jullyStateListThunk.rejected]: (state, action) => {
+    //   console.log(action.payload);
+    // },
     [jullyStateChangeThunk.fulfilled]: (state, action) => {
       // state.jullyList = action.payload;
     },
