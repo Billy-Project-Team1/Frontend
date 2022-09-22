@@ -20,21 +20,24 @@ const publicKey = process.env.REACT_APP_VAPID_KEY;
 
 export const getToken = async (setTokenFound) => {
   let currentToken = '';
+  let nowUser = localStorage.getItem('userId')
 
   try {
+    if(nowUser){
     currentToken = await messaging.getToken({ vapidKey: publicKey });
-    console.log(currentToken)
     if (currentToken) {
       setTokenFound(true);
+      localStorage.setItem('firebaseToken', currentToken)
     } else {
       setTokenFound(false);
     }
-  } catch (error) {
+  }} catch (error) {
     console.log('An error occurred while retrieving token. ', error);
   }
 
   return currentToken;
-};
+  }
+
 
 export const onMessageListener = () =>
   new Promise((resolve) => {
