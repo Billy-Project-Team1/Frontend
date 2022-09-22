@@ -7,6 +7,7 @@ const ReviewCard = ({ post }) => {
 
 	return (
 		<div>
+			리뷰카드
 		</div>
 	);
 };
