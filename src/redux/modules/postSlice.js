@@ -13,8 +13,9 @@ export const getPost = createAsyncThunk(
     try {
       // console.log(payload) => id뜸
       // a:API url , b: API request 근데 이건 get이니까 없음 ㅋㅋ (가끔 있음), c: 파일의 타입 바꿔줄때 씀(이미지)
-      const response = await instance.get(`/posts/details/${payload.postid}`,{
-        params: { userId: payload.myUserId }});
+      const response = await instance.get(`/posts/details/${payload.postid}`, {
+        params: { userId: payload.myUserId },
+      });
 
       //Rerult를 slice에 다 넣어줘야함. 그래야 이제 빼써 쓸 수 있음.
       if (response.data.success === true) {
@@ -45,20 +46,14 @@ export const addPost = createAsyncThunk(
     }
   }
 );
-
-export const delPost = createAsyncThunk(
-  'delPost',
+//게시글 삭제 Delete /auth/posts/{postId}
+export const deletePost = createAsyncThunk(
+  'deletePost',
   async (payload, thunkAPI) => {
     try {
-      // console.log(payload) => id뜸
-      // a:API url , b: API request 근데 이건 get이니까 없음 ㅋㅋ (가끔 있음), c: 파일의 타입 바꿔줄때 씀(이미지)
-      const response = await instance.post(`/auth/posts`, payload);
+      const response = await instance.delete(`/auth/posts/${payload}`);
       // console.log(response)
-
-      //Rerult를 slice에 다 넣어줘야함. 그래야 이제 빼써 쓸 수 있음.
-      if (response.data.success === true) {
-        return thunkAPI.fulfillWithValue(response.data.result);
-      }
+      return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
       console.log(error);
     }
@@ -89,7 +84,7 @@ export const dibsPost = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.put(`/auth/posts/${payload}/likes`);
-	  console.log(response)
+      console.log(response);
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       }
@@ -112,16 +107,17 @@ const postSlice = createSlice({
       state.post = action.payload;
     },
     [dibsPost.fulfilled]: (state, action) => {
-      if(action.payload === "찜하기 취소!"){
-        state.post.like = !state.post.like
-        state.post.likeCount = state.post.likeCount-1
+      if (action.payload === '찜하기 취소!') {
+        state.post.like = !state.post.like;
+        state.post.likeCount = state.post.likeCount - 1;
+      } else {
+        state.post.like = !state.post.like;
+        state.post.likeCount = state.post.likeCount + 1;
       }
-      else{
-        state.post.like = !state.post.like
-        state.post.likeCount = state.post.likeCount+1
-      }
-	 
-	},
+    },
+    [deletePost.fulfillWithValue]: (state, action) => {
+      state.post = action.post.filter((item) => item.postId != action.payload);
+    },
   },
 });
 

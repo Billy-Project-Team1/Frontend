@@ -3,7 +3,6 @@
   margin-bottom: 85px;
 }
 .reservationcard_container {
-  // width: 358px;
   padding: 0 1rem;
   display: flex;
   flex-direction: column;
@@ -21,9 +20,8 @@
 }
 .reservationcard_title {
   font-size: 1rem;
-  font-family: 'Noto Sans';
   font-weight: 500;
-  color: #212121;
+  color: $color-primary;
 }
 .reservationcard_detail_wrap {
   height: 110px;
@@ -34,7 +32,7 @@
 .reservationcard_img {
   width: 110.24px;
   height: 110px;
-  background: #cccccc;
+  background: $color-placeholder;
   border-radius: 7px;
 }
 .reservationcard_body_box {
@@ -42,9 +40,8 @@
   margin-left: 15.76px;
   margin-top: 9px;
   font-size: 0.75rem;
-  font-family: 'Noto Sans';
   font-weight: 400;
-  color: #212121;
+  color: $color-primary;
   position: relative;
 }
 .reservationcard_icon_box {
@@ -62,15 +59,13 @@
   width: 100%;
   height: 43px;
   border-radius: 12px;
-  background-color: white;
-  font-family: 'Noto Sans';
+  background-color: $color-white;
   font-weight: 400;
-  color: #004eea;
-  border: 1px solid #004eea;
+  color: $color-main;
+  border: 1px solid $color-main;
   font-size: 0.9375rem;
   margin-top: 20px;
   margin-bottom: 20px;
-  // margin: 20px 16px 20px 16px ;
 }
 .reservationcard_wait_btn {
   width: 342px;
@@ -89,11 +84,10 @@
 }
 .reservationcard_chat_btn {
   border: none;
-  background-color: #ededed;
+  background-color: $color-sub;
   border-radius: 3px;
   height: 18px;
   font-size: 0.625rem;
-  font-family: 'Noto Sans';
   font-weight: 400;
   padding: 2px 7px 2px 7px;
   margin-left: 5px;
@@ -101,11 +95,9 @@
 .reservationcard_alert_content {
   display: flex;
   width: 100%;
-  font-family: 'Noto Sans';
   font-weight: 400;
-  color: #004eea;
+  color: $color-main;
   font-size: 0.625rem;
-  // margin-top: 5px;
 }
 .jullyReservation_set_btn {
   margin-top: 20px;
@@ -119,11 +111,10 @@
 .jullyReservation_btn {
   width: 170px;
   height: 43px;
-  border: 1px solid #004eea;
-  background-color: white;
-  color: #004eea;
+  border: 1px solid $color-main;
+  background-color: $color-white;
+  color: $color-main;
   border-radius: 7px;
   font-size: 0.9375rem;
-  font-family: 'Noto Sans';
   font-weight: 400;
 }

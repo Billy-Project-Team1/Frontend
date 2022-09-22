@@ -1,6 +1,6 @@
+@import '../../common/color.scss';
 .myProfileHeader_container {
   padding: 0 1rem;
-  // max-width: 428px;
 }
 .myProfileHeader_wrap {
   width: 230px;
@@ -30,19 +30,17 @@
 
   p {
     font-size: 0.75rem;
-    color: #cccccc;
-    font-family: 'Noto Sans';
+    color: $color-placeholder;
     font-weight: 400;
   }
 }
 .myProfileHeader_nickname {
   font-size: 1.5rem;
-  color: #212121;
-  font-family: 'Noto Sans';
+  color: $color-primary;
   margin-right: 8px;
 }
 .myProfileHeader_setting_btn {
-  color: #cccccc;
+  color: $color-placeholder;
   cursor: pointer;
   margin: auto;
   width: 18px;
