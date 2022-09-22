@@ -1,32 +1,25 @@
 // React import
 import React, { useState, useEffect } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+
+// Redux import
 import { useDispatch, useSelector } from 'react-redux';
+import { addPost } from '../../redux/modules/postSlice';
 
 // Style import
 import './Posting.scss';
 
-// iconsimport
+// icon import
 import { FaCamera } from 'react-icons/fa';
 
 // Component import
-import AddPostingHeader from '../../commponents/header/AddPostingHeader';
+import Headers from '../../commponents/header/Headers';
 import Calendar from '../../commponents/calendar/Calendar';
-// import AddLocationHeader from '../../commponents/header/AddLocationHeader';
-// import DetailHeader from '../../commponents/header/DetailHeader';
-// import MainHeader from '../../commponents/header/MainHeader';
-// import ModifyPostingHeader from '../../commponents/header/ModifyPostingHeader';
-// import ModifyProfileHeader from '../../commponents/header/ModifyProfileHeader';
-// import LoginHeader from '../../commponents/header/LoginHeader';
-// import MypageHeader from '../../commponents/header/MypageHeader';
-
 import ImageUploader from '../../commponents/imageUploader/ImageUploader';
-
 import KakaoMap from '../../commponents/maps/KakaoMap';
 import SearchPlace from '../../commponents/maps/SearchPlace';
-import { Navigate, useNavigate } from 'react-router-dom';
 import Footer from '../../commponents/footer/Footer';
 import PostingMap from '../../commponents/maps/PostingMap';
-import { addPost } from '../../redux/modules/postSlice';
 
 const Posting = () => {
   const dispatch = useDispatch();
@@ -102,96 +95,89 @@ const Posting = () => {
   };
 
   return (
-    <div>
-      <AddPostingHeader pageName='글쓰기' onClickSave={onPostingHandler} type='완료'/>
-      {/* <AddLocationHeader></AddLocationHeader>
-			<ModifyPostingHeader></ModifyPostingHeader>
-			<ModifyProfileHeader></ModifyProfileHeader>
-			<MypageHeader></MypageHeader>
-			<LoginHeader></LoginHeader>			
-			<DetailHeader></DetailHeader>
-			<MainHeader></MainHeader> */}
+		<div>
+			<Headers pageName="글쓰기" onClickSave={onPostingHandler} type="완료" />
 
-      <div className="posting_container">
-        <div className="posting_image">
-          <ImageUploader img={img} setImg={setImg} />
-        </div>
-        <div className="posting_title">
-          <input
-            type="text"
-            placeholder="제품명"
-            //input에 네임, 밸류 설정하기.
-            name="title"
-            value={data.title}
-            onChange={onChangeHandler}
-          />
-        </div>
-        <div className="posting_rental">
-          <div className="posting_price">
-            <label className="posting_price_label">일 대여금</label>
-            <input
-              onInput={(e) => {
-                if (e.target.value.length > e.target.maxLength)
-                  e.target.value = e.target.value.slice(0, e.target.maxLength);
-              }}
-              className="posting_price_input"
-              type="number"
-              placeholder="￦"
-              name="price"
-              value={data.price}
-              onChange={onChangeHandler}
-              maxlength={9}
-            />
-          </div>
+			<div className="posting_container">
+				<div className="posting_image">
+					<ImageUploader img={img} setImg={setImg} />
+				</div>
+				<div className="posting_title">
+					<input
+						type="text"
+						placeholder="제품명"
+						//input에 네임, 밸류 설정하기.
+						name="title"
+						value={data.title}
+						onChange={onChangeHandler}
+					/>
+				</div>
+				<div className="posting_rental">
+					<div className="posting_price">
+						<label className="posting_price_label">일 대여금</label>
+						<input
+							onInput={(e) => {
+								if (e.target.value.length > e.target.maxLength)
+									e.target.value = e.target.value.slice(0, e.target.maxLength);
+							}}
+							className="posting_price_input"
+							type="number"
+							placeholder="￦"
+							name="price"
+							value={data.price}
+							onChange={onChangeHandler}
+							maxlength={9}
+						/>
+					</div>
 
-          <div className="posting_deposit">
-            <label className="posting_deposit_label">보증금</label>
-            <input
-              onInput={(e) => {
-                if (e.target.value.length > e.target.maxLength)
-                  e.target.value = e.target.value.slice(0, e.target.maxLength);
-              }}
-              className="posting_deposit_input"
-              type="number"
-              placeholder="￦"
-              name="deposit"
-              value={data.deposit}
-              onChange={onChangeHandler}
-              maxlength={9}
-              // onChange={e => form({setDeposit: e.target.value.replace(/[^0-9]/g, "")})} />
-            />
-          </div>
-        </div>
+					<div className="posting_deposit">
+						<label className="posting_deposit_label">보증금</label>
+						<input
+							onInput={(e) => {
+								if (e.target.value.length > e.target.maxLength)
+									e.target.value = e.target.value.slice(0, e.target.maxLength);
+							}}
+							className="posting_deposit_input"
+							type="number"
+							placeholder="￦"
+							name="deposit"
+							value={data.deposit}
+							onChange={onChangeHandler}
+							maxlength={9}
+							// onChange={e => form({setDeposit: e.target.value.replace(/[^0-9]/g, "")})} />
+						/>
+					</div>
+				</div>
 
-        <div className="posting_content">
-          <textarea
-            type="text"
-            placeholder="게시물 내용을 작성해주세요. (적절하지 못한 제품은 게시가 제한될 수
+				<div className="posting_content">
+					<textarea
+						type="text"
+						placeholder="게시물 내용을 작성해주세요. (적절하지 못한 제품은 게시가 제한될 수
 				있어요.)"
-            name="content"
-            value={data.content}
-            onChange={onChangeHandler}
-          />
-        </div>
-        <div className="posting_calendar_wrap">
-          <div className="posting_calendar_icon">
-            <Calendar setData={setBlockDateDtoList} data={blockDateDtoList} />
-          </div>
-        </div>
-        <div className="posting_map_wrap">
-          <PostingMap setSearchMapModal={setSearchMapModal} data={data} />
-          {searchMapModal && (
-            <SearchPlace
-              setSearchMapModal={setSearchMapModal}
-              setData={setData}
-              data={data}
-            />
-          )}
-        </div>
-      </div>
-      <Footer />
-    </div>
-  );
+						name="content"
+						value={data.content}
+						onChange={onChangeHandler}
+					/>
+				</div>
+				<div className="posting_calendar_wrap">
+					<div className="posting_calendar_icon">
+						<Calendar setData={setBlockDateDtoList} data={blockDateDtoList} />
+					</div>
+				</div>
+				<div className="posting_map_wrap">
+					<PostingMap setSearchMapModal={setSearchMapModal} data={data} />
+					{searchMapModal && (
+						<SearchPlace
+							setSearchMapModal={setSearchMapModal}
+							setData={setData}
+							data={data}
+						/>
+					)}
+				</div>
+			</div>
+			<Footer />
+		</div>
+	);
 };
 
 export default Posting;
