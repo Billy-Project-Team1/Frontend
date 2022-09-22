@@ -35,7 +35,7 @@ const ChattingRoomCard = ({ post }) => {
             src={
               post.profileUrl !== null
                 ? post.profileUrl
-                : 'https://billy-img-bucket.s3.ap-northeast-2.amazonaws.com/38bd06b9-36fc-4cee-8b3e-547845431056profile.png'
+                : 'https://billy-img-bucket.s3.ap-northeast-2.amazonaws.com/profile.png'
             }
           />
         </div>
