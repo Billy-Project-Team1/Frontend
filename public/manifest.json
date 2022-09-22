@@ -1,20 +1,25 @@
 {
-  "short_name": "Billy",
-  "name": "Billy",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
-      "src": "billyIcon.ico",
-      "sizes": "64x64",
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "billylogo.png",
+      "src": "logo192.png",
       "type": "image/png",
-      "sizes": "653x662"
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
-  "display": "fullscreen",
+  "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
