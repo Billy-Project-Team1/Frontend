@@ -1,5 +1,5 @@
 // React import
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 // Redux import
@@ -25,9 +25,9 @@ const ReviewPosting = () => {
 	const [data, setData] = useState(initialState);
 	const [img, setImg] = useState([]);
 
-	// useEffect(() => {
-	// 	dispatch(addReview(id));
-	// }, [dispatch]);
+	useEffect(() => {
+		dispatch(addReview());
+	}, [dispatch]);
 
 	const onChangeHandler = (e) => {
 		const { name, value } = e.target;
