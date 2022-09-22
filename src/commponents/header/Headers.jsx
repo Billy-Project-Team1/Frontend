@@ -3,7 +3,7 @@ import './Headers.scss';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 
-const AddPostingHeader = ({ pageName, onClickSave, type }) => {
+const Headers = ({ pageName, onClickSave, type }) => {
   const navigate = useNavigate();
 
   return (
@@ -11,7 +11,7 @@ const AddPostingHeader = ({ pageName, onClickSave, type }) => {
       <div className="header_wrap">
         <div className="header_content">
           <HiOutlineChevronLeft
-            style={{ marginRight: '22px' }}
+            style={{ marginRight: '17px' }}
             color="#212121"
             size="24px"
             onClick={() => navigate(-1)}
@@ -21,10 +21,9 @@ const AddPostingHeader = ({ pageName, onClickSave, type }) => {
             {type}
           </div>
         </div>
-        <div className="header_line"></div>
       </div>
     </div>
   );
 };
 
-export default AddPostingHeader;
+export default Headers;

@@ -4,10 +4,11 @@ import MyProfileHeader from '../../commponents/myProfile/MyProfileHeader';
 import { useDispatch, useSelector } from 'react-redux';
 import MyPageList from './MyPageList';
 import YourPageList from './YourPageList';
-import AddPostingHeader from '../../commponents/header/MypageHeader';
+import Headers2 from '../../commponents/header/Headers2';
 import { useParams } from 'react-router-dom';
 import { getProfileThunk } from '../../redux/modules/profileSlice';
 import { getmyDibsData, getmyUpLoadData } from '../../redux/modules/memberSlice';
+
 
 const Mypage = () => {
   const { id } = useParams();
@@ -23,19 +24,19 @@ const Mypage = () => {
   const myUserId = localStorage.getItem('userId');
 
   return (
-    <div>
-      {myUserId === profile.userId ? (
-        <AddPostingHeader pageName="마이 페이지" />
-      ) : (
-        <AddPostingHeader pageName="프로필" />
-      )}
+		<div>
+			{myUserId === profile.userId ? (
+				<Headers2 pageName="마이 페이지" />
+			) : (
+				<Headers2 pageName="프로필" />
+			)}
 
-      <MyProfileHeader profile={profile} />
-      {myUserId === profile.userId ? <MyPageList /> : <YourPageList />}
+			<MyProfileHeader profile={profile} />
+			{myUserId === profile.userId ? <MyPageList /> : <YourPageList />}
 
-      <Footer />
-    </div>
-  );
+			<Footer />
+		</div>
+	);
 };
 
 export default Mypage;

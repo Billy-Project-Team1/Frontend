@@ -1,10 +1,9 @@
 import React, { useRef, useState } from 'react';
 import KakaoMap from './KakaoMap';
-import PostingMapHeader from '../header/PostingMapHeader';
 import { HiSearch } from 'react-icons/hi';
 import { FiX } from 'react-icons/fi';
 import { AiOutlineClose } from 'react-icons/ai';
-import MypageHeader from '../header/MypageHeader'
+import Headers2 from '../../commponents/header/Headers2';
 
 const SearchPlace = ({ setSearchMapModal, setData, data }) => {
 	const outSection = useRef();
@@ -59,8 +58,7 @@ const SearchPlace = ({ setSearchMapModal, setData, data }) => {
     "
 			>
 				<div className="KakaoMap_Header">
-					<PostingMapHeader />
-					{/* <MypageHeader pageName='지도에서 주소 찾기'/> */}
+					<Headers2 pageName='지도에서 주소 찾기'/>
 				</div>
 				<form className="KakaoMap_input_Form" onSubmit={handleSubmit}>
 					<input

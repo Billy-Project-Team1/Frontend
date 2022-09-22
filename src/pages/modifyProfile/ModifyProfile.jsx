@@ -7,7 +7,7 @@ import LogoutModal from './LogoutModal';
 import './ModifyProfile.scss';
 import { FaCamera } from 'react-icons/fa';
 import { editProfileThunk } from '../../redux/modules/profileSlice';
-import AddPostingHeader from '../../commponents/header/AddPostingHeader';
+import Headers from '../../commponents/header/Headers';
 
 const ModifyProfile = () => {
   const navigate = useNavigate();
@@ -103,58 +103,54 @@ const ModifyProfile = () => {
   };
 
   return (
-    <>
-      <AddPostingHeader
-        pageName="프로필 편집"
-        onClickSave={sumbitHandler}
-        type="완료"
-      />
+		<>
+			<Headers pageName="프로필 편집" onClickSave={sumbitHandler} type="완료" />
 
-      <div className="modifiyProfile_wrap">
-        <div className="modifyProfile_container">
-          <div className="modifyProfile_img_box">
-            <input
-              ref={memberImg_ref}
-              type="file"
-              accept="image/*"
-              id="img_upFile"
-              onChange={onLoadFile}
-              style={{ display: 'none' }}
-            />
-            <img src={image} alt="" className="modifyProfile_img" />
-            <div className="modifiyProfile_icon_wrap">
-              <div className="modifiyProfile_icon">
-                <label className="Img_label" htmlFor="img_upFile">
-                  <FaCamera color="#CCCCCC" className="modifiyProfile_camera" />
-                </label>
-              </div>
-            </div>
-          </div>
-          <div className="modifyProfile_right_box">
-            <input
-              className="modifyProfile_input"
-              name="nickname"
-              value={reviseProfile.nickname}
-              onChange={onChangeHandler}
-            ></input>
-            <p>2-8자 이내, 특수문자/띄어쓰기 불가</p>
-          </div>
-        </div>
-        <div className="modifyProfile_setbtns">
-          <button className="modifyProfile_btn" onClick={showModal}>
-            로그아웃
-          </button>
-          {modalOpen && <LogoutModal setModalOpen={setModalOpen} />}
-          <button className="modifyProfile_btn2" onClick={isModal}>
-            회원탈퇴
-          </button>
-          {deleteModalOpen && (
-            <DeleteIdModal setDeleteModalOpen={setDeleteModalOpen} />
-          )}
-        </div>
-      </div>
-    </>
-  );
+			<div className="modifiyProfile_wrap">
+				<div className="modifyProfile_container">
+					<div className="modifyProfile_img_box">
+						<input
+							ref={memberImg_ref}
+							type="file"
+							accept="image/*"
+							id="img_upFile"
+							onChange={onLoadFile}
+							style={{ display: 'none' }}
+						/>
+						<img src={image} alt="" className="modifyProfile_img" />
+						<div className="modifiyProfile_icon_wrap">
+							<div className="modifiyProfile_icon">
+								<label className="Img_label" htmlFor="img_upFile">
+									<FaCamera color="#CCCCCC" className="modifiyProfile_camera" />
+								</label>
+							</div>
+						</div>
+					</div>
+					<div className="modifyProfile_right_box">
+						<input
+							className="modifyProfile_input"
+							name="nickname"
+							value={reviseProfile.nickname}
+							onChange={onChangeHandler}
+						></input>
+						<p>2-8자 이내, 특수문자/띄어쓰기 불가</p>
+					</div>
+				</div>
+				<div className="modifyProfile_setbtns">
+					<button className="modifyProfile_btn" onClick={showModal}>
+						로그아웃
+					</button>
+					{modalOpen && <LogoutModal setModalOpen={setModalOpen} />}
+					<button className="modifyProfile_btn2" onClick={isModal}>
+						회원탈퇴
+					</button>
+					{deleteModalOpen && (
+						<DeleteIdModal setDeleteModalOpen={setDeleteModalOpen} />
+					)}
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default ModifyProfile;

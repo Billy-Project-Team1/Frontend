@@ -1,20 +1,30 @@
-import React, { useEffect } from 'react';
+// React import
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+
+// Redux import
 import { useDispatch, useSelector } from 'react-redux';
 import { getPost } from '../../redux/modules/postSlice';
+
+// Style import
+import './Detail.scss';
+
+// Library import
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
+
+// Sclice import
 import 'swiper/css/bundle';
 import { createChatRoom, getMyChatRoom } from '../../redux/modules/ChatSlice';
-import './Detail.scss';
+import { reservationThunk } from '../../redux/modules/reservationSlice';
+
+// Component import
 import DetailHeader from '../../commponents/header/DetailHeader';
 import DetailMap from '../../commponents/maps/DetailMap';
 import DetailCalendar from '../../commponents/calendar/DetailCalendar';
-// import DetailFooter from '../../commponents/footer/DetailFooter';
-import ReviewCard from '../../commponents/Review/ReviewCard';
 import DetailFooter from '../../commponents/footer/DetailFooter';
-import { useState } from 'react';
-import { reservationThunk } from '../../redux/modules/reservationSlice';
+import ReviewCard from '../../commponents/Review/ReviewCard';
+
 
 const Detail = () => {
   //2. 함수 만들 때 수입해서 쓸거임. slice에서 수입해올 때 사용하는 함수임.

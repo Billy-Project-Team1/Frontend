@@ -1,13 +1,22 @@
+// React import
 import React, { useState } from 'react';
-import './ReviewPosting.scss';
-// import components
-import ReviewHeader from '../../commponents/header/ReviewHeader';
-import StarRating from '../../commponents/starRating/StarRating';
-import ImageUploader from '../../commponents/imageUploader/ImageUploader';
+import { Navigate, useNavigate } from 'react-router-dom';
+
+// Redux import
+import { useDispatch, useSelector } from 'react-redux';
 import { addReview } from '../../redux/modules/reviewSlice';
 
+// Style import
+import './ReviewPosting.scss';
+
+// Components import
+import Headers2 from '../../commponents/header/Headers2';
+import StarRating from '../../commponents/starRating/StarRating';
+import ImageUploader from '../../commponents/imageUploader/ImageUploader';
 
 const ReviewPosting = () => {
+	const dispatch = useDispatch();
+
 	const initialState = {
 		reservationId: '',
 		stars: '',
@@ -26,9 +35,39 @@ const ReviewPosting = () => {
 	};
 	console.log(data);
 
+	const onPostingHandler = async (e) => {
+		e.preventDefault();
+		//이미지 form 데이터
+		let formData = new FormData();
+		//a는 이름으로  b를 저장한다. c는 어떠한 타입으로 / form은 c를 굳이 안써도됨
+		// formData.append(a,b)
+		formData.append(
+			'postUploadRequestDto',
+			new Blob([JSON.stringify(data)], { type: 'application/json' })
+		);
+		for (let i = 0; i < img.length; i++) {
+			formData.append('files', img[i]);
+		}
+		// for (let i = 0; i < blockDateDtoList.blockDateDtoList.length; i++) {
+		// 	formData.append('blockDateDtoList', blockDateDtoList.blockDateDtoList[i]);
+		// }
+		try {
+			const data = await dispatch(addReview(formData)).unwrap();
+			console.log(data);
+			if (data) {
+				window.location.replace('/');
+				window.location.replace(`/detail/${data.id}`);
+			} else {
+				console.log(data);
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	return (
 		<div>
-			<ReviewHeader />
+			<Headers2 pageName="리뷰 작성" />
 			<div className="reviewPost_container">
 				<div className="reviewPost_rating_container">
 					<div className="reviewPost_img_box">
@@ -63,7 +102,13 @@ const ReviewPosting = () => {
 					<span className="reviewPost_option"> (선택)</span>
 				</div>
 				<ImageUploader img={img} setImg={setImg} />
-				<div className="reviewPost_submit_btn">작성완료</div>
+				<div
+					className="reviewPost_submit_btn"
+					type="submit"
+					onClickSave={onPostingHandler}
+				>
+					작성완료
+				</div>
 			</div>
 		</div>
 	);
