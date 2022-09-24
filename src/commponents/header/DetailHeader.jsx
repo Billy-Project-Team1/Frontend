@@ -60,7 +60,7 @@ const AddPostingHeader = ({ authorId,postId }) => {
 					)}
 				</div>
 			</div>
-			{modalOpen && <DetailModal showModal={showModal} />}
+			{modalOpen && <DetailModal showModal={showModal} setModalOpen={setModalOpen} postId={postId} />}
 		</div>
 	);
 };

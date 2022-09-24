@@ -1,11 +1,15 @@
+// React import
 import React, { useEffect, useState, useRef } from 'react';
+// Style import
+import './Calendar.scss';
+// Library import 
 import { Calendar } from 'react-multi-date-picker';
+// icon import 
 import {
   HiOutlineCalendar,
   HiOutlineChevronDown,
   HiOutlineChevronUp,
 } from 'react-icons/hi';
-import './Calendar.scss';
 
 const PostingCalendar = ({ setData, data }) => {
   const noDates = useRef();

@@ -1,4 +1,6 @@
+// React import 
 import React, { useState } from 'react';
+// Component import
 import CancelPage from './CancelPage';
 
 const CancelButton = ({ item, billyState, jullyState }) => {

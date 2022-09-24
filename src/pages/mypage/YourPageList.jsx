@@ -1,5 +1,8 @@
+// React import 
 import React, { useState } from 'react';
+// Redux import 
 import {  useSelector } from 'react-redux';
+// Component import
 import YourPageMiddle from '../../commponents/myProfile/YourPageMiddle';
 import UploadCard from '../../commponents/profileCard/UploadCard';
 

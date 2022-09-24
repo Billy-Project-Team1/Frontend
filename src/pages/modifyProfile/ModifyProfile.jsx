@@ -1,13 +1,22 @@
+// React import
 import React, { useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+// Redux import
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate} from 'react-router-dom';
-import profileimg from '../../static/image/profileimg.png';
-import DeleteIdModal from './DeleteIdModal';
-import LogoutModal from './LogoutModal';
+// Style import
 import './ModifyProfile.scss';
+// Image import
+import profileimg from '../../static/image/profileimg.png';
+// Icon import
 import { FaCamera } from 'react-icons/fa';
+// Slice import
 import { editProfileThunk } from '../../redux/modules/profileSlice';
+import { getCookie } from '../../redux/modules/customCookies';
+import { logOut, withdrawal } from '../../redux/modules/memberSlice';
+// Component import
 import Headers from '../../commponents/header/Headers';
+import AlertSmallModal from '../../commponents/modal/AlertSmallModal';
+import AlertLargeModal from '../../commponents/modal/AlertLargeModal';
 
 const ModifyProfile = () => {
   const navigate = useNavigate();
@@ -15,6 +24,8 @@ const ModifyProfile = () => {
 
   const memberImg_ref = useRef(null);
   const is_login = localStorage.getItem('userId');
+  const refreshToken = getCookie('refreshToken');
+  const token = localStorage.getItem('accessToken');
 
   const member = useSelector((state) => state.myprofile.myProfile);
   // console.log(member);
@@ -73,7 +84,7 @@ const ModifyProfile = () => {
   const sumbitHandler = async (event) => {
     if (nickCheck == false) {
       event.preventDefault();
-      alert('잘못된 형식입니다')
+      alert('잘못된 형식입니다');
     } else {
       event.preventDefault();
       let formData = new FormData();
@@ -91,64 +102,85 @@ const ModifyProfile = () => {
   };
 
   //모달창 노출 여부 state
-  const [modalOpen, setModalOpen] = useState(false);
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [modalOn, setModalOn] = useState(false);
+  const [largeModalOpen, setLargeModalOpen] = useState(false);
   //모달창 노출
-  const showModal = () => {
-    setModalOpen(true);
+  const modalTrue = () => {
+    setModalOn(true);
   };
   const isModal = () => {
-    setDeleteModalOpen(true);
+    setLargeModalOpen(true);
   };
 
+  const logout = async () => {
+    dispatch(logOut({ refreshToken, token }));
+  };
+  const Withdrawal = () => {
+    dispatch(withdrawal(is_login));
+  };
+
+
   return (
-		<>
-			<Headers pageName="프로필 편집" onClickSave={sumbitHandler} type="완료" />
-			<div className="modifiyProfile_wrap">
-				<div className="modifyProfile_container">
-					<div className="modifyProfile_img_box">
-						<input
-							ref={memberImg_ref}
-							type="file"
-							accept="image/*"
-							id="img_upFile"
-							onChange={onLoadFile}
-							style={{ display: 'none' }}
-						/>
-						<img src={image} alt="" className="modifyProfile_img" />
-						<div className="modifiyProfile_icon_wrap">
-							<div className="modifiyProfile_icon">
-								<label className="Img_label" htmlFor="img_upFile">
-									<FaCamera color="#CCCCCC" className="modifiyProfile_camera" />
-								</label>
-							</div>
-						</div>
-					</div>
-					<div className="modifyProfile_right_box">
-						<input
-							className="modifyProfile_input"
-							name="nickname"
-							value={reviseProfile.nickname}
-							onChange={onChangeHandler}
-						></input>
-						<p>2-8자 이내, 특수문자/띄어쓰기 불가</p>
-					</div>
-				</div>
-				<div className="modifyProfile_setbtns">
-					<button className="modifyProfile_btn" onClick={showModal}>
-						로그아웃
-					</button>
-					{modalOpen && <LogoutModal setModalOpen={setModalOpen} />}
-					<button className="modifyProfile_btn2" onClick={isModal}>
-						회원탈퇴
-					</button>
-					{deleteModalOpen && (
-						<DeleteIdModal setDeleteModalOpen={setDeleteModalOpen} />
-					)}
-				</div>
-			</div>
-		</>
-	);
+    <>
+      <Headers pageName="프로필 편집" onClickSave={sumbitHandler} type="완료" />
+      <div className="modifiyProfile_wrap">
+        <div className="modifyProfile_container">
+          <div className="modifyProfile_img_box">
+            <input
+              ref={memberImg_ref}
+              type="file"
+              accept="image/*"
+              id="img_upFile"
+              onChange={onLoadFile}
+              style={{ display: 'none' }}
+            />
+            <img src={image} alt="" className="modifyProfile_img" />
+            <div className="modifiyProfile_icon_wrap">
+              <div className="modifiyProfile_icon">
+                <label className="Img_label" htmlFor="img_upFile">
+                  <FaCamera color="#CCCCCC" className="modifiyProfile_camera" />
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className="modifyProfile_right_box">
+            <input
+              className="modifyProfile_input"
+              name="nickname"
+              value={reviseProfile.nickname}
+              onChange={onChangeHandler}
+            ></input>
+            <p>2-8자 이내, 특수문자/띄어쓰기 불가</p>
+          </div>
+        </div>
+        <div className="modifyProfile_setbtns">
+          <button className="modifyProfile_btn" onClick={modalTrue}>
+            로그아웃
+          </button>
+          {modalOn && (
+            <AlertSmallModal
+              setModalOn={setModalOn}
+              body="로그아웃하겠습니까?"
+              buttonType="로그아웃"
+              onClickSubmit={logout}
+            />
+          )}
+          <button className="modifyProfile_btn2" onClick={isModal}>
+            회원탈퇴
+          </button>
+          {largeModalOpen && (
+            <AlertLargeModal
+              setLargeModalOpen={setLargeModalOpen}
+              body1="탈퇴시 사용자님의 정보가 모두 삭제됩니다."
+              body2='탈퇴하시겠습니까?'
+              buttonType="탈퇴"
+              onClickSubmit={Withdrawal}
+            />
+          )}
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default ModifyProfile;

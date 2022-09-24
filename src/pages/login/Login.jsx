@@ -8,9 +8,9 @@ import kakaoLoginimg from '../../static/image/kakao_login_original.png';
 import { apis } from '../../shared/api';
 import { KAKAO_AUTH_URL } from '../../shared/socialAuth';
 import { Cookies } from 'react-cookie';
-import LginHeader from '../../commponents/header/LoginHeader';
 import './Login.scss';
 import { setCookie } from '../../redux/modules/customCookies';
+import Headers2 from '../../commponents/header/Headers2';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ const Login = () => {
 
   return (
     <>
-      <LginHeader />
+      <Headers2 />
       <div className="Login_Wrap">
         <div className="Login_Email_Box">
           <div>이메일</div>

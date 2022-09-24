@@ -1,15 +1,19 @@
+// React import 
 import React, { useState } from 'react';
+// Redux import 
+import { useSelector } from 'react-redux';
+// Style import 
+import '../posting/Posting.scss';
+// Component import 
 import Headers from '../../commponents/header/Headers';
 import ImageUploader from '../../commponents/imageUploader/ImageUploader';
 import Calendar from '../../commponents/calendar/Calendar';
 import PostingMap from '../../commponents/maps/PostingMap';
 import SearchPlace from '../../commponents/maps/SearchPlace';
-import '../posting/Posting.scss';
-import { useSelector } from 'react-redux';
 import Footer from '../../commponents/footer/Footer';
 
 const ModifyPosting = () => {
-  const [img, setImg] = useState([]); // file
+  const [img, setImg] = useState([]);
   const [blockDateDtoList, setBlockDateDtoList] = useState([]);
   const [searchMapModal, setSearchMapModal] = useState(false);
 
@@ -24,7 +28,7 @@ const ModifyPosting = () => {
     detailLocation: `${detailPost.detailLocation}`,
     latitude: `${detailPost.latitude}`,
     longitude: `${detailPost.longitude}`,
-	blockDateDtoList: `${detailPost.blockDateDtoList}`
+    blockDateDtoList: `${detailPost.blockDateDtoList}`,
   };
   const [revisePosting, setRevisePosting] = useState(initialState);
 
@@ -71,7 +75,6 @@ const ModifyPosting = () => {
               maxLength={9}
             />
           </div>
-
           <div className="posting_deposit">
             <label className="posting_deposit_label">보증금</label>
             <input
@@ -89,7 +92,6 @@ const ModifyPosting = () => {
             />
           </div>
         </div>
-
         <div className="posting_content">
           <textarea
             type="text"
@@ -116,7 +118,7 @@ const ModifyPosting = () => {
 					)}
 				</div> */}
       </div>
-	  <Footer />
+      <Footer />
     </div>
   );
 };

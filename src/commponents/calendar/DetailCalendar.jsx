@@ -1,8 +1,12 @@
+// React import
 import React, { useEffect, useState, useRef } from 'react';
-import { Calendar, DateObject } from 'react-multi-date-picker';
-import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
+// Style import
 import './Calendar.scss';
-import { Navigate } from 'react-router-dom';
+// Library import
+import { Calendar, DateObject } from 'react-multi-date-picker';
+// Icon import
+import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
+
 
 const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   const noDates = useRef();

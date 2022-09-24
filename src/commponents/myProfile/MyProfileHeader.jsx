@@ -1,8 +1,12 @@
+// React import
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import profileimg from '../../static/image/profileimg.png';
+// Style import
 import './MyProfileHeader.scss';
+// Icon import
 import { Icon } from '@iconify/react';
+// Image import 
+import profileimg from '../../static/image/profileimg.png';
 
 const MyProfileHeader = ({ profile }) => {
   const navigate = useNavigate();

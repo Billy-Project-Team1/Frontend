@@ -1,8 +1,15 @@
+// React import
 import React, { useEffect, useState } from 'react';
+// Redux import
+import { useDispatch } from 'react-redux';
+// Style import
 import './CancelPage.scss';
+// Image import
 import dailycost from '../../static/image/dailycost.svg';
 import deposit from '../../static/image/deposit.svg';
+// Icon import
 import { HiOutlineChevronLeft } from 'react-icons/hi';
+// Slice import
 import {
   billyReservationCntThunk,
   billyStateListThunk,
@@ -11,7 +18,6 @@ import {
   jullyStateListThunk,
   reservationCancelThunk,
 } from '../../redux/modules/reservationSlice';
-import { useDispatch } from 'react-redux';
 
 const CancelPage = ({
   setModalOpen,
@@ -27,7 +33,6 @@ const CancelPage = ({
   jullyState,
 }) => {
   const dispatch = useDispatch();
-  const is_login = localStorage.getItem('userId');
   const closeModal = () => {
     setModalOpen(false);
   };
@@ -39,20 +44,10 @@ const CancelPage = ({
     state: '3',
   });
 
-  const [test, setTest] = useState(false);
   const [reload, setReload] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setCancelMessage({ ...cancelMessage, [name]: value });
-  };
-  console.log(cancelMessage);
-
-  const jullyhandleChange = (e) => {
-    const { name, value } = e.target;
-    setJullyCancelMessage({ ...jullyCancelMessage, [name]: value });
-  };
-  console.log(jullyCancelMessage);
+  const [stateReload, setStateReload] = useState(false);
+  const [btnState, setBtnState] = useState(false);
+  const [JullyBtnState, JullySetBtnState] = useState(false);
 
   const dailyPriceComma = (a) => {
     return a?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -78,6 +73,29 @@ const CancelPage = ({
       ')'
     );
   }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCancelMessage({ ...cancelMessage, [name]: value });
+    if (cancelMessage.cancelMessage.length >= 0) {
+      setBtnState(true);
+    } else {
+      setBtnState(false);
+    }
+  };
+  console.log(cancelMessage);
+
+  const jullyhandleChange = (e) => {
+    const { name, value } = e.target;
+    setJullyCancelMessage({ ...jullyCancelMessage, [name]: value });
+    if (jullyCancelMessage.cancelMessage.length >= 0) {
+      JullySetBtnState(true);
+    } else {
+      JullySetBtnState(false);
+    }
+  };
+  console.log(jullyCancelMessage);
+
   const cancelHandler = async (a, b) => {
     try {
       const response = await dispatch(
@@ -105,12 +123,12 @@ const CancelPage = ({
     try {
       const response = await dispatch(jullyStateChangeThunk({ a, b })).unwrap();
       if (response) {
-        setTest(true);
+        setStateReload(true);
       }
     } catch {}
   };
   useEffect(() => {
-    if (jullyState !== undefined && test == true) {
+    if (jullyState !== undefined && stateReload == true) {
       async function fetchJullyState() {
         dispatch(jullyStateListThunk(jullyState));
         const response = await dispatch(jullyReservationCntThunk()).unwrap();
@@ -120,7 +138,7 @@ const CancelPage = ({
       }
       fetchJullyState();
     }
-  }, [test]);
+  }, [stateReload]);
 
   return (
     <div className="cancelpage_modal">
@@ -218,6 +236,7 @@ const CancelPage = ({
             <button
               className="cancelpage_cancel_btn"
               onClick={() => cancelHandler(reservationId, cancelMessage)}
+              disabled={btnState ? false : true}
             >
               예약 취소하기
             </button>
@@ -227,6 +246,7 @@ const CancelPage = ({
               onClick={() =>
                 jullyCancelHandler(reservationId, jullyCancelMessage)
               }
+              disabled={JullyBtnState ? false : true}
             >
               예약 취소하기
             </button>
@@ -236,6 +256,7 @@ const CancelPage = ({
               onClick={() =>
                 jullyCancelHandler(reservationId, jullyCancelMessage)
               }
+              disabled={JullyBtnState ? false : true}
             >
               예약 취소하기
             </button>

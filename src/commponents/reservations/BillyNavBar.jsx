@@ -1,8 +1,11 @@
-import React from 'react';
-import { useEffect } from 'react';
+// React import 
+import React, {useEffect} from 'react';
+// Redux import 
 import { useDispatch, useSelector } from 'react-redux';
-import { billyReservationCntThunk } from '../../redux/modules/reservationSlice';
+// Stlye import 
 import './BillyNavBar.scss';
+// Slice import 
+import { billyReservationCntThunk } from '../../redux/modules/reservationSlice';
 
 // 빌리예약
 const BillyNavBar = ({ reservationsState, setReservationsState,setMyPageState }) => {

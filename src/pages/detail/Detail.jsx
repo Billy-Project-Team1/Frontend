@@ -4,17 +4,17 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
-import { getPost } from '../../redux/modules/postSlice';
 
 // Style import
 import './Detail.scss';
+import 'swiper/css/bundle';
 
 // Library import
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 
 // Sclice import
-import 'swiper/css/bundle';
+import { getPost } from '../../redux/modules/postSlice';
 import { createChatRoom, getMyChatRoom } from '../../redux/modules/ChatSlice';
 import { reservationThunk } from '../../redux/modules/reservationSlice';
 
@@ -125,7 +125,7 @@ const Detail = () => {
 				className="detail_header"
 				
 			>
-				<DetailHeader authorId={detailPost.memberUserId} />
+				<DetailHeader authorId={detailPost.memberUserId} postId={postid}/>
 			</div>
 			<div className="detail_image_box">
 				<Swiper pagination={true} modules={[Pagination]} className="mySwiper">
