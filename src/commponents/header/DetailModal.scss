@@ -1,6 +1,6 @@
 @import '../../common/color.scss';
 
-.detail_modal_background {
+.detailModal_background {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +10,7 @@
   z-index: 2;
 }
 
-.detail_modal_container {
+.detailModal_container {
   padding: 0 8px;
   position: fixed;
   width: 100%;
@@ -22,18 +22,18 @@
   bottom: 3rem;
 }
 
-.detail_btn_first {
+.detailModal_btn_first {
   flex-direction: column;
 }
 
-.detail_edit_btn {
+.detailModal_edit_btn {
   height: 57px;
   background: $color-light;
   border-radius: 12px 12px 0px 0px;
   padding: 16px;
 }
 
-.detail_del_btn {
+.detailModal_del_btn {
   height: 57px;
   background: $color-light;
   border-radius: 0px 0px 12px 12px;
@@ -43,7 +43,7 @@
   padding: 16px;
 }
 
-.detail_cancel_btn {
+.detailModal_cancel_btn {
   top: 69.52%;
   bottom: 0%;
   background: $color-light;

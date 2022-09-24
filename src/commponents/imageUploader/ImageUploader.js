@@ -38,7 +38,7 @@ const ImageUploader = ({ img, setImg }) => {
 		}
 	};
 
-	console.log(img)
+	// console.log(img)
 
 	const sendData = () => {
 		console.log('sendData');
