@@ -1,9 +1,9 @@
 // React import
 import React, { useEffect, useState, useRef } from 'react';
-// Style import
-import './Calendar.scss';
 // Library import
 import { Calendar, DateObject } from 'react-multi-date-picker';
+// Style import
+import './Calendar.scss';
 // Icon import
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 
