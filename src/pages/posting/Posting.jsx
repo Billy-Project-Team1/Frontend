@@ -126,7 +126,7 @@ const Posting = () => {
 							name="price"
 							value={data.price}
 							onChange={onChangeHandler}
-							maxlength={9}
+							maxLength={9}
 						/>
 					</div>
 
@@ -143,7 +143,7 @@ const Posting = () => {
 							name="deposit"
 							value={data.deposit}
 							onChange={onChangeHandler}
-							maxlength={9}
+							maxLength={9}
 							// onChange={e => form({setDeposit: e.target.value.replace(/[^0-9]/g, "")})} />
 						/>
 					</div>
