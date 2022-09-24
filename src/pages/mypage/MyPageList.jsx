@@ -1,13 +1,10 @@
-// react import
+// React import
 import React, { useState } from 'react';
-
-// redux import
+// Redux import
 import { useSelector } from 'react-redux';
-
-// style import
+// Style import
 import './MyPageList.scss';
-
-// components import
+// Components import
 import MyProfileMiddle from '../../commponents/myProfile/MyProfileMiddle';
 import BillyNavBar from '../../commponents/reservations/BillyNavBar';
 import BillyReservation from '../../commponents/reservations/BillyReservation';

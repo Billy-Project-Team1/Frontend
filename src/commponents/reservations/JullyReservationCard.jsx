@@ -1,16 +1,21 @@
-import React from 'react';
+// React import
+import React, { useEffect, useState } from 'react';
+// Redux import
+import { useDispatch, useSelector } from 'react-redux';
+// Style import
 import './ReservationCard.scss';
+// Image import
 import dailycost from '../../static/image/dailycost.svg';
 import deposit from '../../static/image/deposit.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+// Slice import
 import {
   jullyReservationCntThunk,
   jullyStateChangeThunk,
   jullyStateListThunk,
 } from '../../redux/modules/reservationSlice';
-import ApprovalModal from './ApprovalModal';
+// Component import
 import CancelButton from './CancelButton';
+import AlertLargeModal from '../modal/AlertLargeModal';
 
 const JullyReservationCard = ({ jullyState }) => {
   const dispatch = useDispatch();
@@ -24,9 +29,9 @@ const JullyReservationCard = ({ jullyState }) => {
     state: '5',
   });
   const [test, setTest] = useState();
-  const [modalOpen, setModalOpen] = useState(false);
-  const showModal = () => {
-    setModalOpen(true);
+  const [largeModalOpen, setLargeModalOpen] = useState(false);
+  const isModal = () => {
+    setLargeModalOpen(true);
   };
   useEffect(() => {
     dispatch(jullyStateListThunk(jullyState));
@@ -75,7 +80,7 @@ const JullyReservationCard = ({ jullyState }) => {
   };
   useEffect(() => {
     dispatch(jullyStateListThunk(jullyState));
-    dispatch(jullyReservationCntThunk())
+    dispatch(jullyReservationCntThunk());
   }, [test]);
 
   return (
@@ -163,16 +168,17 @@ const JullyReservationCard = ({ jullyState }) => {
                     <>
                       <button
                         className="reservationcard_btn"
-                        onClick={() => showModal()}
+                        onClick={() => isModal()}
                       >
                         전달 완료
                       </button>
-                      {modalOpen && (
-                        <ApprovalModal
-                          word="전달"
+                      {largeModalOpen && (
+                        <AlertLargeModal
+                          setLargeModalOpen={setLargeModalOpen}
+                          body1="전달 완료시 대여가 확정됩니다."
+                          body2="전달을 완료하시겠습니까?"
                           buttonType="전달 완료"
-                          onClickSave={jullyStateHandler}
-                          setModalOpen={setModalOpen}
+                          onClickSubmit={jullyStateHandler}
                           data={item.reservationId}
                           data2={handleDone}
                         />
@@ -185,17 +191,17 @@ const JullyReservationCard = ({ jullyState }) => {
                   <>
                     <button
                       className="reservationcard_btn"
-                      onClick={() => showModal()}
-                      // jullyStateHandler(item.reservationId, returnDone)
+                      onClick={() => isModal()}
                     >
                       반납 완료
                     </button>
-                    {modalOpen && (
-                      <ApprovalModal
-                        word="반납"
-                        buttonType="반납 완로"
-                        onClickSave={jullyStateHandler}
-                        setModalOpen={setModalOpen}
+                    {largeModalOpen && (
+                      <AlertLargeModal
+                        setLargeModalOpen={setLargeModalOpen}
+                        body1="반납 완료시 대여가 확정됩니다."
+                        body2="반납을 완료하시겠습니까?"
+                        buttonType="반납 완료"
+                        onClickSubmit={jullyStateHandler}
                         data={item.reservationId}
                         data2={returnDone}
                       />

@@ -114,3 +114,7 @@
   font-size: 1rem;
   font-weight: 600;
 }
+.cancelpage_cancel_btn:disabled {
+  background-color: $color-light;
+  color: $color-placeholder;
+}

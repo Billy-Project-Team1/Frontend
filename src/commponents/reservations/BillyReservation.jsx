@@ -1,4 +1,6 @@
+// React import
 import React from 'react';
+// Component import
 import ReservationCard from '../reservations/ReservationCard';
 
 const billyReservation = ({ reservationsState, setMyPageState }) => {

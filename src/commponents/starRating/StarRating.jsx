@@ -1,6 +1,9 @@
+// React import 
 import React, { useState } from 'react';
-import { FaStar } from 'react-icons/fa';
+// Style import
 import './StarRating.scss';
+// Icon import 
+import { FaStar } from 'react-icons/fa';
 
 const StarRating = ({ onChangeHandler }) => {
   const [rating, setRating] = useState(null);

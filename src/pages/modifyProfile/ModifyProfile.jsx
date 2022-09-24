@@ -1,16 +1,24 @@
+// React import
 import React, { useRef, useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import profileimg from '../../static/image/profileimg.png';
-import DeleteIdModal from './DeleteIdModal';
-import LogoutModal from './LogoutModal';
+// Redux import
+import { useDispatch, useSelector } from 'react-redux';
+// Style import
 import './ModifyProfile.scss';
+// Image import
+import profileimg from '../../static/image/profileimg.png';
+// Icon import
 import { FaCamera } from 'react-icons/fa';
-import {
-  editProfileThunk,
-  getProfileThunk,
-} from '../../redux/modules/profileSlice';
+
+// Slice import
+import { editProfileThunk,  getProfileThunk, } from '../../redux/modules/profileSlice';
+import { getCookie } from '../../redux/modules/customCookies';
+import { logOut, withdrawal } from '../../redux/modules/memberSlice';
+// Component import
+
 import Headers from '../../commponents/header/Headers';
+import AlertSmallModal from '../../commponents/modal/AlertSmallModal';
+import AlertLargeModal from '../../commponents/modal/AlertLargeModal';
 
 const ModifyProfile = () => {
   const navigate = useNavigate();
@@ -18,6 +26,8 @@ const ModifyProfile = () => {
 
   const memberImg_ref = useRef(null);
   const is_login = localStorage.getItem('userId');
+  const refreshToken = getCookie('refreshToken');
+  const token = localStorage.getItem('accessToken');
 
   useEffect(() => {
     async function getProfile() {
@@ -105,15 +115,23 @@ const ModifyProfile = () => {
   };
 
   //모달창 노출 여부 state
-  const [modalOpen, setModalOpen] = useState(false);
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [modalOn, setModalOn] = useState(false);
+  const [largeModalOpen, setLargeModalOpen] = useState(false);
   //모달창 노출
-  const showModal = () => {
-    setModalOpen(true);
+  const modalTrue = () => {
+    setModalOn(true);
   };
   const isModal = () => {
-    setDeleteModalOpen(true);
+    setLargeModalOpen(true);
   };
+
+  const logout = async () => {
+    dispatch(logOut({ refreshToken, token }));
+  };
+  const Withdrawal = () => {
+    dispatch(withdrawal(is_login));
+  };
+
 
   return (
     <>
@@ -149,15 +167,28 @@ const ModifyProfile = () => {
           </div>
         </div>
         <div className="modifyProfile_setbtns">
-          <button className="modifyProfile_btn" onClick={showModal}>
+          <button className="modifyProfile_btn" onClick={modalTrue}>
             로그아웃
           </button>
-          {modalOpen && <LogoutModal setModalOpen={setModalOpen} />}
+          {modalOn && (
+            <AlertSmallModal
+              setModalOn={setModalOn}
+              body="로그아웃하겠습니까?"
+              buttonType="로그아웃"
+              onClickSubmit={logout}
+            />
+          )}
           <button className="modifyProfile_btn2" onClick={isModal}>
             회원탈퇴
           </button>
-          {deleteModalOpen && (
-            <DeleteIdModal setDeleteModalOpen={setDeleteModalOpen} />
+          {largeModalOpen && (
+            <AlertLargeModal
+              setLargeModalOpen={setLargeModalOpen}
+              body1="탈퇴시 사용자님의 정보가 모두 삭제됩니다."
+              body2='탈퇴하시겠습니까?'
+              buttonType="탈퇴"
+              onClickSubmit={Withdrawal}
+            />
           )}
         </div>
       </div>

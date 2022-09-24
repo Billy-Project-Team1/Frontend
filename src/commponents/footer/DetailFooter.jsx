@@ -1,10 +1,15 @@
+// React import
 import React from 'react';
-import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+// Redux import
+import { useDispatch } from 'react-redux';
+// Style import
+import './DetailFooter.scss';
+// Icon import
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
+// Slice import
 import { createChatRoom } from '../../redux/modules/ChatSlice';
 import { dibsPost } from '../../redux/modules/postSlice';
-import './DetailFooter.scss';
 
 const DetailFooter = ({
   authorId,

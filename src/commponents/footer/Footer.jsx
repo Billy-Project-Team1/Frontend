@@ -1,23 +1,26 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+// React importy
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+// Style import
+import './Footer.scss';
+// Icon import
 import {
   HiOutlineHome,
   HiSearch,
   HiOutlinePlusCircle,
   HiOutlineChat,
   HiOutlineUser,
-} from 'react-icons/hi'; //비활성화 메인
-import { useNavigate, useLocation } from 'react-router-dom';
-import './Footer.scss';
-import LoginModal from './LoginModal';
+} from 'react-icons/hi';
+// Component import
+import AlertSmallModal from '../modal/AlertSmallModal';
 
 const Footer = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   //로그인 모달
-  const [modalOpen, setModalOpen] = useState(false);
-  const showModal = () => {
-    setModalOpen(true);
+  const [modalOn, setModalOn] = useState(false);
+  const modalTrue = () => {
+    setModalOn(true);
   };
   //로그인 함수
   const is_login = localStorage.getItem('userId');
@@ -26,23 +29,26 @@ const Footer = () => {
     if (is_login) {
       navigate('/posting');
     } else {
-      showModal();
+      modalTrue();
     }
   };
   const chattingPage = () => {
     if (is_login) {
       navigate('/chatList');
     } else {
-      showModal();
+      modalTrue();
     }
   };
   const myPage = () => {
     if (is_login) {
       navigate(`/mypage/${is_login}`);
     } else {
-      showModal();
+      modalTrue();
     }
   };
+  const login =()=>{
+    navigate('/login')
+  }
   // useEffect(() => {
   //   document.body.style.cssText = `
   //     position: fixed;
@@ -89,7 +95,9 @@ const Footer = () => {
           >
             <HiOutlineChat
               className="footer_icon"
-              style={{ color: pathname === '/chatList' ? '#212121' : '#CCCCCC' }}
+              style={{
+                color: pathname === '/chatList' ? '#212121' : '#CCCCCC',
+              }}
             />
           </div>
           <div
@@ -106,8 +114,13 @@ const Footer = () => {
             />
           </div>
         </div>
-        {modalOpen && (
-          <LoginModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
+        {modalOn && (
+          <AlertSmallModal
+            setModalOn={setModalOn}
+            body="로그인이 필요한 페이지입니다"
+            buttonType="로그인"
+            onClickSubmit={login}
+          />
         )}
       </div>
     </div>

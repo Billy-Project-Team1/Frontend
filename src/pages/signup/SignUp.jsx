@@ -6,7 +6,7 @@ import { BsCheckSquare, BsCheckSquareFill } from 'react-icons/bs';
 import './SignUp.scss';
 import { useDispatch } from 'react-redux';
 import { apis } from '../../shared/api';
-import SingnUpHeader from '../../commponents/header/LoginHeader'
+import Headers2 from '../../commponents/header/Headers2';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -125,7 +125,7 @@ const SignUp = () => {
 
   return (
     <>
-    <SingnUpHeader />
+    <Headers2/>
     <div className="SignUp_Wrap">
       <form onSubmit={onSubmitHandler}>
         <div className="SignUp_Top_Name">회원가입</div>

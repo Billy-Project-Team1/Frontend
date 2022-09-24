@@ -1,12 +1,11 @@
-// react import
+// React import
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
-// redux import
+// Redux import
+import { useDispatch, useSelector } from 'react-redux';
+// Slice import 
 import { getmyDibsData, getmyUpLoadData } from '../../redux/modules/memberSlice';
 import { getProfileThunk } from '../../redux/modules/profileSlice';
-import { useDispatch, useSelector } from 'react-redux';
-
 // component import
 import MyProfileHeader from '../../commponents/myProfile/MyProfileHeader';
 import MyPageList from './MyPageList';
