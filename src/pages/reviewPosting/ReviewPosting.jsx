@@ -1,6 +1,6 @@
 // React import
 import React, { useState, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,19 +15,16 @@ import StarRating from '../../commponents/starRating/StarRating';
 import ImageUploader from '../../commponents/imageUploader/ImageUploader';
 
 const ReviewPosting = () => {
+	const { postId, reservationId } = useParams();
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
-
 	const initialState = {
-		reservationId: '',
-		stars: '',
+		reservationId: reservationId,
+		star: 0,
 		comment: '',
 	};
 	const [data, setData] = useState(initialState);
 	const [img, setImg] = useState([]);
-
-	useEffect(() => {
-		dispatch(addReview());
-	}, [dispatch]);
 
 	const onChangeHandler = (e) => {
 		const { name, value } = e.target;
@@ -42,21 +39,18 @@ const ReviewPosting = () => {
 		//a는 이름으로  b를 저장한다. c는 어떠한 타입으로 / form은 c를 굳이 안써도됨
 		// formData.append(a,b)
 		formData.append(
-			'postUploadRequestDto',
+			'reviewRequestDto',
 			new Blob([JSON.stringify(data)], { type: 'application/json' })
 		);
 		for (let i = 0; i < img.length; i++) {
 			formData.append('files', img[i]);
 		}
-		// for (let i = 0; i < blockDateDtoList.blockDateDtoList.length; i++) {
-		// 	formData.append('blockDateDtoList', blockDateDtoList.blockDateDtoList[i]);
-		// }
+
 		try {
 			const data = await dispatch(addReview(formData)).unwrap();
 			console.log(data);
 			if (data) {
-				window.location.replace('/');
-				window.location.replace(`/detail/${data.id}`);
+				navigate(`/detail/${postId}`);
 			} else {
 				console.log(data);
 			}
@@ -105,7 +99,7 @@ const ReviewPosting = () => {
 				<div
 					className="reviewPost_submit_btn"
 					type="submit"
-					onClickSave={onPostingHandler}
+					onClick={onPostingHandler}
 				>
 					작성완료
 				</div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Headers.scss';
 import DetailModal from '../header/DetailModal';
 import { useNavigate } from 'react-router-dom';
@@ -15,34 +15,54 @@ const AddPostingHeader = ({ authorId,postId }) => {
     setModalOpen(!modalOpen);
   };
 
-  return (
-    <div className="detail_header_container">
-      <div className="detail_header_wrap">
-        <div className="mypage_header_content">
-          <HiOutlineChevronLeft
-            style={{ marginRight: '22px' }}
-            color="#656565"
-            size="24px"
-            onClick={() => navigate(-1)}
-          />
-          {/* 4. 삼항연산자. props 이용해하기. api 확인~ */}
+  	const [scrollPosition, setScrollPosition] = useState(0);
 
-          {userId === authorId ? (
-            <div>
-              <img
-                src={dotIcon}
-                style={{ width: '28px' }}
-                onClick={() => showModal()}
-              />
-            </div>
-          ) : (
-            ''
-          )}
-        </div>
-      </div>
-      {modalOpen && <DetailModal showModal={showModal} postId={postId}/>}
-    </div>
-  );
+		const updateScroll = () => {
+			setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+		};
+
+		useEffect(() => {
+			window.addEventListener('scroll', updateScroll);
+			return () => {
+				window.removeEventListener('scroll', updateScroll); //unmount시 해제되도록
+			};
+		}, []);
+    console.log(scrollPosition)
+
+  return (
+		<div
+			className="detail_header_container"
+			style={{
+				backgroundColor:
+					scrollPosition < 390 ? 'transparent' : 'rgb(255, 255, 255)',
+			}}
+		>
+			<div className="detail_header_wrap">
+				<div className="mypage_header_content">
+					<HiOutlineChevronLeft
+						style={{ marginRight: '22px' }}
+						color="#656565"
+						size="24px"
+						onClick={() => navigate(-1)}
+					/>
+					{/* 4. 삼항연산자. props 이용해하기. api 확인~ */}
+
+					{userId === authorId ? (
+						<div>
+							<img
+								src={dotIcon}
+								style={{ width: '28px' }}
+								onClick={() => showModal()}
+							/>
+						</div>
+					) : (
+						''
+					)}
+				</div>
+			</div>
+			{modalOpen && <DetailModal showModal={showModal} />}
+		</div>
+	);
 };
 
 export default AddPostingHeader;
