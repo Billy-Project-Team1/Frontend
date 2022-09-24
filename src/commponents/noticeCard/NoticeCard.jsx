@@ -10,12 +10,12 @@ const NoticeCard = () => {
         </div>
         <div className="noticecard_right">
           <div className="noticecard_right_top">
-            <div>1</div>
-            <div>2</div>
+            <div className="noticecard_right_top_class">예약 완료</div>
+            <div className="noticecard_right_top_clock">9월 12일</div>
           </div>
           <div className="noticecard_right_bottom">
-            <div>3</div>
-            <div>4</div>
+            <div>아무튼 내가 최고 최고심 마우스 패드</div>
+            <div>4월 19일 - 4월 20일 (0박)</div>
           </div>
         </div>
       </div>

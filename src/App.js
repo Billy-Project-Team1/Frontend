@@ -16,7 +16,7 @@ import Search from './pages/search/Search';
 import ChattingRoom from './pages/chatting/ChattingRoom';
 import Chat from './pages/chatting/Chat';
 import ReviewPosting from './pages/reviewPosting/ReviewPosting';
-import Notice from './commponents/notice/Notice';
+import Notice from './pages/notice/Notice'
 
 
 function App() {

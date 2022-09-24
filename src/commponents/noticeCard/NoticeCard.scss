@@ -35,9 +35,24 @@
 .noticecard_right_top {
   display: flex;
   flex-direction: row;
+  gap: 5px;
+}
+.noticecard_right_top_class {
+  font-size: 15px;
+  color: $color-primary;
+
 }
 
+.noticecard_right_top_clock {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: $color-placeholder;
+  justify-content: end;
+}
 .noticecard_right_bottom {
   display: flex;
   flex-direction: column;
+  font-size: 14px;
+  color: $color-medium;
 }
