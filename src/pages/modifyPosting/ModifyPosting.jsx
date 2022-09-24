@@ -7,6 +7,7 @@ import SearchPlace from '../../commponents/maps/SearchPlace';
 import '../posting/Posting.scss';
 import { useSelector } from 'react-redux';
 import Footer from '../../commponents/footer/Footer';
+import ModifyPlace from '../../commponents/maps/ModifyPlace';
 
 const ModifyPosting = () => {
   const [img, setImg] = useState([]); // file
@@ -14,6 +15,7 @@ const ModifyPosting = () => {
   const [searchMapModal, setSearchMapModal] = useState(false);
 
   const detailPost = useSelector((state) => state.post.post);
+  console.log(detailPost);
   // console.log(detailPost)
   const initialState = {
     title: `${detailPost.title}`,
@@ -24,7 +26,7 @@ const ModifyPosting = () => {
     detailLocation: `${detailPost.detailLocation}`,
     latitude: `${detailPost.latitude}`,
     longitude: `${detailPost.longitude}`,
-	blockDateDtoList: `${detailPost.blockDateDtoList}`
+    blockDateDtoList: `${detailPost.blockDateDtoList}`,
   };
   const [revisePosting, setRevisePosting] = useState(initialState);
 
@@ -105,18 +107,21 @@ const ModifyPosting = () => {
             <Calendar setData={setBlockDateDtoList} data={blockDateDtoList} />
           </div>
         </div>
-        {/* <div className="posting_map_wrap">
-					<PostingMap setSearchMapModal={setSearchMapModal} data={data} />
-					{searchMapModal && (
-						<SearchPlace
-							setSearchMapModal={setSearchMapModal}
-							setData={setData}
-							data={data}
-						/>
-					)}
-				</div> */}
+        <div className="posting_map_wrap">
+          <PostingMap
+            setSearchMapModal={setSearchMapModal}
+            data={revisePosting}
+          />
+          {searchMapModal && (
+            <ModifyPlace
+              setSearchMapModal={setSearchMapModal}
+              setData={setRevisePosting}
+              data={revisePosting}
+            />
+          )}
+        </div>
       </div>
-	  <Footer />
+      <Footer />
     </div>
   );
 };

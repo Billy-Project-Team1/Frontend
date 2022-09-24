@@ -7,6 +7,7 @@ import post from './modules/postSlice';
 import searchPost from './modules/SearchSlice';
 import billystate from './modules/reservationSlice';
 import review from './modules/reviewSlice';
+import notification from './modules/notificationSlice';
 
 export default configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export default configureStore({
     searchPost,
     billystate,
     review,
+    notification,
   },
 });
