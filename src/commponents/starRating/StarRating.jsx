@@ -15,7 +15,7 @@ const StarRating = ({ onChangeHandler }) => {
 						<input
 							className="starRating_rating"
 							type="radio"
-							name="stars"
+							name="star"
 							value={ratingValue}
 							onChange={(e) => onChangeHandler(e)}
 							onClick={() => setRating(ratingValue)}

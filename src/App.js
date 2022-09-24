@@ -38,7 +38,7 @@ function App() {
         <Route path="/chatList" element={<ChattingRoom />} />
         {/* <Route path="/chat/:roomId" element={<Chat />} /> */}
         <Route path="/chat/room/:postId/:roomId" element={<Chat />} />
-        <Route path="/reviewPosting" element={<ReviewPosting />} />
+        <Route path="/reviewPosting/:postId/:reservationId" element={<ReviewPosting />} />
       </Routes>
 
   );

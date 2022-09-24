@@ -6,6 +6,7 @@ import ChatSlice from './modules/ChatSlice';
 import post from './modules/postSlice';
 import searchPost from './modules/SearchSlice';
 import billystate from './modules/reservationSlice';
+import review from './modules/reviewSlice';
 
 export default configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export default configureStore({
     post,
     searchPost,
     billystate,
+    review,
   },
 });
