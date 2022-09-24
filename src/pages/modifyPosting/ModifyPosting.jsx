@@ -11,6 +11,7 @@ import Calendar from '../../commponents/calendar/Calendar';
 import PostingMap from '../../commponents/maps/PostingMap';
 import SearchPlace from '../../commponents/maps/SearchPlace';
 import Footer from '../../commponents/footer/Footer';
+import ModifyPlace from '../../commponents/maps/ModifyPlace';
 
 const ModifyPosting = () => {
   const [img, setImg] = useState([]);
@@ -18,6 +19,7 @@ const ModifyPosting = () => {
   const [searchMapModal, setSearchMapModal] = useState(false);
 
   const detailPost = useSelector((state) => state.post.post);
+  console.log(detailPost);
   // console.log(detailPost)
   const initialState = {
     title: `${detailPost.title}`,
@@ -107,16 +109,19 @@ const ModifyPosting = () => {
             <Calendar setData={setBlockDateDtoList} data={blockDateDtoList} />
           </div>
         </div>
-        {/* <div className="posting_map_wrap">
-					<PostingMap setSearchMapModal={setSearchMapModal} data={data} />
-					{searchMapModal && (
-						<SearchPlace
-							setSearchMapModal={setSearchMapModal}
-							setData={setData}
-							data={data}
-						/>
-					)}
-				</div> */}
+        <div className="posting_map_wrap">
+          <PostingMap
+            setSearchMapModal={setSearchMapModal}
+            data={revisePosting}
+          />
+          {searchMapModal && (
+            <ModifyPlace
+              setSearchMapModal={setSearchMapModal}
+              setData={setRevisePosting}
+              data={revisePosting}
+            />
+          )}
+        </div>
       </div>
       <Footer />
     </div>

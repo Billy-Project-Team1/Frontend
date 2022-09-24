@@ -9,11 +9,13 @@ import './ModifyProfile.scss';
 import profileimg from '../../static/image/profileimg.png';
 // Icon import
 import { FaCamera } from 'react-icons/fa';
+
 // Slice import
-import { editProfileThunk } from '../../redux/modules/profileSlice';
+import { editProfileThunk,  getProfileThunk, } from '../../redux/modules/profileSlice';
 import { getCookie } from '../../redux/modules/customCookies';
 import { logOut, withdrawal } from '../../redux/modules/memberSlice';
 // Component import
+
 import Headers from '../../commponents/header/Headers';
 import AlertSmallModal from '../../commponents/modal/AlertSmallModal';
 import AlertLargeModal from '../../commponents/modal/AlertLargeModal';
@@ -27,13 +29,24 @@ const ModifyProfile = () => {
   const refreshToken = getCookie('refreshToken');
   const token = localStorage.getItem('accessToken');
 
-  const member = useSelector((state) => state.myprofile.myProfile);
-  // console.log(member);
-  const initialState = {
-    nickname: `${member.nickname}`,
-    profileUrl: member.profileUrl,
-  };
-  const [reviseProfile, setReviseProfile] = useState(initialState);
+  useEffect(() => {
+    async function getProfile() {
+      const result = await dispatch(getProfileThunk(is_login)).unwrap();
+      if (result) {
+        setReviseProfile({
+          nickname: `${result.nickname}`,
+          profileUrl: `${result.profileUrl}`,
+        });
+        setImage(result.profileUrl)
+      }
+    }
+    getProfile();
+  }, []);
+  const member = useSelector((state) => state.myprofile?.myProfile);
+  const [reviseProfile, setReviseProfile] = useState({
+    nickname: '',
+    profileUrl:'',    
+  });
   const [files, setFile] = useState('');
   const [image, setImage] = useState(
     member.profileUrl ? member.profileUrl : profileimg
@@ -42,22 +55,22 @@ const ModifyProfile = () => {
 
   useEffect(() => {
     if (
-      reviseProfile.nickname.length < 2 ||
-      reviseProfile.nickname.length > 8
+      reviseProfile?.nickname?.length < 2 ||
+      reviseProfile?.nickname?.length > 8
     ) {
       setNickCheck(false);
-    } else if (reviseProfile.nickname.search(/\s/) != -1) {
+    } else if (reviseProfile?.nickname?.search(/\s/) != -1) {
       setNickCheck(false);
     } else if (
-      reviseProfile.nickname.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi) != -1
+      reviseProfile?.nickname?.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi) != -1
     ) {
       setNickCheck(false);
-    } else if (reviseProfile.nickname === null) {
+    } else if (reviseProfile?.nickname === null) {
       setNickCheck(false);
     } else {
       setNickCheck(true);
     }
-  }, [reviseProfile.nickname]);
+  }, [reviseProfile?.nickname]);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -96,7 +109,7 @@ const ModifyProfile = () => {
       );
       formData.append('image', uploadImg.files[0]);
       await dispatch(editProfileThunk({ formData, is_login }));
-      setReviseProfile(initialState);
+      setReviseProfile();
       navigate(`/mypage/${is_login}`);
     }
   };
