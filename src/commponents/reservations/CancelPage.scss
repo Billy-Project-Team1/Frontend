@@ -11,7 +11,7 @@
 .cancelpage_wrap {
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: $color-white;
   z-index: 100;
   padding: 0 1rem;
 }
@@ -27,7 +27,6 @@
   display: flex;
 }
 .cancelpage_header_title {
-  font-family: 'Noto Sans';
   font-weight: 700;
   font-size: 20px;
   line-height: 27px;
@@ -43,13 +42,13 @@
 .cancelpage_title {
   font-size: 1rem;
   font-weight: 400px;
-  color: #212121;
+  color: $color-primary;
   text-align: left;
 }
 .cancelpage_img {
   width: 60px;
   height: 60px;
-  background-color: #cccccc;
+  background-color: $color-placeholder;
   border-radius: 7px;
 }
 .cancelpagae_price_wrap {
@@ -62,10 +61,9 @@
   display: flex;
   flex-direction: row;
   gap: 4px;
-  font-family: 'Noto Sans';
   font-size: 0.8125rem;
   font-weight: 500px;
-  color: #212121;
+  color: $color-primary;
 }
 .cancelpage_icon {
   width: 13px;
@@ -75,7 +73,7 @@
 .cancelpage_date {
   font-size: 0.8125rem;
   font-weight: 400px;
-  color: #212121;
+  color: $color-primary;
   text-align: left;
 }
 .cancelpage_body {
@@ -95,7 +93,7 @@
     border-color: $color-main;
   }
   &:disabled{
-    background-color: #cccccc;
+    background-color: $color-placeholder;
   }
   option {
     width: 358px;

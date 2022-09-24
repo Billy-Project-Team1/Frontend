@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import './MyPageList.scss';
 import JullyNavBar from '../../commponents/reservations/JullyNavBar';
 import JullyReservation from '../../commponents/reservations/JullyReservation';
+import ReviewCard from '../../commponents/Review/ReviewCard'
 
 const Mypage = () => {
   const [myPageState, setMyPageState] = useState('1');
@@ -135,9 +136,9 @@ const Mypage = () => {
             return <UploadCard post={post} key={index} />;
           })}
         </div>
-      ) : (
-        ''
-      )}
+      ) : myPageState === '5'?(
+        <ReviewCard/>
+      ):''}
     </div>
   );
 };

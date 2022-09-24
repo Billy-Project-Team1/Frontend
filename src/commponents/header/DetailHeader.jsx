@@ -6,7 +6,7 @@ import { HiOutlineChevronLeft } from 'react-icons/hi';
 import dotIcon from '../../static/image/detail_dot_icon.svg';
 
 //3.props 받은건데 47번에 보라색 이름이 들어오는거
-const AddPostingHeader = ({ authorId }) => {
+const AddPostingHeader = ({ authorId,postId }) => {
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId');
 
@@ -40,7 +40,7 @@ const AddPostingHeader = ({ authorId }) => {
           )}
         </div>
       </div>
-      {modalOpen && <DetailModal showModal={showModal} />}
+      {modalOpen && <DetailModal showModal={showModal} postId={postId}/>}
     </div>
   );
 };

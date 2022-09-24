@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import profileimg from '../../static/image/profileimg.png';
 import DeleteIdModal from './DeleteIdModal';
 import LogoutModal from './LogoutModal';
@@ -12,7 +12,6 @@ import Headers from '../../commponents/header/Headers';
 const ModifyProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { id } = useParams();
 
   const memberImg_ref = useRef(null);
   const is_login = localStorage.getItem('userId');
@@ -105,7 +104,6 @@ const ModifyProfile = () => {
   return (
 		<>
 			<Headers pageName="프로필 편집" onClickSave={sumbitHandler} type="완료" />
-
 			<div className="modifiyProfile_wrap">
 				<div className="modifyProfile_container">
 					<div className="modifyProfile_img_box">

@@ -1,16 +1,17 @@
+@import '../../common/color.scss';
 .calendar_box {
   display: flex;
   flex-direction: row;
   gap: 5px;
   ::placeholder {
-    color: #757575;
+    color: $color-medium;
   }
 }
 .rmdp-border {
   border: none;
 }
 .calendar_box_text {
-  color: #757575;
+  color: $color-medium;
   font-weight: 400;
 }
 .calendar_title {
@@ -25,7 +26,7 @@
   justify-content: center;
 }
 .calendar_input_text {
-  color: #212121;
+  color: $color-primary;
   font-weight: normal;
   font-size: 0.875rem;
 }
@@ -43,20 +44,18 @@
   justify-content: space-between;
 
   button {
-    background-color: #004eea;
+    background-color: $color-main;
     border-radius: 7px;
     width: 100px;
     height: 40px;
     border: none;
-    font-family: 'Noto Sans';
     font-weight: 600;
     font-size: 1rem;
-    color: #f7f7f7;
+    color: $color-light;
     margin-top: 2px;
   }
   p {
-    color: #212121;
-    font-family: 'Noto Sans';
+    color: $color-primary;
     font-weight: 600;
     font-size: 0.875rem;
     text-decoration: underline;
@@ -71,7 +70,6 @@
 .rmdp-calendar {
   width: 100%;
   height: 100%;
-  font-family: 'Noto Sans';
   padding: 30px 0 10px;
 }
 .rmdp-day-picker {
@@ -81,55 +79,51 @@
   margin: 10px 10px 0 0;
 }
 .rmdp-arrow {
-  color: #212121;
+  color: $color-primary;
 }
 .rmdp-arrow-container.disabled {
-  color: #cccccc;
+  color: $color-placeholder;
 }
 .rmdp-day.rmdp-disabled {
-  color: #cccccc;
+  color: $color-placeholder;
 }
 .rmdp-header-values {
-  color: #212121;
+  color: $color-primary;
   font-size: 1.125rem;
   font-weight: 600;
 }
 .rmdp-day {
   width: 35px;
   height: 35px;
-  background-color: #ffffff;
+  background-color: $color-white;
   padding: 20px;
 
   span {
     font-size: 0.875rem;
     width: 35px;
     height: 35px;
-    // color: #cccccc;
   }
-  // span.sd {
-  // 	color: #212121;
-  // }
 }
 .rmdp-week-day {
-  color: #757575;
+  color: $color-medium;
   font-size: 0.875rem;
 }
 .rmdp-day.rmdp-today span {
-  border: 1px solid #004eea;
+  border: 1px solid $color-main;
   background-color: transparent;
-  color: #212121;
+  color: $color-primary;
   font-size: 0.875rem;
 }
 .rmdp-day.rmdp-selected span:not(.highlight) {
-  background-color: #004eea;
-  color: #ededed;
+  background-color: $color-main;
+  color: $color-sub;
   font-size: 0.875rem;
   padding-bottom: 1px;
   width: 35px;
   height: 35px;
 }
 .rmdp-arrow-container:hover .rmdp-arrow {
-  border-color: #212121;
+  border-color: $color-primary;
 }
 .rmdp-arrow-container:hover {
   background-color: transparent;
@@ -146,29 +140,29 @@
 }
 .rmdp-range {
   border-radius: 50%;
-  color: #f7f7f7;
+  color: $color-light;
   width: 35px;
   height: 35px;
-  background-color: #004eea;
+  background-color: $color-main;
   padding: 20px;
 }
 
 .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
   box-shadow: none;
   background-color: transparent;
-  color: #212121;
+  color: $color-primary;
 }
 .rmdp-day.rmdp-range span:not(.highlight),
 .rmdp-day.rmdp-range span:not(.highlight):hover {
   box-shadow: none;
-  background-color: #004eea;
-  color: #fff;
+  background-color: $color-main;
+  color: $color-white;
 }
 .rmdp-day.rmdp-selected span:not(.highlight),
 .rmdp-day.rmdp-selected span:not(.highlight):hover {
   box-shadow: none;
-  background-color: #004eea;
-  color: #fff;
+  background-color: $color-main;
+  color: $color-white;
 }
 .rmdp-disabled {
   pointer-events: none;
