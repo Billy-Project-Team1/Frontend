@@ -9,7 +9,6 @@ import '../posting/Posting.scss';
 import { getPost, updatePost } from '../../redux/modules/postSlice';
 // Component import
 import Headers from '../../commponents/header/Headers';
-import ImageUploader from '../../commponents/imageUploader/ImageUploader';
 import PostingMap from '../../commponents/maps/PostingMap';
 import Footer from '../../commponents/footer/Footer';
 import ModifyPlace from '../../commponents/maps/ModifyPlace';
