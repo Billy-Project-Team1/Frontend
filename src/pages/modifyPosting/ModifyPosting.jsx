@@ -1,11 +1,11 @@
 // React import
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
 // Style import
 import '../posting/Posting.scss';
-// Slice import 
+// Slice import
 import { getPost, updatePost } from '../../redux/modules/postSlice';
 // Component import
 import Headers from '../../commponents/header/Headers';
@@ -14,6 +14,7 @@ import PostingMap from '../../commponents/maps/PostingMap';
 import Footer from '../../commponents/footer/Footer';
 import ModifyPlace from '../../commponents/maps/ModifyPlace';
 import ModifyCalendar from '../../commponents/calendar/ModifyCalendar';
+import ModifyImageUploader from '../../commponents/imageUploader/ModifyImageUploader';
 
 const ModifyPosting = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ const ModifyPosting = () => {
   const [img, setImg] = useState([]);
   const [blockDateDtoList, setBlockDateDtoList] = useState([]);
   const [searchMapModal, setSearchMapModal] = useState(false);
+  const [imgUrl, setImgUrl] = useState([]);
+  const [date, setDate] = useState([]);
+  const [blockDate, setBlockDate] = useState([]);
 
   useEffect(() => {
     async function getDetail() {
@@ -36,15 +40,19 @@ const ModifyPosting = () => {
           detailLocation: `${result.detailLocation}`,
           latitude: `${result.latitude}`,
           longitude: `${result.longitude}`,
-          blockDateDtoList: `${result.blockDate?.blockDateDtoList}`,
           postImgUrl: `${result.postImgUrl?.postImgUrlList}`,
         });
-        setImg(result.postImgUrl);
+        setImg(result.postImgUrl.postImgUrlList);
+        setImgUrl(result.postImgUrl.postImgUrlList);
+        result.blockDate.blockDateList.map((item) => {
+          return date.push(new Date(item));
+        });
+        setBlockDate(result.blockDate?.reservationDateList);
       }
     }
     getDetail();
   }, []);
-  
+
   const initialState = {
     title: '',
     price: '',
@@ -54,30 +62,17 @@ const ModifyPosting = () => {
     detailLocation: '',
     latitude: '',
     longitude: '',
-    blockDateDtoList: '',
-    postImgUrl:'',
+    postImgUrl: '',
   };
- 
 
   const detailPost = useSelector((state) => state.post.post);
-  console.log(detailPost)
   const [revisePosting, setRevisePosting] = useState(initialState);
-  const [blockDate, setBlockDate] = useState([]);
-
-    const blockDateList = detailPost.blockDate?.blockDateList;
-  const reservationDateList = detailPost.blockDate?.reservationDateList;
-
-    useEffect(() => {
-    if (blockDateList && reservationDateList) {
-      setBlockDate([...blockDate, ...reservationDateList, ...blockDateList]);
-    }
-  }, [blockDateList]);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setRevisePosting({ ...revisePosting, [name]: value });
   };
-  console.log(revisePosting)
+  // console.log(revisePosting);
 
   const onPostingHandler = async (e) => {
     e.preventDefault();
@@ -89,6 +84,9 @@ const ModifyPosting = () => {
       'postUploadRequestDto',
       new Blob([JSON.stringify(revisePosting)], { type: 'application/json' })
     );
+    for (let i= 0; i< imgUrl.length; i++){
+      formData.append('imgUrlList',imgUrl[i]);
+    }
     for (let i = 0; i < img.length; i++) {
       formData.append('files', img[i]);
     }
@@ -118,7 +116,12 @@ const ModifyPosting = () => {
       />
       <div className="posting_container">
         <div className="posting_image">
-          <ImageUploader img={img} setImg={setImg} />
+          <ModifyImageUploader
+            img={img}
+            setImg={setImg}
+            imgUrl={imgUrl}
+            setImgUrl={setImgUrl}
+          />
         </div>
         <div className="posting_title">
           <input
@@ -175,7 +178,13 @@ const ModifyPosting = () => {
         </div>
         <div className="posting_calendar_wrap">
           <div className="posting_calendar_icon">
-            <ModifyCalendar setData={setBlockDateDtoList} data={blockDate} />
+            <ModifyCalendar
+              data={blockDate}
+              date={date}
+              setDate={setDate}
+              setBlockDateDtoList={setBlockDateDtoList}
+              blockDateDtoList={blockDateDtoList}
+            />
           </div>
         </div>
         <div className="posting_map_wrap">

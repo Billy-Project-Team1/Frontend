@@ -9,11 +9,9 @@ import { FaMinusCircle } from 'react-icons/fa';
 
 import './ImageUploader.scss';
 
-const ImageUploader = ({ img, setImg }) => {
+const ModifyImageUploader = ({ img, setImg,setImgUrl,imgUrl }) => {
 	const dispatch = useDispatch();
 	const inputRef = React.useRef();
-
-	const [imgUrl, setImgUrl] = useState([]); // url
 
 	useEffect(()=>{
 		setImgUrl(img)
@@ -124,4 +122,4 @@ const ImageUploader = ({ img, setImg }) => {
 	);
 };
 
-export default ImageUploader;
+export default ModifyImageUploader;
