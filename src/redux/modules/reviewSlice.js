@@ -11,7 +11,7 @@ export const getMypageReview = createAsyncThunk(
 			// console.log(payload) => id뜸
 			// a:API url , b: API request 근데 이건 get이니까 없음 ㅋㅋ (가끔 있음), c: 파일의 타입 바꿔줄때 씀(이미지)
 			const response = await instance.get(
-				`/auth/reviews/received`,payload
+				`/auth/reviews/received/${payload}`,payload
 			);
 			console.log(response);
 

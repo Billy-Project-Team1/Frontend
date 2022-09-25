@@ -27,20 +27,24 @@ const AddPostingHeader = ({ authorId,postId }) => {
 				window.removeEventListener('scroll', updateScroll); //unmount시 해제되도록
 			};
 		}, []);
+    // console.log(scrollPosition)
 
   return (
 		<div
 			className="detail_header_container"
 			style={{
 				backgroundColor:
-					scrollPosition < 390 ? 'transparent' : 'rgb(255, 255, 255)',
+					scrollPosition < 390 ? 'transparent' : '#ffffff',
 			}}
 		>
 			<div className="detail_header_wrap">
 				<div className="mypage_header_content">
 					<HiOutlineChevronLeft
-						style={{ marginRight: '22px' }}
-						color="#656565"
+						style={{
+							marginRight: '22px',
+							color: scrollPosition < 390 ? '#ffffff' : '#212121',
+						}}
+						// color="#656565"						
 						size="24px"
 						onClick={() => navigate(-1)}
 					/>

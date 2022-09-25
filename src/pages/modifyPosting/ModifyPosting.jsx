@@ -1,45 +1,114 @@
-// React import 
-import React, { useState } from 'react';
-// Redux import 
-import { useSelector } from 'react-redux';
-// Style import 
+// React import
+import React, { useState,useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+// Redux import
+import { useDispatch, useSelector } from 'react-redux';
+// Style import
 import '../posting/Posting.scss';
-// Component import 
+// Slice import 
+import { getPost, updatePost } from '../../redux/modules/postSlice';
+// Component import
 import Headers from '../../commponents/header/Headers';
 import ImageUploader from '../../commponents/imageUploader/ImageUploader';
-import Calendar from '../../commponents/calendar/Calendar';
 import PostingMap from '../../commponents/maps/PostingMap';
-import SearchPlace from '../../commponents/maps/SearchPlace';
 import Footer from '../../commponents/footer/Footer';
 import ModifyPlace from '../../commponents/maps/ModifyPlace';
+import ModifyCalendar from '../../commponents/calendar/ModifyCalendar';
 
 const ModifyPosting = () => {
+  const dispatch = useDispatch();
+  const { postid } = useParams();
+  const myUserId = localStorage.getItem('userId');
   const [img, setImg] = useState([]);
   const [blockDateDtoList, setBlockDateDtoList] = useState([]);
   const [searchMapModal, setSearchMapModal] = useState(false);
 
-  const detailPost = useSelector((state) => state.post.post);
-  console.log(detailPost);
-  // console.log(detailPost)
+  useEffect(() => {
+    async function getDetail() {
+      const result = await dispatch(getPost({ postid, myUserId })).unwrap();
+      if (result) {
+        setRevisePosting({
+          title: `${result.title}`,
+          price: `${result.price}`,
+          deposit: `${result.deposit}`,
+          location: `${result.location}`,
+          content: `${result.content}`,
+          detailLocation: `${result.detailLocation}`,
+          latitude: `${result.latitude}`,
+          longitude: `${result.longitude}`,
+          blockDateDtoList: `${result.blockDate?.blockDateDtoList}`,
+          postImgUrl: `${result.postImgUrl?.postImgUrlList}`,
+        });
+        setImg(result.postImgUrl);
+      }
+    }
+    getDetail();
+  }, []);
+  
   const initialState = {
-    title: `${detailPost.title}`,
-    price: `${detailPost.price}`,
-    deposit: `${detailPost.deposit}`,
-    location: `${detailPost.location}`,
-    content: `${detailPost.content}`,
-    detailLocation: `${detailPost.detailLocation}`,
-    latitude: `${detailPost.latitude}`,
-    longitude: `${detailPost.longitude}`,
-    blockDateDtoList: `${detailPost.blockDateDtoList}`,
+    title: '',
+    price: '',
+    deposit: '',
+    location: '',
+    content: '',
+    detailLocation: '',
+    latitude: '',
+    longitude: '',
+    blockDateDtoList: '',
+    postImgUrl:'',
   };
+ 
+
+  const detailPost = useSelector((state) => state.post.post);
+  console.log(detailPost)
   const [revisePosting, setRevisePosting] = useState(initialState);
+  const [blockDate, setBlockDate] = useState([]);
+
+    const blockDateList = detailPost.blockDate?.blockDateList;
+  const reservationDateList = detailPost.blockDate?.reservationDateList;
+
+    useEffect(() => {
+    if (blockDateList && reservationDateList) {
+      setBlockDate([...blockDate, ...reservationDateList, ...blockDateList]);
+    }
+  }, [blockDateList]);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setRevisePosting({ ...revisePosting, [name]: value });
   };
+  console.log(revisePosting)
 
-  const onPostingHandler = async (e) => {};
+  const onPostingHandler = async (e) => {
+    e.preventDefault();
+    //이미지 form 데이터
+    let formData = new FormData();
+    //a는 이름으로  b를 저장한다. c는 어떠한 타입으로 / form은 c를 굳이 안써도됨
+    // formData.append(a,b)
+    formData.append(
+      'postUploadRequestDto',
+      new Blob([JSON.stringify(revisePosting)], { type: 'application/json' })
+    );
+    for (let i = 0; i < img.length; i++) {
+      formData.append('files', img[i]);
+    }
+    for (let i = 0; i < blockDateDtoList.blockDateDtoList.length; i++) {
+      formData.append('blockDateDtoList', blockDateDtoList.blockDateDtoList[i]);
+    }
+    try {
+      const data = await dispatch(updatePost(formData)).unwrap();
+      console.log(data);
+      if (data) {
+        window.location.replace('/');
+        // window.location.replace(`/detail/${data.id}`);
+      } else {
+        console.log(data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <Headers
@@ -106,7 +175,7 @@ const ModifyPosting = () => {
         </div>
         <div className="posting_calendar_wrap">
           <div className="posting_calendar_icon">
-            <Calendar setData={setBlockDateDtoList} data={blockDateDtoList} />
+            <ModifyCalendar setData={setBlockDateDtoList} data={blockDate} />
           </div>
         </div>
         <div className="posting_map_wrap">

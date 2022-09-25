@@ -9,13 +9,11 @@ import './ModifyProfile.scss';
 import profileimg from '../../static/image/profileimg.png';
 // Icon import
 import { FaCamera } from 'react-icons/fa';
-
 // Slice import
 import { editProfileThunk,  getProfileThunk, } from '../../redux/modules/profileSlice';
 import { getCookie } from '../../redux/modules/customCookies';
 import { logOut, withdrawal } from '../../redux/modules/memberSlice';
 // Component import
-
 import Headers from '../../commponents/header/Headers';
 import AlertSmallModal from '../../commponents/modal/AlertSmallModal';
 import AlertLargeModal from '../../commponents/modal/AlertLargeModal';
@@ -42,6 +40,7 @@ const ModifyProfile = () => {
     }
     getProfile();
   }, []);
+
   const member = useSelector((state) => state.myprofile?.myProfile);
   const [reviseProfile, setReviseProfile] = useState({
     nickname: '',

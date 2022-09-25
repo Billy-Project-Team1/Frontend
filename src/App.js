@@ -28,7 +28,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/posting" element={<Posting />} />
-        <Route path="/modifyPosting" element={<ModifyPosting />} />
+        <Route path="/modifyPosting/:postid" element={<ModifyPosting />} />
         <Route path="/modifyProfile" element={<ModifyProfile />} />
         <Route path="/detail/:postid" element={<Detail />} />
         <Route path="/kakao" element={<Kakao />} />
