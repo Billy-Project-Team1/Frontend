@@ -34,7 +34,7 @@ const DetailModal = ({ showModal, postId }) => {
         <div className="detailModal_btn_first">
           <div
             className="detailModal_edit_btn"
-            onClick={() => navigate('/modifyPosting')}
+            onClick={() => navigate(`/modifyPosting/${postId}`)}
           >
             게시물 수정하기
           </div>

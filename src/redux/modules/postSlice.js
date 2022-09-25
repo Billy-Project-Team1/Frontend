@@ -59,17 +59,20 @@ export const deletePost = createAsyncThunk(
     }
   }
 );
-
+//게시글 수정 Patch /auth/posts/{postId} "image”: form/data
 export const updatePost = createAsyncThunk(
   'updatePost',
   async (payload, thunkAPI) => {
     try {
-      // console.log(payload) => id뜸
-      // a:API url , b: API request 근데 이건 get이니까 없음 ㅋㅋ (가끔 있음), c: 파일의 타입 바꿔줄때 씀(이미지)
-      const response = await instance.post(`/auth/posts`, payload);
+      const response = await instance.patch(
+        `/auth/posts/${payload}`,
+        payload.formData,
+        {
+          'Content-Type': 'multipart/form-data',
+        }
+      );
       // console.log(response)
 
-      //Rerult를 slice에 다 넣어줘야함. 그래야 이제 빼써 쓸 수 있음.
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       }
@@ -118,6 +121,10 @@ const postSlice = createSlice({
     [deletePost.fulfillWithValue]: (state, action) => {
       state.post = action.post.filter((item) => item.postId != action.payload);
     },
+    [updatePost.fulfilled]: (state, action) => {
+      state.post= action.payload;
+    },
+
   },
 });
 
