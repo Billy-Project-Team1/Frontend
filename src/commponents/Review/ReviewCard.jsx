@@ -1,18 +1,24 @@
-import React, { useEffect } from 'react';
+// React import
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+
+// Style import
 import './ReviewCard.scss';
-import { useNavigate } from 'react-router-dom';
+import { FaStar } from 'react-icons/fa';
+
+// Redux import
 import { getMypageReview } from '../../redux/modules/reviewSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const ReviewCard = ({ post, totalAvg }) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-
+	const {id} = useParams();
 	const reviewGet = useSelector((state) => state.review.reviewGet);
 	console.log(reviewGet);
 
 	useEffect(() => {
-		dispatch(getMypageReview());
+		dispatch(getMypageReview(id));
 	}, [JSON.stringify(reviewGet)]);
 
 	function rentalDate(a) {
@@ -31,34 +37,51 @@ const ReviewCard = ({ post, totalAvg }) => {
 		);
 	}
 
+	//false:첫 화면은 닫혀있는 상태
+	const [reviewOpen, setReviewOpen] = useState(false);
+	//boolean값 주기
+	const reviewClose = () => {
+		setReviewOpen(!reviewOpen);
+	};
+
 	return (
 		<div>
-			<div className="reviewPost_container">
-				<div className="reviewPost_star_avg">{totalAvg}</div>
+			<div className="reviewCard_container">
+				<div className="reviewCard_star_avg">
+					{' '}
+					<FaStar className="MainListCardStar" />총 별점 {totalAvg}
+				</div>
 				{reviewGet?.map((item, index) => {
 					return (
-						<div style={{ border: '1px solid gray' }} key={index}>
-							<div className="reviewPost_title">{item.title}</div>
-							<span className="reviewPost_rating">{item.star}</span>
-							<span className="reviewPost_rental_name">{item.nickname}</span>
-							<span className="reviewPost_rental_date">
-								{rentalDate(item.startDate)} -{rentalDate(item.endDate)}(
+						<div className="reviewCard_wrap" key={index}>
+							<div className="reviewCard_title">{item.title}</div>
+							<span className="reviewCard_rating">{item.star}.0</span>
+							<span className="reviewCard_rental_name">{item.nickname} | </span>
+							<span className="reviewCard_rental_date">
+								{rentalDate(item.startDate)} - {rentalDate(item.endDate)} (
 								{item.dateCount}박)
 							</span>
-							<div className="reviewPost_imgs">{item.reviewImgUrl}</div>
-							<div className="reviewPost_comment">{item.comment}</div>
-
-							<div className="reviewPost_myprofile_img" />
-							<div
-								className="reviewPost_mycomment"
-								style={{ color: 'pink', border: 'gray' }}
-							>
-								{item?.children[0]?.comment}
+							<div className="reviewCard_imgs">{item.reviewImgUrl}</div>
+							<div className="reviewCard_comment">{item.comment}</div>
+							<div className="reviewCard_myprofile_img" />
+							<div className="reviewCard_addcomment_btn" onClick={reviewClose}>
+								리뷰 답글 달기
 							</div>
-
-							<div className="reviewPost_addcomment">리뷰 답글 달기</div>
-
-							<div className="reviewPost_addcomment"></div>
+							{reviewOpen && (
+								<div className="reviewCard_reply_wrap">
+									<div className="reviewCard_reply_profile"></div>
+									<div className="reviewCard_mycomment">
+										{item?.children[0]?.comment ? (
+											item?.children[0]?.comment
+										) : (
+											<input
+												type="text"
+												placeholder="리뷰에 대한 감사 인사를 전해주세요!"
+											/>
+										)}
+									</div>
+								</div>
+							)}
 						</div>
 					);
 				})}

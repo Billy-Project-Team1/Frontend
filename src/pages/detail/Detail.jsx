@@ -132,7 +132,8 @@ const Detail = () => {
 					{detailPost.postImgUrl?.postImgUrlList.map((item, index) => {
 						return (
 							<SwiperSlide key={index}>
-								<img src={item} />
+								<img className="detail_image_preview" src={item} />
+								<div className="detail_image_gradient" />
 							</SwiperSlide>
 						);
 					})}
