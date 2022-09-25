@@ -1,5 +1,5 @@
 // React import
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // Redux import
 import { useDispatch } from 'react-redux';
@@ -10,32 +10,67 @@ import { FaRegHeart, FaHeart } from 'react-icons/fa';
 // Slice import
 import { createChatRoom } from '../../redux/modules/ChatSlice';
 import { dibsPost } from '../../redux/modules/postSlice';
+import AlertSmallModal from '../modal/AlertSmallModal';
+import { reservationThunk } from '../../redux/modules/reservationSlice';
 
-const DetailFooter = ({
-  authorId,
-  detailPost,
-  onReservationHandler,
-}) => {
+const DetailFooter = ({ authorId, detailPost, pickDate }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userId = localStorage.getItem('userId');
+  const [modalOn, setModalOn] = useState(false);
+  const modalTrue = () => {
+    setModalOn(true);
+  };
 
+  // const onCreateChatRoom = async () => {
+  //   try {
+  //     const data = await dispatch(createChatRoom(detailPost.id)).unwrap();
+  //     if (data) {
+  //       return navigate(`/chat/room/${detailPost.id}/${data}`);
+  //     }
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+  const login = () => {
+    navigate('/login');
+  };
+  const onDibsHander = () => {
+    if (userId) {
+      dispatch(dibsPost(detailPost.id));
+    } else {
+      modalTrue();
+    }
+  };
   const onCreateChatRoom = async () => {
-    try {
-      const data = await dispatch(createChatRoom(detailPost.id)).unwrap();
-      if (data) {
-        return navigate(`/chat/room/${detailPost.id}/${data}`);
+    if (userId) {
+      try {
+        const data = await dispatch(createChatRoom(detailPost.id)).unwrap();
+        if (data) {
+          return navigate(`/chat/room/${detailPost.id}/${data}`);
+        }
+      } catch (e) {
+        console.log(e);
       }
-    } catch (e) {
-      console.log(e);
+    } else {
+      modalTrue();
     }
   };
 
-  const onDibsHander = () => {
-    dispatch(dibsPost(detailPost.id));
+  const onReservationHandler = async () => {
+    if (userId) {
+      try {
+        const response = await dispatch(reservationThunk(pickDate)).unwrap();
+        if (response.payload === '예약이 접수되었습니다.') {
+          return window.location.replace(`/mypage/${userId}`);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      modalTrue();
+    }
   };
-
-  // console.log(detailPost);
 
   return (
     <div className="detail_footer">
@@ -55,7 +90,7 @@ const DetailFooter = ({
             {detailPost.like === true ? (
               <FaHeart
                 className="detail_footer_icon"
-                style={{color : '#EB0000'}}
+                style={{ color: '#EB0000' }}
                 onClick={() => onDibsHander()}
               />
             ) : (
@@ -77,6 +112,14 @@ const DetailFooter = ({
           </div>
         )}
       </div>
+      {modalOn && (
+        <AlertSmallModal
+          setModalOn={setModalOn}
+          body="로그인이 필요한 페이지입니다"
+          buttonType="로그인"
+          onClickSubmit={login}
+        />
+      )}
     </div>
   );
 };
