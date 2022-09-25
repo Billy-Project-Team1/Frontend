@@ -1,17 +1,17 @@
 // React import
 import React, { useEffect, useState, useRef } from 'react';
-// Library import 
+// Library import
 import { Calendar } from 'react-multi-date-picker';
 // Style import
 import './Calendar.scss';
-// icon import 
+// icon import
 import {
   HiOutlineCalendar,
   HiOutlineChevronDown,
   HiOutlineChevronUp,
 } from 'react-icons/hi';
 
-const PostingCalendar = ({ setData, data }) => {
+const PostingCalendar = ({data, date, setDate,setBlockDateDtoList,blockDateDtoList}) => {
   const noDates = useRef();
   const noDates2 = useRef();
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
@@ -29,13 +29,10 @@ const PostingCalendar = ({ setData, data }) => {
     '11월',
     '12월',
   ];
-  const [date, setDate] = useState([]);
   const [dates, setDates] = useState();
   const [toggleOn, setToggleOn] = useState(false);
   const [unavailable, setUnavailable] = useState([]);
   const [month, setMonth] = useState(new Date().getMonth() + 1);
-
-  // console.log(date.toLocaleString());
 
   const toggleMode = () => {
     setToggleOn((toggleOn) => !toggleOn);
@@ -52,28 +49,26 @@ const PostingCalendar = ({ setData, data }) => {
         datesArray.push(new Date(v).getDate());
       }
     });
-
     setUnavailable(datesArray);
   };
   useEffect(() => {
     let elements = null;
     elements = document.querySelectorAll('.calendar_toggleOn .rmdp-day .sd');
     for (let i = 0; i < elements.length; i++) {
-      elements[i].parentNode.classList.remove('rmdp-selected"');
+      elements[i].parentNode.classList.remove('rmdp-disabled');
       for (let j = 0; j < unavailable.length; j++) {
         if (elements[i].innerText == unavailable[j]) {
-          elements[i].parentNode.classList.add('rmdp-selected"');
+          elements[i].parentNode.classList.add('rmdp-disabled');
         }
       }
     }
   }, [unavailable]);
+
   useEffect(() => {
     if (data) {
       disableDate();
     }
   }, [month, data, date, toggleOn]);
-
-
 
   const setDateFormat = () => {
     if (date?.length > 0) {
@@ -132,16 +127,11 @@ const PostingCalendar = ({ setData, data }) => {
       noDates.current = [];
     }
   };
-  const blockDate = date.map((v) => {
-    v = v.toLocaleString();
-    return v;
-  });
-
   useEffect(() => {
     setDateFormat();
-    setData({
-      ...data,
-      blockDateDtoList: blockDate,
+    setBlockDateDtoList({
+      ...blockDateDtoList,
+      blockDateDtoList: dates,
     });
   }, [date]);
 
@@ -183,7 +173,7 @@ const PostingCalendar = ({ setData, data }) => {
             minDate={new Date()}
             maxDate={new Date().setDate(90)}
             className="calendar_toggleOn"
-
+            onMonthChange={(date) => setMonth(new Date(date).getMonth() + 1)}
           />
           <div className="calendar_btns">
             <p onClick={() => deleteDates()}>전체 삭제</p>

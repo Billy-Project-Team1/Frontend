@@ -23,7 +23,7 @@ const DetailModal = ({ showModal, postId }) => {
     try {
       const response = await dispatch(deletePost(postId)).unwrap();
       if (response) {
-        navigate('/');
+        window.location.replace('/');
       }
     } catch {}
   };
