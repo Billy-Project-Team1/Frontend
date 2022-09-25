@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {  useSelector } from 'react-redux';
 import YourPageMiddle from '../../commponents/myProfile/YourPageMiddle';
 import UploadCard from '../../commponents/profileCard/UploadCard';
+import ReviewCard from '../../commponents/Review/ReviewCard';
 
 const YourPageList = () => {
   const [yourPageState, setYourPageState] = useState('1');
@@ -20,7 +21,7 @@ const YourPageList = () => {
             return <UploadCard post={post} key={index}/>;
           })}
         </div>
-      ) : yourPageState ==='2'?('댓글'):('')}
+      ) : yourPageState ==='2'?(<ReviewCard />):('')}
     </div>
   );
 };
