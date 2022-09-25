@@ -1,4 +1,4 @@
-ㅌ// React import
+// React import
 import React, { useState } from 'react';
 // Redux import
 import { useSelector } from 'react-redux';
