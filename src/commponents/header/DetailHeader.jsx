@@ -27,7 +27,6 @@ const AddPostingHeader = ({ authorId,postId }) => {
 				window.removeEventListener('scroll', updateScroll); //unmount시 해제되도록
 			};
 		}, []);
-    console.log(scrollPosition)
 
   return (
 		<div
