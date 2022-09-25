@@ -24,7 +24,6 @@ const Mypage = () => {
   }, []);
 
   const profile = useSelector((state) => state.myprofile.myProfile);
-	console.log(profile)
   const myUserId = localStorage.getItem('userId');
 
   return (
@@ -37,7 +36,7 @@ const Mypage = () => {
 
 			<MyProfileHeader profile={profile} />
 			{myUserId === profile.userId ? (
-				<MyPageList totalAvg={profile.totalAvg} />
+				<MyPageList totalAvg={profile.totalAvg} profile={profile}/>
 			) : (
 				<YourPageList />
 			)}
