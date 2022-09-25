@@ -1,0 +1,82 @@
+@import '../../common/color.scss';
+
+.reviewCard_container {
+	padding: 0 1rem 200px 1rem;
+}
+.reviewCard_wrap {
+	// border-bottom: 1px solid #eeeeee;
+	padding-bottom: 20px;
+}
+.reviewCard_title {
+	font-size: 0.875rem;
+	margin: 20px 0 3px 0;
+}
+.reviewCard_rating {
+	font-size: 0.875rem;
+	color: $color-primary;
+	margin-right: 6px;
+}
+.reviewCard_rental_name {
+	font-size: 0.8125rem;
+	color: $color-medium;
+}
+.reviewCard_rental_date {
+	font-size: 0.8125rem;
+	color: $color-medium;
+}
+.reviewCard_imgs {
+	margin: 10px 0;
+	width: 80px;
+	height: 80px;
+	border-radius: 7px;
+	background: $color-placeholder;
+}
+.reviewCard_comment {
+	font-size: 0.875rem;
+	color: $color-primary;
+	margin-bottom: 8px;
+}
+
+.reviewCard_addcomment_btn {
+	color: $color-main;
+	width: 100%;
+	border: 1px solid $color-main;
+	border-radius: 12px;
+	text-align: center;
+	padding: 12px;
+	font-size: 0.9375rem;
+}
+
+
+
+
+.reviewCard_reply_wrap {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	gap: 0.825rem;
+}
+
+.reviewCard_reply_profile {
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	background: $color-placeholder;
+  aspect-ratio: 1/1;
+}
+
+.reviewCard_mycomment {
+	border: 1px solid $color-placeholder;
+  border-radius: 0px 16px 16px 16px;
+	width: 100%;
+  font-size: 0.875rem;
+
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 7px 10px;
+    	border: 1px solid $color-placeholder;
+  border-radius: 0px 16px 16px 16px;
+  }
+}

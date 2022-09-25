@@ -24,7 +24,7 @@ const YourPageList = () => {
             return <UploadCard post={post} key={index}/>;
           })}
         </div>
-      ) : yourPageState ==='2'?(<ReviewCard/>):('')}
+      ) : yourPageState ==='2'?(<ReviewCard />):('')}
     </div>
   );
 };
