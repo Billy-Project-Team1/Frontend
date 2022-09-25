@@ -141,10 +141,11 @@ const Detail = () => {
         <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
           {detailPost.postImgUrl?.postImgUrlList.map((item, index) => {
             return (
-              <SwiperSlide key={index}>
-                <img src={item} />
-              </SwiperSlide>
-            );
+							<SwiperSlide key={index}>
+								<img src={item} />
+								<div className="detail_image_gradient" />
+							</SwiperSlide>
+						);
           })}
         </Swiper>
       </div>

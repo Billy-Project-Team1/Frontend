@@ -14,7 +14,7 @@ import JullyNavBar from '../../commponents/reservations/JullyNavBar';
 import JullyReservation from '../../commponents/reservations/JullyReservation';
 import ReviewCard from '../../commponents/Review/ReviewCard';
 
-const Mypage = ( {totalAvg} ) => {
+const Mypage = ({ totalAvg, profile }) => {
 	const [myPageState, setMyPageState] = useState('1');
 	const [reservationsState, setReservationsState] = useState('1');
 	const myDipList = useSelector((state) => state.member.myDibsList);
@@ -141,7 +141,7 @@ const Mypage = ( {totalAvg} ) => {
 					})}
 				</div>
 			) : myPageState === '5' ? (
-				<ReviewCard totalAvg={totalAvg} />
+				<ReviewCard totalAvg={totalAvg} profile={profile}/>
 			) : (
 				''
 			)}
