@@ -8,7 +8,7 @@ import './BillyNavBar.scss';
 import { billyReservationCntThunk } from '../../redux/modules/reservationSlice';
 
 // 빌리예약
-const BillyNavBar = ({ reservationsState, setReservationsState,setMyPageState }) => {
+const BillyNavBar = ({ reservationsState, setReservationsState}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +16,6 @@ const BillyNavBar = ({ reservationsState, setReservationsState,setMyPageState })
   }, []);
 
   const bookedState = useSelector((state) => state.billystate.billyState);
-  // console.log(bookedState);
 
   return (
     <div className="myProfileNavBar_wrap">

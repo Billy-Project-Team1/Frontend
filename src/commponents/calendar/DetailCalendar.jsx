@@ -32,8 +32,6 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   const [dates, setDates] = useState();
   const [unavailable, setUnavailable] = useState([]);
   const [toggleOn, setToggleOn] = useState(true);
-  // console.log(date.toLocaleString());
-  // data={detailPost.blockDate?.blockDateList[0]}
 
   const toggleMode = () => {
     setToggleOn((toggleOn) => !toggleOn);
@@ -69,7 +67,6 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
     }
   }, [month, data, date, toggleOn]);
 
-  // console.log(date[0])
   useEffect(() => {
     date.sort();
     for (let i = 0; i < data?.length; i++) {
@@ -171,7 +168,6 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
       {toggleOn === true ? (
         <div>
           <Calendar
-            // multiple
             range
             value={date}
             onChange={setDate}

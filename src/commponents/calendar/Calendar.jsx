@@ -2,14 +2,14 @@
 import React, { useEffect, useState, useRef } from 'react';
 // Library import 
 import { Calendar } from 'react-multi-date-picker';
-// Style import
-import './Calendar.scss';
 // Icon import 
 import {
   HiOutlineCalendar,
   HiOutlineChevronDown,
   HiOutlineChevronUp,
 } from 'react-icons/hi';
+// Style import
+import './Calendar.scss';
 
 const PostingCalendar = ({ setData, data }) => {
   const noDates = useRef();
@@ -32,7 +32,6 @@ const PostingCalendar = ({ setData, data }) => {
   const [date, setDate] = useState([]);
   const [dates, setDates] = useState();
   const [toggleOn, setToggleOn] = useState(false);
-  // console.log(date.toLocaleString());
 
   const toggleMode = () => {
     setToggleOn((toggleOn) => !toggleOn);

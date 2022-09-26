@@ -78,10 +78,13 @@ const ModifyPosting = () => {
       'postUploadRequestDto',
       new Blob([JSON.stringify(revisePosting)], { type: 'application/json' })
     );
+    // for (let i = 0; i < imgUrl.length; i++) {
+    //   formData.append('imgUrlList', new Blob([JSON.stringify(imgUrl[i])],{type:'application/json'}))
+    // }
     for (let i = 0; i < imgUrl.length; i++) {
-      formData.append('imgUrlList', new Blob([JSON.stringify(imgUrl[i])],{type:'application/json'}))
+      formData.append('imgUrlList', imgUrl[i]);
     }
-  
+
     for (let i = 0; i < img.length; i++) {
       formData.append('files', img[i]);
     }
