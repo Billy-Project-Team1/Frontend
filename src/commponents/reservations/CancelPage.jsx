@@ -83,7 +83,7 @@ const CancelPage = ({
       setBtnState(false);
     }
   };
-  console.log(cancelMessage);
+  // console.log(cancelMessage);
 
   const jullyhandleChange = (e) => {
     const { name, value } = e.target;
@@ -94,7 +94,7 @@ const CancelPage = ({
       JullySetBtnState(false);
     }
   };
-  console.log(jullyCancelMessage);
+  // console.log(jullyCancelMessage);
 
   const cancelHandler = async (a, b) => {
     try {

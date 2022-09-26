@@ -65,7 +65,7 @@ export const updatePost = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.patch(
-        `/auth/posts/${payload}`,
+        `/auth/posts/${payload.postid}`,
         payload.formData,
         {
           'Content-Type': 'multipart/form-data',

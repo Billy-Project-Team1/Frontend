@@ -35,7 +35,7 @@ const ReviewCard = ({ totalAvg, profile }) => {
 						<ReviewCardComment
 							item={item}
 							index={index}
-							profileUrl={profile.profileUrl}
+							profileUrl={profile?.profileUrl}
 						/>
 					);
 				})}
