@@ -58,9 +58,6 @@ const Posting = () => {
     //...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
     setData({ ...data, [name]: value });
   };
-  console.log(data);
-  console.log(blockDateDtoList.blockDateDtoList);
-
   /////////////////
 
   //   //[1] post
