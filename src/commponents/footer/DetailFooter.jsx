@@ -21,17 +21,6 @@ const DetailFooter = ({ authorId, detailPost, pickDate }) => {
   const modalTrue = () => {
     setModalOn(true);
   };
-
-  // const onCreateChatRoom = async () => {
-  //   try {
-  //     const data = await dispatch(createChatRoom(detailPost.id)).unwrap();
-  //     if (data) {
-  //       return navigate(`/chat/room/${detailPost.id}/${data}`);
-  //     }
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
   const login = () => {
     navigate('/login');
   };
@@ -56,12 +45,11 @@ const DetailFooter = ({ authorId, detailPost, pickDate }) => {
       modalTrue();
     }
   };
-
   const onReservationHandler = async () => {
     if (userId) {
       try {
         const response = await dispatch(reservationThunk(pickDate)).unwrap();
-        if (response.payload === '예약이 접수되었습니다.') {
+        if (response) {
           return window.location.replace(`/mypage/${userId}`);
         }
       } catch (e) {

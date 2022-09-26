@@ -10,7 +10,6 @@ import ReviewCardYourPage from '../../commponents/Review/ReviewCardYourPage';
 const YourPageList = ({profile}) => {
   const [yourPageState, setYourPageState] = useState('1');
   const myUploadList = useSelector((state) => state.member.myUploadList);
-  console.log(myUploadList)
 
   return (
 		<div>

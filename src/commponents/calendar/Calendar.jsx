@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Calendar } from 'react-multi-date-picker';
 // Style import
 import './Calendar.scss';
-// icon import 
+// Icon import 
 import {
   HiOutlineCalendar,
   HiOutlineChevronDown,
