@@ -25,12 +25,12 @@ const ImageUploader = ({ img, setImg }) => {
 
 		// 선택한 이미지들
 		const images = event.target.files;
-		console.log(images);
 
 		// 최대갯수로 받은 이미지
 		const imagesMax10 = [...images].slice(0, maxFileNum);
 		console.log(imagesMax10);
-		setImg(imagesMax10);
+		setImg([...img, ...imagesMax10]);
+
 
 		// 이미지 미리보기로 보여줄려면 url이 필요함
 		for (let i = 0; i < imagesMax10.length; i++) {
@@ -41,39 +41,6 @@ const ImageUploader = ({ img, setImg }) => {
 			return;
 		}
 	};
-
-	// console.log(img)
-
-	const sendData = () => {
-		console.log('sendData');
-
-		let formData = new FormData();
-
-		const postData = {
-			title: '맥북쓰고싶은분~',
-			content: '새 맥북이 생겨서 올려봅니다 깨끗하게 써주시',
-			price: 10000,
-			deposit: 100000,
-			location: '상봉동',
-			latitude: '33.45050036271282',
-			longitude: '126.57007065166688',
-		};
-		formData.append(
-			'postUploadRequestDto',
-			new Blob([JSON.stringify(postData)])
-		);
-
-		const date = ['2022-09-22', '2022-10-22'];
-
-		dispatch(uploadToDB(formData));
-	};
-
-	React.useEffect(() => {
-		// console.log(imgUrl);
-		return () => {
-			// dispatch(imgActions.reset());
-		};
-	}, [imgUrl]);
 
 	//img 삭제
 	const removeImage = (payload) => {

@@ -52,8 +52,6 @@ const Posting = () => {
 //   console.log(data);
   console.log(blockDateDtoList.blockDateDtoList);
 
-  /////////////////
-
   //   //[1] post
   const onPostingHandler = async (e) => {
     e.preventDefault();
