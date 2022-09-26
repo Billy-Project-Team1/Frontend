@@ -11,6 +11,7 @@ import { getMypageReview } from '../../redux/modules/reviewSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import ReviewCardContent from './ReviewCardContent';
 import ReviewCardComment from './ReviewCardComment';
+import ReviewCardYourComment from './ReviewCardYourComment ';
 
 const ReviewCard = ({ totalAvg, profile }) => {
 	const dispatch = useDispatch();
@@ -26,13 +27,20 @@ const ReviewCard = ({ totalAvg, profile }) => {
 			<div className="reviewCard_container">
 				{reviewGet?.map((item, index) => {
 					return (
-						<div className="reviewCard_container_box">
+						<div className="reviewCardYourPage_container">
 							<ReviewCardContent
 								item={item}
 								index={index}
 								profileUrl={profile?.profileUrl}
 							/>
-							<ReviewCardComment item={item} profileUrl={profile?.profileUrl} />
+							{item.children[0] ? (
+								<ReviewCardYourComment
+									item={item}
+									profileUrl={profile?.profileUrl}
+								/>
+							) : (
+								' '
+							)}
 						</div>
 					);
 				})}

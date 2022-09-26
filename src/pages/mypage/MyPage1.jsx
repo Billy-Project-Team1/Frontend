@@ -36,9 +36,9 @@ const Mypage = () => {
 
 			<MyProfileHeader profile={profile} />
 			{myUserId === profile.userId ? (
-				<MyPageList totalAvg={profile.totalAvg} profile={profile}/>
+				<MyPageList totalAvg={profile.totalAvg} profile={profile} />
 			) : (
-				<YourPageList />
+				<YourPageList profile={profile} />
 			)}
 
 			<Footer />
