@@ -10,21 +10,24 @@ const KakaoMap = ({
   placeName,
   setPlaceAdress,
   setInputText,
+  position,
 }) => {
+  useEffect(() => {}, []);
   useEffect(() => {
     const container = document.getElementById('Mymap');
     const options = {
-      center: new kakao.maps.LatLng(37.50232593365278, 127.04444559870342),
+      center: new kakao.maps.LatLng(position.lat, position.lon),
       level: 3,
     };
 
     // 지도를 생성합니다.
     const map = new kakao.maps.Map(container, options);
-
+    const coords = new kakao.maps.LatLng(position.lat, position.lon);
     // 주소-좌표 변환 객체를 생성합니다.
     const geocoder = new kakao.maps.services.Geocoder();
     const marker = new kakao.maps.Marker({
       map: map,
+      position: coords,
     });
 
     // 주소로 좌표를 검색합니다..

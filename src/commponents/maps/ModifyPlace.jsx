@@ -3,7 +3,7 @@ import ModifyKakaoMap from './ModifyKakaoMap';
 import { HiSearch } from 'react-icons/hi';
 import { FiX } from 'react-icons/fi';
 import { AiOutlineClose } from 'react-icons/ai';
-import Headers2 from '../../commponents/header/Headers2';
+import MapModalheader from '../header/MapModalheader';
 
 const ModifyPlace = ({ setSearchMapModal, setData, data }) => {
   const outSection = useRef();
@@ -58,7 +58,10 @@ const ModifyPlace = ({ setSearchMapModal, setData, data }) => {
     "
       >
         <div className="KakaoMap_Header">
-          <Headers2 pageName="지도에서 주소 찾기" />
+        <MapModalheader
+            pageName="지도에서 주소 찾기"
+            setSearchMapModal={setSearchMapModal}
+          />
         </div>
         <form className="KakaoMap_input_Form" onSubmit={handleSubmit}>
           <input

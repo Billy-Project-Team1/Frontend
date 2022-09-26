@@ -17,6 +17,7 @@ const ChattingRoom = () => {
   }, []);
 
   const myChatList = useSelector((state) => state.ChatSlice.chatRoomList);
+  console.log(myChatList)
 
   return (
 		<div>

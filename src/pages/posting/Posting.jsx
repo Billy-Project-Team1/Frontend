@@ -20,12 +20,35 @@ import SearchPlace from '../../commponents/maps/SearchPlace';
 import Footer from '../../commponents/footer/Footer';
 import PostingMap from '../../commponents/maps/PostingMap';
 
+
 const Posting = () => {
   const dispatch = useDispatch();
   const [searchMapModal, setSearchMapModal] = useState(false);
+  const [position, setPosition] = useState({
+    lat: '',
+    lon: '',
+  });
+  const onSuccess = (location) => {
+    setPosition({
+      lat: location.coords.latitude,
+      lon: location.coords.longitude,
+    });
+  };
+
+  console.log(position);
+
+  // 에러에 대한 로직
+  const onError = () => {};
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (!('geolocation' in navigator)) {
+      onError({
+        code: 0,
+        message: 'Geolocation not supported',
+      });
+    }
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
   }, []);
 
   const initialState = {
@@ -49,7 +72,7 @@ const Posting = () => {
     //...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
     setData({ ...data, [name]: value });
   };
-//   console.log(data);
+  //   console.log(data);
   console.log(blockDateDtoList.blockDateDtoList);
 
   //   //[1] post
@@ -84,89 +107,93 @@ const Posting = () => {
   };
 
   return (
-		<div>
-			<Headers pageName="글쓰기" onClickSave={onPostingHandler} type="완료" />
+    <div>
+      <Headers pageName="글쓰기" onClickSave={onPostingHandler} type="완료" />
 
-			<div className="posting_container">
-				<div className="posting_image">
-					<ImageUploader img={img} setImg={setImg} />
-				</div>
-				<div className="posting_title">
-					<input
-						type="text"
-						placeholder="제품명"
-						//input에 네임, 밸류 설정하기.
-						name="title"
-						value={data.title}
-						onChange={onChangeHandler}
-					/>
-				</div>
-				<div className="posting_rental">
-					<div className="posting_price">
-						<label className="posting_price_label">일 대여금</label>
-						<input
-							onInput={(e) => {
-								if (e.target.value.length > e.target.maxLength)
-									e.target.value = e.target.value.slice(0, e.target.maxLength);
-							}}
-							className="posting_price_input"
-							type="number"
-							placeholder="￦"
-							name="price"
-							value={data.price}
-							onChange={onChangeHandler}
-							maxLength={9}
-						/>
-					</div>
+      <div className="posting_container">
+        <div className="posting_image">
+          <ImageUploader img={img} setImg={setImg} />
+        </div>
+        <div className="posting_title">
+          <input
+            type="text"
+            placeholder="제품명"
+            //input에 네임, 밸류 설정하기.
+            name="title"
+            value={data.title}
+            onChange={onChangeHandler}
+          />
+        </div>
+        <div className="posting_rental">
+          <div className="posting_price">
+            <label className="posting_price_label">일 대여금</label>
+            <input
+              onInput={(e) => {
+                if (e.target.value.length > e.target.maxLength)
+                  e.target.value = e.target.value.slice(0, e.target.maxLength);
+              }}
+              className="posting_price_input"
+              type="number"
+              placeholder="￦"
+              name="price"
+              value={data.price}
+              onChange={onChangeHandler}
+              maxLength={9}
+            />
+          </div>
 
-					<div className="posting_deposit">
-						<label className="posting_deposit_label">보증금</label>
-						<input
-							onInput={(e) => {
-								if (e.target.value.length > e.target.maxLength)
-									e.target.value = e.target.value.slice(0, e.target.maxLength);
-							}}
-							className="posting_deposit_input"
-							type="number"
-							placeholder="￦"
-							name="deposit"
-							value={data.deposit}
-							onChange={onChangeHandler}
-							maxLength={9}
-							// onChange={e => form({setDeposit: e.target.value.replace(/[^0-9]/g, "")})} />
-						/>
-					</div>
-				</div>
+          <div className="posting_deposit">
+            <label className="posting_deposit_label">보증금</label>
+            <input
+              onInput={(e) => {
+                if (e.target.value.length > e.target.maxLength)
+                  e.target.value = e.target.value.slice(0, e.target.maxLength);
+              }}
+              className="posting_deposit_input"
+              type="number"
+              placeholder="￦"
+              name="deposit"
+              value={data.deposit}
+              onChange={onChangeHandler}
+              maxLength={9}
+              // onChange={e => form({setDeposit: e.target.value.replace(/[^0-9]/g, "")})} />
+            />
+          </div>
+        </div>
 
-				<div className="posting_content">
-					<textarea
-						type="text"
-						placeholder="게시물 내용을 작성해주세요. (적절하지 못한 제품은 게시가 제한될 수
+        <div className="posting_content">
+          <textarea
+            type="text"
+            placeholder="게시물 내용을 작성해주세요. (적절하지 못한 제품은 게시가 제한될 수
 				있어요.)"
-						name="content"
-						value={data.content}
-						onChange={onChangeHandler}
-					/>
-				</div>
-				<div className="posting_calendar_wrap">
-					<div className="posting_calendar_icon">
-						<Calendar setData={setBlockDateDtoList} data={blockDateDtoList} />
-					</div>
-				</div>
-				<div className="posting_map_wrap">
-					<PostingMap setSearchMapModal={setSearchMapModal} data={data} />
-					{searchMapModal && (
-						<SearchPlace
-							setSearchMapModal={setSearchMapModal}
-							setData={setData}
-							data={data}
-						/>
-					)}
-				</div>
-			</div>
-			<Footer />
-		</div>
-	);
+            name="content"
+            value={data.content}
+            onChange={onChangeHandler}
+          />
+        </div>
+        <div className="posting_calendar_wrap">
+          <div className="posting_calendar_icon">
+            <Calendar setData={setBlockDateDtoList} data={blockDateDtoList} />
+          </div>
+        </div>
+        <div className="posting_map_wrap">
+          <PostingMap
+            setSearchMapModal={setSearchMapModal}
+            data={data}
+          />
+          {searchMapModal && (
+            <SearchPlace
+              setSearchMapModal={setSearchMapModal}
+              setData={setData}
+              data={data}
+              position={position}
+            />
+          )}
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
 };
 
 export default Posting;

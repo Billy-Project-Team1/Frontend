@@ -13,11 +13,13 @@ export const getMyChatRoom = createAsyncThunk(
     try {
       const response = await instance.get('/chat/rooms');
       if (response.status === 200) {
+        console.log(response)
         return thunkAPI.fulfillWithValue(response.data.chatRoomResponseDtoList);
       } else {
         return;
       }
     } catch (err) {
+      console.log(err)
     }
   }
 );
