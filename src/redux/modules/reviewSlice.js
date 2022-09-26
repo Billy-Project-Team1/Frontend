@@ -27,12 +27,12 @@ export const getMypageReview = createAsyncThunk(
 
 // 리뷰 Get /reviews/{postId}
 export const getDetailReview = createAsyncThunk(
-	'getReview',
+	'getDetailReview',
 	async (payload, thunkAPI) => {
 		try {
 			// console.log(payload) => id뜸
 			// a:API url , b: API request 근데 이건 get이니까 없음 ㅋㅋ (가끔 있음), c: 파일의 타입 바꿔줄때 씀(이미지)
-			const response = await instance.get(`/reviews/${payload}`, {
+			const response = await instance.get(`/reviews/${payload.postid}`, {
 				params: { userId: payload.myUserId },
 			});
 			console.log(response);
@@ -109,6 +109,7 @@ export const updateReview = createAsyncThunk(
 const initialState = {
 	reviewPost: {},
 	reviewGet: [],
+	detailReviewGet: {},
 };
 
 //👉🏻3. extraReducers를 사용해서 진짜 사용할 정보로 바꿔주기
@@ -123,7 +124,7 @@ export const reviewSlice = createSlice({
 			state.reviewGet = action.payload;
 		},
 		[getDetailReview.fulfilled]: (state, action) => {
-			state.reviewGet = action.payload;
+			state.detailReviewGet = action.payload;
 		},
 		[addReview.fulfilled]: (state, action) => {
 			state.reviewPost = action.payload;

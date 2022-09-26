@@ -24,6 +24,7 @@ import DetailCalendar from '../../commponents/calendar/DetailCalendar';
 import DetailFooter from '../../commponents/footer/DetailFooter';
 import ReviewCard from '../../commponents/Review/ReviewCard';
 import AlertSmallModal from '../../commponents/modal/AlertSmallModal';
+import ReviewCardDeatil from '../../commponents/Review/ReviewCardDeatil';
 
 const Detail = () => {
   //2. 함수 만들 때 수입해서 쓸거임. slice에서 수입해올 때 사용하는 함수임.
@@ -131,92 +132,93 @@ const Detail = () => {
   };
 
   return (
-    <div className="detail_container">
-      <div className="detail_header">
-        <DetailHeader authorId={detailPost.memberUserId} postId={postid} />
-      </div>
-      <div className="detail_image_box">
-        <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-          {detailPost.postImgUrl?.postImgUrlList.map((item, index) => {
-            return (
+		<div className="detail_container">
+			<div className="detail_header">
+				<DetailHeader authorId={detailPost.memberUserId} postId={postid} />
+			</div>
+			<div className="detail_image_box">
+				<Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+					{detailPost.postImgUrl?.postImgUrlList.map((item, index) => {
+						return (
 							<SwiperSlide key={index}>
 								<img src={item} />
 								<div className="detail_image_gradient" />
 							</SwiperSlide>
 						);
-          })}
-        </Swiper>
-      </div>
-      <div className="detail_contents_wrap">
-        <div className="detail_user_profile">
-          <div className="detail_profile_img">
-            <img src={detailPost.profileUrl} onClick={() => profilePage()} />
-          </div>
-          <div className="detail_profile_wrap">
-            <div className="detail_nickname" onClick={() => profilePage()}>
-              {detailPost.nickname}
-            </div>
-            <div className="detail_profile_second">
-              <span className="detail_location">{detailPost.location} </span>
-              <span className="detail_location_line">&nbsp;|&nbsp;</span>
-              <span className="detail_time"> {nowDate}</span>
-            </div>
-          </div>
-        </div>
-        <div className="detail_content_part">
-          <div className="detail_title">{detailPost.title}</div>
-          <div className="detail_rental">
-            <span className="detail_price">일 대여금 {detailPrice}원</span>
-            <span className="detail_rental_line">|</span>
-            <span className="detail_deposit">보증금 {detailDeposit}원</span>
-          </div>
-          <div className="detail_content">
-            {detailPost.content?.split('\n').map((line, index) => {
-              return (
-                <span key={index}>
-                  {line}
-                  <br />
-                </span>
-              );
-            })}
-          </div>
-          <div className="detail_bottom_contents">
-            <span className="detail_like">
-              대여&nbsp;{detailPost.reservationCount}&nbsp;
-            </span>
-            <span className="detail_contents_line">|</span>
-            <span className="detail_like">
-              &nbsp;관심&nbsp;{detailPost.likeCount}
-            </span>
-          </div>
-        </div>
-      </div>
-      <div className="detail_calendar">
-        <DetailCalendar
-          data={blockDate}
-          detailPost={detailPost}
-          setPickDate={setPickDate}
-          pickDate={pickDate}
-        />
-      </div>
-      <div className="detail_map">
-        <DetailMap data={detailPost} />
-      </div>
-      <DetailFooter
-        authorId={detailPost.memberUserId}
-        detailPost={detailPost}
-        pickDate={pickDate}
-      />
-      {modalOn && (
-        <AlertSmallModal
-          setModalOn={setModalOn}
-          body="로그인이 필요한 페이지입니다"
-          buttonType="로그인"
-          onClickSubmit={login}
-        />
-      )}
-    </div>
-  );
+					})}
+				</Swiper>
+			</div>
+			<div className="detail_contents_wrap">
+				<div className="detail_user_profile">
+					<div className="detail_profile_img">
+						<img src={detailPost.profileUrl} onClick={() => profilePage()} />
+					</div>
+					<div className="detail_profile_wrap">
+						<div className="detail_nickname" onClick={() => profilePage()}>
+							{detailPost.nickname}
+						</div>
+						<div className="detail_profile_second">
+							<span className="detail_location">{detailPost.location} </span>
+							<span className="detail_location_line">&nbsp;|&nbsp;</span>
+							<span className="detail_time"> {nowDate}</span>
+						</div>
+					</div>
+				</div>
+				<div className="detail_content_part">
+					<div className="detail_title">{detailPost.title}</div>
+					<div className="detail_rental">
+						<span className="detail_price">일 대여금 {detailPrice}원</span>
+						<span className="detail_rental_line">|</span>
+						<span className="detail_deposit">보증금 {detailDeposit}원</span>
+					</div>
+					<div className="detail_content">
+						{detailPost.content?.split('\n').map((line, index) => {
+							return (
+								<span key={index}>
+									{line}
+									<br />
+								</span>
+							);
+						})}
+					</div>
+					<div className="detail_bottom_contents">
+						<span className="detail_like">
+							대여&nbsp;{detailPost.reservationCount}&nbsp;
+						</span>
+						<span className="detail_contents_line">|</span>
+						<span className="detail_like">
+							&nbsp;관심&nbsp;{detailPost.likeCount}
+						</span>
+					</div>
+				</div>
+			</div>
+			<div className="detail_calendar">
+				<DetailCalendar
+					data={blockDate}
+					detailPost={detailPost}
+					setPickDate={setPickDate}
+					pickDate={pickDate}
+				/>
+			</div>
+			<div className="detail_map">
+				<DetailMap data={detailPost} />
+			</div>
+			<DetailFooter
+				authorId={detailPost.memberUserId}
+				detailPost={detailPost}
+				pickDate={pickDate}
+			/>
+			{modalOn && (
+				<AlertSmallModal
+					setModalOn={setModalOn}
+					body="로그인이 필요한 페이지입니다"
+					buttonType="로그인"
+					onClickSubmit={login}
+				/>
+			)}
+			<ReviewCardDeatil postid={postid} myUserId={myUserId} />
+		</div>
+	);
 };
 
 export default Detail;
