@@ -1,13 +1,12 @@
 // React import
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 
 // Style import
 import './ReviewCard.scss';
-import { FaStar } from 'react-icons/fa';
 import ReviewStarRating from '../starRating/ReviewStarRating';
 import { TbMinusVertical } from 'react-icons/tb';
 
-const ReviewCardContent = ({ item, index, profileUrl }) => {
+const ReviewCardContent = ({ item, index }) => {
 	function rentalDate(a) {
 		var d = new Date(a);
 		return (
@@ -17,10 +16,7 @@ const ReviewCardContent = ({ item, index, profileUrl }) => {
 			'.' +
 			(d.getDate() > 9
 				? d.getDate().toString()
-				: '0' + d.getDate().toString()) +
-			'(' +
-			('월화수목금토일'.charAt(d.getUTCDay()) + '') +
-			')'
+				: '0' + d.getDate().toString())
 		);
 	}
 

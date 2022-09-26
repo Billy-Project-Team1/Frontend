@@ -67,6 +67,32 @@ export const addReview = createAsyncThunk(
 	}
 );
 
+
+// {
+// "reviewId": 6,
+// "comment": "다음에 찾아주세요22!"
+// }
+
+export const addDetailReview = createAsyncThunk(
+	'addDetailReview',
+	async (payload, thunkAPI) => {
+		try {
+			// console.log(payload) => id뜸
+			const response = await instance.post(`/auth/reviews/comments`,  {
+				reviewId: payload.reviewId,
+				comment: payload.comment,
+			});
+
+			// Rerult를 slice에 다 넣어줘야함. 그래야 이제 빼써 쓸 수 있음.
+			if (response.data.success === true) {
+				return thunkAPI.fulfillWithValue(response.data.result);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
 export const delReview = createAsyncThunk(
 	'delReview',
 	async (payload, thunkAPI) => {
@@ -109,7 +135,8 @@ export const updateReview = createAsyncThunk(
 const initialState = {
 	reviewPost: {},
 	reviewGet: [],
-	detailReviewGet: {},
+	detailReviewGet: [],
+
 };
 
 //👉🏻3. extraReducers를 사용해서 진짜 사용할 정보로 바꿔주기
@@ -128,6 +155,9 @@ export const reviewSlice = createSlice({
 		},
 		[addReview.fulfilled]: (state, action) => {
 			state.reviewPost = action.payload;
+		},
+		[addDetailReview.fulfilled]: (state, action) => {
+			// state.reviewPost = action.payload;
 		},
 		[delReview.fulfilled]: (state, action) => {
 			state.reviewPost = action.payload.filter(
