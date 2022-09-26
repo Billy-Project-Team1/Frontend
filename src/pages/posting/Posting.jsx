@@ -20,7 +20,6 @@ import SearchPlace from '../../commponents/maps/SearchPlace';
 import Footer from '../../commponents/footer/Footer';
 import PostingMap from '../../commponents/maps/PostingMap';
 
-
 const Posting = () => {
   const dispatch = useDispatch();
   const [searchMapModal, setSearchMapModal] = useState(false);
@@ -38,7 +37,12 @@ const Posting = () => {
   console.log(position);
 
   // 에러에 대한 로직
-  const onError = () => {};
+  const onError = () => {
+    setPosition({
+      lat: 37.50232593365278,
+      lon: 127.04444559870342,
+    });
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -177,10 +181,7 @@ const Posting = () => {
           </div>
         </div>
         <div className="posting_map_wrap">
-          <PostingMap
-            setSearchMapModal={setSearchMapModal}
-            data={data}
-          />
+          <PostingMap setSearchMapModal={setSearchMapModal} data={data} />
           {searchMapModal && (
             <SearchPlace
               setSearchMapModal={setSearchMapModal}
