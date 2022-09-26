@@ -1,7 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 
 const ReviewCardYourComment = ({ item, index, profileUrl }) => {
-	const [reviewOpen, setReviewOpen] = useState(false);
 
 	const textRef = useRef();
 	const handleResizeHeight = useCallback(() => {
