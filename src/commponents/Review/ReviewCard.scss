@@ -1,63 +1,117 @@
 @import '../../common/color.scss';
 
 .reviewCard_container {
-	padding: 1.25rem 1rem 12.5rem 1rem;
+	padding: 0rem 1rem 12.5rem 1rem;	
+}
+
+.reviewCardYourPage_container {
+	border-bottom: 1px solid #eeeeee;
+}
+
+.reviewCard_container_box {
+	border-bottom: 1px solid #eeeeee;
+}
+
+.ReviewCard_starAvg_container {
+	padding: 1rem 1rem 0 1rem;
+
 }
 .reviewCard_star_avg {
 	display: flex;
 	flex-direction: row;
 	gap: 4px;
 }
+
 .reviewCard_total {
-	font-weight: 600;
+	font-weight: 700;
 	font-size: 1rem;
 	color: $color-primary;
 }
+
 .reciewCard_one_star_wrap {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
+
 .reviewCard_one_star {
 	color: $font-star;
 }
+
 .reviewCard_wrap {
-	border-bottom: 1px solid #eeeeee;
+	// border-bottom: 1px solid #eeeeee;
 	padding-bottom: 20px;
 }
+
 .reviewCard_title {
 	font-size: 0.875rem;
 	margin: 20px 0 3px 0;
 }
+
+.reviewCard_rating_name_wrap {
+	display: flex;
+	flex-direction: row;
+	gap: 4px;
+}
+
+.reviewCard_rating_name_box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.reviewCard_rating_container {
+	display: flex;
+	flex-direction: column;
+}
+
+.reviewCard_rating_box {
+	display: flex;
+	flex-direction: row;
+	// gap: 5px;
+}
+
 .reviewCard_rating {
 	font-size: 0.875rem;
 	color: $color-primary;
-	margin-right: 6px;
 }
+
 .reviewCard_rental_name {
 	font-size: 0.8125rem;
 	color: $color-medium;
 }
+
+.reviewCard_middle_line {
+	color: $color-medium;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
 .reviewCard_rental_date {
 	font-size: 0.8125rem;
 	color: $color-medium;
 }
+
 .reviewCard_imgs_wrap {
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
 	margin: 10px 0;
 }
+
 .reviewCard_img_list {
 	width: 80px;
 	height: 80px;
-	// background: $color-placeholder;
 }
+
 .reviewCard_img {
 	width: 100%;
 	aspect-ratio: 1/1;
 	border-radius: 7px;
 }
+
 .reviewCard_comment {
 	font-size: 0.875rem;
 	color: $color-primary;
@@ -89,6 +143,7 @@
 	background: $color-placeholder;
 	aspect-ratio: 1/1;
 }
+
 .reviewCard_mycomment_done {
 	border: 1px solid $color-placeholder;
 	border-radius: 0px 16px 16px 16px;
@@ -96,12 +151,14 @@
 	font-size: 0.875rem;
 	padding: 10px 16px;
 }
+
 .reviewCard_mycomment_wrap {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	gap: 10px;
 }
+
 .reviewCard_mycomment {
 	border: 1px solid $color-placeholder;
 	border-radius: 0px 16px 16px 16px;
@@ -120,9 +177,6 @@
 		padding: 10px 16px;
 	}
 }
-// display: flex;
-// flex-direction: row;
-// gap: 8px;
 
 .reviewCard_btns {
 	display: flex;
@@ -131,6 +185,7 @@
 	justify-content: end;
 	font-size: 0.875rem;
 }
+
 .reviewCard_cancel_btn {
 	width: 70px;
 	height: 40px;

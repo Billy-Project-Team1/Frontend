@@ -13,6 +13,7 @@ import UploadCard from '../../commponents/profileCard/UploadCard';
 import JullyNavBar from '../../commponents/reservations/JullyNavBar';
 import JullyReservation from '../../commponents/reservations/JullyReservation';
 import ReviewCard from '../../commponents/Review/ReviewCard';
+import ReviewCardStarAvg from '../../commponents/Review/ReviewCardStarAvg';
 
 const Mypage = ({ totalAvg, profile }) => {
 	const [myPageState, setMyPageState] = useState('1');
@@ -141,7 +142,13 @@ const Mypage = ({ totalAvg, profile }) => {
 					})}
 				</div>
 			) : myPageState === '5' ? (
-				<ReviewCard totalAvg={totalAvg} profile={profile}/>
+				<>
+					<ReviewCardStarAvg totalAvg={totalAvg} />
+					<ReviewCard profile={profile} />
+					{/* <ReviewCardContent profile={profile} /> */}
+
+					{/* <ReviewCard totalAvg={totalAvg} profile={profile} /> */}
+				</>
 			) : (
 				''
 			)}
