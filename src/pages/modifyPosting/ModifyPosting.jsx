@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 // Redux import
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // Style import
 import '../posting/Posting.scss';
 // Slice import
@@ -42,11 +42,12 @@ const ModifyPosting = () => {
           postImgUrl: `${result.postImgUrl?.postImgUrlList}`,
         });
         setImg(result.postImgUrl.postImgUrlList);
-        setImgUrl(result.postImgUrl.postImgUrlList);
+        setImgUrl([...imgUrl, ...result.postImgUrl.postImgUrlList]);
         result.blockDate.blockDateList.map((item) => {
           return date.push(new Date(item));
         });
         setBlockDate(result.blockDate?.reservationDateList);
+        setBlockDateDtoList(result.blockDate?.reservationDateList);
       }
     }
     getDetail();
@@ -61,10 +62,7 @@ const ModifyPosting = () => {
     detailLocation: '',
     latitude: '',
     longitude: '',
-    postImgUrl: '',
   };
-
-  const detailPost = useSelector((state) => state.post.post);
   const [revisePosting, setRevisePosting] = useState(initialState);
 
   const onChangeHandler = (e) => {
@@ -75,25 +73,23 @@ const ModifyPosting = () => {
 
   const onPostingHandler = async (e) => {
     e.preventDefault();
-    //이미지 form 데이터
     let formData = new FormData();
-    //a는 이름으로  b를 저장한다. c는 어떠한 타입으로 / form은 c를 굳이 안써도됨
-    // formData.append(a,b)
     formData.append(
       'postUploadRequestDto',
       new Blob([JSON.stringify(revisePosting)], { type: 'application/json' })
     );
-    for (let i= 0; i< imgUrl.length; i++){
-      formData.append('imgUrlList',imgUrl[i]);
+    for (let i = 0; i < imgUrl.length; i++) {
+      formData.append('imgUrlList', new Blob([JSON.stringify(imgUrl[i])],{type:'application/json'}))
     }
+  
     for (let i = 0; i < img.length; i++) {
       formData.append('files', img[i]);
     }
-    for (let i = 0; i < blockDateDtoList.blockDateDtoList.length; i++) {
+    for (let i = 0; i < blockDateDtoList?.blockDateDtoList?.length; i++) {
       formData.append('blockDateDtoList', blockDateDtoList.blockDateDtoList[i]);
     }
     try {
-      const data = await dispatch(updatePost(formData)).unwrap();
+      const data = await dispatch(updatePost({ formData, postid })).unwrap();
       console.log(data);
       if (data) {
         window.location.replace('/');

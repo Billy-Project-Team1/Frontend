@@ -1,9 +1,8 @@
 // React import
 import React, { useState, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
 
 // Redux import
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addPost } from '../../redux/modules/postSlice';
 
 // Style import
@@ -23,19 +22,11 @@ import PostingMap from '../../commponents/maps/PostingMap';
 
 const Posting = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [searchMapModal, setSearchMapModal] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const [calendarOpen, setCalendarOpen] = useState(false);
-  const calendarClose = () => {
-    setCalendarOpen(!calendarOpen);
-  };
-
-  /////////////////
 
   const initialState = {
     title: '',
@@ -58,7 +49,8 @@ const Posting = () => {
     //...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
     setData({ ...data, [name]: value });
   };
-  /////////////////
+//   console.log(data);
+  console.log(blockDateDtoList.blockDateDtoList);
 
   //   //[1] post
   const onPostingHandler = async (e) => {

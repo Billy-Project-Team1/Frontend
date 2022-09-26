@@ -1,8 +1,24 @@
 .starRating_rating {
   display: none;
 }
+
 .starRating_star {
-  cursor: pointer;
-  width: 24px;
-  margin-right: 5px;
+	cursor: pointer;
+	width: 24px;
+	margin-right: 5px;
+}
+
+.reviweStarRating_wrap {
+ display: flex;
+ flex-direction: row; 
+}
+
+.reviewStarRating_star {
+	width: 100%;
+}
+
+.reviewStarRating_Fastar_label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

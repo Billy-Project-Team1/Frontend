@@ -15,7 +15,6 @@ import { Pagination } from 'swiper';
 
 // Sclice import
 import { getPost } from '../../redux/modules/postSlice';
-import { createChatRoom, getMyChatRoom } from '../../redux/modules/ChatSlice';
 import { reservationThunk } from '../../redux/modules/reservationSlice';
 
 // Component import
@@ -57,7 +56,7 @@ const Detail = () => {
   // state.post 는 configstore에 지정해둔 post 값임 slice를 뜻함
   // state.post.post는 slice안에 있는 Initialstate값을 가져옴
   const detailPost = useSelector((state) => state.post.post);
-  console.log(detailPost);
+  // console.log(detailPost);
 
   const blockDateList = detailPost.blockDate?.blockDateList;
   const reservationDateList = detailPost.blockDate?.reservationDateList;
@@ -133,7 +132,6 @@ const Detail = () => {
 
   return (
     <div className="detail_container">
-      {/* 2. props 내려줌 그럼 받는측은 ㅇㄷ? header 가보기~*/}
       <div className="detail_header">
         <DetailHeader authorId={detailPost.memberUserId} postId={postid} />
       </div>
@@ -206,7 +204,6 @@ const Detail = () => {
       </div>
       <DetailFooter
         authorId={detailPost.memberUserId}
-        // onReservationHandler={onReservationHandler}
         detailPost={detailPost}
         pickDate={pickDate}
       />

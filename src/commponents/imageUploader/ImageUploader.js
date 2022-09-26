@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 // Package import
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { uploadToDB } from '../../redux/modules/image';
 import upload_image from '../../static/image/upload_image.svg';
 import { FaMinusCircle } from 'react-icons/fa';

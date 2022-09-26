@@ -11,7 +11,13 @@ import {
   HiOutlineChevronUp,
 } from 'react-icons/hi';
 
-const PostingCalendar = ({data, date, setDate,setBlockDateDtoList,blockDateDtoList}) => {
+const PostingCalendar = ({
+  data,
+  date,
+  setDate,
+  setBlockDateDtoList,
+  blockDateDtoList,
+}) => {
   const noDates = useRef();
   const noDates2 = useRef();
   const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
@@ -70,10 +76,10 @@ const PostingCalendar = ({data, date, setDate,setBlockDateDtoList,blockDateDtoLi
     }
   }, [month, data, date, toggleOn]);
 
-  const setDateFormat = () => {
+  const setDateFormat = async() => {
     if (date?.length > 0) {
       noDates.current = null;
-      const getDates = date.map((v, i) => {
+      const getDates = await date.map((v, i) => {
         return v.format(v._format);
       });
       setDates(getDates);
@@ -127,14 +133,21 @@ const PostingCalendar = ({data, date, setDate,setBlockDateDtoList,blockDateDtoLi
       noDates.current = [];
     }
   };
+
+  const blockDate = date.map((v) => {
+    v = v.toLocaleString();
+    return v;
+  });
+
   useEffect(() => {
     setDateFormat();
     setBlockDateDtoList({
       ...blockDateDtoList,
-      blockDateDtoList: dates,
+      blockDateDtoList: blockDate,
     });
-  }, [date]);
 
+  }, [date]);
+  
   return (
     <div className="calendar_wrap">
       <div className="calendar_box">
