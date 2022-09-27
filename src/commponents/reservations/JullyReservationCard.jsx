@@ -16,6 +16,8 @@ import {
 // Component import
 import CancelButton from './CancelButton';
 import AlertLargeModal from '../modal/AlertLargeModal';
+import AlertButton from './AlertButton';
+import AlertButtonJullyReturn from './AlertButtonJullyReturn';
 
 const JullyReservationCard = ({ jullyState }) => {
   const dispatch = useDispatch();
@@ -83,87 +85,97 @@ const JullyReservationCard = ({ jullyState }) => {
   return (
     // .slice(0).reverse()
     <div className="reservationcard_first_container">
-      {jullylist?.slice(0).reverse().map((item, index) => {
-        return (
-          <div className="reservationcard_container" key={index}>
-            <div className="reservationcard_small_container">
-              <div className="reservationcard_title_wrap">
-                <div className="reservationcard_title">{item.title}</div>
-              </div>
-              <div className="reservationcard_detail_wrap">
-                <img className="reservationcard_img" src={item.postImgUrl} />
-                <div className="reservationcard_body_box">
-                  <div className="reservationcard_icon_box">
-                    <div className="reservationcard_price">
-                      <img src={dailycost} />
-                      <p>{dailyPrice(item.price)}</p>
-                    </div>
-                    <div className="reservationcard_price">
-                      <img src={deposit} />
-                      <p>{depositPrice(item.deposit)}</p>
-                    </div>
-                  </div>
-                  <div>
-                    예약일자 : {rentalDate(item.startDate)}~
-                    {rentalDate(item.endDate)}&nbsp;(
-                    {rentalTotalDate(item.totalAmount, item.price)}박)
-                  </div>
-                  <div>
-                    예약상태 :&nbsp;
-                    {jullyState === '1'
-                      ? '예약 대기중'
-                      : jullyState === '2'
-                      ? '예약중'
-                      : jullyState === '4'
-                      ? '대여중'
-                      : jullyState === '5'
-                      ? '거래 완료'
-                      : jullyState === '3'
-                      ? '취소 완료'
-                      : ''}
-                  </div>
-                  <div className="reservationcard_name_wrap">
-                    <div className="reservationcard_name">
-                      예약자: {item.billyNickname}
-                    </div>
-                    <button className="reservationcard_chat_btn">
-                      1:1 문의
-                    </button>
-                  </div>
-                  <div className="reservationcard_alert_content">
-                    {jullyState === '2' && item.delivery === true
-                      ? '• 거래 완료시 전달 완료 버튼을 체크해주세요.'
-                      : ''}
-                  </div>
-                  {jullyState === '3' ? (
-                    <div className="reservationcard_alert_content">
-                      취소사유 : {item.cancelMessage}
-                    </div>
-                  ) : (
-                    ''
-                  )}
+      {jullylist
+        ?.slice(0)
+        .reverse()
+        .map((item, index) => {
+          return (
+            <div className="reservationcard_container" key={index}>
+              <div className="reservationcard_small_container">
+                <div className="reservationcard_title_wrap">
+                  <div className="reservationcard_title">{item.title}</div>
                 </div>
-              </div>
-              <div className="reservationcard_btn_wrap">
-                {jullyState === '1' ? (
-                  <div className="jullyReservation_set_btn">
-                    <CancelButton item={item} jullyState={jullyState} />
-                    <button
-                      className="jullyReservation_btn"
-                      onClick={() =>
-                        jullyStateHandler(
-                          item.reservationId,
-                          reservationApproved
-                        )
-                      }
-                    >
-                      승인
-                    </button>
+                <div className="reservationcard_detail_wrap">
+                  <img className="reservationcard_img" src={item.postImgUrl} />
+                  <div className="reservationcard_body_box">
+                    <div className="reservationcard_icon_box">
+                      <div className="reservationcard_price">
+                        <img src={dailycost} />
+                        <p>{dailyPrice(item.price)}</p>
+                      </div>
+                      <div className="reservationcard_price">
+                        <img src={deposit} />
+                        <p>{depositPrice(item.deposit)}</p>
+                      </div>
+                    </div>
+                    <div>
+                      예약일자 : {rentalDate(item.startDate)}~
+                      {rentalDate(item.endDate)}&nbsp;(
+                      {rentalTotalDate(item.totalAmount, item.price)}박)
+                    </div>
+                    <div>
+                      예약상태 :&nbsp;
+                      {jullyState === '1'
+                        ? '예약 대기중'
+                        : jullyState === '2'
+                        ? '예약중'
+                        : jullyState === '4'
+                        ? '대여중'
+                        : jullyState === '5'
+                        ? '거래 완료'
+                        : jullyState === '3'
+                        ? '취소 완료'
+                        : ''}
+                    </div>
+                    <div className="reservationcard_name_wrap">
+                      <div className="reservationcard_name">
+                        예약자: {item.billyNickname}
+                      </div>
+                      <button className="reservationcard_chat_btn">
+                        1:1 문의
+                      </button>
+                    </div>
+                    <div className="reservationcard_alert_content">
+                      {jullyState === '2' && item.delivery === true
+                        ? '• 거래 완료시 전달 완료 버튼을 체크해주세요.'
+                        : ''}
+                    </div>
+                    {jullyState === '3' ? (
+                      <div className="reservationcard_alert_content">
+                        취소사유 : {item.cancelMessage}
+                      </div>
+                    ) : (
+                      ''
+                    )}
                   </div>
-                ) : jullyState === '2' ? (
-                  item.delivery === true ? (
-                    <>
+                </div>
+                <div className="reservationcard_btn_wrap">
+                  {jullyState === '1' ? (
+                    <div className="jullyReservation_set_btn">
+                      <CancelButton item={item} jullyState={jullyState} />
                       <button
+                        className="jullyReservation_btn"
+                        onClick={() =>
+                          jullyStateHandler(
+                            item.reservationId,
+                            reservationApproved
+                          )
+                        }
+                      >
+                        승인
+                      </button>
+                    </div>
+                  ) : jullyState === '2' ? (
+                    item.delivery === true ? (
+                      <>
+                        <AlertButton
+                          jullyState={jullyState}
+                          jullyStateHandler={jullyStateHandler}
+                          JullyData={item.reservationId}
+                          JullyHandleDone={handleDone}
+                        />
+
+                        {/* <button
                         className="reservationcard_btn"
                         onClick={() => isModal()}
                       >
@@ -179,43 +191,50 @@ const JullyReservationCard = ({ jullyState }) => {
                           data={item.reservationId}
                           data2={handleDone}
                         />
-                      )}
-                    </>
-                  ) : (
-                    <CancelButton item={item} jullyState={jullyState} />
-                  )
-                ) : jullyState === '4' ? (
-                  <>
-                    <button
-                      className="reservationcard_btn"
-                      onClick={() => isModal()}
-                    >
-                      반납 완료
-                    </button>
-                    {largeModalOpen && (
-                      <AlertLargeModal
-                        setLargeModalOpen={setLargeModalOpen}
-                        body1="반납 완료시 대여가 확정됩니다."
-                        body2="반납을 완료하시겠습니까?"
-                        buttonType="반납 완료"
-                        onClickSubmit={jullyStateHandler}
-                        data={item.reservationId}
-                        data2={returnDone}
+                      )} */}
+                      </>
+                    ) : (
+                      <CancelButton item={item} jullyState={jullyState} />
+                    )
+                  ) : jullyState === '4' ? (
+                    <>
+                      <AlertButtonJullyReturn
+                        jullyState={jullyState}
+                        jullyStateHandler={jullyStateHandler}
+                        JullyData={item.reservationId}
+                        JullyReturnDone={returnDone}
                       />
-                    )}
-                  </>
-                ) : jullyState === '5' ? (
-                  <div style={{ marginBottom: '20px' }} />
-                ) : jullyState === '3' ? (
-                  <div style={{ marginBottom: '20px' }} />
-                ) : (
-                  ''
-                )}
+
+                      {/* <button
+                        className="reservationcard_btn"
+                        onClick={() => isModal()}
+                      >
+                        반납 완료
+                      </button>
+                      {largeModalOpen && (
+                        <AlertLargeModal
+                          setLargeModalOpen={setLargeModalOpen}
+                          body1="반납 완료시 대여가 확정됩니다."
+                          body2="반납을 완료하시겠습니까?"
+                          buttonType="반납 완료"
+                          onClickSubmit={jullyStateHandler}
+                          data={item.reservationId}
+                          data2={returnDone}
+                        />
+                      )} */}
+                    </>
+                  ) : jullyState === '5' ? (
+                    <div style={{ marginBottom: '20px' }} />
+                  ) : jullyState === '3' ? (
+                    <div style={{ marginBottom: '20px' }} />
+                  ) : (
+                    ''
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
     </div>
   );
 };
