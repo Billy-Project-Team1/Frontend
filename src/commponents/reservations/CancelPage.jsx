@@ -172,6 +172,7 @@ const CancelPage = ({
           </div>
         </div>
         <div className="cancelpage_body">취소 사유</div>
+        <div className="cnaclepage_select_body">
         {billyState === '1' ? (
           <select
             name="cancelMessage"
@@ -229,6 +230,7 @@ const CancelPage = ({
         ) : (
           ''
         )}
+        </div>
         <div className="cancelpage_cancel_btn_wrap">
           {billyState === '1' ? (
             <button
