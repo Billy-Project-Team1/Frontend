@@ -6,12 +6,11 @@ import { jullyStateChangeThunk } from '../../redux/modules/reservationSlice';
 import AlertLargeModal from '../modal/AlertLargeModal';
 
 const AlertButtonJullyReturn = ({
-  billyState,
   jullyState,
   deliveryDoneHandler,
   billyData,
+  jullyStateHandler,
   JullyData,
-  JullyHandleDone,
   JullyReturnDone,
   setTest,
   test,
@@ -36,7 +35,7 @@ const AlertButtonJullyReturn = ({
     <>
       {jullyState === '4' ? (
         <>
-          <button className="reservationcard_btn" onClick={() => isModal()}>
+          <button className="reservationcard_btn" onClick={isModal}>
             반납 완료
           </button>
           {largeModalOpen && (

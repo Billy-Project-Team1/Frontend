@@ -44,7 +44,7 @@ const AlertButton = ({
         </>
       ) : jullyState === '2' ? (
         <>
-          <button className="reservationcard_btn" onClick={() => isModal()}>
+          <button className="reservationcard_btn" onClick={isModal}>
             전달 완료
           </button>
           {largeModalOpen && (

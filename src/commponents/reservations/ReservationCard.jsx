@@ -32,6 +32,7 @@ const ReservationCard = ({ billyState }) => {
   }, []);
 
   const billylist = useSelector((state) => state.billystate?.billyList);
+  // console.log(billylist)
 
   useEffect(() => {}, [JSON.stringify(billylist)]);
 
@@ -83,104 +84,101 @@ const ReservationCard = ({ billyState }) => {
         .reverse()
         .map((item, index) => {
           return (
-            <div className="reservationcard_container" key={index}>
-              <div className="reservationcard_small_container">
-                <div className="reservationcard_title_wrap">
-                  <div className="reservationcard_title">{item.title}</div>
-                </div>
-                <div className="reservationcard_detail_wrap">
-                  <img className="reservationcard_img" src={item.postImgUrl} />
-                  <div className="reservationcard_body_box">
-                    <div className="reservationcard_icon_box">
-                      <div className="reservationcard_price">
-                        <img src={dailycost} />
-                        <p>{dailyPrice(item.price)}</p>
-                      </div>
-                      <div className="reservationcard_price">
-                        <img src={deposit} />
-                        <p>{depositPrice(item.deposit)}</p>
-                      </div>
-                    </div>
-                    <div>
-                      예약일자 : {rentalDate(item.startDate)}~
-                      {rentalDate(item.endDate)}&nbsp;(
-                      {rentalTotalDate(item.totalAmount, item.price)}박)
-                    </div>
-                    <div>
-                      예약상태 :&nbsp;
-                      {billyState === '1'
-                        ? '예약 대기중'
-                        : billyState === '2'
-                        ? '예약중'
-                        : billyState === '4'
-                        ? '대여중'
-                        : billyState === '5'
-                        ? '거래 완료'
-                        : billyState === '3'
-                        ? '취소 완료'
-                        : ''}
-                    </div>
-                    <div className="reservationcard_name_wrap">
-                      <div className="reservationcard_name">
-                        대여자 : {item.jullyNickname}
-                      </div>
-                      <button className="reservationcard_chat_btn">
-                        1:1 문의
-                      </button>
-                    </div>
-                    <div className="reservationcard_alert_content">
-                      {billyState === '2'
-                        ? '• 거래 완료시 수령 완료 버튼을 체크해주세요.'
-                        : ''}
-                    </div>
-                    {billyState === '3' ? (
-                      <div className="reservationcard_alert_content">
-                        취소사유 : {item.cancelMessage}
-                      </div>
-                    ) : (
-                      ''
-                    )}
-                  </div>
-                </div>
-                <div className="reservationcard_btn_wrap">
-                  {billyState === '1' ? (
-                    <CancelButton item={item} billyState={billyState} />
-                  ) : billyState === '2' ? (
-                    item.delivery === true ? (
-                      <button className="reservationcard_wait_btn">
-                        승인 대기 중
-                      </button>
-                    ) : (
-                      <>
-                        <AlertButton
-                          billyState={billyState}
-                          deliveryDoneHandler={deliveryDoneHandler}
-                          billyData={item.reservationId}
-                        />
-                      </>
-                    )
-                  ) : billyState === '4' ? (
-                    <div style={{ marginBottom: '20px' }} />
-                  ) : billyState === '5' ? (
-                    <button
-                      className="reservationcard_btn"
-                      onClick={() =>
-                        navigate(
-                          `/reviewPosting/${item.postId}/${item.reservationId}`
-                        )
-                      }
-                    >
-                      리뷰 작성
-                    </button>
-                  ) : billyState === '3' ? (
-                    <div style={{ marginBottom: '20px' }} />
-                  ) : (
-                    ''
-                  )}
-                </div>
-              </div>
-            </div>
-          );
+						<div className="reservationcard_container" key={index}>
+							<div className="reservationcard_small_container">
+								<div className="reservationcard_title_wrap">
+									<div className="reservationcard_title">{item.title}</div>
+								</div>
+								<div className="reservationcard_detail_wrap">
+									<img className="reservationcard_img" src={item.postImgUrl} />
+									<div className="reservationcard_body_box">
+										<div className="reservationcard_icon_box">
+											<div className="reservationcard_price">
+												<img src={dailycost} />
+												<p>{dailyPrice(item.price)}원</p>
+											</div>
+											<div className="reservationcard_price">
+												<img src={deposit} />
+												<p>{depositPrice(item.deposit)}원</p>
+											</div>
+										</div>
+										<div className="reservationcard_contents">
+											예약일자 : {rentalDate(item.startDate)}&nbsp;⎻&nbsp;
+											{rentalDate(item.endDate)}&nbsp;(
+											{rentalTotalDate(item.totalAmount, item.price)}박)
+										</div>
+										<div className="reservationcard_contents">
+											예약상태 :&nbsp;
+											{billyState === '1'
+												? '예약 대기중'
+												: billyState === '2'
+												? '예약중'
+												: billyState === '4'
+												? '대여중'
+												: billyState === '5'
+												? '거래 완료'
+												: billyState === '3'
+												? '취소 완료'
+												: ''}
+										</div>
+										<div className="reservationcard_name_wrap">
+											<div className="reservationcard_name">
+												대여자 : {item.jullyNickname}
+											</div>
+										</div>
+										<div className="reservationcard_alert_content">
+											{billyState === '2'
+												? '• 거래 완료시 수령 완료 버튼을 체크해주세요.'
+												: ''}
+										</div>
+										{billyState === '3' ? (
+											<div className="reservationcard_alert_content">
+												취소사유 : {item.cancelMessage}
+											</div>
+										) : (
+											''
+										)}
+									</div>
+								</div>
+								<div className="reservationcard_btn_wrap">
+									{billyState === '1' ? (
+										<CancelButton item={item} billyState={billyState} />
+									) : billyState === '2' ? (
+										item.delivery === true ? (
+											<button className="reservationcard_wait_btn">
+												승인 대기 중
+											</button>
+										) : (
+											<>
+												<AlertButton
+													billyState={billyState}
+													deliveryDoneHandler={deliveryDoneHandler}
+													billyData={item.reservationId}
+												/>
+											</>
+										)
+									) : billyState === '4' ? (
+										<div style={{ marginBottom: '20px' }} />
+									) : billyState === '5' ? (
+										<button
+											className="reservationcard_btn"
+											onClick={() =>
+												navigate(
+													`/reviewPosting/${item.postId}/${item.reservationId}`
+												)
+											}
+										>
+											리뷰 작성
+										</button>
+									) : billyState === '3' ? (
+										<div style={{ marginBottom: '20px' }} />
+									) : (
+										''
+									)}
+								</div>
+							</div>
+						</div>
+					);
         })}
     </div>
   );

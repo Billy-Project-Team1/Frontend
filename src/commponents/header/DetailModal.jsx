@@ -10,23 +10,28 @@ import { deletePost } from '../../redux/modules/postSlice';
 // Component import
 import AlertSmallModal from '../modal/AlertSmallModal';
 
-const DetailModal = ({ showModal, postId }) => {
+const DetailModal = ({ showModal, postId, setModalOn }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [modalOn, setModalOn] = useState(false);
   const modalTrue = () => {
     setModalOn(true);
+    showModal()
   };
 
-  const deleteHandler = async () => {
-    try {
-      const response = await dispatch(deletePost(postId)).unwrap();
-      if (response) {
-        window.location.replace('/');
-      }
-    } catch {}
-  };
+  // const [modalOn, setModalOn] = useState(false);
+  // const modalTrue = () => {
+  //   setModalOn(true);
+  // };
+
+  // const deleteHandler = async () => {
+  //   try {
+  //     const response = await dispatch(deletePost(postId)).unwrap();
+  //     if (response) {
+  //       window.location.replace('/');
+  //     }
+  //   } catch {}
+  // };
 
   return (
     <div className="detailModal_background">
@@ -41,14 +46,6 @@ const DetailModal = ({ showModal, postId }) => {
           <div className="detailModal_del_btn" onClick={modalTrue}>
             삭제
           </div>
-          {modalOn&& (
-            <AlertSmallModal
-              setModalOn={setModalOn}
-              body="삭제하시겠습니까?"
-              buttonType="삭제"
-              onClickSubmit={deleteHandler}
-            />
-          )}
         </div>
         <div className="detailModal_btn_second">
           <div className="detailModal_cancel_btn" onClick={showModal}>
@@ -56,6 +53,14 @@ const DetailModal = ({ showModal, postId }) => {
           </div>
         </div>
       </div>
+      {/* {modalOn&& (
+            <AlertSmallModal
+              setModalOn={setModalOn}
+              body="삭제하시겠습니까?"
+              buttonType="삭제"
+              onClickSubmit={deleteHandler}
+            />
+          )} */}
     </div>
   );
 };

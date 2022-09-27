@@ -30,11 +30,13 @@ const JullyReservationCard = ({ jullyState }) => {
   const [returnDone, setReturnDone] = useState({
     state: '5',
   });
+
   const [test, setTest] = useState(1);
   const [largeModalOpen, setLargeModalOpen] = useState(false);
   const isModal = () => {
     setLargeModalOpen(true);
   };
+
   useEffect(() => {
     dispatch(jullyStateListThunk(jullyState));
   }, []);
@@ -72,6 +74,7 @@ const JullyReservationCard = ({ jullyState }) => {
   const jullyStateHandler = async (a, b) => {
     try {
       const response = await dispatch(jullyStateChangeThunk({ a, b })).unwrap();
+      console.log(response)
       if (response) {
         const newTest = test+1
         setTest(newTest);
@@ -109,12 +112,12 @@ const JullyReservationCard = ({ jullyState }) => {
                         <p>{depositPrice(item.deposit)}</p>
                       </div>
                     </div>
-                    <div>
+                    <div className="reservationcard_contents">
                       예약일자 : {rentalDate(item.startDate)}~
                       {rentalDate(item.endDate)}&nbsp;(
                       {rentalTotalDate(item.totalAmount, item.price)}박)
                     </div>
-                    <div>
+                    <div className="reservationcard_contents">
                       예약상태 :&nbsp;
                       {jullyState === '1'
                         ? '예약 대기중'
@@ -177,7 +180,7 @@ const JullyReservationCard = ({ jullyState }) => {
                           test={test}
                         />
 
-                        {/* <button
+												{/* <button
                         className="reservationcard_btn"
                         onClick={() => isModal()}
                       >
@@ -209,7 +212,7 @@ const JullyReservationCard = ({ jullyState }) => {
                         test={test}
                       />
 
-                      {/* <button
+											{/* <button
                         className="reservationcard_btn"
                         onClick={() => isModal()}
                       >
@@ -226,18 +229,18 @@ const JullyReservationCard = ({ jullyState }) => {
                           data2={returnDone}
                         />
                       )} */}
-                    </>
-                  ) : jullyState === '5' ? (
-                    <div style={{ marginBottom: '20px' }} />
-                  ) : jullyState === '3' ? (
-                    <div style={{ marginBottom: '20px' }} />
-                  ) : (
-                    ''
-                  )}
-                </div>
-              </div>
-            </div>
-          );
+										</>
+									) : jullyState === '5' ? (
+										<div style={{ marginBottom: '20px' }} />
+									) : jullyState === '3' ? (
+										<div style={{ marginBottom: '20px' }} />
+									) : (
+										''
+									)}
+								</div>
+							</div>
+						</div>
+					);
         })}
     </div>
   );
