@@ -14,7 +14,6 @@ export const getMypageReview = createAsyncThunk(
 				`/auth/reviews/received/${payload}`,
 				payload
 			);
-			console.log(response);
 
 			//Rerult를 slice에 다 넣어줘야함. 그래야 이제 빼써 쓸 수 있음.
 			if (response.data.success === true) {

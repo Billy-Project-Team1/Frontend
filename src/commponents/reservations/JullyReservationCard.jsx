@@ -30,7 +30,7 @@ const JullyReservationCard = ({ jullyState }) => {
   const [returnDone, setReturnDone] = useState({
     state: '5',
   });
-  const [test, setTest] = useState();
+  const [test, setTest] = useState(1);
   const [largeModalOpen, setLargeModalOpen] = useState(false);
   const isModal = () => {
     setLargeModalOpen(true);
@@ -73,7 +73,8 @@ const JullyReservationCard = ({ jullyState }) => {
     try {
       const response = await dispatch(jullyStateChangeThunk({ a, b })).unwrap();
       if (response) {
-        setTest(response);
+        const newTest = test+1
+        setTest(newTest);
       }
     } catch {}
   };
@@ -173,6 +174,7 @@ const JullyReservationCard = ({ jullyState }) => {
                           jullyStateHandler={jullyStateHandler}
                           JullyData={item.reservationId}
                           JullyHandleDone={handleDone}
+                          test={test}
                         />
 
                         {/* <button
@@ -203,6 +205,8 @@ const JullyReservationCard = ({ jullyState }) => {
                         jullyStateHandler={jullyStateHandler}
                         JullyData={item.reservationId}
                         JullyReturnDone={returnDone}
+                        setTest={setTest}
+                        test={test}
                       />
 
                       {/* <button

@@ -76,7 +76,6 @@ const Posting = () => {
     setData({ ...data, [name]: value });
   };
   //   console.log(data);
-  console.log(blockDateDtoList.blockDateDtoList);
 
   //   //[1] post
   const onPostingHandler = async (e) => {
