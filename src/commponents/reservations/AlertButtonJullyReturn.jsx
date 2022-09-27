@@ -24,12 +24,10 @@ const AlertButtonJullyReturn = ({
   const jullyStateHandler = async (a, b) => {
     try {
       const response = await dispatch(jullyStateChangeThunk({ a, b })).unwrap();
-      console.log(response);
       if (response) {
         const newTest = test + 1;
         setTest(newTest);
         setLargeModalOpen(false);
-        console.log(test);
       }
     } catch {}
   };
