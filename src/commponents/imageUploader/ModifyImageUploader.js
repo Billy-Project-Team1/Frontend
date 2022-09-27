@@ -62,21 +62,23 @@ const ModifyImageUploader = ({ img, setImg, setImgUrl, imgUrl }) => {
 
   return (
     <div className="imgUploader_container">
-      <img
-        src={upload_image}
-        style={{ width: '85px' }}
-        onClick={() => inputRef.current.click()}
-      />
+      <div className="imgUploader_box">
+        <img
+          src={upload_image}
+          style={{ width: '85px' }}
+          onClick={() => inputRef.current.click()}
+        />
 
-      <input
-        id="imgup"
-        ref={inputRef}
-        onChange={(event) => change(event)}
-        type="file"
-        accept="image/*"
-        multiple
-        style={{ display: 'none' }}
-      />
+        <input
+          id="imgup"
+          ref={inputRef}
+          onChange={(event) => change(event)}
+          type="file"
+          accept="image/*"
+          multiple
+          style={{ display: 'none' }}
+        />
+      </div>
 
       <div className="preview_img_container">
         {imgUrl.map((item, index) => (
@@ -98,8 +100,8 @@ const ModifyImageUploader = ({ img, setImg, setImgUrl, imgUrl }) => {
             />
           </div>
         ))}
-        <div></div>
       </div>
+      <div></div>
     </div>
   );
 };

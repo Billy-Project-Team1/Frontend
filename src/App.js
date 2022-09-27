@@ -16,13 +16,11 @@ import Search from './pages/search/Search';
 import ChattingRoom from './pages/chatting/ChattingRoom';
 import Chat from './pages/chatting/Chat';
 import ReviewPosting from './pages/reviewPosting/ReviewPosting';
-import Notice from './pages/notice/Notice'
-
+import Notice from './pages/notice/Notice';
+import Event from './pages/event/Event';
 
 function App() {
-
   return (
-
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
@@ -39,10 +37,13 @@ function App() {
         <Route path="/chatList" element={<ChattingRoom />} />
         {/* <Route path="/chat/:roomId" element={<Chat />} /> */}
         <Route path="/chat/room/:postId/:roomId" element={<Chat />} />
-        <Route path="/reviewPosting/:postId/:reservationId" element={<ReviewPosting />} />
-        <Route path="/notice" element={<Notice />}/>
+        <Route
+          path="/reviewPosting/:postId/:reservationId"
+          element={<ReviewPosting />}
+        />
+        <Route path="/notice" element={<Notice />} />
+        <Route path="/event" element={<Event />} />
       </Routes>
-
   );
 }
 

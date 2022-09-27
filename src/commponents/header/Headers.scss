@@ -13,14 +13,17 @@
 .header_container {
 	padding: 0 1rem;
 	position: sticky;
+	width: 100%;
+	max-width: 420px;
 	top: 0;
 	z-index: 2;
 	background-color: $color-white;
 }
-
-.header_container {
-	padding: 0 1rem;
+.header_Sign_container{
+	padding: 0 1.5rem;
 	position: sticky;
+	max-width: 420px;
+	width: 100%;
 	top: 0;
 	z-index: 2;
 	background-color: $color-white;
@@ -28,6 +31,7 @@
 
 .header_top {
 	width: 100%;
+	max-width: 420px;
 	height: 10px;
 	position: sticky;
 	z-index: 2;
@@ -35,6 +39,7 @@
 
 .header_wrap {
 	width: 100%;
+	max-width: 420px;
 	height: 53px;
 	display: flex;
 	position: sticky;
@@ -98,9 +103,9 @@
 	padding: 0 1rem;
 	position: fixed;
 	top: 0;
-	left: 0;
 	z-index: 2;
 	width: 100%;
+	max-width: 420px;
 }
 
 .detail_header_wrap {

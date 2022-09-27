@@ -6,10 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { _postsList } from '../../redux/modules/postsSlice';
 import MainListCard from '../../commponents/mainListCard/MainListCard';
 import { useInView } from 'react-intersection-observer';
+import eventbanner from '../../static/image/eventbanner.svg'
+import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
   const dispatch = useDispatch();
   const [ref, inView] = useInView();
+  const navigate = useNavigate();
   const SIZE = 7;
 
   useEffect(() => {
@@ -43,6 +46,7 @@ const Main = () => {
     <div>
       <MainHeader />
       <div className="MainBodyContainer">
+        <img src={eventbanner}  onClick={()=>navigate('/event')}/>
         {postList.map((post) => {
           return <MainListCard post={post} key={post.id} />;
         })}

@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "billylogo.png",
+      "src": "billyiphone.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "billylogo.png",
+      "src": "billyiphone.png",
       "type": "image/png",
       "sizes": "512x512"
     }
