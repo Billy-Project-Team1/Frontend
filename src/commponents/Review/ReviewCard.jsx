@@ -17,7 +17,6 @@ const ReviewCard = ({ totalAvg, profile }) => {
 	const { id } = useParams();
 	const reviewGet = useSelector((state) => state.review.reviewGet);
 	console.log(reviewGet)
-	
 
 	useEffect(() => {
 		dispatch(getMypageReview(id));
@@ -34,7 +33,7 @@ const ReviewCard = ({ totalAvg, profile }) => {
 								index={index}
 								profileUrl={profile?.profileUrl}
 							/>
-							<ReviewCardComment item={item} profileUrl={profile?.profileUrl} />
+							<ReviewCardComment item={item} profileUrl={profile?.profileUrl} reviewId={item.reviewId}/>
 						</div>
 					);
 				})}
