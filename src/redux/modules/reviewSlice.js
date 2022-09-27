@@ -109,6 +109,23 @@ export const delReview = createAsyncThunk(
 	}
 );
 
+///auth/reviews/comments/{commentId}
+export const delReplyReview = createAsyncThunk(
+	'delReplyReview',
+	async (payload, thunkAPI) => {
+		try {
+			// console.log(payload) => id뜸
+			const response = await instance.delete(
+				`auth/reviews/comments/${payload}`
+			);
+			// console.log(response)
+			return thunkAPI.fulfillWithValue(payload);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
 export const updateReview = createAsyncThunk(
 	'updateReview',
 	async (payload, thunkAPI) => {
@@ -156,6 +173,11 @@ export const reviewSlice = createSlice({
 			// state.reviewPost = action.payload;
 		},
 		[delReview.fulfilled]: (state, action) => {
+			state.reviewGet = action.payload.filter(
+				(item) => item.reviewId !== action.payload
+			);
+		},
+		[delReplyReview.fulfilled]: (state, action) => {
 			state.reviewGet = action.payload.filter(
 				(item) => item.reviewId !== action.payload
 			);

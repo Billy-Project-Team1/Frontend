@@ -78,6 +78,14 @@ const ReviewCardComment = ({ item, index, profileUrl, reviewId }) => {
 								저장
 							</div>
 						</div>
+
+						<div className="reviewCard_btns">
+							<div className="reviewCard_cancel_btn" onClick={reviewClose}>
+								수정
+							</div>
+							<div className="reviewCard_add_btn">삭제</div>
+						</div>
+						
 					</div>
 				</div>
 			)}
