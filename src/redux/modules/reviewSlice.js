@@ -35,7 +35,6 @@ export const getDetailReview = createAsyncThunk(
 			const response = await instance.get(`/reviews/${payload.postid}`, {
 				params: { userId: payload.myUserId },
 			});
-			console.log(response);
 
 			//Rerult를 slice에 다 넣어줘야함. 그래야 이제 빼써 쓸 수 있음.
 			if (response.data.success === true) {
