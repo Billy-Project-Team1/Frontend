@@ -31,10 +31,10 @@ const JullyReservationCard = ({ jullyState }) => {
     state: '5',
   });
   const [test, setTest] = useState();
-  const [largeModalOpen, setLargeModalOpen] = useState(false);
-  const isModal = () => {
-    setLargeModalOpen(true);
-  };
+  // const [largeModalOpen, setLargeModalOpen] = useState(false);
+  // const isModal = () => {
+  //   setLargeModalOpen(true);
+  // };
   useEffect(() => {
     dispatch(jullyStateListThunk(jullyState));
   }, []);
@@ -72,6 +72,7 @@ const JullyReservationCard = ({ jullyState }) => {
   const jullyStateHandler = async (a, b) => {
     try {
       const response = await dispatch(jullyStateChangeThunk({ a, b })).unwrap();
+      console.log(response)
       if (response) {
         setTest(response);
       }

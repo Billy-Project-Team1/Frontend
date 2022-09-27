@@ -32,6 +32,7 @@ const ReservationCard = ({ billyState }) => {
   }, []);
 
   const billylist = useSelector((state) => state.billystate?.billyList);
+  // console.log(billylist)
 
   useEffect(() => {}, [JSON.stringify(billylist)]);
 

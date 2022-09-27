@@ -4,13 +4,9 @@ import React, { useState } from 'react';
 import AlertLargeModal from '../modal/AlertLargeModal';
 
 const AlertButtonJullyReturn = ({
-  billyState,
   jullyState,
-  deliveryDoneHandler,
-  billyData,
   jullyStateHandler,
   JullyData,
-  JullyHandleDone,
   JullyReturnDone,
 }) => {
   const [largeModalOpen, setLargeModalOpen] = useState(false);
@@ -22,7 +18,7 @@ const AlertButtonJullyReturn = ({
     <>
       {jullyState === '4' ? (
         <>
-          <button className="reservationcard_btn" onClick={() => isModal()}>
+          <button className="reservationcard_btn" onClick={isModal}>
             반납 완료
           </button>
           {largeModalOpen && (
