@@ -17,7 +17,7 @@ const ReviewCardDeatil = ({ totalAvg, profile, reviewGet, profileUrl }) => {
 				{!!reviewGet
 					? reviewGet?.map((item, index) => {
 							return (
-								<div className="reviewCard_container_box">
+								<div className="reviewCard_container_box" key={index}>
 									<ReviewCardContent
 										item={item}
 										index={index}

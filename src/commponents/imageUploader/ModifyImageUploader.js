@@ -26,7 +26,7 @@ const ModifyImageUploader = ({ img, setImg, setImgUrl, imgUrl }) => {
     // 최대갯수로 받은 이미지
     const imagesMax10 = [...images].slice(0, maxFileNum);
     console.log(imagesMax10);
-    setImg(imagesMax10);
+    setImg([...img, ...imagesMax10]);
 
     // 이미지 미리보기로 보여줄려면 url이 필요함
     for (let i = 0; i < imagesMax10.length; i++) {
@@ -63,21 +63,23 @@ const ModifyImageUploader = ({ img, setImg, setImgUrl, imgUrl }) => {
 
   return (
     <div className="imgUploader_container">
-      <img
-        src={upload_image}
-        style={{ width: '85px' }}
-        onClick={() => inputRef.current.click()}
-      />
+      <div className="imgUploader_box">
+        <img
+          src={upload_image}
+          style={{ width: '85px' }}
+          onClick={() => inputRef.current.click()}
+        />
 
-      <input
-        id="imgup"
-        ref={inputRef}
-        onChange={(event) => change(event)}
-        type="file"
-        accept="image/*"
-        multiple
-        style={{ display: 'none' }}
-      />
+        <input
+          id="imgup"
+          ref={inputRef}
+          onChange={(event) => change(event)}
+          type="file"
+          accept="image/*"
+          multiple
+          style={{ display: 'none' }}
+        />
+      </div>
 
       <div className="preview_img_container">
         {imgUrl.map((item, index) => (
@@ -99,8 +101,8 @@ const ModifyImageUploader = ({ img, setImg, setImgUrl, imgUrl }) => {
             />
           </div>
         ))}
-        <div></div>
       </div>
+      <div></div>
     </div>
   );
 };

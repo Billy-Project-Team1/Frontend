@@ -1,35 +1,42 @@
 .imgUploader_container {
-	padding: 1rem 0;
-	display: flex;
+  display: flex;
+}
+.imgUploader_box {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .UpImg {
-	width: 100%;
+  width: 100%;
 }
 
 .preview_img_container {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 0;
+  gap: 10px;
+  margin-left: 10px;
+  overflow-x: scroll;
 }
 .preview_container {
-	position: relative;
+  position: relative;
+  display: flex;
+  flex-direction: row;
 }
 
 .preview_img {
-	margin-left: 10px;
-	display: flex;
-	border-radius: 3px;
-	width:84px;
-	height:84px;
-	aspect-ratio: 1/1;
-	object-fit: cover,
+  display: flex;
+  border-radius: 3px;
+  width: 84px;
+  aspect-ratio: 1/1;
 }
 
 .preview_del {
-	position: absolute;
-	top: -14%;
-	right: -8%;
-	color: #cccccc;
-	font-size: 20px;
+  position: absolute;
+  top: -14%;
+  right: -8%;
+  color: #cccccc;
+  font-size: 20px;
 }

@@ -120,6 +120,7 @@ const GlobalStyles = createGlobalStyle`
 .rmdp-disabled {
   pointer-events: none;
 }
+
   
 `;
 
