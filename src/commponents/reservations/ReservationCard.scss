@@ -38,8 +38,8 @@
 .reservationcard_body_box {
   height: 91px;
   margin-left: 15.76px;
-  margin-top: 9px;
-  font-size: 0.75rem;
+  margin-top: 8px;
+  font-size: 0.8125rem;
   font-weight: 400;
   color: $color-primary;
   position: relative;
@@ -47,13 +47,22 @@
 .reservationcard_icon_box {
   display: flex;
   flex-direction: row;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .reservationcard_price {
   display: flex;
   flex-direction: row;
   gap: 4px;
   margin-right: 10.14px;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  img {
+    width: 16px;
+  }
+}
+.reservationcard_contents {
+margin-bottom: 2px;
 }
 .reservationcard_btn {
   width: 100%;
@@ -82,22 +91,13 @@
 .reservationcard_name_wrap {
   display: flex;
 }
-.reservationcard_chat_btn {
-  border: none;
-  background-color: $color-sub;
-  border-radius: 3px;
-  height: 18px;
-  font-size: 0.625rem;
-  font-weight: 400;
-  padding: 2px 7px 2px 7px;
-  margin-left: 5px;
-}
+
 .reservationcard_alert_content {
   display: flex;
   width: 100%;
   font-weight: 400;
   color: $color-main;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
 }
 .jullyReservation_set_btn {
   margin-top: 20px;
