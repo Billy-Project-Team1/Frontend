@@ -100,9 +100,12 @@ export const delReview = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			// console.log(payload) => id뜸
-			const response = await instance.delete(`/auth/reviews/${payload}`);
+			const response = await instance.delete(`/auth/reviews/${payload.reviewId}`);
 			console.log(response)
-			return thunkAPI.fulfillWithValue(response.data.success);
+			if (response.data.success) {
+				// return thunkAPI.fulfillWithValue(response.data);
+				return window.location.replace(`/detail/${payload.id}`);
+			}
 		} catch (error) {
 			console.log(error);
 		}

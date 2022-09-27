@@ -27,20 +27,22 @@ const ReviewCard = ({ totalAvg, profile }) => {
       <div className="reviewCard_container">
         {reviewGet?.map((item, index) => {
           return (
-            <div className="reviewCard_container_box">
-              <ReviewCardContent
-                item={item}
-                index={index}
-                profileUrl={profile?.profileUrl}
-                authorId={item.authorId}
-              />
-              <ReviewCardComment
-                item={item}
-                profileUrl={profile?.profileUrl}
-                reviewId={item.reviewId}
-              />
-            </div>
-          );
+						<div className="reviewCard_container_box">
+							<ReviewCardContent
+								item={item}
+								index={index}
+								profileUrl={profile?.profileUrl}
+								authorId={item.authorId}
+								id={id}
+								reviewId={item.reviewId}
+							/>
+							<ReviewCardComment
+								item={item}
+								profileUrl={profile?.profileUrl}
+								reviewId={item.reviewId}
+							/>
+						</div>
+					);
         })}
       </div>
     </div>

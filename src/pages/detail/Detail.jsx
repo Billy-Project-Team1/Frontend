@@ -220,6 +220,7 @@ const Detail = () => {
 			<ReviewCardDeatil
 				reviewGet={reviewGet}
 				profileUrl={detailPost.profileUrl}
+				id={postid}
 			/>
 		</div>
 	);
