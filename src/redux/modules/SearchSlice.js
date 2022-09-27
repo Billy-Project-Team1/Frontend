@@ -9,7 +9,7 @@ export const getsearchPostsList = createAsyncThunk(
   'getsearchPostsList',
   async (payload, thunkAPI) => {
     try {
-      const response = await instance.post(`/posts/search`, {
+      const response = await instance.post(`/posts/elasticsearch`, {
         keyword: payload.inputText,
       });
       //   return console.log(response)

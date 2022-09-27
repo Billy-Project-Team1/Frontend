@@ -10,7 +10,7 @@ import { KAKAO_AUTH_URL } from '../../shared/socialAuth';
 import { Cookies } from 'react-cookie';
 import './Login.scss';
 import { setCookie } from '../../redux/modules/customCookies';
-import Headers2 from '../../commponents/header/Headers2';
+import Headers3 from '../../commponents/header/Headers3';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -40,6 +40,7 @@ const Login = () => {
         .then((res) => {
           if (res.data.success === true) {
             return (
+              console.log(res),
               localStorage.setItem('nickname', res.data.result.nickname),
               localStorage.setItem('memberId', res.data.result.id),
               localStorage.setItem('userId', res.data.result.userId),
@@ -57,7 +58,7 @@ const Login = () => {
 
   return (
     <>
-      <Headers2 />
+      <Headers3 />
       <div className="Login_Wrap">
         <div className="Login_Email_Box">
           <div>이메일</div>

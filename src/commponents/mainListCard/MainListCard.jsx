@@ -2,7 +2,6 @@ import React from 'react';
 import './MainListCard.scss';
 import dailycost from '../../static/image/dailycost.svg';
 import deposit from '../../static/image/deposit.svg';
-import carrotImg from '../../static/image/carrotImg.jpg';
 import { FaStar } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 

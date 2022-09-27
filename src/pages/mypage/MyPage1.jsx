@@ -12,6 +12,7 @@ import MyPageList from './MyPageList';
 import YourPageList from './YourPageList';
 import Headers2 from '../../commponents/header/Headers2';
 import Footer from '../../commponents/footer/Footer';
+import './MyPageList.scss'
 
 const Mypage = () => {
   const { id } = useParams();
@@ -27,7 +28,7 @@ const Mypage = () => {
   const myUserId = localStorage.getItem('userId');
 
   return (
-		<div>
+		<div className="mypage_wrap">
 			{myUserId === profile.userId ? (
 				<Headers2 pageName="마이 페이지" />
 			) : (
