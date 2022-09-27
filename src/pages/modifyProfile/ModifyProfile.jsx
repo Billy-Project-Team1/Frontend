@@ -55,7 +55,7 @@ const ModifyProfile = () => {
   useEffect(() => {
     if (
       reviseProfile?.nickname?.length < 2 ||
-      reviseProfile?.nickname?.length > 8
+      reviseProfile?.nickname?.length > 6
     ) {
       setNickCheck(false);
     } else if (reviseProfile?.nickname?.search(/\s/) != -1) {

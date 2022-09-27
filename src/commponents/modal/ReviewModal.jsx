@@ -39,14 +39,6 @@ const ReviewModal = ({ showModal, postId }) => {
           <div className="detailModal_del_btn" onClick={modalTrue}>
             삭제
           </div>
-          {modalOn&& (
-            <AlertSmallModal
-              setModalOn={setModalOn}
-              body="삭제하시겠습니까?"
-              buttonType="삭제"
-            //   onClickSubmit={deleteHandler}
-            />
-          )}
         </div>
         <div className="detailModal_btn_second">
           <div className="detailModal_cancel_btn" onClick={showModal}>
@@ -54,6 +46,15 @@ const ReviewModal = ({ showModal, postId }) => {
           </div>
         </div>
       </div>
+      {modalOn&& (
+            <AlertSmallModal
+              setModalOn={setModalOn}
+              body="삭제하시겠습니까?"
+              buttonType="삭제"
+            //   onClickSubmit={deleteHandler}
+            />
+          )}
+
     </div>
   );
 };
