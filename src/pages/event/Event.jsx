@@ -13,9 +13,12 @@ const Event = () => {
         </div>
         <div className="event_button_container">
           <div className="event_button">
-            <div className="event_button_text">
+            <a
+              className="event_button_text"
+              href ='https://docs.google.com/forms/d/e/1FAIpQLSfuJqqv3RkODvM_O_QPss5zlK8LTViTbqUjMD6PenEVvhwe8w/viewform'
+            >
               <div>설문조사 참여하기</div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
