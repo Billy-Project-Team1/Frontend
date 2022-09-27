@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import { delReview } from '../../redux/modules/reviewSlice';
 import { mdiConsoleLine } from '@mdi/js';
 
-const ReviewCardContent = ({ item, index, authorId }) => {
+const ReviewCardContent = ({ item, index, authorId, id, reviewId }) => {
 	const userId = localStorage.getItem('userId');
 	const dispatch = useDispatch();
 
@@ -41,13 +41,14 @@ const ReviewCardContent = ({ item, index, authorId }) => {
 
 	const deleteHandler = async () => {
 		try {
-			const response = await dispatch(delReview(item.reviewId)).unwrap();
-			if (response) {
-				window.location.replace('/');
+			const data = await dispatch(delReview({reviewId, id})).unwrap();
+			console.log(data);
+			if (data) {
+				return window.location.replace('/');
 			}
 		} catch {}
 	};
-
+	console.log(reviewId);
 	return (
 		<>
 			<div>

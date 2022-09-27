@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import ReviewCardContent from './ReviewCardContent';
 import ReviewCardYourComment from './ReviewCardYourComment ';
 
-const ReviewCardDeatil = ({ totalAvg, profile, reviewGet, profileUrl }) => {
+const ReviewCardDeatil = ({ totalAvg, profile, reviewGet, profileUrl, id }) => {
 	const dispatch = useDispatch();
 	return (
 		<div>
@@ -23,6 +23,8 @@ const ReviewCardDeatil = ({ totalAvg, profile, reviewGet, profileUrl }) => {
 										index={index}
 										profileUrl={profileUrl}
 										authorId={item.authorId}
+										id={id}
+										reviewId={item.reviewId}
 									/>
 									{item?.children[0]?.comment ? (
 										<ReviewCardYourComment
