@@ -5,6 +5,7 @@ import React, { useCallback, useRef } from 'react';
 import './ReviewCard.scss';
 import ReviewStarRating from '../starRating/ReviewStarRating';
 import { TbMinusVertical } from 'react-icons/tb';
+import { TbDotsVertical } from 'react-icons/tb';
 
 const ReviewCardContent = ({ item, index }) => {
 	function rentalDate(a) {
@@ -48,6 +49,7 @@ const ReviewCardContent = ({ item, index }) => {
 									<div className="reviewCard_rental_date">
 										{rentalDate(item.startDate)} - {rentalDate(item.endDate)} (
 										{item.dateCount}박)
+										<TbDotsVertical />
 									</div>
 								</div>
 							</div>
