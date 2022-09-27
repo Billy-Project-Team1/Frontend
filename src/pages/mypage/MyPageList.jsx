@@ -20,7 +20,6 @@ const Mypage = ({ totalAvg, profile }) => {
 	const [reservationsState, setReservationsState] = useState('1');
 	const myDipList = useSelector((state) => state.member.myDibsList);
 	const myUploadList = useSelector((state) => state.member.myUploadList);
-	// console.log(myDipList);
 
 	return (
 		<div>

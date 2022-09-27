@@ -113,10 +113,8 @@ const ModifyProfile = () => {
     }
   };
 
-  //모달창 노출 여부 state
   const [modalOn, setModalOn] = useState(false);
   const [largeModalOpen, setLargeModalOpen] = useState(false);
-  //모달창 노출
   const modalTrue = () => {
     setModalOn(true);
   };

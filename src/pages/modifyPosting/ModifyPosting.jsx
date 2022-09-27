@@ -96,7 +96,7 @@ const ModifyPosting = () => {
       console.log(data);
       if (data) {
         window.location.replace('/');
-        // window.location.replace(`/detail/${data.id}`);
+        window.location.replace(`/detail/${data.id}`);
       } else {
         console.log(data);
       }

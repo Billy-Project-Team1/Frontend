@@ -26,15 +26,14 @@ const ModifyImageUploader = ({ img, setImg, setImgUrl, imgUrl }) => {
     // 최대갯수로 받은 이미지
     const imagesMax10 = [...images].slice(0, maxFileNum);
     console.log(imagesMax10);
-    setImg(imagesMax10);
+    setImg([...img, ...imagesMax10]);
 
     // 이미지 미리보기로 보여줄려면 url이 필요함
     for (let i = 0; i < imagesMax10.length; i++) {
       modiftyImgUrl.push(URL.createObjectURL(imagesMax10[i]));
     }
     if (imagesMax10 > 10) {
-      alert('10장 초과 노노');
-      return;
+      return alert('10장 초과 노노');
     }
   };
   // console.log(img)
