@@ -11,9 +11,6 @@ import ReviewCardYourComment from './ReviewCardYourComment ';
 
 const ReviewCardDeatil = ({ totalAvg, profile, reviewGet, profileUrl }) => {
 	const dispatch = useDispatch();
-
-	console.log(reviewGet);
-
 	return (
 		<div>
 			<div className="reviewCard_container">

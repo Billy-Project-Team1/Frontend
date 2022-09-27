@@ -34,7 +34,6 @@ const Posting = () => {
     });
   };
 
-  console.log(position);
 
   // 에러에 대한 로직
   const onError = () => {

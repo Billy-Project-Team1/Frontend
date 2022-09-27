@@ -26,6 +26,25 @@ export const getPost = createAsyncThunk(
     }
   }
 );
+export const getReviewPost = createAsyncThunk(
+  'getReviewPost',
+  async (payload, thunkAPI) => {
+    try {
+      // console.log(payload) => id뜸
+      // a:API url , b: API request 근데 이건 get이니까 없음 ㅋㅋ (가끔 있음), c: 파일의 타입 바꿔줄때 씀(이미지)
+      const response = await instance.get(`/posts/details/${payload.postId}`, {
+        params: { userId: payload.myUserId },
+      });
+
+      //Rerult를 slice에 다 넣어줘야함. 그래야 이제 빼써 쓸 수 있음.
+      if (response.data.success === true) {
+        return thunkAPI.fulfillWithValue(response.data.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 
 //post 하는 방법
 export const addPost = createAsyncThunk(
@@ -104,6 +123,9 @@ const postSlice = createSlice({
   extraReducers: {
     // initialState를 쓰려면 configstore에 등록줘야함
     [getPost.fulfilled]: (state, action) => {
+      state.post = action.payload;
+    },
+    [getReviewPost.fulfilled]: (state, action) => {
       state.post = action.payload;
     },
     [addPost.fulfilled]: (state, action) => {

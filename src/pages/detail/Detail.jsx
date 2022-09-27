@@ -59,7 +59,6 @@ const Detail = () => {
 	// state.post 는 configstore에 지정해둔 post 값임 slice를 뜻함
 	// state.post.post는 slice안에 있는 Initialstate값을 가져옴
 	const detailPost = useSelector((state) => state.post.post);
-	console.log(detailPost);
 
 	const blockDateList = detailPost.blockDate?.blockDateList;
 	const reservationDateList = detailPost.blockDate?.reservationDateList;
