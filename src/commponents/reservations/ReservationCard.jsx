@@ -31,7 +31,6 @@ const ReservationCard = ({ billyState }) => {
   }, []);
 
   const billylist = useSelector((state) => state.billystate?.billyList);
-  // console.log(billylist)
 
   useEffect(() => {}, [JSON.stringify(billylist)]);
 
@@ -54,7 +53,6 @@ const ReservationCard = ({ billyState }) => {
       ')'
     );
   }
-  // console.log(rentalDate())
 
   const dailyPrice = (a) => {
     return a?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -78,9 +76,8 @@ const ReservationCard = ({ billyState }) => {
   }, [reload]);
 
   return (
-    // .slice(0).reverse()
     <div className="reservationcard_first_container">
-      {billylist?.map((item, index) => {
+      {billylist?.slice(0).reverse().map((item, index) => {
         return (
           <div className="reservationcard_container" key={index}>
             <div className="reservationcard_small_container">

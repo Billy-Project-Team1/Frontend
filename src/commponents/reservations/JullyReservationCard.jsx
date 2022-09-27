@@ -37,7 +37,6 @@ const JullyReservationCard = ({ jullyState }) => {
     dispatch(jullyStateListThunk(jullyState));
   }, []);
   const jullylist = useSelector((state) => state.billystate?.jullyList);
-  // console.log(jullylist);
 
   useEffect(() => {}, [JSON.stringify(jullylist)]);
 
@@ -60,8 +59,6 @@ const JullyReservationCard = ({ jullyState }) => {
       ')'
     );
   }
-  // console.log(rentalDate())
-
   const dailyPrice = (a) => {
     return a?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
@@ -86,7 +83,7 @@ const JullyReservationCard = ({ jullyState }) => {
   return (
     // .slice(0).reverse()
     <div className="reservationcard_first_container">
-      {jullylist?.map((item, index) => {
+      {jullylist?.slice(0).reverse().map((item, index) => {
         return (
           <div className="reservationcard_container" key={index}>
             <div className="reservationcard_small_container">
