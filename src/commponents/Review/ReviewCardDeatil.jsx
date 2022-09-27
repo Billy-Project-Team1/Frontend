@@ -22,6 +22,7 @@ const ReviewCardDeatil = ({ totalAvg, profile, reviewGet, profileUrl }) => {
 										item={item}
 										index={index}
 										profileUrl={profileUrl}
+										authorId={item.authorId}
 									/>
 									{item?.children[0]?.comment ? (
 										<ReviewCardYourComment
