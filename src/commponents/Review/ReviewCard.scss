@@ -1,7 +1,7 @@
 @import '../../common/color.scss';
 
 .reviewCard_container {
-	padding: 0rem 1rem 12.5rem 1rem;
+	padding: 0rem 1rem 2rem 1rem;
 }
 
 .reviewCardYourPage_container {
@@ -43,8 +43,9 @@
 }
 
 .reviewCard_title {
-	font-size: 0.9rem;
-	margin: 20px 0 3px 0;
+	font-size: 1rem;
+	margin: 20px 0 7px 0;
+	font-weight: 500;
 }
 
 .reviewCard_rating_name_wrap {
@@ -126,6 +127,7 @@
 	text-align: center;
 	padding: 12px;
 	font-size: 0.9375rem;
+	cursor: pointer;
 }
 
 .reviewCard_reply_wrap {
