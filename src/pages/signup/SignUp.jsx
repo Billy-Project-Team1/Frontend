@@ -58,7 +58,7 @@ const SignUp = () => {
 
   // 닉네임 유효성 검사
   useEffect(() => {
-    if (member.nickname.length < 2 || member.nickname.length > 8) {
+    if (member.nickname.length < 2 || member.nickname.length > 6) {
       setNicknameCheck(false);
     } else if (!nickspe) {
       setNicknameCheck(false);
@@ -134,7 +134,7 @@ const SignUp = () => {
             {member.nickname === '' ? (
               <input
                 className="SignUp_Input"
-                placeholder="2-8자 이내, 특수문자/띄어쓰기 불가"
+                placeholder="2-6자 이내, 특수문자/띄어쓰기 불가"
                 name="nickname"
                 value={member.nickname}
                 onChange={onSignUpHandler}
@@ -142,7 +142,7 @@ const SignUp = () => {
             ) : nicknameCheck ? (
               <input
                 className="SignUp_Input"
-                placeholder="2-8자 이내, 특수문자/띄어쓰기 불가"
+                placeholder="2-6자 이내, 특수문자/띄어쓰기 불가"
                 name="nickname"
                 value={member.nickname}
                 onChange={onSignUpHandler}
@@ -150,7 +150,7 @@ const SignUp = () => {
             ) : (
               <input
                 className="SignUp_Input_Alert"
-                placeholder="2-8자 이내, 특수문자/띄어쓰기 불가"
+                placeholder="2-6자 이내, 특수문자/띄어쓰기 불가"
                 name="nickname"
                 value={member.nickname}
                 onChange={onSignUpHandler}
@@ -163,7 +163,7 @@ const SignUp = () => {
               <div className="SignUp_Alert_Text">&nbsp;</div>
             ) : (
               <div className="SignUp_Alert_Text">
-                특수문자, 띄어쓰기는 불가하며 2-8자 이내로 입력해주세요.
+                특수문자, 띄어쓰기는 불가하며 2-6자 이내로 입력해주세요.
               </div>
             )}
           </div>
