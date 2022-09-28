@@ -1,7 +1,7 @@
 @import '../../common/color.scss';
 
 .reviewCard_container {
-	padding: 0rem 1rem 2rem 1rem;
+	padding: 0rem 1rem 7rem 1rem;
 }
 
 .reviewCardYourPage_container {
@@ -58,6 +58,7 @@
 .reviewCard_rating_name_wrap_btn {
 	position: absolute;
 	right: 0;
+	cursor: pointer;
 }
 
 .reviewCard_rating_name_box {
@@ -134,6 +135,10 @@
 	padding: 12px;
 	font-size: 0.9375rem;
 	cursor: pointer;
+	  &:active {
+    background-color: $color-main;
+    color: $color-sub;
+  }
 }
 
 .reviewCard_reply_wrap {
@@ -202,6 +207,7 @@
 	color: $color-medium;
 	text-align: center;
 	padding: 9px;
+	cursor: pointer;
 }
 
 .reviewCard_add_btn {
@@ -212,4 +218,5 @@
 	color: $color-light;
 	text-align: center;
 	padding: 9px;
+	cursor: pointer;
 }

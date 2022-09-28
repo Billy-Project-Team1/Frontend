@@ -19,6 +19,8 @@ import {
 	reservationCancelThunk,
 } from '../../redux/modules/reservationSlice';
 
+import Headers2 from '../header/Headers2';
+
 const CancelPage = ({
 	setModalOpen,
 	title,
@@ -141,7 +143,8 @@ const CancelPage = ({
 	return (
 		<div className="cancelpage_modal">
 			<div className="cancelpage_wrap">
-				<div className="cancelpage_header_wrap">
+				<Headers2 pageName="대여 예약 취소" />
+				{/* <div className="cancelpage_header_wrap">
 					<div className="cancelpage_header_content">
 						<HiOutlineChevronLeft
 							color="#212121"
@@ -151,7 +154,7 @@ const CancelPage = ({
 						/>
 						<div className="cancelpage_header_title">대여 예약 취소</div>
 					</div>
-				</div>
+				</div> */}
 				<div className="cancelpage_container">
 					<img className="cancelpage_img" src={img} />
 					<div className="cancelpage_content_box">
@@ -167,13 +170,14 @@ const CancelPage = ({
 							</div>
 						</div>
 						<div className="cancelpage_date">
-							예약일자 : {rentalDate(startDate)}~{rentalDate(endDate)}&nbsp;(
+							예약일자 : {rentalDate(startDate)}&nbsp;⎻&nbsp;
+							{rentalDate(endDate)}&nbsp;(
 							{rentalTotalDate(totalAmount, dailyPrice)}박)
 						</div>
 					</div>
 				</div>
 				<div className="cancelpage_body">취소 사유</div>
-				<div className="cnaclepage_select_body">
+				<div className="cancelpage_select_body">
 					{billyState === '1' ? (
 						<select
 							name="cancelMessage"
@@ -188,9 +192,7 @@ const CancelPage = ({
 							<option value="예약날짜 변경">
 								다른 날짜로 재예약할 예정이에요
 							</option>
-							<option value="주문 취소">
-								더 이상 필요하지 않아요
-							</option>
+							<option value="주문 취소">더 이상 필요하지 않아요</option>
 						</select>
 					) : jullyState === '1' ? (
 						<select
@@ -222,7 +224,7 @@ const CancelPage = ({
 							</option>
 							<option value="상품 삭제">상품이 삭제되었어요</option>
 							<option value="대여 불가">
-							해당 제품을 아직 수령받지 못했어요
+								해당 제품을 아직 수령받지 못했어요
 							</option>
 							<option value="상품불량/파손">
 								상품 파손으로 대여 불가능한 상태에요

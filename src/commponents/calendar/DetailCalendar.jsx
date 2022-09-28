@@ -108,9 +108,9 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
           const diffDateDay = Math.floor(
             Math.abs(diffDate / (1000 * 60 * 60 * 24))
           );
-          noDates.current = `${noDates2.current[0]}~${
-            noDates2.current[noDates2.current.length - 1]
-          } (${diffDateDay}박)`;
+          noDates.current = `${noDates2.current[0]} - ${
+						noDates2.current[noDates2.current.length - 1]
+					} (${diffDateDay}박)`;
         }
       } else {
         noDates2.current = [];
