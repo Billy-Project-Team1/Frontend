@@ -21,24 +21,6 @@
   z-index: 100;
 
 }
-.cancelpage_header_wrap {
-  padding: 0 1rem;
-  width: 100%;
-  height: 53px;
-  display: flex;
-  position: sticky;
-  align-items: center;
-}
-.cancelpage_header_content {
-  width: 100%;
-  display: flex;
-}
-.cancelpage_header_title {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 27px;
-  margin-left: 101px;
-}
 .cancelpage_container {
   height: 60px;
   margin-top: 31px;
@@ -48,8 +30,8 @@
   padding: 0 1rem;
 }
 .cancelpage_title {
-  font-size: 1rem;
-  font-weight: 400px;
+  font-size: 0.9375rem;
+  font-weight: 600;
   color: $color-primary;
   text-align: left;
 }
@@ -69,8 +51,8 @@
   display: flex;
   flex-direction: row;
   gap: 4px;
-  font-size: 0.8125rem;
-  font-weight: 500px;
+  font-size: 0.875rem;
+  font-weight: 500;
   color: $color-primary;
 }
 .cancelpage_icon {
@@ -79,21 +61,21 @@
   margin-top: 3px;
 }
 .cancelpage_date {
-  font-size: 0.8125rem;
-  font-weight: 400px;
-  color: $color-primary;
+  font-size: 0.875rem;
+  color: $color-medium;
   text-align: left;
+  padding-top: 2px;
 }
 .cancelpage_body {
   font-family: 'Noto Sans';
   font-size: 1rem;
-  font-weight: 400px;
+  font-weight: 600;
   color: $color-primary;
-  margin-top: 40px;
+  margin-top: 35px;
   text-align: left;
   padding: 0 1rem;
 }
-.cnaclepage_select_body{
+.cancelpage_select_body{
   padding: 0 1rem;
 }
 .cancelpage_select {
@@ -102,6 +84,7 @@
   height: 38px;
   border-radius: 7px;
   padding: 0 8px;
+  cursor: pointer;
   &:focus {
     border-color: $color-main;
     outline: none;
