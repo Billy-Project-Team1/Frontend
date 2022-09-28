@@ -155,16 +155,20 @@ const ReservationCard = ({ billyState }) => {
                   ) : billyState === '4' ? (
                     <div style={{ marginBottom: '20px' }} />
                   ) : billyState === '5' ? (
-                    <button
-                      className="reservationcard_btn"
-                      onClick={() =>
-                        navigate(
-                          `/reviewPosting/${item.postId}/${item.reservationId}`
-                        )
-                      }
-                    >
-                      리뷰 작성
-                    </button>
+                    item.reviewCheck === true ? (
+                      <div className='reservationcard_margin'/>
+                    ) : (
+                      <button
+                        className="reservationcard_btn"
+                        onClick={() =>
+                          navigate(
+                            `/reviewPosting/${item.postId}/${item.reservationId}`
+                          )
+                        }
+                      >
+                        리뷰 작성
+                      </button>
+                    )
                   ) : billyState === '3' ? (
                     <div style={{ marginBottom: '20px' }} />
                   ) : (
