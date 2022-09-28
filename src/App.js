@@ -19,33 +19,35 @@ import ReviewPosting from './pages/reviewPosting/ReviewPosting';
 import Notice from './pages/notice/Notice';
 import Event from './pages/event/Event';
 import NotFound from './pages/notfound/NotFound';
+import RouteChangeTracker from './shared/googleanalytics/RouteChangeTracker';
 
 function App() {
+  RouteChangeTracker();
   return (
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/posting" element={<Posting />} />
-        <Route path="/modifyPosting/:postid" element={<ModifyPosting />} />
-        <Route path="/modifyProfile" element={<ModifyProfile />} />
-        <Route path="/detail/:postid" element={<Detail />} />
-        <Route path="/kakao" element={<Kakao />} />
-        <Route path="/map/test" element={<SearchPlace />} />
-        <Route path="/main/test" element={<MainListCard />} />
-        <Route path="/mypage/:id" element={<MyPage1 />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/chatList" element={<ChattingRoom />} />
-        {/* <Route path="/chat/:roomId" element={<Chat />} /> */}
-        <Route path="/chat/room/:postId/:roomId" element={<Chat />} />
-        <Route
-          path="/reviewPosting/:postId/:reservationId"
-          element={<ReviewPosting />}
-        />
-        <Route path="/notice" element={<Notice />} />
-        <Route path="/event" element={<Event />} />
-        <Route path="/*" element={<NotFound />} />
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/posting" element={<Posting />} />
+      <Route path="/modifyPosting/:postid" element={<ModifyPosting />} />
+      <Route path="/modifyProfile" element={<ModifyProfile />} />
+      <Route path="/detail/:postid" element={<Detail />} />
+      <Route path="/kakao" element={<Kakao />} />
+      <Route path="/map/test" element={<SearchPlace />} />
+      <Route path="/main/test" element={<MainListCard />} />
+      <Route path="/mypage/:id" element={<MyPage1 />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/chatList" element={<ChattingRoom />} />
+      {/* <Route path="/chat/:roomId" element={<Chat />} /> */}
+      <Route path="/chat/room/:postId/:roomId" element={<Chat />} />
+      <Route
+        path="/reviewPosting/:postId/:reservationId"
+        element={<ReviewPosting />}
+      />
+      <Route path="/notice" element={<Notice />} />
+      <Route path="/event" element={<Event />} />
+      <Route path="/*" element={<NotFound />} />
+    </Routes>
   );
 }
 
