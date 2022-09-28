@@ -4,13 +4,13 @@
 	padding: 0 1rem;
 }
 .myProfileNavBar_container {
-  height: 4.7rem;
+	height: 4.7rem;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	margin-top: 5px;
 	margin-bottom: 12px;
-  border-bottom: 1px solid rgba($color: #a8a8a8, $alpha: 0.5);
+	border-bottom: 1px solid $color-sub;
 }
 .myProfileNavBar_box {
 	position: relative;
@@ -37,11 +37,11 @@
 .myProfileNavBar_icon_check {
 	width: 100%;
 	height: 100%;
-	margin:auto;
+	margin: auto;
 	color: $color-main;
 	font-size: 1.125rem;
-	font-weight: 700;	text-align: center;
-
+	font-weight: 700;
+	text-align: center;
 }
 .myProfileNavBar_icon {
 	width: 100%;
@@ -61,7 +61,6 @@
 	white-space: nowrap;
 	overflow: visible;
 	color: $color-main;
-	
 }
 .myProfileNavBar_text {
 	position: absolute;

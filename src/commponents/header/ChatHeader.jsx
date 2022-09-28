@@ -7,7 +7,7 @@ const ChatHeader = ({ quitRoom }) => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="header_container">
+		<div className="chat_header_container">
 			<div className="header_wrap">
 				<div className="header_content">
 					<HiOutlineChevronLeft

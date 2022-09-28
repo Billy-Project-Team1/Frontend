@@ -19,6 +19,15 @@
 	z-index: 2;
 	background-color: $color-white;
 }
+.chat_header_container {
+	padding: 0 1rem 0.2rem 1rem;
+	// position: sticky;
+	width: 100%;
+	max-width: 420px;
+	top: 0;
+	z-index: 2;
+	background-color: $color-white;
+}
 .header_Sign_container{
 	padding: 0 1.5rem;
 	position: sticky;

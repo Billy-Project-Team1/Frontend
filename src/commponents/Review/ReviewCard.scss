@@ -5,11 +5,11 @@
 }
 
 .reviewCardYourPage_container {
-	border-bottom: 1px solid #eeeeee;
+	border-bottom: 1px solid $color-sub;
 }
 
 .reviewCard_container_box {
-	border-bottom: 1px solid #eeeeee;
+	border-bottom: 1px solid $color-sub;
 	padding-bottom: 5px;
 }
 
@@ -39,7 +39,6 @@
 }
 
 .reviewCard_wrap {
-	// border-bottom: 1px solid #eeeeee;
 	padding-bottom: 20px;
 }
 

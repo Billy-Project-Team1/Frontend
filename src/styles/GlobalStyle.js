@@ -1,11 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
 import { reset } from 'styled-reset';
-import '../common/color.scss'
+import '../common/color.scss';
 const GlobalStyles = createGlobalStyle`
 
   .rmdp-wrapper,
   .rmdp-top-class {
-  width: 358px;
+  max-width: 420px;
+  width: 100%;
 }
 .rmdp-calendar {
   width: 100%;

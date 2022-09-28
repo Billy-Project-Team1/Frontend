@@ -107,13 +107,13 @@
 .detail_title {
 	color: $color-primary;
 	font-weight: 500;
-	font-size: 18px;
+	font-size: 1.125rem;
 }
 
 .detail_rental {
 	color: $color-primary;
 	font-weight: 700;
-	font-size: 18px;
+	font-size: 1.125rem;
 	.detail_price {
 		padding-right: 7px;
 	}
@@ -126,18 +126,18 @@
 .detail_content {
 	color: $color-primary;
 	font-weight: 400;
-	font-size: 16px;
+	font-size: 1rem;
 	padding-top: 1rem;
 }
 
 .detail_bottom_contents {
 	color: $color-medium;
-	font-size: 12px;
+	font-size: 0.75rem;
 	padding-top: 2rem;
 }
 
 .detail_contents_line {
-	font-size: 8px;
+	font-size: 0.5rem;
 }
 
 .detail_map {
@@ -146,7 +146,7 @@
 }
 
 .detail_calendar {
-	padding: 1rem 1rem 1.4rem 1rem;
+	padding: 1rem 0 1.4rem 0;
 	border-bottom: 1px solid $color-sub;
 }
 
@@ -158,7 +158,7 @@
 
 .swiper-slide {
 	text-align: center;
-	font-size: 18px;
+	font-size: 1.125rem;
 	background: $color-light;
 	display: -webkit-box;
 	display: -ms-flexbox;
