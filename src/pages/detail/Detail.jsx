@@ -161,7 +161,7 @@ const Detail = () => {
 						</div>
 						<div className="detail_profile_second">
 							<span className="detail_location">{detailPost.location} </span>
-							<span className="detail_location_line">&nbsp;|&nbsp;</span>
+							<span className="detail_location_line">&nbsp;⎜&nbsp;</span>
 							<span className="detail_time"> {nowDate}</span>
 						</div>
 					</div>
@@ -170,7 +170,7 @@ const Detail = () => {
 					<div className="detail_title">{detailPost.title}</div>
 					<div className="detail_rental">
 						<span className="detail_price">일 대여금 {detailPrice}원</span>
-						<span className="detail_rental_line">|</span>
+						<span className="detail_rental_line">⎜</span>
 						<span className="detail_deposit">보증금 {detailDeposit}원</span>
 					</div>
 					<div className="detail_content">
@@ -187,23 +187,23 @@ const Detail = () => {
 						<span className="detail_like">
 							대여&nbsp;{detailPost.reservationCount}&nbsp;
 						</span>
-						<span className="detail_contents_line">|</span>
+						<span className="detail_contents_line">⎜</span>
 						<span className="detail_like">
 							&nbsp;관심&nbsp;{detailPost.likeCount}
 						</span>
 					</div>
 				</div>
-			</div>
-			<div className="detail_calendar">
-				<DetailCalendar
-					data={blockDate}
-					detailPost={detailPost}
-					setPickDate={setPickDate}
-					pickDate={pickDate}
-				/>
-			</div>
-			<div className="detail_map">
-				<DetailMap data={detailPost} />
+				<div className="detail_calendar">
+					<DetailCalendar
+						data={blockDate}
+						detailPost={detailPost}
+						setPickDate={setPickDate}
+						pickDate={pickDate}
+					/>
+				</div>
+				<div className="detail_map">
+					<DetailMap data={detailPost} />
+				</div>
 			</div>
 			<DetailFooter
 				authorId={detailPost.memberUserId}

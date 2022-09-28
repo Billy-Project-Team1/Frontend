@@ -9,7 +9,7 @@
 	margin-top: 20px;
 }
 .reservationcard_small_container {
-	border-bottom: 1px solid #eeeeee;
+	border-bottom: 1px solid $color-sub;
 	display: flex;
 	flex-direction: column;
 }
@@ -129,6 +129,6 @@
 		color: $color-sub;
 	}
 }
-.reservationcard_margin{
-  margin-bottom: 20px;
+.reservationcard_margin {
+	margin-bottom: 20px;
 }

@@ -1,175 +1,189 @@
+@import '../../common/color.scss';
+
 .Chat_Container {
-  width: 100%;
-  height: 100%;
-  padding:  4rem 0.75rem 5.5rem;
+	width: 100%;
+	height: 100%;
+	padding: 8.5rem 0.75rem 5.5rem;
 }
-
-.Chat_Head_Container{
-  padding: 0 1rem;
-  width: 100%;
-  max-width: 420px;
-  display: flex;
+.chat_head_wrap{
   position: fixed;
-  flex-direction: row;
-  background-color: white;
-  z-index: 4;
-  height: 4.375rem;
-  
-}
-.Chat_Head_Box{
   width: 100%;
+}
+.Chat_Head_Container {
+	padding: 0 1rem;
+	width: 100%;
+	max-width: 420px;
+	display: flex;
+	position: fixed;
+	flex-direction: row;
+	background-color: white;
+	z-index: 4;
+	height: 4.375rem;
+}
+.Chat_Head_Box {
+	width: 100%;
+	border-bottom: 1px solid $color-sub;
+	display: flex;
+	flex-direction: row;
+	gap: 0.75rem;
+}
+.Chat_Head_Img {
+	width: 100%;
+	height: 100%;
+	border-radius: 7px;
+	cursor: pointer;
+}
+.Chat_Head_Text_Box {
+	display: flex;
+	flex-direction: column;
+	height: 3.125rem;
+	justify-content: center;
+	gap: 3px;
+	cursor: pointer;
+}
+.Chat_Head_Title {
+	font-size: 0.9375rem;
+	color: #212121;
+  font-weight: 600;
+}
+.chat_head_cost {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+	font-size: 0.875rem;
+}
+.chat_head_cost_icon_box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.chat_head_cost_icon {
+	width: 13px;
+	height: 13px;
+}
 
-  border-bottom: 1px solid #EDEDED;
-  display: flex;
-  flex-direction: row;
-  gap: 0.75rem;
-}
-.Chat_Head_Img{
-  width: 100%;
-  height: 100%;
-  border-radius: 7px;
-}
-.Chat_Head_Text_Box{
-  display: flex;
-  flex-direction: column;
-  height:3.125rem;
-  justify-content: center;
-  gap: 3px;
-}
-.Chat_Head_Title{
-  font-size: 0.8125rem;
-  color: #212121;
-}
-.chat_head_cost{
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-  font-size: 13px;
-}
-.chat_head_cost_icon_box{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.chat_head_cost_icon{
-  width: 13px;
-  height: 13px;
-}
-
-.Chat_Head_Img_Box{
-  width: 3.125rem;
-  height: 3.125rem;
+.Chat_Head_Img_Box {
+	width: 3.125rem;
+	height: 3.125rem;
 }
 
 .Chat_Other_Wrap {
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
 }
 
-.Chat_Other_Name{
-color:#757575;
-font-size: 0.875rem;
+.Chat_Other_Name {
+	color: #757575;
+	font-size: 0.875rem;
 }
 
 .Chat_Me_Container {
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-  margin: 0.625rem 0;
-  gap: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+	margin: 0.625rem 0;
+	gap: 0.5rem;
 }
 
-.Chat_Other_Container{
-    display: flex;
-  flex-direction: column;
-  margin: 0.625rem 0;
-  gap: 3px;
+.Chat_Other_Container {
+	display: flex;
+	flex-direction: column;
+	margin: 0.625rem 0;
+	gap: 3px;
 }
-.Chat_Other_Msg_Clock{
-    display: flex;
-    flex-direction: row;
-    gap:0.5rem;
+.Chat_Other_Msg_Clock {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
 }
 
-.Chat_Other_Profile{
-    margin-top: 10px;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
+.Chat_Other_Profile {
+	margin-top: 10px;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	aspect-ratio: 1/1;
 }
 
 .Chat_Clock_Box {
-  color: #999999;
-  font-size: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
+	color: #999999;
+	font-size: 0.75rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
 }
 
 .Chat_Me_Box {
-  background-color: #ebf3fa;
-  border-bottom-left-radius: 0.75rem;
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
-  padding: 0.625rem;
-  max-width: 80%; 
+	background-color: #ebf3fa;
+	border-bottom-left-radius: 0.75rem;
+	border-top-left-radius: 0.75rem;
+	border-top-right-radius: 0.75rem;
+	padding: 0.625rem 1rem;
+	max-width: 80%;
 }
 
-.Chat_Other_Box{
-   background-color:  #F7F7F7;
-  border-bottom-right-radius: 0.75rem;
-  border-bottom-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
-  padding: 0.625rem;
-  max-width: 75%; 
+.Chat_Other_Box {
+	background-color: #f7f7f7;
+	border-bottom-right-radius: 0.75rem;
+	border-bottom-left-radius: 0.75rem;
+	border-top-right-radius: 0.75rem;
+	padding: 0.625rem 1rem;
+	max-width: 75%;
 }
 
 .Chat_Input_Box {
-  display: flex;
-  flex-direction: row;
-  height: 2.625rem;
-  gap: 0.625rem;
+	display: flex;
+	flex-direction: row;
+	height: 2.625rem;
+	gap: 0.625rem;
+  width: 100%;
+  padding: 0 1rem;
 }
 
 .Chat_Input {
-  width: 18.125rem;
-  height: 2.625rem;
-  border: none;
-  background-color: #f7f7f7;
-  border-radius: 0.4375rem;
-  padding: 0 0.911875rem;
+	width: 100%;
+	height: 2.625rem;
+	border: none;
+	background-color: #f7f7f7;
+	border-radius: 0.43rem;
+	padding: 0 0.9rem;
+	margin: auto;
+  font-size: 1rem;
+  &:focus {
+    outline: none;
+  }
 }
 
 .Chat_Input_Button_Box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+  height: 100%;
 }
 .Chat_Input_Button {
-  width: 1.5rem;
-  height: 1.5rem;
-  border: none;
-  background-color: white;
+	width: 1.5rem;
+	height: 1.5rem;
+	border: none;
+	background-color: white;
 }
 .Chat_Button_Icon {
-  width: 100%;
-  height: 100%;
-  background-color: none;
+	width: 100%;
+	height: 100%;
+	background-color: none;
 }
 
 .Chat_Input_Container {
-  position: fixed;
-  background-color: white;
-  width: 100%;
-  max-width: 420px;
-  left: 50%;
-  bottom: 0;
-  padding-top: 10px;
-  transform: translateX(-50%);
-  height: 5.5rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+	position: fixed;
+	background-color: white;
+	width: 100%;
+	max-width: 420px;
+	left: 50%;
+	bottom: 0;
+	padding-top: 10px;
+	transform: translateX(-50%);
+	height: 5.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
