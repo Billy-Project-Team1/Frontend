@@ -45,33 +45,37 @@ const ReviewPosting = () => {
   const postDetail = useSelector((state) => state.post.post);
 
   const onPostingHandler = async (e) => {
-    e.preventDefault();
-    //이미지 form 데이터
-    let formData = new FormData();
-    //a는 이름으로  b를 저장한다. c는 어떠한 타입으로 / form은 c를 굳이 안써도됨
-    // formData.append(a,b)
-    formData.append(
-      'reviewRequestDto',
-      new Blob([JSON.stringify(data)], { type: 'application/json' })
-    );
-    for (let i = 0; i < img.length; i++) {
-      formData.append('files', img[i]);
-    }
-
-    try {
-      const data = await dispatch(addReview(formData)).unwrap();
-      if (data) {
-        navigate(`/detail/${postId}`);
-      } else {
-        console.log(data);
+    if (data.star === 0) {
+      return '';
+    } else {
+      e.preventDefault();
+      //이미지 form 데이터
+      let formData = new FormData();
+      //a는 이름으로  b를 저장한다. c는 어떠한 타입으로 / form은 c를 굳이 안써도됨
+      // formData.append(a,b)
+      formData.append(
+        'reviewRequestDto',
+        new Blob([JSON.stringify(data)], { type: 'application/json' })
+      );
+      for (let i = 0; i < img.length; i++) {
+        formData.append('files', img[i]);
       }
-    } catch (err) {
-      console.log(err);
+
+      try {
+        const data = await dispatch(addReview(formData)).unwrap();
+        if (data) {
+          navigate(`/detail/${postId}`);
+        } else {
+          console.log(data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
   return (
-    <div>
+    <div className="reviewPost_wrap">
       <Headers2 pageName="리뷰 작성" />
       <div className="reviewPost_container">
         <div className="reviewPost_rating_container">
@@ -110,13 +114,17 @@ const ReviewPosting = () => {
           <span className="reviewPost_option"> (선택)</span>
         </div>
         <ImageUploader img={img} setImg={setImg} />
-        <div
-          className="reviewPost_submit_btn"
-          type="submit"
-          onClick={onPostingHandler}
-        >
-          작성완료
-        </div>
+          {data.star === 0 ? (
+            <div className="reviewPost_submit_btn_wait">작성완료</div>
+          ) : (
+            <div
+              className="reviewPost_submit_btn"
+              type="submit"
+              onClick={onPostingHandler}
+            >
+              작성완료
+            </div>
+          )}
       </div>
     </div>
   );
