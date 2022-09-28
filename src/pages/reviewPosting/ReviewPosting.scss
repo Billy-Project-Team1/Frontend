@@ -1,7 +1,13 @@
 @import '../../common/color.scss';
-
+.reviewPost_wrap{
+	min-height: 100vh;
+	position: relative;
+}
 .reviewPost_container {
+	height: 100%;
 	padding: 0 1rem;
+	display: flex;
+	flex-direction: column;
 }
 
 .reviewPost_rating_container {
@@ -65,7 +71,8 @@
 }
 
 .reviewPost_submit_btn {
-	width: 358px;
+	width: 92%;
+	max-width: 420px;
 	height: 52px;
 	font-size: 1rem;
 	font-weight: 600;
@@ -75,9 +82,28 @@
 	text-align: center;
 	padding-top: 14px;
 	position: absolute;
+	left: 50%;
 	bottom: 0;
 	margin-bottom: 50px;
+	transform: translateX(-50%);
 }
 ::placeholder {
 	color: $color-placeholder;
+}
+.reviewPost_submit_btn_wait {
+	width: 92%;
+	max-width: 420px;
+	height: 52px;
+	font-size: 1rem;
+	font-weight: 600;
+	color: $color-placeholder;
+	background-color: $color-light;
+	border-radius: 12px;
+	text-align: center;
+	padding-top: 14px;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	margin-bottom: 50px;
+	transform: translateX(-50%);
 }
