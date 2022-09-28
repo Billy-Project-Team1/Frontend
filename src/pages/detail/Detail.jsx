@@ -24,6 +24,7 @@ import DetailCalendar from '../../commponents/calendar/DetailCalendar';
 import DetailFooter from '../../commponents/footer/DetailFooter';
 import AlertSmallModal from '../../commponents/modal/AlertSmallModal';
 import ReviewCardDeatil from '../../commponents/Review/ReviewCardDeatil';
+import ReviewCardStarAvg from '../../commponents/Review/ReviewCardStarAvg';
 import { getDetailReview } from '../../redux/modules/reviewSlice';
 
 const Detail = () => {
@@ -217,6 +218,7 @@ const Detail = () => {
 					onClickSubmit={login}
 				/>
 			)}
+			<ReviewCardStarAvg />
 			<ReviewCardDeatil
 				reviewGet={reviewGet}
 				profileUrl={detailPost.profileUrl}

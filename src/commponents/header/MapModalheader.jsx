@@ -11,7 +11,7 @@ const MapModalheader = ({ pageName, setSearchMapModal }) => {
 			<div className="header_wrap">
 				<div className="mypage_header_content">
 					<HiOutlineChevronLeft
-						style={{ marginRight: '17px' }}
+						style={{ marginRight: '17px', cursor: 'pointer' }}
 						color="#212121"
 						size="24px"
 						onClick={() => setSearchMapModal(false)}
