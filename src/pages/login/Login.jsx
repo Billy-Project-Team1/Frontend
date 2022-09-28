@@ -112,7 +112,7 @@ const Login = () => {
         <div className="Login_Find_Box">
           <div className="Login_Find">빌리가 처음 이신가요?</div>
           <div className="Login_Find_Navi" onClick={() => navigate(`/signup`)}>
-            회원가입
+            회원가입 🎉
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ const NoticeCard = () => {
 						<div className="noticecard_right_top_clock">9월 28일</div>
 					</div>
 					<div className="noticecard_right_bottom">
-						<div>최대한 빠르게 구현하겠습니다.</div>
+						<div>최대한 빠르게 구현하겠습니다 😭</div>
 						<div>9월 28일&nbsp;⎻&nbsp;10월 7일 (9박)</div>
 					</div>
 				</div>

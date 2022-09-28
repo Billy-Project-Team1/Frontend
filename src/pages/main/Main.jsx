@@ -46,7 +46,7 @@ const Main = () => {
     <div>
       <MainHeader />
       <div className="MainBodyContainer">
-        <img src={eventbanner}  onClick={()=>navigate('/event')}/>
+        <img src={eventbanner} style={{cursor:'pointer'}} onClick={()=>navigate('/event')}/>
         {postList.map((post) => {
           return <MainListCard post={post} key={post.id} />;
         })}
