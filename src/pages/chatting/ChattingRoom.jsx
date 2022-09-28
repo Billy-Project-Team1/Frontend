@@ -22,11 +22,16 @@ const ChattingRoom = () => {
 		<div>
 			<Headers2 pageName="채팅 목록" />
 			<div className="chattingroom_wrap">
-				{myChatList === undefined
-					? ''
-					: myChatList.map((post, index) => {
-							return <ChattingRoomCard post={post} key={index} />;
-					  })}
+				{myChatList === undefined ? (
+					<div className="Search_Empty_Text">
+						빌리에 오신걸 환영합니다! 🎉 <br />
+						채팅을 시작해보세요! 🙂
+					</div>
+				) : (
+					myChatList.map((post, index) => {
+						return <ChattingRoomCard post={post} key={index} />;
+					})
+				)}
 			</div>
 			<Footer />
 		</div>
