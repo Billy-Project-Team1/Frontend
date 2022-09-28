@@ -57,6 +57,7 @@ const AddPostingHeader = ({ authorId, postId }) => {
             <HiOutlineChevronLeft
               style={{
                 marginRight: '22px',
+                cursor: 'pointer',
                 color: scrollPosition < 390 ? '#ffffff' : '#212121',
               }}
               // color="#656565"

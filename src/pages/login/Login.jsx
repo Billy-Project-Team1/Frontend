@@ -1,8 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { HiOutlineChevronLeft } from 'react-icons/hi';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import kakaoLoginimg from '../../static/image/kakao_login_original.png';
 import { apis } from '../../shared/api';
