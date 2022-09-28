@@ -1,17 +1,33 @@
 // React import
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { jullyStateChangeThunk } from '../../redux/modules/reservationSlice';
 // Component import
 import AlertLargeModal from '../modal/AlertLargeModal';
 
 const AlertButtonJullyReturn = ({
   jullyState,
-  jullyStateHandler,
+  deliveryDoneHandler,
+  billyData,
   JullyData,
   JullyReturnDone,
+  setTest,
+  test,
 }) => {
+  const dispatch = useDispatch();
   const [largeModalOpen, setLargeModalOpen] = useState(false);
   const isModal = () => {
     setLargeModalOpen(true);
+  };
+  const jullyStateHandler = async (a, b) => {
+    try {
+      const response = await dispatch(jullyStateChangeThunk({ a, b })).unwrap();
+      if (response) {
+        const newTest = test + 1;
+        setTest(newTest);
+        setLargeModalOpen(false);
+      }
+    } catch {}
   };
 
   return (

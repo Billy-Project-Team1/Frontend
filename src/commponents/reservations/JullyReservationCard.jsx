@@ -30,11 +30,13 @@ const JullyReservationCard = ({ jullyState }) => {
   const [returnDone, setReturnDone] = useState({
     state: '5',
   });
-  const [test, setTest] = useState();
-  // const [largeModalOpen, setLargeModalOpen] = useState(false);
-  // const isModal = () => {
-  //   setLargeModalOpen(true);
-  // };
+
+  const [test, setTest] = useState(1);
+  const [largeModalOpen, setLargeModalOpen] = useState(false);
+  const isModal = () => {
+    setLargeModalOpen(true);
+  };
+
   useEffect(() => {
     dispatch(jullyStateListThunk(jullyState));
   }, []);
@@ -74,7 +76,8 @@ const JullyReservationCard = ({ jullyState }) => {
       const response = await dispatch(jullyStateChangeThunk({ a, b })).unwrap();
       console.log(response)
       if (response) {
-        setTest(response);
+        const newTest = test+1
+        setTest(newTest);
       }
     } catch {}
   };
@@ -91,87 +94,88 @@ const JullyReservationCard = ({ jullyState }) => {
         .reverse()
         .map((item, index) => {
           return (
-						<div className="reservationcard_container" key={index}>
-							<div className="reservationcard_small_container">
-								<div className="reservationcard_title_wrap">
-									<div className="reservationcard_title">{item.title}</div>
-								</div>
-								<div className="reservationcard_detail_wrap">
-									<img className="reservationcard_img" src={item.postImgUrl} />
-									<div className="reservationcard_body_box">
-										<div className="reservationcard_icon_box">
-											<div className="reservationcard_price">
-												<img src={dailycost} />
-												<p>{dailyPrice(item.price)}원</p>
-											</div>
-											<div className="reservationcard_price">
-												<img src={deposit} />
-												<p>{depositPrice(item.deposit)}원</p>
-											</div>
-										</div>
-										<div className="reservationcard_contents">
-											예약일자 : {rentalDate(item.startDate)}&nbsp;⎻&nbsp;
-											{rentalDate(item.endDate)}&nbsp;(
-											{rentalTotalDate(item.totalAmount, item.price)}박)
-										</div>
-										<div className="reservationcard_contents">
-											예약상태 :&nbsp;
-											{jullyState === '1'
-												? '예약 대기중'
-												: jullyState === '2'
-												? '예약중'
-												: jullyState === '4'
-												? '대여중'
-												: jullyState === '5'
-												? '거래 완료'
-												: jullyState === '3'
-												? '취소 완료'
-												: ''}
-										</div>
-										<div className="reservationcard_name_wrap">
-											<div className="reservationcard_name">
-												예약자: {item.billyNickname}
-											</div>
-										</div>
-										<div className="reservationcard_alert_content">
-											{jullyState === '2' && item.delivery === true
-												? '👉🏻 거래 완료시 전달 완료 버튼을 체크해주세요.'
-												: ''}
-										</div>
-										{jullyState === '3' ? (
-											<div className="reservationcard_alert_content">
-												취소사유 : {item.cancelMessage}
-											</div>
-										) : (
-											''
-										)}
-									</div>
-								</div>
-								<div className="reservationcard_btn_wrap">
-									{jullyState === '1' ? (
-										<div className="jullyReservation_set_btn">
-											<CancelButton item={item} jullyState={jullyState} />
-											<button
-												className="jullyReservation_btn"
-												onClick={() =>
-													jullyStateHandler(
-														item.reservationId,
-														reservationApproved
-													)
-												}
-											>
-												승인
-											</button>
-										</div>
-									) : jullyState === '2' ? (
-										item.delivery === true ? (
-											<>
-												<AlertButton
-													jullyState={jullyState}
-													jullyStateHandler={jullyStateHandler}
-													JullyData={item.reservationId}
-													JullyHandleDone={handleDone}
-												/>
+            <div className="reservationcard_container" key={index}>
+              <div className="reservationcard_small_container">
+                <div className="reservationcard_title_wrap">
+                  <div className="reservationcard_title">{item.title}</div>
+                </div>
+                <div className="reservationcard_detail_wrap">
+                  <img className="reservationcard_img" src={item.postImgUrl} />
+                  <div className="reservationcard_body_box">
+                    <div className="reservationcard_icon_box">
+                      <div className="reservationcard_price">
+                        <img src={dailycost} />
+                        <p>{dailyPrice(item.price)}</p>
+                      </div>
+                      <div className="reservationcard_price">
+                        <img src={deposit} />
+                        <p>{depositPrice(item.deposit)}</p>
+                      </div>
+                    </div>
+                    <div className="reservationcard_contents">
+                      예약일자 : {rentalDate(item.startDate)}~
+                      {rentalDate(item.endDate)}&nbsp;(
+                      {rentalTotalDate(item.totalAmount, item.price)}박)
+                    </div>
+                    <div className="reservationcard_contents">
+                      예약상태 :&nbsp;
+                      {jullyState === '1'
+                        ? '예약 대기중'
+                        : jullyState === '2'
+                        ? '예약중'
+                        : jullyState === '4'
+                        ? '대여중'
+                        : jullyState === '5'
+                        ? '거래 완료'
+                        : jullyState === '3'
+                        ? '취소 완료'
+                        : ''}
+                    </div>
+                    <div className="reservationcard_name_wrap">
+                      <div className="reservationcard_name">
+                        예약자: {item.billyNickname}
+                      </div>
+                    </div>
+                    <div className="reservationcard_alert_content">
+                      {jullyState === '2' && item.delivery === true
+                        ? '• 거래 완료시 전달 완료 버튼을 체크해주세요.'
+                        : ''}
+                    </div>
+                    {jullyState === '3' ? (
+                      <div className="reservationcard_alert_content">
+                        취소사유 : {item.cancelMessage}
+                      </div>
+                    ) : (
+                      ''
+                    )}
+                  </div>
+                </div>
+                <div className="reservationcard_btn_wrap">
+                  {jullyState === '1' ? (
+                    <div className="jullyReservation_set_btn">
+                      <CancelButton item={item} jullyState={jullyState} />
+                      <button
+                        className="jullyReservation_btn"
+                        onClick={() =>
+                          jullyStateHandler(
+                            item.reservationId,
+                            reservationApproved
+                          )
+                        }
+                      >
+                        승인
+                      </button>
+                    </div>
+                  ) : jullyState === '2' ? (
+                    item.delivery === true ? (
+                      <>
+                        <AlertButton
+                          jullyState={jullyState}
+                          jullyStateHandler={jullyStateHandler}
+                          JullyData={item.reservationId}
+                          JullyHandleDone={handleDone}
+                          test={test}
+                        />
 
 												{/* <button
                         className="reservationcard_btn"
@@ -190,18 +194,20 @@ const JullyReservationCard = ({ jullyState }) => {
                           data2={handleDone}
                         />
                       )} */}
-											</>
-										) : (
-											<CancelButton item={item} jullyState={jullyState} />
-										)
-									) : jullyState === '4' ? (
-										<>
-											<AlertButtonJullyReturn
-												jullyState={jullyState}
-												jullyStateHandler={jullyStateHandler}
-												JullyData={item.reservationId}
-												JullyReturnDone={returnDone}
-											/>
+                      </>
+                    ) : (
+                      <CancelButton item={item} jullyState={jullyState} />
+                    )
+                  ) : jullyState === '4' ? (
+                    <>
+                      <AlertButtonJullyReturn
+                        jullyState={jullyState}
+                        jullyStateHandler={jullyStateHandler}
+                        JullyData={item.reservationId}
+                        JullyReturnDone={returnDone}
+                        setTest={setTest}
+                        test={test}
+                      />
 
 											{/* <button
                         className="reservationcard_btn"

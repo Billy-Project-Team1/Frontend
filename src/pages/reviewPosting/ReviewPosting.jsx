@@ -60,7 +60,6 @@ const ReviewPosting = () => {
 
     try {
       const data = await dispatch(addReview(formData)).unwrap();
-      console.log(data);
       if (data) {
         navigate(`/detail/${postId}`);
       } else {

@@ -1,5 +1,6 @@
 // React import
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 // Component import
 import AlertLargeModal from '../modal/AlertLargeModal';
 
@@ -12,11 +13,16 @@ const AlertButton = ({
   JullyData,
   JullyHandleDone,
   JullyReturnDone,
+  test
 }) => {
   const [largeModalOpen, setLargeModalOpen] = useState(false);
   const isModal = () => {
     setLargeModalOpen(true);
   };
+
+  useEffect(()=>{
+    setLargeModalOpen(false)
+  },[test])
 
   return (
     <>

@@ -13,7 +13,6 @@ const ReviewCardComment = ({ item, index, profileUrl, reviewId }) => {
 		//...data 기존 데이터 두고 추가시키는 느낌
 		setReply({ ...reply, [name]: value });
 	};
-	console.log(reply);
 
 	const reviewClose = () => {
 		setReviewOpen(!reviewOpen);

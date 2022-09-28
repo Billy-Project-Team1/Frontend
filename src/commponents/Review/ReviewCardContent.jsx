@@ -48,7 +48,6 @@ const ReviewCardContent = ({ item, index, authorId, id, reviewId }) => {
 			}
 		} catch {}
 	};
-	console.log(reviewId);
 	return (
 		<>
 			<div>
