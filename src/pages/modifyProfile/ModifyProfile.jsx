@@ -170,7 +170,7 @@ const ModifyProfile = () => {
           {modalOn && (
             <AlertSmallModal
               setModalOn={setModalOn}
-              body="로그아웃하겠습니까?"
+              body="로그아웃 하시겠습니까?"
               buttonType="로그아웃"
               onClickSubmit={logout}
             />

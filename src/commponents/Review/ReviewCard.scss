@@ -52,6 +52,12 @@
 	display: flex;
 	flex-direction: row;
 	gap: 4px;
+	position: relative;
+}
+
+.reviewCard_rating_name_wrap_btn {
+	position: absolute;
+	right: 0;
 }
 
 .reviewCard_rating_name_box {
