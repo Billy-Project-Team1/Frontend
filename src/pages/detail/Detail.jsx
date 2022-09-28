@@ -24,7 +24,7 @@ import DetailCalendar from '../../commponents/calendar/DetailCalendar';
 import DetailFooter from '../../commponents/footer/DetailFooter';
 import AlertSmallModal from '../../commponents/modal/AlertSmallModal';
 import ReviewCardDeatil from '../../commponents/Review/ReviewCardDeatil';
-import ReviewCardStarAvg from '../../commponents/Review/ReviewCardStarAvg';
+import ReviewCardDetailStarAvg from '../../commponents/Review/ReviewCardDetailStarAvg';
 import { getDetailReview } from '../../redux/modules/reviewSlice';
 
 const Detail = () => {
@@ -213,12 +213,12 @@ const Detail = () => {
 			{modalOn && (
 				<AlertSmallModal
 					setModalOn={setModalOn}
-					body="로그인이 필요한 페이지입니다"
+					body="로그인이 필요한 페이지입니다."
 					buttonType="로그인"
 					onClickSubmit={login}
 				/>
 			)}
-			<ReviewCardStarAvg />
+			<ReviewCardDetailStarAvg reviewGet={reviewGet} />
 			<ReviewCardDeatil
 				reviewGet={reviewGet}
 				profileUrl={detailPost.profileUrl}
