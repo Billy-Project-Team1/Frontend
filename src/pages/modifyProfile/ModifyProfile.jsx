@@ -185,7 +185,7 @@ const ModifyProfile = () => {
               setLargeModalOpen={setLargeModalOpen}
               body1="탈퇴시 사용자님의 정보가 모두 삭제됩니다."
               body2="탈퇴하시겠습니까?"
-              buttonType="탈퇴"
+              buttonType="회원탈퇴"
               onClickSubmit={Withdrawal}
             />
           )}
