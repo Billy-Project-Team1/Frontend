@@ -1,102 +1,103 @@
 .MainListWrap {
-  padding: 0 1rem;
-  cursor: pointer;
+	padding: 0 1rem;
 }
 .MainListCardContainer {
-  padding: 1.25rem 0;
-  display: flex;
-  flex-direction: row;
-  border-bottom: 1px solid rgba(238, 238, 238, 1);
+	padding: 1.25rem 0;
+	display: flex;
+	flex-direction: row;
+	border-bottom: 1px solid rgba(238, 238, 238, 1);
 }
+
 .MainListCardBox {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  height: 7.5rem;
-  gap: 0.5rem;
-  width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	height: 7.5rem;
+	gap: 0.5rem;
+	width: 100%;
+	cursor: pointer;
 }
 
 .MainListCardImg {
-  width: 7.5rem;
-  height: 7.5rem;
-  box-sizing: border-box;
-  object-fit: cover;
-  border-radius: 7px;
-  aspect-ratio: 1/1;
+	width: 7.5rem;
+	height: 7.5rem;
+	box-sizing: border-box;
+	object-fit: cover;
+	border-radius: 7px;
+	aspect-ratio: 1/1;
 }
 
 .MainListCardRightBox {
-  width: 100%;
-  margin-top: 0.275rem;
-  display: flex;
-  box-sizing: border-box;
-  flex-direction: column;
+	width: 100%;
+	margin-top: 0.275rem;
+	display: flex;
+	box-sizing: border-box;
+	flex-direction: column;
 }
 
 .MainListCardTitle {
-  overflow: hidden;
-  max-height: 2.375rem;
-  font-size: 0.9375rem;
-  box-sizing: border-box;
-  color: #212121;
+	overflow: hidden;
+	max-height: 2.375rem;
+	font-size: 0.9375rem;
+	box-sizing: border-box;
+	color: #212121;
 }
 
 .MainListCardPlace {
-  margin-top: 0.1rem;
-  font-size: 0.8125rem;
-  overflow: hidden;
-  color: #757575;
-  font-weight: 400;
-  max-height: 1.0625rem;
-  margin-bottom: 0.625rem;
+	margin-top: 0.1rem;
+	font-size: 0.8125rem;
+	overflow: hidden;
+	color: #757575;
+	font-weight: 400;
+	max-height: 1.0625rem;
+	margin-bottom: 0.625rem;
 }
 
 .MainListCardBottomContainer {
-  margin-top: 0.6875rem;
-  width: 100%;
+	margin-top: 0.6875rem;
+	width: 100%;
 }
 
 .MainListCardBottomBox {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .MainListCardPriceBox {
-  display: flex;
-  flex-direction: row;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  gap: 0.5625rem;
+	display: flex;
+	flex-direction: row;
+	font-size: 0.9375rem;
+	font-weight: 500;
+	gap: 0.5625rem;
 }
 
 .MainListCardIconBox {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .MainListCardIcon {
-  width: 0.9375rem;
-  height: 0.9375rem;
-  margin: auto;
+	width: 0.9375rem;
+	height: 0.9375rem;
+	margin: auto;
 }
 .MainListCardReview {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  right: 0px;
-  bottom: 7px;
-  font-size: 0.75rem;
-  color: #757575;
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	right: 0px;
+	bottom: 7px;
+	font-size: 0.75rem;
+	color: #757575;
 }
 
 .MainListCardStarBox {
-  font-size: 0.875rem;
-  display: flex;
-  flex-direction: column;
+	font-size: 0.875rem;
+	display: flex;
+	flex-direction: column;
 }
 
 .MainListCardStar {
-  margin: auto;
-  color: #fee500;
+	margin: auto;
+	color: #fee500;
 }

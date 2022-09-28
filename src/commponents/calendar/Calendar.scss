@@ -39,6 +39,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: pointer;
 }
 .calendar_btns {
   display: flex;
@@ -55,6 +56,7 @@
     font-size: 1rem;
     color: $color-light;
     margin-top: 2px;
+    cursor: pointer;
   }
   p {
     color: $color-primary;
@@ -64,6 +66,7 @@
     text-underline-position: under;
     margin-left: 8px;
     margin-top: 9px;
+    cursor: pointer;
   }
 }
 
