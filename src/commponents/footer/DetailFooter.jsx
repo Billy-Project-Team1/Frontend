@@ -71,7 +71,7 @@ const DetailFooter = ({ authorId, detailPost, pickDate }) => {
             >
               예약현황
             </div>
-            <div className="mydetail_chatlist_btn">채팅 목록보기</div>
+            <div className="mydetail_chatlist_btn" onClick={()=> navigate('/chatList')}>채팅 목록보기</div>
           </div>
         ) : (
           <div className="detail_footer_wrap">
