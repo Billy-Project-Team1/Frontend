@@ -188,8 +188,8 @@ const CancelPage = ({
 							<option value="예약날짜 변경">
 								다른 날짜로 재예약할 예정이에요
 							</option>
-							<option value="상품불량/파손">
-								상품 파손으로 대여 불가능한 상태에요
+							<option value="주문 취소">
+								더 이상 필요하지 않아요
 							</option>
 						</select>
 					) : jullyState === '1' ? (
@@ -202,9 +202,9 @@ const CancelPage = ({
 							<option value="" disabled>
 								사유를 선택해주세요
 							</option>
-							<option value="단순변심">상품이 마음에 들지 않아요</option>
-							<option value="예약날짜 변경">
-								다른 날짜로 재예약할 예정이에요
+							<option value="상품 삭제">상품이 삭제되었어요</option>
+							<option value="대여 불가">
+								해당 제품을 아직 수령받지 못했어요
 							</option>
 							<option value="상품불량/파손">
 								상품 파손으로 대여 불가능한 상태에요
@@ -220,9 +220,9 @@ const CancelPage = ({
 							<option value="" disabled>
 								사유를 선택해주세요
 							</option>
-							<option value="단순변심">상품이 마음에 들지 않아요</option>
-							<option value="예약날짜 변경">
-								다른 날짜로 재예약할 예정이에요
+							<option value="상품 삭제">상품이 삭제되었어요</option>
+							<option value="대여 불가">
+							해당 제품을 아직 수령받지 못했어요
 							</option>
 							<option value="상품불량/파손">
 								상품 파손으로 대여 불가능한 상태에요
