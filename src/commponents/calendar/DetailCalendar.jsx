@@ -7,7 +7,6 @@ import './Calendar.scss';
 // Icon import
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 
-
 const DetailCalendar = ({ data, pickDate, setPickDate }) => {
   const noDates = useRef();
   const noDates2 = useRef();

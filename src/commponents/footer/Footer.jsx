@@ -1,5 +1,5 @@
 // React importy
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 // Style import
 import './Footer.scss';
@@ -117,7 +117,7 @@ const Footer = () => {
         {modalOn && (
           <AlertSmallModal
             setModalOn={setModalOn}
-            body="로그인이 필요한 페이지입니다"
+            body="로그인이 필요한 페이지입니다."
             buttonType="로그인"
             onClickSubmit={login}
           />

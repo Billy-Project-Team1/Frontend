@@ -1,8 +1,8 @@
 // React import
 import React, { useEffect, useState, useRef } from 'react';
-// Library import 
+// Library import
 import { Calendar } from 'react-multi-date-picker';
-// Icon import 
+// Icon import
 import {
   HiOutlineCalendar,
   HiOutlineChevronDown,

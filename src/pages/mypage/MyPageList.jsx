@@ -22,112 +22,112 @@ const Mypage = ({ totalAvg, profile }) => {
 	const myUploadList = useSelector((state) => state.member.myUploadList);
 	const newUploadList = myUploadList.slice(0).reverse()
 
-	return (
-		<div>
-			<MyProfileMiddle
-				myPageState={myPageState}
-				setMyPageState={setMyPageState}
-			/>
+  return (
+    <div>
+      <MyProfileMiddle
+        myPageState={myPageState}
+        setMyPageState={setMyPageState}
+      />
 
-			{myPageState === '2' ? (
-				<BillyNavBar
-					reservationsState={reservationsState}
-					setReservationsState={setReservationsState}
-					setMyPageState={setMyPageState}
-				/>
-			) : myPageState === '3' ? (
-				<JullyNavBar
-					reservationsState={reservationsState}
-					setReservationsState={setReservationsState}
-				/>
-			) : (
-				''
-			)}
+      {myPageState === '2' ? (
+        <BillyNavBar
+          reservationsState={reservationsState}
+          setReservationsState={setReservationsState}
+          setMyPageState={setMyPageState}
+        />
+      ) : myPageState === '3' ? (
+        <JullyNavBar
+          reservationsState={reservationsState}
+          setReservationsState={setReservationsState}
+        />
+      ) : (
+        ''
+      )}
 
-			{/* 빌린예약건 */}
-			{myPageState === '2' && reservationsState === '1' ? (
-				<BillyReservation
-					reservationsState={reservationsState}
-					myPageState={myPageState}
-					setMyPageState={setMyPageState}
-				/>
-			) : (
-				''
-			)}
-			{myPageState === '2' && reservationsState === '2' ? (
-				<BillyReservation
-					reservationsState={reservationsState}
-					myPageState={myPageState}
-				/>
-			) : (
-				''
-			)}
-			{myPageState === '2' && reservationsState === '3' ? (
-				<BillyReservation
-					reservationsState={reservationsState}
-					myPageState={myPageState}
-				/>
-			) : (
-				''
-			)}
-			{myPageState === '2' && reservationsState === '4' ? (
-				<BillyReservation
-					reservationsState={reservationsState}
-					myPageState={myPageState}
-				/>
-			) : (
-				''
-			)}
-			{myPageState === '2' && reservationsState === '5' ? (
-				<BillyReservation
-					reservationsState={reservationsState}
-					myPageState={myPageState}
-				/>
-			) : (
-				''
-			)}
-			{/* 빌려준 예약건 */}
-			{myPageState === '3' && reservationsState === '1' ? (
-				<JullyReservation
-					reservationsState={reservationsState}
-					myPageState={myPageState}
-					setMyPageState={setMyPageState}
-				/>
-			) : (
-				''
-			)}
-			{myPageState === '3' && reservationsState === '2' ? (
-				<JullyReservation
-					reservationsState={reservationsState}
-					myPageState={myPageState}
-				/>
-			) : (
-				''
-			)}
-			{myPageState === '3' && reservationsState === '3' ? (
-				<JullyReservation
-					reservationsState={reservationsState}
-					myPageState={myPageState}
-				/>
-			) : (
-				''
-			)}
-			{myPageState === '3' && reservationsState === '4' ? (
-				<JullyReservation
-					reservationsState={reservationsState}
-					myPageState={myPageState}
-				/>
-			) : (
-				''
-			)}
-			{myPageState === '3' && reservationsState === '5' ? (
-				<JullyReservation
-					reservationsState={reservationsState}
-					myPageState={myPageState}
-				/>
-			) : (
-				''
-			)}
+      {/* 빌린예약건 */}
+      {myPageState === '2' && reservationsState === '1' ? (
+        <BillyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+          setMyPageState={setMyPageState}
+        />
+      ) : (
+        ''
+      )}
+      {myPageState === '2' && reservationsState === '2' ? (
+        <BillyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+        />
+      ) : (
+        ''
+      )}
+      {myPageState === '2' && reservationsState === '3' ? (
+        <BillyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+        />
+      ) : (
+        ''
+      )}
+      {myPageState === '2' && reservationsState === '4' ? (
+        <BillyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+        />
+      ) : (
+        ''
+      )}
+      {myPageState === '2' && reservationsState === '5' ? (
+        <BillyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+        />
+      ) : (
+        ''
+      )}
+      {/* 빌려준 예약건 */}
+      {myPageState === '3' && reservationsState === '1' ? (
+        <JullyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+          setMyPageState={setMyPageState}
+        />
+      ) : (
+        ''
+      )}
+      {myPageState === '3' && reservationsState === '2' ? (
+        <JullyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+        />
+      ) : (
+        ''
+      )}
+      {myPageState === '3' && reservationsState === '3' ? (
+        <JullyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+        />
+      ) : (
+        ''
+      )}
+      {myPageState === '3' && reservationsState === '4' ? (
+        <JullyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+        />
+      ) : (
+        ''
+      )}
+      {myPageState === '3' && reservationsState === '5' ? (
+        <JullyReservation
+          reservationsState={reservationsState}
+          myPageState={myPageState}
+        />
+      ) : (
+        ''
+      )}
 
 			{myPageState === '1' ? (
 				<div className="mypage_list_margin">
@@ -147,13 +147,13 @@ const Mypage = ({ totalAvg, profile }) => {
 					<ReviewCard profile={profile} />
 					{/* <ReviewCardContent profile={profile} /> */}
 
-					{/* <ReviewCard totalAvg={totalAvg} profile={profile} /> */}
-				</>
-			) : (
-				''
-			)}
-		</div>
-	);
+          {/* <ReviewCard totalAvg={totalAvg} profile={profile} /> */}
+        </>
+      ) : (
+        ''
+      )}
+    </div>
+  );
 };
 
 export default Mypage;

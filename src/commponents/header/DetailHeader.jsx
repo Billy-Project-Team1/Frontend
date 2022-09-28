@@ -42,7 +42,6 @@ const AddPostingHeader = ({ authorId, postId }) => {
       window.removeEventListener('scroll', updateScroll); //unmount시 해제되도록
     };
   }, []);
-  // console.log(scrollPosition)
 
   return (
     <>
@@ -60,7 +59,6 @@ const AddPostingHeader = ({ authorId, postId }) => {
                 cursor: 'pointer',
                 color: scrollPosition < 390 ? '#ffffff' : '#212121',
               }}
-              // color="#656565"
               size="24px"
               onClick={() => navigate(-1)}
             />
@@ -69,8 +67,8 @@ const AddPostingHeader = ({ authorId, postId }) => {
               <div>
                 <TbDotsVertical
                   style={{
-                    width: '40px',
-                    fontSize: '22px',
+                    width: '28px',
+                    fontSize: '24px',
                     color: scrollPosition < 390 ? '#ffffff' : '#212121',
                   }}
                   onClick={() => showModal()}
@@ -86,6 +84,7 @@ const AddPostingHeader = ({ authorId, postId }) => {
             showModal={showModal}
             setModalOpen={setModalOpen}
             postId={postId}
+            setModalOn={setModalOn}
           />
         )}
       </div>
@@ -95,7 +94,7 @@ const AddPostingHeader = ({ authorId, postId }) => {
           body="삭제하시겠습니까?"
           buttonType="삭제"
           onClickSubmit={deleteHandler}
-		  showModal={showModal}
+          showModal={showModal}
         />
       )}
     </>

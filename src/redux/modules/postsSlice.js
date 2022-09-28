@@ -10,7 +10,6 @@ export const _postsList = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.get(`/posts`, payload);
-      // return console.log(response)
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result.content);
       }
