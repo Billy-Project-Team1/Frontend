@@ -28,8 +28,8 @@ const ModifyProfile = () => {
   const memberImg_ref = useRef(null);
   const is_login = localStorage.getItem('userId');
   const refreshToken = getCookie('refreshToken');
-  const token = localStorage.getItem('accessToken');
-
+  const token = localStorage.getItem('accessToken');  
+  
   useEffect(() => {
     async function getProfile() {
       const result = await dispatch(getProfileThunk(is_login)).unwrap();
@@ -43,7 +43,7 @@ const ModifyProfile = () => {
     }
     getProfile();
   }, []);
-
+  
   const member = useSelector((state) => state.myprofile?.myProfile);
   const [reviseProfile, setReviseProfile] = useState({
     nickname: '',
@@ -54,7 +54,7 @@ const ModifyProfile = () => {
     member.profileUrl ? member.profileUrl : profileimg
   );
   const [nickCheck, setNickCheck] = useState(false);
-
+  
   useEffect(() => {
     if (
       reviseProfile?.nickname?.length < 2 ||
