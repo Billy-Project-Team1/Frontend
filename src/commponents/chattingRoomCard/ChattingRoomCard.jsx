@@ -43,7 +43,7 @@ const ChattingRoomCard = ({ post }) => {
           <div className="chattingRoomCard_2_box_top">
             <div className="chattingRoomCard_2_box_top_1">
               {post.otherNickname === null
-                ? '상대방이나갔습니다'
+                ? '대화상대 없음'
                 : post.otherNickname}
             </div>
             <div className="chattingRoomCard_2_box_top_2">{nowDate}</div>

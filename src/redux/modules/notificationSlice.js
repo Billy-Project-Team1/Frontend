@@ -10,7 +10,7 @@ export const getNotification = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.get(`/notification`);
-      return console.log(response);
+      // return console.log(response);
       //   if (response.data.success === true) {
       //     return thunkAPI.fulfillWithValue(response.data.result.content);
     } catch (e) {

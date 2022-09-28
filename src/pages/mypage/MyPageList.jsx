@@ -20,6 +20,7 @@ const Mypage = ({ totalAvg, profile }) => {
 	const [reservationsState, setReservationsState] = useState('1');
 	const myDipList = useSelector((state) => state.member.myDibsList);
 	const myUploadList = useSelector((state) => state.member.myUploadList);
+	const newUploadList = myUploadList.slice(0).reverse()
 
 	return (
 		<div>
@@ -136,7 +137,7 @@ const Mypage = ({ totalAvg, profile }) => {
 				</div>
 			) : myPageState === '4' ? (
 				<div className="mypage_list_margin">
-					{myUploadList.map((post, index) => {
+					{newUploadList.map((post, index) => {
 						return <UploadCard post={post} key={index} />;
 					})}
 				</div>
