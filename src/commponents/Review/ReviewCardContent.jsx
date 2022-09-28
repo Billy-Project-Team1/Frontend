@@ -41,7 +41,7 @@ const ReviewCardContent = ({ item, index, authorId, id, reviewId }) => {
 
 	const deleteHandler = async () => {
 		try {
-			const data = await dispatch(delReview({reviewId, id})).unwrap();
+			const data = await dispatch(delReview({ reviewId, id })).unwrap();
 			console.log(data);
 			if (data) {
 				return window.location.replace('/');
@@ -74,18 +74,23 @@ const ReviewCardContent = ({ item, index, authorId, id, reviewId }) => {
 										<div className="reviewCard_rental_date">
 											{rentalDate(item.startDate)} - {rentalDate(item.endDate)}{' '}
 											({item.dateCount}박)
-											{userId === authorId ? (
-												<>
-													<TbDotsVertical onClick={() => showModal()} />
-												</>
-											) : (
-												''
-											)}
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+					<div className="reviewCard_rating_name_wrap_btn">
+						{userId === authorId ? (
+							<>
+								<TbDotsVertical
+									style={{ fontSize: '20px', color:'#757575' }}
+									onClick={() => showModal()}
+								/>
+							</>
+						) : (
+							''
+						)}
+					</div>
 					</div>
 					<div className="reviewCard_imgs_wrap">
 						{item.reviewImgUrl.map((img, index) => {

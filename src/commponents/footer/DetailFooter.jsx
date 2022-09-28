@@ -103,7 +103,7 @@ const DetailFooter = ({ authorId, detailPost, pickDate }) => {
       {modalOn && (
         <AlertSmallModal
           setModalOn={setModalOn}
-          body="로그인이 필요한 페이지입니다"
+          body="로그인이 필요한 페이지입니다."
           buttonType="로그인"
           onClickSubmit={login}
         />

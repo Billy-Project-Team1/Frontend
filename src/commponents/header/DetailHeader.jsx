@@ -69,8 +69,8 @@ const AddPostingHeader = ({ authorId, postId }) => {
               <div>
                 <TbDotsVertical
                   style={{
-                    width: '40px',
-                    fontSize: '22px',
+                    width: '28px',
+                    fontSize: '24px',
                     color: scrollPosition < 390 ? '#ffffff' : '#212121',
                   }}
                   onClick={() => showModal()}
