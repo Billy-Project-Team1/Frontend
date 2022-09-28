@@ -9,7 +9,6 @@ const AlertButtonJullyReturn = ({
   jullyState,
   deliveryDoneHandler,
   billyData,
-  jullyStateHandler,
   JullyData,
   JullyReturnDone,
   setTest,

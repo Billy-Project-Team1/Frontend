@@ -135,9 +135,6 @@ const JullyReservationCard = ({ jullyState }) => {
                       <div className="reservationcard_name">
                         예약자: {item.billyNickname}
                       </div>
-                      <button className="reservationcard_chat_btn">
-                        1:1 문의
-                      </button>
                     </div>
                     <div className="reservationcard_alert_content">
                       {jullyState === '2' && item.delivery === true

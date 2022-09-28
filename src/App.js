@@ -18,6 +18,7 @@ import Chat from './pages/chatting/Chat';
 import ReviewPosting from './pages/reviewPosting/ReviewPosting';
 import Notice from './pages/notice/Notice';
 import Event from './pages/event/Event';
+import NotFound from './pages/notfound/NotFound';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         />
         <Route path="/notice" element={<Notice />} />
         <Route path="/event" element={<Event />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
   );
 }
