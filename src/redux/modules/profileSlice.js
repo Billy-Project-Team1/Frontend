@@ -7,14 +7,12 @@ export const getProfileThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.get(`/auth/members/profile/${payload}`);
-      // return console.log(response);
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       } else {
         return console.log(response);
       }
     } catch (e) {
-      // console.log(e);
       return thunkAPI.rejectWithValue(e);
     }
   }
@@ -31,7 +29,6 @@ export const editProfileThunk = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         }
       );
-      // return console.log('djfdkjfkd', response);
       return thunkAPI.fulfillWithValue(response.data.result);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);

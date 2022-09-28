@@ -69,7 +69,6 @@ const ModifyPosting = () => {
     const { name, value } = e.target;
     setRevisePosting({ ...revisePosting, [name]: value });
   };
-  // console.log(revisePosting);
 
   const onPostingHandler = async (e) => {
     e.preventDefault();
@@ -78,9 +77,6 @@ const ModifyPosting = () => {
       'postUploadRequestDto',
       new Blob([JSON.stringify(revisePosting)], { type: 'application/json' })
     );
-    // for (let i = 0; i < imgUrl.length; i++) {
-    //   formData.append('imgUrlList', new Blob([JSON.stringify(imgUrl[i])],{type:'application/json'}))
-    // }
     for (let i = 0; i < imgUrl.length; i++) {
       formData.append('imgUrlList', imgUrl[i]);
     }

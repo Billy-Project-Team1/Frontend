@@ -1,81 +1,79 @@
 @import '../../common/color.scss';
 .reservationcard_first_container {
-	margin-bottom: 85px;
+  margin-bottom: 85px;
 }
 .reservationcard_container {
-	padding: 0 1rem;
-	display: flex;
-	flex-direction: column;
-	margin-top: 20px;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 .reservationcard_small_container {
-	border-bottom: 1px solid #eeeeee;
-	display: flex;
-	flex-direction: column;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  flex-direction: column;
 }
 .reservationcard_title_wrap {
-	width: 238px;
-	height: 22px;
-	display: flex;
+  display: flex;
 }
 .reservationcard_title {
-	font-size: 1rem;
-	font-weight: 500;
-	color: $color-primary;
+  font-size: 1rem;
+  font-weight: 500;
+  color: $color-primary;
 }
 .reservationcard_detail_wrap {
-	height: 110px;
-	display: flex;
-	flex-direction: row;
-	margin-top: 12px;
+  height: 110px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 12px;
 }
 .reservationcard_img {
-	width: 110px;
-	aspect-ratio: 1/1;
-	background: $color-placeholder;
-	border-radius: 7px;
+  width: 110px;
+  aspect-ratio: 1/1;
+  background: $color-placeholder;
+  border-radius: 7px;
 }
 .reservationcard_body_box {
-	margin-left: 15.76px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	font-size: 0.8125rem;
-	font-weight: 400;
-	color: $color-primary;
-	position: relative;
+  margin-left: 15.76px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: $color-primary;
+  position: relative;
 }
 .reservationcard_icon_box {
-	display: flex;
-	flex-direction: row;
-	margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
 }
 .reservationcard_price {
-	display: flex;
-	flex-direction: row;
-	gap: 4px;
-	margin-right: 10.14px;
-	font-size: 0.875rem;
-	font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  margin-right: 10.14px;
+  font-size: 0.875rem;
+  font-weight: 500;
 
-	img {
-		width: 16px;
-	}
+  img {
+    width: 16px;
+  }
 }
 .reservationcard_contents {
-	margin-bottom: 2px;
+  margin-bottom: 2px;
 }
 .reservationcard_btn {
-	width: 100%;
-	height: 43px;
-	border-radius: 12px;
-	background-color: $color-white;
-	font-weight: 400;
-	color: $color-main;
-	border: 1px solid $color-main;
-	font-size: 0.9375rem;
-	margin-top: 20px;
-	margin-bottom: 20px;
+  width: 100%;
+  height: 43px;
+  border-radius: 12px;
+  background-color: $color-white;
+  font-weight: 400;
+  color: $color-main;
+  border: 1px solid $color-main;
+  font-size: 0.9375rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 .reservationcard_wait_btn {
@@ -92,16 +90,16 @@
 }
 
 .reservationcard_name_wrap {
-	display: flex;
+  display: flex;
 }
 
 .reservationcard_alert_content {
-	display: flex;
-	width: 100%;
-	font-weight: 600;
-	color: $color-main;
-	font-size: 0.75rem;
-	margin-top: 2px;
+  display: flex;
+  width: 100%;
+  font-weight: 600;
+  color: $color-main;
+  font-size: 0.75rem;
+  margin-top: 2px;
 }
 .jullyReservation_set_btn {
 	margin-top: 20px;

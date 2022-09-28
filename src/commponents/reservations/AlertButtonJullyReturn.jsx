@@ -7,8 +7,6 @@ import AlertLargeModal from '../modal/AlertLargeModal';
 
 const AlertButtonJullyReturn = ({
   jullyState,
-  deliveryDoneHandler,
-  billyData,
   JullyData,
   JullyReturnDone,
   setTest,

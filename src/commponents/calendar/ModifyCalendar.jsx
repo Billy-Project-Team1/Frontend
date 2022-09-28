@@ -76,7 +76,7 @@ const PostingCalendar = ({
     }
   }, [month, data, date, toggleOn]);
 
-  const setDateFormat = async() => {
+  const setDateFormat = async () => {
     if (date?.length > 0) {
       noDates.current = null;
       const getDates = await date.map((v, i) => {
@@ -145,9 +145,8 @@ const PostingCalendar = ({
       ...blockDateDtoList,
       blockDateDtoList: blockDate,
     });
-
   }, [date]);
-  
+
   return (
     <div className="calendar_wrap">
       <div className="calendar_box">

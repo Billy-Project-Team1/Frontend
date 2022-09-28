@@ -7,7 +7,6 @@ export const reservationThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.post(`/auth/reservations`, payload);
-      // return console.log ('렁러알',response)
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       }
@@ -20,7 +19,6 @@ export const billyReservationCntThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.get('/auth/reservations/billy', payload);
-      //   return console.log(response);
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       } else {
@@ -39,7 +37,6 @@ export const billyStateListThunk = createAsyncThunk(
       const response = await instance.get(
         `/auth/reservations/billy/${payload}`
       );
-      //   return console.log(response);
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       } else {
@@ -54,13 +51,11 @@ export const billyStateListThunk = createAsyncThunk(
 export const reservationCancelThunk = createAsyncThunk(
   'reservationCancelThunk',
   async (payload, thunkAPI) => {
-    // console.log(payload)
     try {
       const response = await instance.patch(
         `/auth/reservations/billy/${payload.a}`,
         payload.b
       );
-        // return console.log(response);
       return thunkAPI.fulfillWithValue(response.data.success);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -74,9 +69,7 @@ export const deliveryDoneThunk = createAsyncThunk(
     try {
       const response = await instance.patch(
         `/auth/reservations/billy/delivery/${payload}`
-        // `/auth/reservations/billy/delivery/${response.data.result}`
       );
-      // return console.log(response);
       return thunkAPI.fulfillWithValue(payload);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -89,7 +82,6 @@ export const jullyReservationCntThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.get('/auth/reservations/jully ', payload);
-      //   return console.log(response);
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       } else {
@@ -108,7 +100,6 @@ export const jullyStateListThunk = createAsyncThunk(
       const response = await instance.get(
         `/auth/reservations/jully/${payload}`
       );
-      //   return console.log(response);
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       } else {
@@ -129,7 +120,6 @@ export const jullyStateChangeThunk = createAsyncThunk(
         `/auth/reservations/jully/${payload.a}`,
         payload.b
       );
-      // return console.log(response);
       return thunkAPI.fulfillWithValue(response.data.success);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -187,9 +177,6 @@ export const reservationSlice = createSlice({
     [jullyStateListThunk.fulfilled]: (state, action) => {
       state.jullyList = action.payload;
     },
-    // [jullyStateListThunk.rejected]: (state, action) => {
-    //   console.log(action.payload);
-    // },
     [jullyStateChangeThunk.fulfilled]: (state, action) => {
       // state.jullyList = action.payload;
     },

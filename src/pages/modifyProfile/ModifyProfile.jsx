@@ -10,7 +10,10 @@ import profileimg from '../../static/image/profileimg.png';
 // Icon import
 import { FaCamera } from 'react-icons/fa';
 // Slice import
-import { editProfileThunk,  getProfileThunk, } from '../../redux/modules/profileSlice';
+import {
+  editProfileThunk,
+  getProfileThunk,
+} from '../../redux/modules/profileSlice';
 import { getCookie } from '../../redux/modules/customCookies';
 import { logOut, withdrawal } from '../../redux/modules/memberSlice';
 // Component import
@@ -35,7 +38,7 @@ const ModifyProfile = () => {
           nickname: `${result.nickname}`,
           profileUrl: `${result.profileUrl}`,
         });
-        setImage(result.profileUrl)
+        setImage(result.profileUrl);
       }
     }
     getProfile();
@@ -44,7 +47,7 @@ const ModifyProfile = () => {
   const member = useSelector((state) => state.myprofile?.myProfile);
   const [reviseProfile, setReviseProfile] = useState({
     nickname: '',
-    profileUrl:'',    
+    profileUrl: '',
   });
   const [files, setFile] = useState('');
   const [image, setImage] = useState(
@@ -129,7 +132,6 @@ const ModifyProfile = () => {
     dispatch(withdrawal(is_login));
   };
 
-
   return (
     <>
       <Headers pageName="프로필 편집" onClickSave={sumbitHandler} type="완료" />
@@ -160,7 +162,7 @@ const ModifyProfile = () => {
               value={reviseProfile.nickname}
               onChange={onChangeHandler}
             ></input>
-            <p>2-8자 이내, 특수문자/띄어쓰기 불가</p>
+            <p>2-6자 이내, 특수문자/띄어쓰기 불가</p>
           </div>
         </div>
         <div className="modifyProfile_setbtns">
@@ -182,7 +184,7 @@ const ModifyProfile = () => {
             <AlertLargeModal
               setLargeModalOpen={setLargeModalOpen}
               body1="탈퇴시 사용자님의 정보가 모두 삭제됩니다."
-              body2='탈퇴하시겠습니까?'
+              body2="탈퇴하시겠습니까?"
               buttonType="탈퇴"
               onClickSubmit={Withdrawal}
             />

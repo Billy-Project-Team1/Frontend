@@ -71,7 +71,6 @@ export const deletePost = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.delete(`/auth/posts/${payload}`);
-      // console.log(response)
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
       console.log(error);
@@ -90,7 +89,6 @@ export const updatePost = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         }
       );
-      // console.log(response)
 
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
@@ -106,7 +104,6 @@ export const dibsPost = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.put(`/auth/posts/${payload}/likes`);
-      console.log(response);
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       }
@@ -144,9 +141,8 @@ const postSlice = createSlice({
       state.post = action.post.filter((item) => item.postId != action.payload);
     },
     [updatePost.fulfilled]: (state, action) => {
-      state.post= action.payload;
+      state.post = action.payload;
     },
-
   },
 });
 

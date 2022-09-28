@@ -12,7 +12,6 @@ const AlertButton = ({
   jullyStateHandler,
   JullyData,
   JullyHandleDone,
-  JullyReturnDone,
   test
 }) => {
   const [largeModalOpen, setLargeModalOpen] = useState(false);
