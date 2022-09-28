@@ -38,7 +38,6 @@ const Login = () => {
         .then((res) => {
           if (res.data.success === true) {
             return (
-              console.log(res),
               localStorage.setItem('nickname', res.data.result.nickname),
               localStorage.setItem('memberId', res.data.result.id),
               localStorage.setItem('userId', res.data.result.userId),
