@@ -16,10 +16,11 @@ import ReviewCard from '../../commponents/Review/ReviewCard';
 import ReviewCardStarAvg from '../../commponents/Review/ReviewCardStarAvg';
 
 const Mypage = ({ totalAvg, profile }) => {
-  const [myPageState, setMyPageState] = useState('1');
-  const [reservationsState, setReservationsState] = useState('1');
-  const myDipList = useSelector((state) => state.member.myDibsList);
-  const myUploadList = useSelector((state) => state.member.myUploadList);
+	const [myPageState, setMyPageState] = useState('1');
+	const [reservationsState, setReservationsState] = useState('1');
+	const myDipList = useSelector((state) => state.member.myDibsList);
+	const myUploadList = useSelector((state) => state.member.myUploadList);
+	const newUploadList = myUploadList.slice(0).reverse()
 
   return (
     <div>
@@ -128,23 +129,23 @@ const Mypage = ({ totalAvg, profile }) => {
         ''
       )}
 
-      {myPageState === '1' ? (
-        <div className="mypage_list_margin">
-          {myDipList.map((post, index) => {
-            return <DibsCard post={post} key={index} />;
-          })}
-        </div>
-      ) : myPageState === '4' ? (
-        <div className="mypage_list_margin">
-          {myUploadList.map((post, index) => {
-            return <UploadCard post={post} key={index} />;
-          })}
-        </div>
-      ) : myPageState === '5' ? (
-        <>
-          <ReviewCardStarAvg totalAvg={totalAvg} />
-          <ReviewCard profile={profile} />
-          {/* <ReviewCardContent profile={profile} /> */}
+			{myPageState === '1' ? (
+				<div className="mypage_list_margin">
+					{myDipList.map((post, index) => {
+						return <DibsCard post={post} key={index} />;
+					})}
+				</div>
+			) : myPageState === '4' ? (
+				<div className="mypage_list_margin">
+					{newUploadList.map((post, index) => {
+						return <UploadCard post={post} key={index} />;
+					})}
+				</div>
+			) : myPageState === '5' ? (
+				<>
+					<ReviewCardStarAvg totalAvg={totalAvg} />
+					<ReviewCard profile={profile} />
+					{/* <ReviewCardContent profile={profile} /> */}
 
           {/* <ReviewCard totalAvg={totalAvg} profile={profile} /> */}
         </>

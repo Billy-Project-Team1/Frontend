@@ -14,7 +14,6 @@ const Notice = () => {
   }, []);
 
   const notice = useSelector((state) => state.notification.notification);
-  console.log(notice);
   return (
     <>
       <Headers2 pageName="알림" />

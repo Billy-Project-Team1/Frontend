@@ -24,7 +24,7 @@ const DetailMap = ({ data }) => {
 						<div className="DetailMap_Place">{data.detailLocation}</div>
 					</div>
 					<div
-						className="calendar-toggleIcon"
+						className="detailmap_toggle_icon"
 						onClick={() => {
 							toggleMode();
 						}}

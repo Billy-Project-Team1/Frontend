@@ -13,9 +13,11 @@ const MainListCard = ({ post }) => {
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-
   return (
-    <div className="MainListWrap" onClick={()=>navigate(`/detail/${post.id}`)}>
+    <div
+      className="MainListWrap"
+      onClick={() => navigate(`/detail/${post.id}`)}
+    >
       <div className="MainListCardContainer">
         <div className="MainListCardBox">
           <img className="MainListCardImg" src={post.imgUrl} />

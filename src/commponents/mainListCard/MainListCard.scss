@@ -2,7 +2,7 @@
   padding: 0 1rem;
 }
 .MainListCardContainer {
-  padding: 0.85rem 0;
+  padding: 1.25rem 0;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid rgba(238, 238, 238, 1);
@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: row;
   height: 7.5rem;
-  gap: 1rem;
+  gap: 0.5rem;
   width: 100%;
 }
 
@@ -59,8 +59,6 @@
 .MainListCardBottomBox {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  bottom:7px;
 }
 
 .MainListCardPriceBox {

@@ -20,14 +20,14 @@
   margin-right: 0.5625rem;
 }
 .chattingRoomCard_1_box_img {
-  width: 100%;
+  width: 60px;
   aspect-ratio: 1/1;
   border-radius: 50%;
 }
 
 .chattingRoomCard_2_box {
   display: flex;
-  width: 204px;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
@@ -60,8 +60,7 @@
 }
 
 .chattingRoomCard_3_box_img {
-  margin-left: 25px;
-  width: 100%;
+  width: 60px;
   aspect-ratio: 1/1;
   border-radius: 7px;
 }
