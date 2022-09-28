@@ -16,7 +16,6 @@ export const logOut = createAsyncThunk('logOut', async (data) => {
         },
       }
     );
-    // return console.log(response);
     if (response.status === 200) {
       localStorage.clear();
       deleteCookie('refreshToken');
@@ -33,14 +32,12 @@ export const getmyUpLoadData = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.get(`/auth/posts/member-page/${payload}`);
-      // console.log(response)
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       } else {
         return console.log(response);
       }
     } catch (e) {
-      // console.log(e);
       return thunkAPI.rejectWithValue(e);
     }
   }
@@ -56,7 +53,6 @@ export const getmyDibsData = createAsyncThunk(
         return console.log(response);
       }
     } catch (e) {
-      // console.log(e);
       return thunkAPI.rejectWithValue(e);
     }
   }
