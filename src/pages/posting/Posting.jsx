@@ -124,6 +124,7 @@ const Posting = () => {
             name="title"
             value={data.title}
             onChange={onChangeHandler}
+            maxLength='50'
           />
         </div>
         <div className="posting_rental">
