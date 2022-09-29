@@ -47,13 +47,17 @@ const DetailFooter = ({ authorId, detailPost, pickDate }) => {
   };
   const onReservationHandler = async () => {
     if (userId) {
-      try {
-        const response = await dispatch(reservationThunk(pickDate)).unwrap();
-        if (response) {
-          return window.location.replace(`/mypage/${userId}`);
+      if (pickDate.endDate === undefined) {
+        alert('일자를 정해주세요');
+      } else {
+        try {
+          const response = await dispatch(reservationThunk(pickDate)).unwrap();
+          if (response) {
+            return window.location.replace(`/mypage/${userId}`);
+          }
+        } catch (e) {
+          console.log(e);
         }
-      } catch (e) {
-        console.log(e);
       }
     } else {
       modalTrue();
@@ -71,7 +75,12 @@ const DetailFooter = ({ authorId, detailPost, pickDate }) => {
             >
               예약현황
             </div>
-            <div className="mydetail_chatlist_btn" onClick={()=> navigate('/chatList')}>채팅 목록보기</div>
+            <div
+              className="mydetail_chatlist_btn"
+              onClick={() => navigate('/chatList')}
+            >
+              채팅 목록보기
+            </div>
           </div>
         ) : (
           <div className="detail_footer_wrap">
