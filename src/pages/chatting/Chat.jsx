@@ -113,8 +113,8 @@ const Chat = () => {
 		let payloadData = JSON.parse(payload.body);
 
 		if (payloadData.type === 'ENTER' || payloadData.type === 'TALK') {
-			chatList.push(payloadData);
-			setChatList([...chatList]);
+			// chatList.push(payloadData);
+			// setChatList([...chatList]);
 			instance.get(`/chat/message/${roomId}`).then((res) => {
 				return setChatList([...res.data]);
 			});
