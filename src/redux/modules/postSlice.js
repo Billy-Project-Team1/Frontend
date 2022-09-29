@@ -22,7 +22,8 @@ export const getPost = createAsyncThunk(
         return thunkAPI.fulfillWithValue(response.data.result);
       }
     } catch (error) {
-      console.log(error);
+     alert ('존재하지 않는 게시물입니다.')
+     window.location.replace('/')
     }
   }
 );

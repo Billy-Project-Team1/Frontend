@@ -82,10 +82,19 @@ const ReservationCard = ({ billyState }) => {
             <div className="reservationcard_container" key={index}>
               <div className="reservationcard_small_container">
                 <div className="reservationcard_title_wrap">
-                  <div className="reservationcard_title">{item.title}</div>
+                  <div
+                    className="reservationcard_title"
+                    onClick={() => navigate(`/detail/${item.postId}`)}
+                  >
+                    {item.title}{' '}
+                  </div>
                 </div>
                 <div className="reservationcard_detail_wrap">
-                  <img className="reservationcard_img" src={item.postImgUrl} />
+                  <img
+                    className="reservationcard_img"
+                    onClick={() => navigate(`/detail/${item.postId}`)}
+                    src={item.postImgUrl}
+                  />
                   <div className="reservationcard_body_box">
                     <div className="reservationcard_icon_box">
                       <div className="reservationcard_price">
@@ -156,7 +165,7 @@ const ReservationCard = ({ billyState }) => {
                     <div style={{ marginBottom: '20px' }} />
                   ) : billyState === '5' ? (
                     item.reviewCheck === true ? (
-                      <div className='reservationcard_margin'/>
+                      <div className="reservationcard_margin" />
                     ) : (
                       <button
                         className="reservationcard_btn"

@@ -128,8 +128,18 @@ const ModifyProfile = () => {
   const logout = async () => {
     dispatch(logOut({ refreshToken, token }));
   };
-  const Withdrawal = () => {
-    dispatch(withdrawal(is_login));
+  const Withdrawal = async() => {
+    try {
+      const response = await dispatch(withdrawal(is_login)).unwrap();
+      if (response){
+        console.log(response)
+      }
+
+    } catch (error) {
+      alert(error.response.data.message)
+    
+    }
+    
   };
 
   return (

@@ -59,7 +59,7 @@ export const getmyDibsData = createAsyncThunk(
 );
 
 // 회원 탈퇴 delete /auth/members/withdrawal/{userId}
-export const withdrawal = createAsyncThunk('withdrawal', async (data) => {
+export const withdrawal = createAsyncThunk('withdrawal', async (data, thunkAPI) => {
   try {
     const response = await instance.delete(`/auth/members/withdrawal/${data}`);
     if (response.status === 200) {
@@ -70,6 +70,7 @@ export const withdrawal = createAsyncThunk('withdrawal', async (data) => {
       window.location.replace('/');
     }
   } catch (e) {
+    return thunkAPI.rejectWithValue(e)
     console.log(e);
   }
 });
