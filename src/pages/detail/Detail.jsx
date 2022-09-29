@@ -66,7 +66,7 @@ const Detail = () => {
 
 	useEffect(() => {
 		if (blockDateList && reservationDateList) {
-			setBlockDate([...blockDate, ...reservationDateList, ...blockDateList]);
+			setBlockDate([...reservationDateList, ...blockDateList]);
 		}
 	}, [blockDateList]);
 
