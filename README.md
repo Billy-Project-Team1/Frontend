@@ -36,7 +36,7 @@
 <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
 <img src="https://img.shields.io/badge/socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white">
 <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=white">
-<img src="https://img.shields.io/badge/Stromp-353535?style=for-the-badge&logoColor=white">
+<img src="https://img.shields.io/badge/Stomp-353535?style=for-the-badge&logoColor=white">
 </div>
 
 ### ✔ Back-end
@@ -48,7 +48,7 @@
 <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=AmazonEC2&logoColor=white"/>
 <img src="https://img.shields.io/badge/GitHub Actions-2088FF?style=for-the-badge&logo=GitHub Actions&logoColor=white"/>
 <img src="https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=Socket.io&logoColor=white"/>
-<img src="https://img.shields.io/badge/Stromp-353535?style=for-the-badge&logoColor=white">
+<img src="https://img.shields.io/badge/Stomp-353535?style=for-the-badge&logoColor=white">
 <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white"/>
 <img src="https://img.shields.io/badge/Amazon RDS-527FFF?style=for-the-badge&logo=Amazon RDS&logoColor=white"/>
 </div>
