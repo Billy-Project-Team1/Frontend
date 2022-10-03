@@ -6,6 +6,7 @@ import upload_image from '../../static/image/upload_image.svg';
 import { FaMinusCircle } from 'react-icons/fa';
 // Style import
 import './ImageUploader.scss';
+import imageCompression from 'browser-image-compression'; 
 
 const ModifyImageUploader = ({ img, setImg, setImgUrl, imgUrl }) => {
   const inputRef = React.useRef();
@@ -15,28 +16,44 @@ const ModifyImageUploader = ({ img, setImg, setImgUrl, imgUrl }) => {
     setImgUrl(img);
   }, []);
 
-  const change = (event) => {
-    // 이미지 최대갯수
-    const maxFileNum = 10;
-
-    // 선택한 이미지들
-    const images = event.target.files;
-    console.log(images);
-
-    // 최대갯수로 받은 이미지
-    const imagesMax10 = [...images].slice(0, maxFileNum);
-    console.log(imagesMax10);
-    setImg([...img, ...imagesMax10]);
-
-    // 이미지 미리보기로 보여줄려면 url이 필요함
-    for (let i = 0; i < imagesMax10.length; i++) {
-      modiftyImgUrl.push(URL.createObjectURL(imagesMax10[i]));
-    }
-    if (imagesMax10 > 10) {
-      return alert('10장 초과 노노');
+  const handleFileOnChange = async (file) => {
+    const options = { maxSizeMB: 1, maxWidthOrHeight: 420 };
+    try {
+      const compressedFile = await imageCompression(file, options);
+      const resultFile = new File([compressedFile], compressedFile.name, {
+        type: compressedFile.type,
+      });
+      return resultFile;
+    } catch (error) {
+      console.log(error);
     }
   };
-  // console.log(img)
+  
+  const handleUrlOnChange = async (compressedFile) => {
+    try {
+      const url = await imageCompression.getDataUrlFromFile(compressedFile);
+      return url;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const change = async (event) => {
+    let fileArr = event.target.files; //  사용자가 선택한 파일들
+    let postImagesLength = img.length;
+    let filesLength = fileArr.length > 10 ? 10 : fileArr.length; // 최대 10개
+    if (postImagesLength + filesLength > 10) {
+      alert('이미지는 10장을 초과할 수 없습니다.');
+      return;
+    }
+    // resize해서 파일 처리하기
+    for (let i = 0; i < filesLength; i++) {
+      let newFile = await handleFileOnChange(fileArr[i]);
+      let newFileURL = await handleUrlOnChange(newFile);
+      setImg((file) => [...file, newFile]);
+      setModifyImgUrl((url) => [...url, newFileURL]);
+    }
+  };
 
   //img 삭제
   const removeImage = (payload) => {
