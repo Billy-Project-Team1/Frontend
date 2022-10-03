@@ -8,7 +8,7 @@ import './Headers.scss';
 import { HiSearch } from 'react-icons/hi';
 import { FaRegBell } from 'react-icons/fa';
 
-const MainHeader = ({ move }) => {
+const MainHeader = () => {
 	const navigate = useNavigate();
 
 	return (

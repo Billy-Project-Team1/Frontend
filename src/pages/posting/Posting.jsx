@@ -8,9 +8,6 @@ import { addPost } from '../../redux/modules/postSlice';
 // Style import
 import './Posting.scss';
 
-// icon import
-import { FaCamera } from 'react-icons/fa';
-
 // Component import
 import Headers from '../../commponents/header/Headers';
 import Calendar from '../../commponents/calendar/Calendar';
@@ -33,7 +30,6 @@ const Posting = () => {
       lon: location.coords.longitude,
     });
   };
-
 
   // 에러에 대한 로직
   const onError = () => {
@@ -63,27 +59,18 @@ const Posting = () => {
     detailLocation: '',
     latitude: '',
     longitude: '',
-    // blockDateDtoList: {},
-    // files: form/data,
   };
   const [data, setData] = useState(initialState);
   const [blockDateDtoList, setBlockDateDtoList] = useState([]);
-  const [img, setImg] = useState([]); // file
+  const [img, setImg] = useState([]);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
-    //...data 기존 데이터 두고 추가시키는 느낌~ㅋㅋ
     setData({ ...data, [name]: value });
   };
-  //   console.log(data);
-
-  //   //[1] post
   const onPostingHandler = async (e) => {
     e.preventDefault();
-    //이미지 form 데이터
     let formData = new FormData();
-    //a는 이름으로  b를 저장한다. c는 어떠한 타입으로 / form은 c를 굳이 안써도됨
-    // formData.append(a,b)
     formData.append(
       'postUploadRequestDto',
       new Blob([JSON.stringify(data)], { type: 'application/json' })
@@ -120,11 +107,10 @@ const Posting = () => {
           <input
             type="text"
             placeholder="제품명"
-            //input에 네임, 밸류 설정하기.
             name="title"
             value={data.title}
             onChange={onChangeHandler}
-            maxLength='50'
+            maxLength="50"
           />
         </div>
         <div className="posting_rental">
@@ -159,7 +145,6 @@ const Posting = () => {
               value={data.deposit}
               onChange={onChangeHandler}
               maxLength={9}
-              // onChange={e => form({setDeposit: e.target.value.replace(/[^0-9]/g, "")})} />
             />
           </div>
         </div>

@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import instance from './instance';
 
-// 프로필 조회 Get /auth/members/profile/{userId}
 export const getProfileThunk = createAsyncThunk(
   'getProfileThunk',
   async (payload, thunkAPI) => {
@@ -17,7 +16,7 @@ export const getProfileThunk = createAsyncThunk(
     }
   }
 );
-//프로필 수정 patch /auth/members/profile/{userId}  "image”: form/data
+
 export const editProfileThunk = createAsyncThunk(
   'editProfileThunk',
   async (payload, thunkAPI) => {

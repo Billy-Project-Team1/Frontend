@@ -8,7 +8,6 @@ const initialState = {
 export const uploadToDB = createAsyncThunk(
 	'uplaodToDB',
 	async (payload, thunkAPI) => {
-		// 받은 data = payload
 		console.log(payload);
 		const response = await imgAPI.fileUpload(payload);
 		console.log(response);

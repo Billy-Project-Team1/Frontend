@@ -3,13 +3,11 @@ import './Headers.scss';
 import DetailModal from '../header/DetailModal';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
-import dotIcon from '../../static/image/detail_dot_icon.svg';
 import { TbDotsVertical } from 'react-icons/tb';
 import AlertSmallModal from '../modal/AlertSmallModal';
 import { deletePost } from '../../redux/modules/postSlice';
 import { useDispatch } from 'react-redux';
 
-//3.props 받은건데 47번에 보라색 이름이 들어오는거
 const AddPostingHeader = ({ authorId, postId }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import ModifyKakaoMap from './ModifyKakaoMap';
 import { HiSearch } from 'react-icons/hi';
 import { FiX } from 'react-icons/fi';
-import { AiOutlineClose } from 'react-icons/ai';
 import MapModalheader from '../header/MapModalheader';
 
 const ModifyPlace = ({ setSearchMapModal, setData, data }) => {

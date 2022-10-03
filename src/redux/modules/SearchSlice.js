@@ -12,7 +12,6 @@ export const getsearchPostsList = createAsyncThunk(
       const response = await instance.post(`/posts/elasticsearch`, {
         keyword: payload.inputText,
       });
-      //   return console.log(response)
       if (response.data.success === true) {
         return thunkAPI.fulfillWithValue(response.data.result);
       }
@@ -37,5 +36,5 @@ export const SearchPostsListSlice = createSlice({
   },
 });
 
-export const {onRemoveHandler} = SearchPostsListSlice.actions;
+export const { onRemoveHandler } = SearchPostsListSlice.actions;
 export default SearchPostsListSlice.reducer;

@@ -7,9 +7,6 @@ const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
-// const userId = localStorage.getItem('userId');
-// let frm = new FormData();
-// frm.append("userId", new Blob([JSON.stringify(userId)], { type: "application/json" }))
 
 instance.interceptors.request.use(function (config) {
   const token = localStorage.getItem('accessToken');

@@ -2,19 +2,16 @@
 import React, { useEffect, useState } from 'react';
 
 // Package import
-import { useDispatch } from 'react-redux';
-import { uploadToDB } from '../../redux/modules/image';
 import upload_image from '../../static/image/upload_image.svg';
 import { FaMinusCircle } from 'react-icons/fa';
-import imageCompression from 'browser-image-compression'; 
+import imageCompression from 'browser-image-compression';
 
 import './ImageUploader.scss';
 
 const ImageUploader = ({ img, setImg }) => {
-  const dispatch = useDispatch();
   const inputRef = React.useRef();
 
-  const [imgUrl, setImgUrl] = useState([]); // url
+  const [imgUrl, setImgUrl] = useState([]);
 
   useEffect(() => {
     setImgUrl(img);
@@ -32,7 +29,7 @@ const ImageUploader = ({ img, setImg }) => {
       console.log(error);
     }
   };
-  
+
   const handleUrlOnChange = async (compressedFile) => {
     try {
       const url = await imageCompression.getDataUrlFromFile(compressedFile);
@@ -43,9 +40,9 @@ const ImageUploader = ({ img, setImg }) => {
   };
 
   const change = async (event) => {
-    let fileArr = event.target.files; //  사용자가 선택한 파일들
+    let fileArr = event.target.files;
     let postImagesLength = img.length;
-    let filesLength = fileArr.length > 10 ? 10 : fileArr.length; // 최대 10개
+    let filesLength = fileArr.length > 10 ? 10 : fileArr.length;
     if (postImagesLength + filesLength > 10) {
       alert('이미지는 10장을 초과할 수 없습니다.');
       return;
@@ -58,31 +55,7 @@ const ImageUploader = ({ img, setImg }) => {
       setImgUrl((url) => [...url, newFileURL]);
     }
   };
-  // const change = async (event) => {
-  //   // 이미지 최대갯수
-  //   const maxFileNum = 10;
 
-  //   // 선택한 이미지들
-  //   const images = event.target.files;
-
-  //   // 최대갯수로 받은 이미지
-  //   // const imagesMax10 = [...images].slice(0, maxFileNum);
-  //   // setImg([...img, ...imagesMax10]);
-
-  //   for (let i=0; i < images.length; i++){
-  //     let newFile = await handleFileOnChange(images[i])
-  //     imgUrl.push(URL.createObjectURL(images[i]));
-  //     setImg([...img, ...newFile])
-  //   }
-
-
-  //   if (images > 10) {
-  //     alert('10장 초과 노노');
-  //     return;
-  //   }
-  // };
-
-  //img 삭제
   const removeImage = (payload) => {
     let removeList = imgUrl.splice(payload, 1);
     let newList = imgUrl.filter((item) => {

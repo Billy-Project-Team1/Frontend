@@ -39,9 +39,9 @@ const ModifyImageUploader = ({ img, setImg, setImgUrl, imgUrl }) => {
   };
 
   const change = async (event) => {
-    let fileArr = event.target.files; //  사용자가 선택한 파일들
+    let fileArr = event.target.files; 
     let postImagesLength = img.length;
-    let filesLength = fileArr.length > 10 ? 10 : fileArr.length; // 최대 10개
+    let filesLength = fileArr.length > 10 ? 10 : fileArr.length;
     if (postImagesLength + filesLength > 10) {
       alert('이미지는 10장을 초과할 수 없습니다.');
       return;
@@ -55,7 +55,7 @@ const ModifyImageUploader = ({ img, setImg, setImgUrl, imgUrl }) => {
     }
   };
 
-  //img 삭제
+
   const removeImage = (payload) => {
     let removeList = modiftyImgUrl.splice(payload, 1);
     let newList = modiftyImgUrl.filter((item) => {

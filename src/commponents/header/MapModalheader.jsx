@@ -1,10 +1,8 @@
 import React from 'react';
 import './Headers.scss';
-import { useNavigate } from 'react-router-dom';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 
 const MapModalheader = ({ pageName, setSearchMapModal }) => {
-	const navigate = useNavigate();
 
 	return (
 		<div className="header_container">

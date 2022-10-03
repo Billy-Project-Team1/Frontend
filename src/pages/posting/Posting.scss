@@ -1,99 +1,96 @@
 @import '../../common/color.scss';
 
 .posting_container {
-	padding: 0 1rem 0.6rem 1rem;
-}
-
-.posting_image {
+  padding: 0 1rem 0.6rem 1rem;
 }
 
 .posting_title {
-	border: none;
-	border-top: 1px solid $color-sub;
-	border-bottom: 1px solid $color-sub;
-	margin-top: 1rem;
+  border: none;
+  border-top: 1px solid $color-sub;
+  border-bottom: 1px solid $color-sub;
+  margin-top: 1rem;
 
-	:focus {
-		outline: none;
-	}
+  :focus {
+    outline: none;
+  }
 
-	input {
-		color: $color-primary;
-		border: none;
-		font-size: 1rem;
-		padding: 1rem 0;
-		width: 100%;
-	}
+  input {
+    color: $color-primary;
+    border: none;
+    font-size: 1rem;
+    padding: 1rem 0;
+    width: 100%;
+  }
 }
 
 .posting_rental {
-	margin: 1rem 0;
-	border: none;
+  margin: 1rem 0;
+  border: none;
 
-	:focus {
-		outline: none;
-	}
-	label.posting_price_label {
-		width: 72px;
-		display: inline-block;
-	}
-	label.posting_deposit_label {
-		margin-top: 4px;
-		width: 72px;
-		display: inline-block;
-	}
-	input {
-		color: $color-primary;
-		border: none;
-		font-size: 1rem;
-		font-weight: 600;
-	}
-	input[type='number']::-webkit-outer-spin-button,
-	input[type='number']::-webkit-inner-spin-button {
-		-webkit-appearance: none;
-		margin: 0;
-	}
+  :focus {
+    outline: none;
+  }
+  label.posting_price_label {
+    width: 72px;
+    display: inline-block;
+  }
+  label.posting_deposit_label {
+    margin-top: 4px;
+    width: 72px;
+    display: inline-block;
+  }
+  input {
+    color: $color-primary;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 .posting_content {
-	border: none;
-	border-top: 1px solid $color-sub;
+  border: none;
+  border-top: 1px solid $color-sub;
 
-	:focus {
-		outline: none;
-	}
+  :focus {
+    outline: none;
+  }
 
-	textarea {
-		width: 100%;
-		height: 175px;
-		color: $color-primary;
-		border: none;
-		font-size: 1rem;
-		padding-top: 1rem;
-		resize: none;
-	}
+  textarea {
+    width: 100%;
+    height: 175px;
+    color: $color-primary;
+    border: none;
+    font-size: 1rem;
+    padding-top: 1rem;
+    resize: none;
+  }
 }
 
 .posting_calendar_wrap {
-	border-top: 1px solid $color-sub;
-	border-bottom: 1px solid $color-sub;
-	margin-top: 1rem;
+  border-top: 1px solid $color-sub;
+  border-bottom: 1px solid $color-sub;
+  margin-top: 1rem;
 }
 
 .posting_calendar {
-	margin-bottom: 200px;
-	display: none;
-	padding-top: 1rem;
+  margin-bottom: 200px;
+  display: none;
+  padding-top: 1rem;
 }
 .posting_calendar_icon {
-	padding: 1.2rem 0 1.4rem;
-	flex-direction: row;
+  padding: 1.2rem 0 1.4rem;
+  flex-direction: row;
 }
 
 .posting_map_wrap {
-	margin-bottom: 130px;
+  margin-bottom: 130px;
 }
 
 .name {
-	color: #fff;
+  color: #fff;
 }

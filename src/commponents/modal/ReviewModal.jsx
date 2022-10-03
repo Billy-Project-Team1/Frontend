@@ -1,15 +1,9 @@
 // React import
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-// Redux import
-import { useDispatch } from 'react-redux';
 // Style import
 import '../../commponents/header/DetailModal.scss';
 
-const ReviewModal = ({ showModal, postId, setModalOn }) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
+const ReviewModal = ({ showModal, setModalOn }) => {
   const modalTrue = () => {
     setModalOn(true);
     showModal();
