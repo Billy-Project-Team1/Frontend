@@ -224,18 +224,21 @@
   
 ‼️ **문제 상황** : Main 페이지 및 포스트 상세 조회 시 업로드 이미지 크기별로 다른 1)렌더링 속도가 나타남 2)Lighthouse 성능 점수도 37점으로 낮은 점수로 나왔고 그 이유 대부분은 이미지 크기와 관련되어 있었다.
 
+<br>
+
+<1. 메인 화면 무한 스크롤 이미지>
+
 ![무한스크롤_error](https://user-images.githubusercontent.com/74149915/193534389-8e4fed64-09d0-4daa-b262-407b2d81bf7a.gif)
 
   <br>
   
-<1. 메인 화면 무한 스크롤 이미지>
+<2. 이미지 리사이징 전 Lighthouse 성능 측정 이미지>
+<br>
 
 <img width="600" alt="1" src="https://user-images.githubusercontent.com/74149915/193534351-c2c6deb9-1034-45da-ba4a-2fa4d1c245e9.png">
  
 <br>
   
-<2. 이미지 리사이징 전 Lighthouse 성능 측정 이미지>
-
   <br>
   
 1️⃣ **해결 방안 1안** : FrontEnd 측에서 라이브러리를 사용하여 최대 이미지 설정한 뒤 BackEnd 서버로 데이터를 보내주어 이미지 크기를 줄이는 법
@@ -251,6 +254,22 @@
   <br>
   
 ✅ **의견 결정** : 해결 방안 1안으로 결정을 하여 아래와 같이 성능이 향상 되었다.
+
+<br>
+
+<1. 수정 후 메인 화면 무한 스크롤 이미지>
+
+<br>
+
+![무한스크롤_대](https://user-images.githubusercontent.com/109017882/193572173-12cbd211-17fd-4483-8865-083ff36beed5.gif)
+<br>
+
+<2. 이미지 리사이징 후 Lighthouse 성능 측정 이미지>
+
+<br>
+
+![imageResizing](https://user-images.githubusercontent.com/109017882/193572421-e2eaabca-fe66-4f4e-ae7a-3de8c41ba598.png)
+<br>
 
 </div>
 </details>
