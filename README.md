@@ -258,14 +258,12 @@
 <br>
 
 <1. 수정 후 메인 화면 무한 스크롤 이미지>
-
 <br>
 
 ![무한스크롤_대](https://user-images.githubusercontent.com/109017882/193572173-12cbd211-17fd-4483-8865-083ff36beed5.gif)
 <br>
 
 <2. 이미지 리사이징 후 Lighthouse 성능 측정 이미지>
-
 <br>
 
 ![imageResizing](https://user-images.githubusercontent.com/109017882/193572421-e2eaabca-fe66-4f4e-ae7a-3de8c41ba598.png)
