@@ -127,7 +127,7 @@ const ReservationCard = ({ billyState }) => {
                     </div>
                     <div className="reservationcard_name_wrap">
                       <div className="reservationcard_name">
-                        대여자 : {item.jullyNickname}
+                        대여자명 : {item.jullyNickname}
                       </div>
                     </div>
                     <div className="reservationcard_alert_content">

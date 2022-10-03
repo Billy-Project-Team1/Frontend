@@ -137,7 +137,7 @@ const JullyReservationCard = ({ jullyState }) => {
                     </div>
                     <div className="reservationcard_name_wrap">
                       <div className="reservationcard_name">
-                        예약자: {item.billyNickname}
+                        예약자명 : {item.billyNickname}
                       </div>
                     </div>
                     <div className="reservationcard_alert_content">
