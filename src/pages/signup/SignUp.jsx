@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { IoArrowBack } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import { BsCheckSquare, BsCheckSquareFill } from 'react-icons/bs';
 import './SignUp.scss';
@@ -10,7 +9,6 @@ import Headers3 from '../../commponents/header/Headers3';
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const initialState = {
     email: '',

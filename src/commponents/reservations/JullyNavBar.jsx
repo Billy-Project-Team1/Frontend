@@ -1,21 +1,23 @@
-// React import 
-import React,{ useEffect } from 'react';
-// Redux import 
+// React import
+import React, { useEffect } from 'react';
+// Redux import
 import { useDispatch, useSelector } from 'react-redux';
-// Stlye import 
+// Stlye import
 import './BillyNavBar.scss';
-// Slice import 
+// Slice import
 import { jullyReservationCntThunk } from '../../redux/modules/reservationSlice';
 
 // 줄리예약
-const JullyNavBar = ({ reservationsState, setReservationsState,setMyPageState }) => {
+const JullyNavBar = ({ reservationsState, setReservationsState }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(jullyReservationCntThunk());
   }, []);
 
-  const JullyBoookingState = useSelector((state) => state.billystate.jullyState);
+  const JullyBoookingState = useSelector(
+    (state) => state.billystate.jullyState
+  );
 
   return (
     <div className="myProfileNavBar_wrap">
@@ -27,9 +29,13 @@ const JullyNavBar = ({ reservationsState, setReservationsState,setMyPageState })
           <div className="myProfileNavBar_icon_container">
             <div className="myProfileNavBar_icon_box">
               {reservationsState === '1' ? (
-                <div className="myProfileNavBar_icon_check">{JullyBoookingState.state1}</div>
+                <div className="myProfileNavBar_icon_check">
+                  {JullyBoookingState.state1}
+                </div>
               ) : (
-                <div className="myProfileNavBar_icon">{JullyBoookingState.state1}</div>
+                <div className="myProfileNavBar_icon">
+                  {JullyBoookingState.state1}
+                </div>
               )}
             </div>
           </div>
@@ -47,9 +53,13 @@ const JullyNavBar = ({ reservationsState, setReservationsState,setMyPageState })
           <div className="myProfileNavBar_icon_container">
             <div className="myProfileNavBar_icon_box">
               {reservationsState === '2' ? (
-                <div className="myProfileNavBar_icon_check">{JullyBoookingState.state2}</div>
+                <div className="myProfileNavBar_icon_check">
+                  {JullyBoookingState.state2}
+                </div>
               ) : (
-                <div className="myProfileNavBar_icon">{JullyBoookingState.state2}</div>
+                <div className="myProfileNavBar_icon">
+                  {JullyBoookingState.state2}
+                </div>
               )}
             </div>
           </div>
@@ -67,9 +77,13 @@ const JullyNavBar = ({ reservationsState, setReservationsState,setMyPageState })
           <div className="myProfileNavBar_icon_container">
             <div className="myProfileNavBar_icon_box">
               {reservationsState === '4' ? (
-                <div className="myProfileNavBar_icon_check">{JullyBoookingState.state4}</div>
+                <div className="myProfileNavBar_icon_check">
+                  {JullyBoookingState.state4}
+                </div>
               ) : (
-                <div className="myProfileNavBar_icon">{JullyBoookingState.state4}</div>
+                <div className="myProfileNavBar_icon">
+                  {JullyBoookingState.state4}
+                </div>
               )}
             </div>
           </div>
@@ -87,9 +101,13 @@ const JullyNavBar = ({ reservationsState, setReservationsState,setMyPageState })
           <div className="myProfileNavBar_icon_container">
             <div className="myProfileNavBar_icon_box">
               {reservationsState === '5' ? (
-                <div className="myProfileNavBar_icon_check">{JullyBoookingState.state5}</div>
+                <div className="myProfileNavBar_icon_check">
+                  {JullyBoookingState.state5}
+                </div>
               ) : (
-                <div className="myProfileNavBar_icon">{JullyBoookingState.state5}</div>
+                <div className="myProfileNavBar_icon">
+                  {JullyBoookingState.state5}
+                </div>
               )}
             </div>
           </div>
@@ -107,9 +125,13 @@ const JullyNavBar = ({ reservationsState, setReservationsState,setMyPageState })
           <div className="myProfileNavBar_icon_container">
             <div className="myProfileNavBar_icon_box">
               {reservationsState === '3' ? (
-                <div className="myProfileNavBar_icon_check">{JullyBoookingState.state3}</div>
+                <div className="myProfileNavBar_icon_check">
+                  {JullyBoookingState.state3}
+                </div>
               ) : (
-                <div className="myProfileNavBar_icon">{JullyBoookingState.state3}</div>
+                <div className="myProfileNavBar_icon">
+                  {JullyBoookingState.state3}
+                </div>
               )}
             </div>
           </div>

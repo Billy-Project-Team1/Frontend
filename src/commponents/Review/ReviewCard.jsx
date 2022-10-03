@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 
 // Style import
 import './ReviewCard.scss';
-import { FaStar } from 'react-icons/fa';
 
 // Redux import
 import { getMypageReview } from '../../redux/modules/reviewSlice';
@@ -12,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReviewCardContent from './ReviewCardContent';
 import ReviewCardComment from './ReviewCardComment';
 
-const ReviewCard = ({ totalAvg, profile }) => {
+const ReviewCard = ({ profile }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const reviewGet = useSelector((state) => state.review.reviewGet);

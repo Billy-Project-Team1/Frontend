@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { api } from '../../shared/api';
-import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { Cookies } from 'react-cookie';
 import { setCookie } from '../../redux/modules/customCookies';
 

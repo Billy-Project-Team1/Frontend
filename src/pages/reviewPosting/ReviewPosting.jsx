@@ -1,11 +1,6 @@
 // React import
 import React, { useState, useEffect } from 'react';
-import {
-  Navigate,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +13,7 @@ import './ReviewPosting.scss';
 import Headers2 from '../../commponents/header/Headers2';
 import StarRating from '../../commponents/starRating/StarRating';
 import ImageUploader from '../../commponents/imageUploader/ImageUploader';
-import { getPost, getReviewPost } from '../../redux/modules/postSlice';
+import { getReviewPost } from '../../redux/modules/postSlice';
 
 const ReviewPosting = () => {
   const { postId, reservationId } = useParams();
@@ -49,10 +44,7 @@ const ReviewPosting = () => {
       return '';
     } else {
       e.preventDefault();
-      //이미지 form 데이터
       let formData = new FormData();
-      //a는 이름으로  b를 저장한다. c는 어떠한 타입으로 / form은 c를 굳이 안써도됨
-      // formData.append(a,b)
       formData.append(
         'reviewRequestDto',
         new Blob([JSON.stringify(data)], { type: 'application/json' })
@@ -114,17 +106,17 @@ const ReviewPosting = () => {
           <span className="reviewPost_option"> (선택)</span>
         </div>
         <ImageUploader img={img} setImg={setImg} />
-          {data.star === 0 ? (
-            <div className="reviewPost_submit_btn_wait">작성완료</div>
-          ) : (
-            <div
-              className="reviewPost_submit_btn"
-              type="submit"
-              onClick={onPostingHandler}
-            >
-              작성완료
-            </div>
-          )}
+        {data.star === 0 ? (
+          <div className="reviewPost_submit_btn_wait">작성완료</div>
+        ) : (
+          <div
+            className="reviewPost_submit_btn"
+            type="submit"
+            onClick={onPostingHandler}
+          >
+            작성완료
+          </div>
+        )}
       </div>
     </div>
   );

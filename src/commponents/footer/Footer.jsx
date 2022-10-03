@@ -1,5 +1,5 @@
 // React importy
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 // Style import
 import './Footer.scss';
@@ -49,18 +49,6 @@ const Footer = () => {
   const login =()=>{
     navigate('/login')
   }
-  // useEffect(() => {
-  //   document.body.style.cssText = `
-  //     position: fixed;
-  //     top: -${window.scrollY}px;
-  //     overflow-y: scroll;
-  //     width: 100%;`;
-  //   return () => {
-  //     const scrollY = document.body.style.top;
-  //     document.body.style.cssText = '';
-  //     window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
-  //   };
-  // }, []);
 
   return (
     <div className="footer">
