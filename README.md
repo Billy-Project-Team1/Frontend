@@ -1,38 +1,4 @@
-## ✨ Billy
-
-# ⚙ 기술 스택
-
-### Frond-end
-<div>
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"/>
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"/>
-<img src="https://img.shields.io/badge/Redux Toolkit-764ABC?style=for-the-badge&logo=Redux&logoColor=white"/>
-<img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=React Router&logoColor=white"/>
-<img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=black"/>
-<img src="https://img.shields.io/badge/Cross ENV-ECD53F?style=for-the-badge&logo=.ENV&logoColor=black">
-<img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=Sass&logoColor=white"/>
-<img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
-<img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=PWA&logoColor=white">
-<img src="https://img.shields.io/badge/socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white">
-<img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=white">
-<img src="https://img.shields.io/badge/Stromp-353535?style=for-the-badge&logoColor=white">
-
-
-</div>
-
-### Back-end
-<div>
-</div>
-
-### Dev tools
-<div>
-<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code
-&logoColor=white">
-
-</div>
-
-<br>
-
+## ✨ Billy 빌리
 ![Billy_main](https://user-images.githubusercontent.com/74149915/193491387-b955be63-3c38-4c81-9928-0f53ea7455fe.png)
 
 ## 👉🏻 프로젝트 소개 <br>
@@ -42,6 +8,11 @@
 - 나에게 잘 맞는 물건인지 미리 사용해보고 싶을 때 🧑‍💻
 
 ✨ 일상의 편리함을 도와주는 개인 대여 플랫폼, Billy 입니다! 🥳
+
+
+👉🏻[빌리 이용해보기 Click!](https://billyproject.shop/) <br>
+👉🏻[빌리 팀 노션 Click!](https://gossamer-bath-a39.notion.site/Billy-1c64df5f1eb64281aad11b693835e3bc)
+
 
 <br>
 
@@ -58,44 +29,65 @@
 ## 🛠 프로젝트 아키텍쳐
 <img alt="Billy_아키텍쳐" src="https://user-images.githubusercontent.com/74149915/193500281-ffecbf24-629e-4094-9323-cdb012053d81.png">
 
-# ⚙ 기술 스택
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=ffffff"/>
-<img src="https://img.shields.io/badge/React Router
--CA4245?style=for-the-badge&logo=ReactRouter
-&logoColor=ffffff"/>
-<img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat
+<br>
 
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=ffffff"/>
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=ffffff"/>
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=ffffff"/>
+## ⚙ 기술 스택
 
+### ✔ Frond-end
+<div>
+<img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"/>
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"/>
+<img src="https://img.shields.io/badge/Redux Toolkit-764ABC?style=for-the-badge&logo=Redux&logoColor=white"/>
+<img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=React Router&logoColor=white"/>
+<img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=black"/>
+<img src="https://img.shields.io/badge/Cross ENV-ECD53F?style=for-the-badge&logo=.ENV&logoColor=black">
+<img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=Sass&logoColor=white"/>
+<img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
+<img src="https://img.shields.io/badge/socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white">
+<img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=white">
+<img src="https://img.shields.io/badge/Stromp-353535?style=for-the-badge&logoColor=white">
+</div>
 
+### ✔ Back-end
+<div>
+<img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white"/>
+<img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=Gradle&logoColor=white"/>
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"/>
+<img src="https://img.shields.io/badge/Elasticsearch-005571?style=for-the-badge&logo=Elasticsearch&logoColor=white"/>
+<img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=AmazonEC2&logoColor=white"/>
+<img src="https://img.shields.io/badge/GitHub Actions-2088FF?style=for-the-badge&logo=GitHub Actions&logoColor=white"/>
+<img src="https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=Socket.io&logoColor=white"/>
+<img src="https://img.shields.io/badge/Stromp-353535?style=for-the-badge&logoColor=white">
+<img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white"/>
+<img src="https://img.shields.io/badge/Amazon RDS-527FFF?style=for-the-badge&logo=Amazon RDS&logoColor=white"/>
+</div>
 
-![javaScript](https://camo.githubusercontent.com/fe1c8df487dbc029d3a1819dcc5bf79e066f1307131191ac2b02de8c3c55da81/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6176615363726970742d4637444631453f7374796c653d266c6f676f3d4a617661536372697074266c6f676f436f6c6f723d7768697465)
-![React](https://camo.githubusercontent.com/34c6a7afcc16731e2c4d73f3af9b275b172b2e46dc1e82be3f121a71fe067de9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163742d3631444146423f7374796c653d266c6f676f3d5265616374266c6f676f436f6c6f723d7768697465)
-![Redux](https://camo.githubusercontent.com/d58ceb12a14709c7049878ae358ef7628e42d4276108b758cbb66a8922e7ef3e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656475782d3736344142433f7374796c653d266c6f676f3d5265647578266c6f676f436f6c6f723d7768697465)
-![ReactRouter](https://camo.githubusercontent.com/d257f8e18789ba1e6d34a9c63cbe150083c96b6f0da2eb059ae02422914ea80a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f526561637420526f757465722d4341343234353f7374796c653d266c6f676f3d526561637420526f75746572266c6f676f436f6c6f723d7768697465)
-![Axios](https://camo.githubusercontent.com/809053601ae7a670d58865bd88e0f313cc5ced1c0915ff43aeb2ad1d1bf252c2/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4178696f732d3638323865323f7374796c653d)
-![styledComponents](https://camo.githubusercontent.com/8d29f15964b1cb2254deccb293a2c444eee52078b3d448b6149c17c5ab40d2ce/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374796c65642d636f6d706f6e656e74732d4442373039333f7374796c653d266c6f676f3d7374796c65642d636f6d706f6e656e7473266c6f676f436f6c6f723d7768697465)
-![css](https://camo.githubusercontent.com/c774b3527d1dfaea9ddb6a253fc0bad0b819a570a9da14adf2eb02279ae8f5d7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4353532d3135373242363f7374796c653d266c6f676f3d43535333266c6f676f436f6c6f723d7768697465)
+### ✔ Dev tools
+<div>
+<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">
+<img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=for-the-badge&logo=IntelliJ IDEA&logoColor=white"/>
+<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white"/>
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>
+<img src="https://img.shields.io/badge/KakaoTalk-FFCD00?style=for-the-badge&logo=KakaoTalk&logoColor=black"/>
+<img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=PWA&logoColor=white">
+</div>
+
+<br><br>
+
+## 💡 주요 기능
+1. 무한 스크롤 ♾
+2. 대여 물품 업로드 🆙
+3. 실시간 채팅 💬
+4. 물품 검색 기능 🔍
+5. 캘린더 날짜 설정 후 물품 예약 🗓
+6. 예약상품의 5가지 예약 상태 변화 컨트롤 🚦
 
 <br>
 
-## 💡 주요 기능
-1. 대여 물품 업로드 🆙
-2. 실시간 채팅 💬
-3. 무한 스크롤 ♾
-4. 렌트 가능한 캘린더 날짜 설정 🗓
-5. 물품 검색 기능 🔍
-6. 예약상품의 5가지 예약 상태 변화 컨트롤 🚦
-
-
-| **대여 물품 업로드** | **실시간 채팅** | **무한 스크롤** |
+| **무한 스크롤** | **대여 물품 업로드** | **실시간 채팅** |
 | :---: | :---: | :---: |
-| <img src ="https://user-images.githubusercontent.com/74149915/193510717-2ab55cd5-7f1e-4534-9321-b8c6fd6fa7ae.gif" width= "130"/> | <img src =".gif" width= "300" height="180"/>  | <img src =".gif" width= "300" height="180"/> |
-| **캘린더 날짜 설정** | **물품 검색** | **5가지 상태 변화** |
-| :---: | :---: | :---: |
-| <img src ="https://user-images.githubusercontent.com/74149915/193512853-92ceef71-18b8-4c28-a687-3aa57c2bea21.gif" width= "150"/> | <img src =".gif" width= "300" height="180"/>
-| <img src ="https://user-images.githubusercontent.com/74149915/193512853-92ceef71-18b8-4c28-a687-3aa57c2bea21.gif" width= "150"/> | <img src =".gif" width= "300" height="180"/>  | <img src =".gif" width= "300" height="180"/> |
+| <img src =" /> | <img src ="https://user-images.githubusercontent.com/74149915/193519145-741bedc8-3d2e-4f0e-bd6a-014aaefc6aec.gif" width="230" height="380"/> | <img src ="https://user-images.githubusercontent.com/74149915/193522250-4178de4d-0b9d-4e76-ace0-23d1fe587860.gif" width="230" height="380" />
+| **물품 검색** | **물품 예약** | **5가지 상태 변화** |
+| <img src ="https://user-images.githubusercontent.com/74149915/193519161-26ffc1bd-ee1b-4dd0-a7ba-8c6eb82ab685.gif" width="230" height="380" />  | <img src ="https://user-images.githubusercontent.com/74149915/193519175-e1008602-f346-4f36-955f-b4c3392ead9d.gif" width="230" height="380" />  | <img src ="https://user-images.githubusercontent.com/74149915/193522939-ecae888a-2249-4a04-8495-df9a5e2f3db8.gif" width="230" height="380" /> |
 
 <br>
