@@ -1,20 +1,37 @@
 ## ✨ Billy
 
 # ⚙ 기술 스택
+
+### Frond-end
 <div>
 <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"/>
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"/>
 <img src="https://img.shields.io/badge/Redux Toolkit-764ABC?style=for-the-badge&logo=Redux&logoColor=white"/>
 <img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=React Router&logoColor=white"/>
 <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=black"/>
+<img src="https://img.shields.io/badge/Cross ENV-ECD53F?style=for-the-badge&logo=.ENV&logoColor=black">
 <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=Sass&logoColor=white"/>
 <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
 <img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=PWA&logoColor=white">
 <img src="https://img.shields.io/badge/socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white">
+<img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=white">
+<img src="https://img.shields.io/badge/Stromp-353535?style=for-the-badge&logoColor=white">
 
-  
 
 </div>
+
+### Back-end
+<div>
+</div>
+
+### Dev tools
+<div>
+<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code
+&logoColor=white">
+
+</div>
+
+<br>
 
 ![Billy_main](https://user-images.githubusercontent.com/74149915/193491387-b955be63-3c38-4c81-9928-0f53ea7455fe.png)
 
