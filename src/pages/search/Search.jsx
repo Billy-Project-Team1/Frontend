@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import Footer from '../../commponents/footer/Footer';
-import { HiOutlineChevronLeft } from 'react-icons/hi';
-import './Search.scss';
+// React import
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+// Redux import
 import { useDispatch, useSelector } from 'react-redux';
-import { FiX } from 'react-icons/fi';
 import {
 	getsearchPostsList,
 	onRemoveHandler,
 } from '../../redux/modules/SearchSlice';
+// Component import
+import Footer from '../../commponents/footer/Footer';
 import MainListCard from '../../commponents/mainListCard/MainListCard';
-import { useEffect } from 'react';
+// Style & icon import
+import './Search.scss';
+import { HiOutlineChevronLeft } from 'react-icons/hi';
+import { FiX } from 'react-icons/fi';
 
 const Search = () => {
 	const navigate = useNavigate();
@@ -34,17 +37,17 @@ const Search = () => {
 
 	return (
 		<>
-			<div className="Search_Wrap">
-				<form className="Search_Header" onSubmit={onSubmitHandler}>
-					<div className="Search_Header_Icon_Box">
+			<div className="search_wrap">
+				<form className="search_header" onSubmit={onSubmitHandler}>
+					<div className="search_header_icon_box">
 						<HiOutlineChevronLeft
 							style={{ cursor: 'pointer' }}
-							className="Search_Header_Icon"
+							className="search_header_icon"
 							onClick={() => navigate(-1)}
 						/>
 					</div>
 					<input
-						className="Search_Header_Input"
+						className="search_header_input"
 						placeholder="검색어를 입력해주세요."
 						onChange={onChange}
 						value={inputText}
@@ -53,7 +56,7 @@ const Search = () => {
 						''
 					) : (
 						<FiX
-							className="Search_Header_Input_Xbutton"
+							className="search_header_input_xbutton"
 							onClick={() => {
 								onResetButton();
 							}}
@@ -63,12 +66,12 @@ const Search = () => {
 			</div>
 
 			{searchPostList.length === 0 ? (
-				<div className="Search_Empty_Text">
+				<div className="search_empty_text">
 					👉🏻 지역명, 제품명을 검색하여 필요한 제품을 찾아보세요! <br /> 예) 강남
 					자전거, 분당 노트북
 				</div>
 			) : (
-				<div className="Search_Post_List">
+				<div className="search_post_list">
 					{searchPostList.map((post) => {
 						return <MainListCard post={post} key={post.id} />;
 					})}

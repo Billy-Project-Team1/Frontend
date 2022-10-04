@@ -1,8 +1,10 @@
+// React import
 import React from 'react';
+// Style import
 import './NoticeCard.scss';
 
 const NoticeCard = () => {
-  return (
+	return (
 		<div className="noticecard_wrap">
 			<div className="noticecard_container">
 				<div className="noticecard_img_box">

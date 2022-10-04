@@ -1,51 +1,49 @@
-.PostingMap_Wrap {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-  margin-bottom: 5.375rem;
+@import '../../common/color.scss';
+
+.postingMap_wrap {
+	display: flex;
+	flex-direction: column;
+	margin-top: 1rem;
+	margin-bottom: 5.375rem;
 }
 
-.PostingMap_Title {
-  display: flex;
-  flex-direction: row;
-  font-size: 1rem;
-  color: #757575;
+.postingMap_title {
+	display: flex;
+	flex-direction: row;
+	font-size: 1rem;
+	color: $color-medium;
 }
 
-.PostingMap_Icon_Box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 1.4rem;
-  height: 1.4rem;
-  margin-right: 5px;
+.postingMap_icon_box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 1.4rem;
+	height: 1.4rem;
+	margin-right: 5px;
 }
 
-.PostingMap_Icon {
-  width: 1.125rem;
-  height: 1.125rem;
-  margin: auto;
-  display: flex;
+.postingMap_icon {
+	width: 1.125rem;
+	height: 1.125rem;
+	margin: auto;
+	display: flex;
 }
 
-.PostingMap_HiIcon {
-  margin: auto;
-  width: 100%;
-  height: 100%;
+.postingMap_hiIcon {
+	margin: auto;
+	width: 100%;
+	height: 100%;
 }
 
-.PostingMap_Img {
-  margin: auto;
-  margin-top: 1rem;
-  border-radius: 12px;
-  width: 100%;
-  aspect-ratio: 1.7/1;
+.postingMap_img {
+	margin: auto;
+	margin-top: 1rem;
+	border-radius: 12px;
+	width: 100%;
+	aspect-ratio: 1.7/1;
 }
 
-.PostingMap_Place {
-  color: #212121;
-}
-
-.PostingMap_Detail_Location {
-  color: #212121;
+.postingMap_detail_location {
+	color: $color-primary;
 }

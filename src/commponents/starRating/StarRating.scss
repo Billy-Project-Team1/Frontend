@@ -1,5 +1,5 @@
 .starRating_rating {
-  display: none;
+	display: none;
 }
 
 .starRating_star {
@@ -9,16 +9,12 @@
 }
 
 .reviweStarRating_wrap {
- display: flex;
- flex-direction: row; 
-}
-
-.reviewStarRating_star {
-
+	display: flex;
+	flex-direction: row;
 }
 
 .reviewStarRating_Fastar_label {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }

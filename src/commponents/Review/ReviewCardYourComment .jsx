@@ -1,7 +1,7 @@
+// React import
 import React, { useCallback, useRef } from 'react';
 
 const ReviewCardYourComment = ({ item, index, profileUrl }) => {
-
 	const textRef = useRef();
 	const handleResizeHeight = useCallback(() => {
 		textRef.current.style.height = textRef.current.scrollHeight + 'px';

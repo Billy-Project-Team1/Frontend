@@ -1,15 +1,17 @@
-@import '../../common/color.scss';.MainListWrap {
-	
+@import '../../common/color.scss';
+
+.mainList_wrap {
 	padding: 0 1rem;
 }
-.MainListCardContainer {
+
+.mainListCard_container {
 	padding: 1.25rem 0;
 	display: flex;
 	flex-direction: row;
 	border-bottom: 1px solid $color-sub;
 }
 
-.MainListCardBox {
+.mainListCard_box {
 	position: relative;
 	display: flex;
 	flex-direction: row;
@@ -19,16 +21,17 @@
 	cursor: pointer;
 }
 
-.MainListCardImg {
+.mainListCard_img {
 	width: 7.5rem;
 	height: 7.5rem;
 	box-sizing: border-box;
 	object-fit: cover;
 	border-radius: 7px;
 	aspect-ratio: 1/1;
+	object-fit: cover;
 }
 
-.MainListCardRightBox {
+.mainListCard_right_box {
 	width: 100%;
 	margin-top: 0.275rem;
 	display: flex;
@@ -36,36 +39,36 @@
 	flex-direction: column;
 }
 
-.MainListCardTitle {
+.mainListCard_title {
 	overflow: hidden;
 	max-height: 2.375rem;
 	font-size: 0.9375rem;
 	box-sizing: border-box;
-	color: #212121;
+	color: $color-primary;
 	word-break: break-all;
 }
 
-.MainListCardPlace {
+.mainListCard_place {
 	margin-top: 0.1rem;
 	font-size: 0.8125rem;
 	overflow: hidden;
-	color: #757575;
+	color: $color-medium;
 	font-weight: 400;
 	max-height: 1.0625rem;
 	margin-bottom: 0.625rem;
 }
 
-.MainListCardBottomContainer {
+.mainListCard_bottom_container {
 	margin-top: 0.6875rem;
 	width: 100%;
 }
 
-.MainListCardBottomBox {
+.mainListCard_bottom_box {
 	display: flex;
 	flex-direction: column;
 }
 
-.MainListCardPriceBox {
+.mainListCard_price_box {
 	display: flex;
 	flex-direction: row;
 	font-size: 0.9375rem;
@@ -73,33 +76,33 @@
 	gap: 0.5625rem;
 }
 
-.MainListCardIconBox {
+.mainListCard_icon_box {
 	display: flex;
 	flex-direction: column;
 }
 
-.MainListCardIcon {
+.mainListCard_icon {
 	width: 0.9375rem;
 	height: 0.9375rem;
 	margin: auto;
 }
-.MainListCardReview {
+.mainListCard_review {
 	position: absolute;
 	display: flex;
 	flex-direction: row;
 	right: 0px;
 	bottom: 7px;
 	font-size: 0.75rem;
-	color: #757575;
+	color: $color-medium;
 }
 
-.MainListCardStarBox {
+.mainListCard_star_box {
 	font-size: 0.875rem;
 	display: flex;
 	flex-direction: column;
 }
 
-.MainListCardStar {
+.mainListCard_star {
 	margin: auto;
-	color: #fee500;
+	color: $font-star;
 }

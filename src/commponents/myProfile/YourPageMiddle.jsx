@@ -1,8 +1,7 @@
 // React import
 import React from 'react';
-// Style import
+// Style & Icon import
 import './YourPageMiddle.scss';
-// Icon import
 import { Icon } from '@iconify/react';
 
 const YourPageList = ({ yourPageState, setYourPageState }) => {

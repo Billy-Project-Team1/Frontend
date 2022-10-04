@@ -1,53 +1,54 @@
 @import '../../common/color.scss';
+
 .myProfileHeader_container {
-  padding: 0 1rem;
+	padding: 0 1rem;
 }
 .myProfileHeader_wrap {
-  height: 60px;
-  display: flex;
-  flex-direction: row;
-  margin: 24px 0 0px 0px;
-  position: relative;
+	height: 60px;
+	display: flex;
+	flex-direction: row;
+	margin: 24px 0 0px 0px;
+	position: relative;
 }
 .myProfileHeader_img_box {
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
 }
 .myProfileHeader_img {
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
 }
 .myProfileHeader_right_box {
-  margin-left: 14px;
-  margin-top: 5px;
-  gap: 14px;
+	margin-left: 14px;
+	margin-top: 5px;
+	gap: 14px;
 
-  p {
-    font-size: 0.85rem;
-    color: $color-placeholder;
-    font-weight: 400;
-    color: #c0c0c0;
-  }
+	p {
+		font-size: 0.85rem;
+		color: $color-placeholder;
+		font-weight: 400;
+		color: #c0c0c0;
+	}
 }
 .myProfileHeader_nickname {
-  font-size: 1.25rem;
-  color: $color-primary;
-  margin-right: 8px;
+	font-size: 1.25rem;
+	color: $color-primary;
+	margin-right: 8px;
 }
 .myProfileHeader_setting_btn {
-  color: $color-placeholder;
-  cursor: pointer;
-  margin: auto;
-  width: 20px;
-  height: 20px;
+	color: $color-placeholder;
+	cursor: pointer;
+	margin: auto;
+	width: 20px;
+	height: 20px;
 }
 .myProfileHeader_right_topbox {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 .myProfileHeader_icon {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }

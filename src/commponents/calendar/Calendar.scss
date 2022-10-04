@@ -1,82 +1,74 @@
 @import '../../common/color.scss';
 
 .calendar_box {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-  ::placeholder {
-    color: $color-medium;
-  }
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+	::placeholder {
+		color: $color-medium;
+	}
 }
 .calendar_box_text {
-  color: $color-primary;
-  font-weight: 400;
-  cursor: pointer;
+	color: $color-primary;
+	font-weight: 400;
+	cursor: pointer;
 }
-.calendar_box_text2{
-  color: $color-medium;
-  font-weight: 400;
-  cursor: pointer;
+.calendar_box_text2 {
+	color: $color-medium;
+	font-weight: 400;
+	cursor: pointer;
 }
 .calendar_title {
-  padding-right: 5px;
-  font-weight: 600;
+	padding-right: 5px;
+	font-weight: 600;
 }
 .calendar_input {
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+	font-size: 1rem;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 .calendar_input_text {
-  color: $color-primary;
-  font-weight: normal;
-  font-size: 0.875rem;
+	color: $color-primary;
+	font-weight: normal;
+	font-size: 0.875rem;
 }
 .calendar_input:focus {
-  outline: none;
+	outline: none;
 }
 .calendar_toggleIcon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	cursor: pointer;
 }
 .calendar_btns {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 
-  button {
-    background-color: $color-main;
-    border-radius: 7px;
-    width: 100px;
-    height: 40px;
-    border: none;
-    font-weight: 600;
-    font-size: 1rem;
-    color: $color-light;
-    margin-top: 2px;
-    cursor: pointer;
-  }
-  p {
-    color: $color-primary;
-    font-weight: 600;
-    font-size: 0.875rem;
-    text-decoration: underline;
-    text-underline-position: under;
-    margin-left: 8px;
-    margin-top: 9px;
-    cursor: pointer;
-  }
+	button {
+		background-color: $color-main;
+		border-radius: 7px;
+		width: 100px;
+		height: 40px;
+		border: none;
+		font-weight: 600;
+		font-size: 1rem;
+		color: $color-light;
+		margin-top: 2px;
+		cursor: pointer;
+	}
+	p {
+		color: $color-primary;
+		font-weight: 600;
+		font-size: 0.875rem;
+		text-decoration: underline;
+		text-underline-position: under;
+		margin-left: 8px;
+		margin-top: 9px;
+		cursor: pointer;
+	}
 }
-
-
-
-
-
-
-
-

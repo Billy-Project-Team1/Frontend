@@ -32,6 +32,7 @@
 .reservationcard_img {
 	width: 110px;
 	aspect-ratio: 1/1;
+	object-fit: cover;
 	background: $color-placeholder;
 	border-radius: 7px;
 	cursor: pointer;
