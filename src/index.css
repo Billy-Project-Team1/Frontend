@@ -18,7 +18,7 @@ code {
 }
 @media all and (min-width: 900px) and (min-height: 500px) {
   body {
-    background-image: url('../public/logobackground.png');
+    background-image: url('../public/background.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
