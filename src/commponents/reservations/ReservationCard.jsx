@@ -3,17 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
+import {
+	billyReservationCntThunk,
+	billyStateListThunk,
+	deliveryDoneThunk,
+} from '../../redux/modules/reservationSlice';
 // Stlye import
 import './ReservationCard.scss';
 // Image import
 import dailycost from '../../static/image/dailycost.svg';
 import deposit from '../../static/image/deposit.svg';
-// Slice import
-import {
-  billyReservationCntThunk,
-  billyStateListThunk,
-  deliveryDoneThunk,
-} from '../../redux/modules/reservationSlice';
 // Component import
 import CancelButton from './CancelButton';
 import AlertButton from './AlertButton';

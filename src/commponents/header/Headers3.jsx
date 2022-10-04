@@ -1,6 +1,8 @@
+// React import
 import React from 'react';
-import './Headers.scss';
 import { useNavigate } from 'react-router-dom';
+// style & Icon import
+import './Headers.scss';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 
 const Headers3 = ({ pageName }) => {

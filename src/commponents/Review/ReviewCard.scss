@@ -118,6 +118,7 @@
 	width: 100%;
 	aspect-ratio: 1/1;
 	border-radius: 7px;
+	object-fit: cover;
 }
 
 .reviewCard_comment {
@@ -136,10 +137,10 @@
 	padding: 12px;
 	font-size: 0.9375rem;
 	cursor: pointer;
-	  &:active {
-    background-color: $color-main;
-    color: $color-sub;
-  }
+	&:active {
+		background-color: $color-main;
+		color: $color-sub;
+	}
 }
 
 .reviewCard_reply_wrap {
@@ -156,6 +157,7 @@
 	border-radius: 50%;
 	background: $color-placeholder;
 	aspect-ratio: 1/1;
+	object-fit: cover;
 }
 
 .reviewCard_mycomment_done {

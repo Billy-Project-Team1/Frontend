@@ -1,9 +1,10 @@
+// React import
 import React from 'react';
+// style & Icon import
 import './Headers.scss';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 
 const MapModalheader = ({ pageName, setSearchMapModal }) => {
-
 	return (
 		<div className="header_container">
 			<div className="header_wrap">

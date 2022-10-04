@@ -8,10 +8,10 @@ import UploadCard from '../../commponents/profileCard/UploadCard';
 import ReviewCardYourPage from '../../commponents/Review/ReviewCardYourPage';
 
 const YourPageList = ({ profile }) => {
-  const [yourPageState, setYourPageState] = useState('1');
-  const myUploadList = useSelector((state) => state.member.myUploadList);
-  const newUploadList = myUploadList.slice(0).reverse()
-  return (
+	const [yourPageState, setYourPageState] = useState('1');
+	const myUploadList = useSelector((state) => state.member.myUploadList);
+	const newUploadList = myUploadList.slice(0).reverse();
+	return (
 		<div>
 			<YourPageMiddle
 				yourPageState={yourPageState}

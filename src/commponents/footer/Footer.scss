@@ -1,27 +1,28 @@
 @import '../../common/color.scss';
+
 .footer {
-  max-width: 428px;
+	max-width: 428px;
 }
 .footer_container {
-  height: 84px;
-  position: fixed;
-  z-index: 4;
-  bottom: 0;
-  width: 100%;
-  max-width: 420px;
-  background-color: $color-light;
-  border-radius: 20px 20px 0px 0px;
-  padding: 16px 24px 46px;
+	height: 84px;
+	position: fixed;
+	z-index: 4;
+	bottom: 0;
+	width: 100%;
+	max-width: 420px;
+	background-color: $color-light;
+	border-radius: 20px 20px 0px 0px;
+	padding: 16px 24px 46px;
 
-  .footer_wrap {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    position: sticky;
-  }
+	.footer_wrap {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		position: sticky;
+	}
 }
 .footer_icon {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
 }

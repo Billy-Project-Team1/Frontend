@@ -1,16 +1,18 @@
+// React import
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-
+// Redux import
 import { useDispatch, useSelector } from 'react-redux';
 import { getChatDetailPost } from '../../redux/modules/ChatSlice';
 import instance from '../../redux/modules/instance';
-
+// Package import
 import dailycost from '../../static/image/dailycost.svg';
 import deposit from '../../static/image/deposit.svg';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
-
+// Component import
 import ChatHeder from '../../commponents/header/ChatHeader';
+// Style & Icon import
 import './Chat.scss';
 import { Icon } from '@iconify/react';
 
@@ -225,18 +227,18 @@ const Chat = () => {
 			<div className="chat_head_wrap">
 				<ChatHeder quitRoom={quitRoom} />
 				<div
-					className="Chat_Head_Container"
+					className="chat_head_container"
 					onClick={() => navigate(`/detail/${roomData.id}`)}
 				>
-					<div className="Chat_Head_Box">
-						<div className="Chat_Head_Img_Box">
+					<div className="chat_head_box">
+						<div className="chat_head_text_box">
 							<img
 								src={roomData.postImgUrl?.postImgUrlList[0]}
-								className="Chat_Head_Img"
+								className="chat_head_img"
 							/>
 						</div>
 						<div className="Chat_Head_Text_Box">
-							<div className="Chat_Head_Title">{roomData.title}</div>
+							<div className="chat_head_title">{roomData.title}</div>
 							<div className="chat_head_cost">
 								<div className="chat_head_cost_icon_box">
 									<img className="chat_head_cost_icon" src={dailycost} />
@@ -251,7 +253,7 @@ const Chat = () => {
 					</div>
 				</div>
 			</div>
-			<div className="Chat_Container">
+			<div className="chat_container">
 				{chatList?.map((chat, idx) => {
 					return (
 						<div key={idx}>
@@ -259,14 +261,14 @@ const Chat = () => {
 								chat.message === '' ? (
 									''
 								) : (
-									<div className="Chat_Other_Wrap">
-										<img src={chat.profileUrl} className="Chat_Other_Profile" />
-										<div className="Chat_Other_Container">
-											<div className="Chat_Other_Name">{chat.sender}</div>
-											<div className="Chat_Other_Msg_Clock">
-												<div className="Chat_Other_Box">{chat.message}</div>
-												<div className="Chat_Clock_Box">
-													<div className="Chat_Clock">
+									<div className="chat_other_wrap">
+										<img src={chat.profileUrl} className="chat_other_profile" />
+										<div className="chat_other_container">
+											<div className="chat_other_name">{chat.sender}</div>
+											<div className="chat_other_msg_clock">
+												<div className="chat_other_box">{chat.message}</div>
+												<div className="chat_clock_box">
+													<div className="chat_clock">
 														{detailTime(chat.createdAt)}
 													</div>
 												</div>
@@ -277,33 +279,33 @@ const Chat = () => {
 							) : chat.message === '' ? (
 								''
 							) : (
-								<div className="Chat_Me_Container">
-									<div className="Chat_Clock_Box">
+								<div className="chat_me_container">
+									<div className="chat_clock_box">
 										<div className="Chat_Clock">
 											{detailTime(chat.createdAt)}
 										</div>
 									</div>
-									<div className="Chat_Me_Box">{chat.message}</div>
+									<div className="chat_me_box">{chat.message}</div>
 								</div>
 							)}
 						</div>
 					);
 				})}
-				<div className="Chat_Input_Container">
+				<div className="chat_input_container">
 					<form
-						className="Chat_Input_Box"
+						className="chat_input_box"
 						onSubmit={(event) => onKeyPress(event)}
 					>
 						<input
-							className="Chat_Input"
+							className="chat_input"
 							type="text"
 							placeholder="대화를 시작해보세요!"
 							value={userData.message}
 							onChange={(event) => handleValue(event)}
 						/>
-						<div className="Chat_Input_Button_Box">
-							<button className="Chat_Input_Button">
-								<Icon icon="akar-icons:send" className="Chat_Button_Icon" />
+						<div className="chat_input_button_box">
+							<button className="chat_input_button">
+								<Icon icon="akar-icons:send" className="chat_button_icon" />
 							</button>
 						</div>
 					</form>

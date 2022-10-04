@@ -1,29 +1,31 @@
-.DetailMap_Wrap {
+@import '../../common/color.scss';
+
+.detailMap_wrap {
 	display: flex;
 	flex-direction: column;
 }
 
-.DetailMap_Container {
+.detailMap_container {
 	display: flex;
 	flex-direction: column;
 }
 
-.DetailMap_Title {
+.detailMap_title {
 	display: flex;
 	flex-direction: row;
 	font-size: 1rem;
-	color: #212121;
+	color: $color-primary;
 	font-weight: 600;
 }
 
-.DetailMapPlaceBox {
+.detailMap_place_box {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
 
-.DetailMap_Place {
-	color: #212121;
+.detailMap_place {
+	color: $color-primary;
 	font-size: 0.875rem;
 }
 
@@ -33,7 +35,7 @@
 	justify-content: center;
 	cursor: pointer;
 }
-.DetailMap_Img {
+.detailMap_img {
 	margin: auto;
 	margin-top: 1rem;
 	border-radius: 12px;
@@ -41,7 +43,7 @@
 	aspect-ratio: 1.7/1;
 }
 
-.DetailMap_TextBox {
+.detailMap_text_box {
 	display: flex;
 	flex-direction: row;
 	gap: 7px;

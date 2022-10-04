@@ -1,145 +1,148 @@
 @import '../../common/color.scss';
-.Login_Wrap {
-  margin: auto;
-  max-width: 428px;
-  display: flex;
-  flex-direction: column;
-  padding: 0 1.5rem;
-  input:focus {
-    outline: none;
-  }
-  input::placeholder {
-    color: #cccccc;
-  }
+
+.login_wrap {
+	margin: auto;
+	max-width: 428px;
+	display: flex;
+	flex-direction: column;
+	padding: 0 1.5rem;
+	input:focus {
+		outline: none;
+	}
+	input::placeholder {
+		color: $color-placeholder;
+	}
 }
 
-.Login_Email_Box {
-  font-size: 0.75rem;
-  margin-top: 3.75rem;
-  display: flex;
-  flex-direction: column;
-  color: #212121;
-  gap: 1.0625rem;
+.login_email_box {
+	font-size: 0.75rem;
+	margin-top: 3.75rem;
+	display: flex;
+	flex-direction: column;
+	color: $color-primary;
+	gap: 1.0625rem;
 }
 
-.Login_Email_Input {
-  width: 100%;
-  height: 1.5rem;
-  font-size: 0.875rem;
-  border: none;
-  margin-bottom: 2.5rem;
-  border-bottom: 1px solid $color-sub;
+.login_email_input {
+	width: 100%;
+	height: 1.5rem;
+	font-size: 0.875rem;
+	border: none;
+	margin-bottom: 2.5rem;
+	border-bottom: 1px solid $color-sub;
 }
 
-.Login_Password {
-  font-size: 0.75rem;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  color: #212121;
+.login_password {
+	font-size: 0.75rem;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	color: $color-primary;
 }
 
-.Login_Password_Box {
-  width: 100%;
-  margin-top: 1.0625rem;
-  display: flex;
-  flex-direction: row;
-}
-.Login_Alert_Text1 {
-  font-size: 0.875rem;
+.login_password_box {
+	width: 100%;
+	margin-top: 1.0625rem;
+	display: flex;
+	flex-direction: row;
 }
 
-.Login_Password_Eye {
-  position: absolute;
-  font-size: 24px;
-  color: #cccccc;
-  bottom: 0.75rem;
-  right: 0;
-  z-index: 1;
+.login_alert_text1 {
+	font-size: 0.875rem;
 }
 
-.Login_Password_Input {
-  width: 100%;
-  border: none;
-  height: 1.5rem;
-  font-size: 0.875rem;
-  border-bottom: 1px solid rgba($color: #a8a8a8, $alpha: 0.5);
+.login_password_eye {
+	position: absolute;
+	font-size: 24px;
+	color: $color-placeholder;
+	bottom: 0.75rem;
+	right: 0;
+	z-index: 1;
 }
 
-.Login_Password_Input_Alert{
-  width: 100%;
-  border: none;
-  height: 1.5rem;
-  font-size: 0.875rem;
-  border-bottom: 1px solid #eb0000;
+.login_password_input {
+	width: 100%;
+	border: none;
+	height: 1.5rem;
+	font-size: 0.875rem;
+	border-bottom: 1px solid rgba($color: #a8a8a8, $alpha: 0.5);
 }
 
-.Login_Alert_Text {
-  box-sizing: border-box;
-  color: #eb0000;
-  font-size: 0.875rem;
+.login_password_input_alert {
+	width: 100%;
+	border: none;
+	height: 1.5rem;
+	font-size: 0.875rem;
+	border-bottom: 1px solid $font-red;
 }
 
-.Login_Find_Box {
-  margin: 0.9375rem 0px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 10px;
+.login_alert_text {
+	box-sizing: border-box;
+	color: $font-red;
+	font-size: 0.875rem;
 }
 
-.Login_Find {
-  font-size: 0.75rem;
-  color: #cccccc;
+.login_find_box {
+	margin: 0.9375rem 0px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 10px;
 }
 
-.Login_Find_Navi {
-  color: #757575;
-  font-size: 0.75rem;
-  cursor: pointer;
+.login_find {
+	font-size: 0.75rem;
+	color: $color-placeholder;
 }
 
-.Login_Button {
-  margin-top: 30px;
-  border: none;
-  background-color: #000000;
-  color: #ffffff;
-  font-size: 0.875rem;
-  border-radius: 12px;
-  height: 2.9375rem;
-  font-weight: 700;
-  width: 100%;
-  cursor: pointer;
+.login_find_navi {
+	color: $color-medium;
+	font-size: 0.75rem;
+	cursor: pointer;
 }
 
-.Login_Kakao {
-  margin-top: 1.25rem;
-  display: flex;
-  border: none;
-  background-color: #fee500;
-  color: #000000 85%;
-  justify-content: center;
-  flex-direction: row;
-  border-radius: 12px;
-  height: 2.9375rem;
-  width: 100%;
-  gap: 1px;
+.login_button {
+	margin-top: 30px;
+	border: none;
+	background-color: $color-primary;
+	color: $color-white;
+	font-size: 0.875rem;
+	border-radius: 12px;
+	height: 2.9375rem;
+	font-weight: 700;
+	width: 100%;
+	cursor: pointer;
 }
 
-.Login_Kakao_Box {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-.Kakao_Login_Img {
-  margin: auto;
-  width: 15px;
-  height: 15px;
+.login_kakao {
+	margin-top: 1.25rem;
+	display: flex;
+	border: none;
+	background-color: $font-star;
+	color: $color-primary 85%;
+	justify-content: center;
+	flex-direction: row;
+	border-radius: 12px;
+	height: 2.9375rem;
+	width: 100%;
+	gap: 1px;
 }
 
-.Login_Kakao_Title {
-  font-size: 0.875rem;
-  font-weight: 700;
-  margin: auto;
+.login_kakao_box {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.kakao_login_img {
+	margin: auto;
+	width: 15px;
+	height: 15px;
+}
+
+.login_kakao_title {
+	font-size: 0.875rem;
+	font-weight: 700;
+	margin: auto;
 }

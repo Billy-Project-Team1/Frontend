@@ -1,10 +1,8 @@
+// React import
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
-//style
+// style & Icon import
 import './Headers.scss';
-
-//icons
 import { HiSearch } from 'react-icons/hi';
 import { FaRegBell } from 'react-icons/fa';
 

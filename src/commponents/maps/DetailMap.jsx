@@ -1,27 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
+// React import
+import React, { useState } from 'react';
+// style & Icon import
 import './DetailMap.scss';
+import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
+// Page import
 import DetailMapView from './DetailMapView';
+
 const { kakao } = window;
 
 const DetailMap = ({ data }) => {
-  const [toggleOn, setToggleOn] = useState(true);
-  const [openData, setOpenData] = useState('1');
+	const [toggleOn, setToggleOn] = useState(true);
+	const [openData, setOpenData] = useState('1');
 
-  const toggleMode = () => {
-    setToggleOn((a) => !toggleOn);
-	setOpenData(openData+1);
-  };
+	const toggleMode = () => {
+		setToggleOn((a) => !toggleOn);
+		setOpenData(openData + 1);
+	};
 
-  
-
-  return (
-		<div className="DetailMap_Wrap">
-			<div className="DetailMap_Container">
-				<div className="DetailMap_TextBox">
-					<div className="DetailMap_Title">거래 장소</div>
-					<div className="DetailMapPlaceBox">
-						<div className="DetailMap_Place">{data.detailLocation}</div>
+	return (
+		<div className="detailMap_wrap">
+			<div className="detailMap_containers">
+				<div className="detailMap_text_box">
+					<div className="detailMap_title">거래 장소</div>
+					<div className="detailMap_place_box">
+						<div className="detailMap_place">{data.detailLocation}</div>
 					</div>
 					<div
 						className="detailmap_toggle_icon"

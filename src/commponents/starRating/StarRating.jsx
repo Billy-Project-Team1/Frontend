@@ -1,19 +1,19 @@
-// React import 
+// React import
 import React, { useState } from 'react';
 // Style import
 import './StarRating.scss';
-// Icon import 
+// Icon import
 import { FaStar } from 'react-icons/fa';
 
 const StarRating = ({ onChangeHandler }) => {
-  const [rating, setRating] = useState(null);
-  const [hover, setHover] = useState(null);
+	const [rating, setRating] = useState(null);
+	const [hover, setHover] = useState(null);
 
-  return (
-    <div>
-      {[...Array(5)].map((star, i) => {
-        const ratingValue = i + 1;
-        return (
+	return (
+		<div>
+			{[...Array(5)].map((star, i) => {
+				const ratingValue = i + 1;
+				return (
 					<label key={i}>
 						<input
 							className="starRating_rating"
@@ -32,9 +32,9 @@ const StarRating = ({ onChangeHandler }) => {
 						/>
 					</label>
 				);
-      })}
-    </div>
-  );
+			})}
+		</div>
+	);
 };
 
 export default StarRating;

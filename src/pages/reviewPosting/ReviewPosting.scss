@@ -1,8 +1,10 @@
 @import '../../common/color.scss';
-.reviewPost_wrap{
+
+.reviewPost_wrap {
 	min-height: 100vh;
 	position: relative;
 }
+
 .reviewPost_container {
 	height: 100%;
 	padding: 0 1rem;
@@ -19,6 +21,7 @@
 .reviewPost_img {
 	width: 60px;
 	aspect-ratio: 1/1;
+	object-fit: cover;
 	background: $color-placeholder;
 	border-radius: 7px;
 }
@@ -43,7 +46,7 @@
 
 .reviewPost_option {
 	font-size: 0.875rem;
-	color: #757575;
+	color: $color-medium;
 }
 
 .reviewPost_write_content {

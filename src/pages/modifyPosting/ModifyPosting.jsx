@@ -16,92 +16,92 @@ import ModifyCalendar from '../../commponents/calendar/ModifyCalendar';
 import ModifyImageUploader from '../../commponents/imageUploader/ModifyImageUploader';
 
 const ModifyPosting = () => {
-  const dispatch = useDispatch();
-  const { postid } = useParams();
-  const myUserId = localStorage.getItem('userId');
-  const [img, setImg] = useState([]);
-  const [blockDateDtoList, setBlockDateDtoList] = useState([]);
-  const [searchMapModal, setSearchMapModal] = useState(false);
-  const [imgUrl, setImgUrl] = useState([]);
-  const [date, setDate] = useState([]);
-  const [blockDate, setBlockDate] = useState([]);
+	const dispatch = useDispatch();
+	const { postid } = useParams();
+	const myUserId = localStorage.getItem('userId');
+	const [img, setImg] = useState([]);
+	const [blockDateDtoList, setBlockDateDtoList] = useState([]);
+	const [searchMapModal, setSearchMapModal] = useState(false);
+	const [imgUrl, setImgUrl] = useState([]);
+	const [date, setDate] = useState([]);
+	const [blockDate, setBlockDate] = useState([]);
 
-  useEffect(() => {
-    async function getDetail() {
-      const result = await dispatch(getPost({ postid, myUserId })).unwrap();
-      if (result) {
-        setRevisePosting({
-          title: `${result.title}`,
-          price: `${result.price}`,
-          deposit: `${result.deposit}`,
-          location: `${result.location}`,
-          content: `${result.content}`,
-          detailLocation: `${result.detailLocation}`,
-          latitude: `${result.latitude}`,
-          longitude: `${result.longitude}`,
-          postImgUrl: `${result.postImgUrl?.postImgUrlList}`,
-        });
-        setImg(result.postImgUrl.postImgUrlList);
-        setImgUrl([...imgUrl, ...result.postImgUrl.postImgUrlList]);
-        result.blockDate.blockDateList.map((item) => {
-          return date.push(new Date(item));
-        });
-        setBlockDate(result.blockDate?.reservationDateList);
-        setBlockDateDtoList(result.blockDate?.reservationDateList);
-      }
-    }
-    getDetail();
-  }, []);
+	useEffect(() => {
+		async function getDetail() {
+			const result = await dispatch(getPost({ postid, myUserId })).unwrap();
+			if (result) {
+				setRevisePosting({
+					title: `${result.title}`,
+					price: `${result.price}`,
+					deposit: `${result.deposit}`,
+					location: `${result.location}`,
+					content: `${result.content}`,
+					detailLocation: `${result.detailLocation}`,
+					latitude: `${result.latitude}`,
+					longitude: `${result.longitude}`,
+					postImgUrl: `${result.postImgUrl?.postImgUrlList}`,
+				});
+				setImg(result.postImgUrl.postImgUrlList);
+				setImgUrl([...imgUrl, ...result.postImgUrl.postImgUrlList]);
+				result.blockDate.blockDateList.map((item) => {
+					return date.push(new Date(item));
+				});
+				setBlockDate(result.blockDate?.reservationDateList);
+				setBlockDateDtoList(result.blockDate?.reservationDateList);
+			}
+		}
+		getDetail();
+	}, []);
 
-  const initialState = {
-    title: '',
-    price: '',
-    deposit: '',
-    location: '',
-    content: '',
-    detailLocation: '',
-    latitude: '',
-    longitude: '',
-  };
-  const [revisePosting, setRevisePosting] = useState(initialState);
+	const initialState = {
+		title: '',
+		price: '',
+		deposit: '',
+		location: '',
+		content: '',
+		detailLocation: '',
+		latitude: '',
+		longitude: '',
+	};
+	const [revisePosting, setRevisePosting] = useState(initialState);
 
-  const onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    setRevisePosting({ ...revisePosting, [name]: value });
-  };
+	const onChangeHandler = (e) => {
+		const { name, value } = e.target;
+		setRevisePosting({ ...revisePosting, [name]: value });
+	};
 
-  const onPostingHandler = async (e) => {
-    e.preventDefault();
-    let formData = new FormData();
-    formData.append(
-      'postUploadRequestDto',
-      new Blob([JSON.stringify(revisePosting)], { type: 'application/json' })
-    );
-    for (let i = 0; i < imgUrl.length; i++) {
-      formData.append('imgUrlList', imgUrl[i]);
-    }
+	const onPostingHandler = async (e) => {
+		e.preventDefault();
+		let formData = new FormData();
+		formData.append(
+			'postUploadRequestDto',
+			new Blob([JSON.stringify(revisePosting)], { type: 'application/json' })
+		);
+		for (let i = 0; i < imgUrl.length; i++) {
+			formData.append('imgUrlList', imgUrl[i]);
+		}
 
-    for (let i = 0; i < img.length; i++) {
-      formData.append('files', img[i]);
-    }
-    for (let i = 0; i < blockDateDtoList?.blockDateDtoList?.length; i++) {
-      formData.append('blockDateDtoList', blockDateDtoList.blockDateDtoList[i]);
-    }
-    try {
-      const data = await dispatch(updatePost({ formData, postid })).unwrap();
-      console.log(data);
-      if (data) {
-        window.location.replace('/');
-        window.location.replace(`/detail/${data.id}`);
-      } else {
-        console.log(data);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+		for (let i = 0; i < img.length; i++) {
+			formData.append('files', img[i]);
+		}
+		for (let i = 0; i < blockDateDtoList?.blockDateDtoList?.length; i++) {
+			formData.append('blockDateDtoList', blockDateDtoList.blockDateDtoList[i]);
+		}
+		try {
+			const data = await dispatch(updatePost({ formData, postid })).unwrap();
+			console.log(data);
+			if (data) {
+				window.location.replace('/');
+				window.location.replace(`/detail/${data.id}`);
+			} else {
+				console.log(data);
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
-  return (
+	return (
 		<div>
 			<Headers
 				pageName="글 수정하기"

@@ -1,4 +1,6 @@
-.SignUp_Wrap {
+@import '../../common/color.scss';
+
+.signUp_wrap {
 	margin: auto;
 	max-width: 26.75rem;
 	display: flex;
@@ -8,23 +10,23 @@
 		outline: none;
 	}
 	input::placeholder {
-		color: #cccccc;
+		color: $color-placeholder;
 	}
 }
 
-.SignUp_Top_Name {
+.signUp_top_name {
 	font-size: 1.5rem;
 	margin-top: 3.125rem;
 	margin-bottom: 3.125rem;
 }
 
-.SignUp_Input_Box {
+.signUp_input_box {
 	font-size: 0.75rem;
 	flex-direction: column;
-	color: #212121;
+	color: $color-primary;
 }
 
-.SignUp_Input {
+.signUp_input {
 	width: 100%;
 	margin-top: 1.25rem;
 	height: 1.5rem;
@@ -33,27 +35,27 @@
 	border-bottom: 1px solid rgba($color: #a8a8a8, $alpha: 0.5);
 }
 
-.SignUp_Input_Alert {
+.signUp_input_alert {
 	width: 100%;
 	margin-top: 1.25rem;
 	height: 1.5rem;
 	font-size: 0.875rem;
 	border: none;
-	border-bottom: 1px solid #eb0000;
+	border-bottom: 1px solid $font-red;
 }
 
-.SignUp_Agree_Box {
+.signUp_agree_box {
 	font-size: 0.6875rem;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
 
-.SignUp_Button {
+.signUp_button {
 	margin-top: 7rem;
 	border: none;
-	background-color: #000000;
-	color: #ffffff;
+	background-color: $color-primary;
+	color: $color-white;
 	font-size: 0.875rem;
 	font-weight: 700;
 	border-radius: 12px;
@@ -62,28 +64,28 @@
 	cursor: pointer;
 }
 
-.SignUp_Agree_Left {
+.signUp_agree_left {
 	display: flex;
 	flex-direction: row;
 	gap: 5px;
 }
 
-.SignUp_Agree_Left1 {
+.signUp_agree_left1 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	cursor: pointer;
 }
 
-.SignUp_Essential {
+.signUp_essential {
 	display: flex;
 	flex-direction: column;
 	padding-bottom: 3px;
 }
 
-.SignUp_Add {
+.signUp_add {
 	text-decoration: underline;
-	color: #cccccc;
+	color: $color-placeholder;
 }
 
 .BsCheckSquareOpacity {
@@ -96,8 +98,8 @@
 	height: 0.875rem;
 }
 
-.SignUp_Alert_Text {
-	color: #eb0000;
+.signUp_alert_text {
+	color: $font-red;
 	font-size: 12px;
 	margin-bottom: 1.4375rem;
 }

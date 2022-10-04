@@ -1,63 +1,64 @@
-.Search_Wrap {
-  width: 100%;
-  padding: 1.3rem 1rem;
-  height: 53px;
-  display: flex;
+@import '../../common/color.scss';
 
+.search_wrap {
+	width: 100%;
+	padding: 1.3rem 1rem;
+	height: 53px;
+	display: flex;
 }
 
-.Search_Header {
-  margin: auto;
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
+.search_header {
+	margin: auto;
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
 }
 
-.Search_Header_Icon_Box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 1.5rem;
+.search_header_icon_box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 1.5rem;
 }
 
-.Search_Header_Icon {
-  margin: auto;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
+.search_header_icon {
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
 }
 
-.Search_Header_Input {
-  width: 100%;
-  border: none;
-  border-radius: 0.75rem;
-  height: 2.375rem;
-  background: #F7F7F7;
-  padding: 0 1rem;
-  font-size: 0.9375rem;
-  outline: none;
-  color: #212121;
+.search_header_input {
+	width: 100%;
+	border: none;
+	border-radius: 0.75rem;
+	height: 2.375rem;
+	background: $color-light;
+	padding: 0 1rem;
+	font-size: 0.9375rem;
+	outline: none;
+	color: $color-primary;
 }
 
-.Search_Header_Input_Xbutton {
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  right: 0.75rem;
-  top: 0.65rem;
-  color: #212121;
+.search_header_input_xbutton {
+	position: absolute;
+	width: 17px;
+	height: 17px;
+	right: 0.75rem;
+	top: 0.65rem;
+	color: $color-primary;
 }
 
-.Search_Empty_Text {
-  padding: 10rem 1rem;
-  margin-top: 2rem;
-  font-size: 0.875rem;
-  color: #cccccc;
-  text-align: center;
+.search_empty_text {
+	padding: 10rem 1rem;
+	margin-top: 2rem;
+	font-size: 0.875rem;
+	color: $color-placeholder;
+	text-align: center;
 }
 
-.Search_Post_List{
-  margin-bottom: 84px;
+.search_post_list {
+	margin-bottom: 84px;
 }
