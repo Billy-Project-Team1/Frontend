@@ -1,0 +1,50 @@
+@import '../../common/color.scss';
+
+.detailMap_wrap {
+	display: flex;
+	flex-direction: column;
+}
+
+.detailMap_container {
+	display: flex;
+	flex-direction: column;
+}
+
+.detailMap_title {
+	display: flex;
+	flex-direction: row;
+	font-size: 1rem;
+	color: $color-primary;
+	font-weight: 600;
+}
+
+.detailMap_place_box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.detailMap_place {
+	color: $color-primary;
+	font-size: 0.875rem;
+}
+
+.detailmap_toggle_icon {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	cursor: pointer;
+}
+.detailMap_img {
+	margin: auto;
+	margin-top: 1rem;
+	border-radius: 12px;
+	width: 100%;
+	aspect-ratio: 1.7/1;
+}
+
+.detailMap_text_box {
+	display: flex;
+	flex-direction: row;
+	gap: 7px;
+}

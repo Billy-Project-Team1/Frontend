@@ -1,0 +1,113 @@
+@import '../../common/color.scss';
+
+.reviewPost_wrap {
+	min-height: 100vh;
+	position: relative;
+}
+
+.reviewPost_container {
+	height: 100%;
+	padding: 0 1rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.reviewPost_rating_container {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+}
+
+.reviewPost_img {
+	width: 60px;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+	background: $color-placeholder;
+	border-radius: 7px;
+}
+
+.reviewPost_right_box {
+	margin: 2px 0 0 10px;
+}
+
+.reviewPost_title {
+	font-size: 1rem;
+	color: $color-primary;
+}
+
+.reviewPost_star {
+	display: flex;
+	flex-direction: row;
+}
+
+.reviewPost_write {
+	margin-top: 30px;
+}
+
+.reviewPost_option {
+	font-size: 0.875rem;
+	color: $color-medium;
+}
+
+.reviewPost_write_content {
+	border: 1px solid $color-sub;
+	border-radius: 12px;
+	margin-top: 1rem;
+
+	:focus {
+		outline: none;
+	}
+
+	textarea {
+		width: 100%;
+		height: 120px;
+		color: $color-primary;
+		border: none;
+		font-size: 0.875rem;
+		padding: 1rem;
+		resize: none;
+	}
+}
+
+.reviewPost_upload_img {
+	margin-top: 30px;
+}
+
+.reviewPost_submit_btn {
+	width: 92%;
+	max-width: 420px;
+	height: 52px;
+	font-size: 1rem;
+	font-weight: 600;
+	color: $color-light;
+	background-color: $color-main;
+	border-radius: 12px;
+	text-align: center;
+	padding-top: 14px;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	margin-bottom: 50px;
+	transform: translateX(-50%);
+	cursor: pointer;
+}
+::placeholder {
+	color: $color-placeholder;
+}
+.reviewPost_submit_btn_wait {
+	width: 92%;
+	max-width: 420px;
+	height: 52px;
+	font-size: 1rem;
+	font-weight: 600;
+	color: $color-placeholder;
+	background-color: $color-light;
+	border-radius: 12px;
+	text-align: center;
+	padding-top: 14px;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	margin-bottom: 50px;
+	transform: translateX(-50%);
+}

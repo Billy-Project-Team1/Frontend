@@ -1,0 +1,92 @@
+@import '../../common/color.scss';
+
+.myProfileMiddle_wrap {
+	padding: 0 1rem;
+	margin-top: 30px;
+}
+
+.myProfileMiddle_container {
+	height: 5.5rem;
+	border-bottom: 1px solid $color-sub;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.myProfileMiddle_box {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 2.75rem;
+	gap: 0.5rem;
+	cursor: pointer;
+}
+
+.myPorfileMiddle_icon_container {
+	position: relative;
+	margin: 0 auto;
+	width: 100%;
+	background-color: $color-light;
+	border-radius: 50%;
+	aspect-ratio: 1/1;
+}
+
+.myProfileMiddle_icon_box {
+	position: absolute;
+	width: 1.5rem;
+	height: 1.5rem;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.myProfileMiddle_text {
+	position: absolute;
+	top: 65%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	font-size: 0.6875rem;
+	white-space: nowrap;
+	overflow: visible;
+	color: $color-placeholder;
+}
+
+.myProfileMiddle_text_check {
+	position: absolute;
+	top: 65%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	font-size: 0.6875rem;
+	white-space: nowrap;
+	overflow: visible;
+	color: $color-main;
+}
+
+.myProfileMiddle_icon {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	color: $color-placeholder;
+}
+.myProfileMiddle_icon_check {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	color: $color-main;
+}
+
+.myProfileMiddle_icon_trans {
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	color: $color-placeholder;
+	transform: rotate(180deg);
+}
+
+.myProfileMiddle_icon_trans_check {
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	color: $color-main;
+	transform: rotate(180deg);
+}

@@ -1,16 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 import instance from './instance';
-import { deleteCookie } from './CustomCookie';
+import { deleteCookie } from './customCookies';
 
-const initialState = {
-  member: [],
-};
-
-// 로그 아웃 post /auth/members/logout
 export const logOut = createAsyncThunk('logOut', async (data) => {
   try {
-    const response = await axios.post(
+    const response = await instance.post(
       '/auth/members/logout',
       {},
 
@@ -21,39 +15,91 @@ export const logOut = createAsyncThunk('logOut', async (data) => {
         },
       }
     );
-    // return console.log(response);
     if (response.status === 200) {
       localStorage.clear();
       deleteCookie('refreshToken');
-      deleteCookie('accessToken');
       deleteCookie('webid_ts');
       deleteCookie('webid');
+      window.location.replace('/');
     }
   } catch (e) {
     console.log(e);
   }
 });
 
-// 회원 탈퇴 delete /auth/members/withdrawal/{memberId}
-export const withdrawal = createAsyncThunk('withdrawal', async (data) => {
-  try {
-    const response = await instance.delete(`/auth/members/withdrawal/${data}`);
-    if (response.status === 200) {
-      localStorage.clear();
-      deleteCookie('refreshToken');
-      deleteCookie('accessToken');
-      deleteCookie('webid_ts');
-      deleteCookie('webid');
+export const getmyUpLoadData = createAsyncThunk(
+  'getmyUpLoadData',
+  async (payload, thunkAPI) => {
+    try {
+      const response = await instance.get(`/auth/posts/member-page/${payload}`);
+      if (response.data.success === true) {
+        return thunkAPI.fulfillWithValue(response.data.result);
+      } else {
+        return console.log(response);
+      }
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
     }
-  } catch (e) {
-    console.log(e);
   }
-});
+);
+export const getmyDibsData = createAsyncThunk(
+  'getmyDibsData',
+  async (payload, thunkAPI) => {
+    try {
+      const response = await instance.get(`/auth/posts/likes`);
+      if (response.data.success === true) {
+        return thunkAPI.fulfillWithValue(response.data.result);
+      } else {
+        return console.log(response);
+      }
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
+export const withdrawal = createAsyncThunk(
+  'withdrawal',
+  async (data, thunkAPI) => {
+    try {
+      const response = await instance.delete(
+        `/auth/members/withdrawal/${data}`
+      );
+      if (response.status === 200) {
+        localStorage.clear();
+        deleteCookie('refreshToken');
+        deleteCookie('webid_ts');
+        deleteCookie('webid');
+        window.location.replace('/');
+      }
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+      console.log(e);
+    }
+  }
+);
+
+const initialState = {
+  member: [],
+  myDibsList: [],
+  myUploadList: [],
+};
 
 export const memberSlice = createSlice({
   name: 'member',
   initialState,
   reducers: {},
+  extraReducers: {
+    [getmyUpLoadData.fulfilled]: (state, action) => {
+      state.myUploadList = action.payload;
+    },
+    [getmyUpLoadData.rejected]: (state, action) => {
+      console.log(action.payload);
+    },
+    [getmyDibsData.fulfilled]: (state, action) => {
+      state.myDibsList = action.payload;
+    },
+  },
 });
 
 export const {} = memberSlice.actions;

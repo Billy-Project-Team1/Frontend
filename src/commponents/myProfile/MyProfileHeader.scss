@@ -1,31 +1,54 @@
-.myProfileHeader-container {
-  padding: 0 1rem;
-  max-width: 428px;
+@import '../../common/color.scss';
+
+.myProfileHeader_container {
+	padding: 0 1rem;
 }
-.myProfileHeader-wrap {
-  border: 1px solid black;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+.myProfileHeader_wrap {
+	height: 60px;
+	display: flex;
+	flex-direction: row;
+	margin: 24px 0 0px 0px;
+	position: relative;
 }
-.myProfileHeader-imgBox {
-  // width: 50%;
-  border: 1px red solid;
+.myProfileHeader_img_box {
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
 }
-.myProfileHeader-img {
-  height: 100px;
-  border-radius: 50%;
+.myProfileHeader_img {
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
 }
-.myProfileHeader-rightBox {
-  border: 1px solid red;
-  width: 50%;
-  margin-left: 20px;
-  padding-top: 10px;
+.myProfileHeader_right_box {
+	margin-left: 14px;
+	margin-top: 5px;
+	gap: 14px;
+
+	p {
+		font-size: 0.85rem;
+		color: $color-placeholder;
+		font-weight: 400;
+		color: #c0c0c0;
+	}
 }
-.myProfileHeader-nickname {
-  font-size: 1.5rem;
+.myProfileHeader_nickname {
+	font-size: 1.25rem;
+	color: $color-primary;
+	margin-right: 8px;
 }
-// .myProfileHeader-button {
-//   width: 150px;
-//   height: 30px;
-// }
+.myProfileHeader_setting_btn {
+	color: $color-placeholder;
+	cursor: pointer;
+	margin: auto;
+	width: 20px;
+	height: 20px;
+}
+.myProfileHeader_right_topbox {
+	display: flex;
+	flex-direction: row;
+}
+.myProfileHeader_icon {
+	display: flex;
+	flex-direction: column;
+}
