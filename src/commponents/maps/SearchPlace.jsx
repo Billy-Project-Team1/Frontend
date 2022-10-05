@@ -56,7 +56,7 @@ const SearchPlace = ({ setSearchMapModal, setData, data, position }) => {
 			}}
 		>
 			<div
-				className="KakaoMap_wrap
+				className="kakaoMap_wrap
     "
 			>
 				<div className="kakaoMap_header">
