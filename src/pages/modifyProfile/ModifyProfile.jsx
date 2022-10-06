@@ -11,7 +11,6 @@ import { getCookie } from '../../redux/modules/customCookies';
 import { logOut, withdrawal } from '../../redux/modules/memberSlice';
 // Style & Img & Icon import
 import './ModifyProfile.scss';
-import profileimg from '../../static/image/profileimg.png';
 import { FaCamera } from 'react-icons/fa';
 // Component import
 import Headers from '../../commponents/header/Headers';
@@ -47,9 +46,7 @@ const ModifyProfile = () => {
 		profileUrl: '',
 	});
 	const [files, setFile] = useState('');
-	const [image, setImage] = useState(
-		member.profileUrl ? member.profileUrl : profileimg
-	);
+	const [image, setImage] = useState('');
 	const [nickCheck, setNickCheck] = useState(false);
 
 	useEffect(() => {
@@ -81,7 +78,7 @@ const ModifyProfile = () => {
 			setFile(URL.createObjectURL(e.target.files[0]));
 		} else {
 			// 업로드 취소시 기본 이미지
-			setImage(profileimg);
+			setImage();
 		}
 		// 화면에 프로필 사진 표시
 		const reader = new FileReader();

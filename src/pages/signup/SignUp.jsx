@@ -141,7 +141,7 @@ const SignUp = () => {
 							/>
 						) : nicknameCheck ? (
 							<input
-								className="SignUp_Input"
+								className="signUp_input"
 								placeholder="2-6자 이내, 특수문자/띄어쓰기 불가"
 								name="nickname"
 								value={member.nickname}
