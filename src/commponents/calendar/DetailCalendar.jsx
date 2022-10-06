@@ -73,6 +73,7 @@ const DetailCalendar = ({ data, pickDate, setPickDate }) => {
 				new Date(date[1]) > new Date(data[i])
 			) {
 				date.pop();
+				date.pop();
 				return alert('잘못된 날짜입니다');
 			} else if (date[0]?.toLocaleString() == date[1]?.toLocaleString()) {
 				date.pop();
